@@ -1,18 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InputComponent, InputIcons, InputTypes } from './input.component';
-
-interface InputProps {
-  label?: string;
-  placeholder?: string;
-  type?: InputTypes;
-  disabled?: boolean;
-  required?: boolean;
-  errorMessage?: string;
-  prefixIcon?: InputIcons;
-  prefixText?: string;
-  suffixIcon?: InputIcons;
-  suffixText?: string;
-}
+import { InputProps } from '../../types/input.types';
+import { InputComponent } from './input.component';
 
 const meta: Meta<InputComponent<any>> = {
   title: 'Components/Input',

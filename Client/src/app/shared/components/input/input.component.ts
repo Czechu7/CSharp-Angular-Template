@@ -9,36 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-
-export type InputTypes =
-  | 'text'
-  | 'number'
-  | 'email'
-  | 'password'
-  | 'tel'
-  | 'url';
-
-export type InputIcons =
-  | 'user'
-  | 'map'
-  | 'clock'
-  | 'star'
-  | 'check'
-  | 'times'
-  | 'shopping-cart';
-
-interface InputProps {
-  label?: string;
-  placeholder?: string;
-  type?: InputTypes;
-  disabled?: boolean;
-  required?: boolean;
-  errorMessage?: string;
-  prefixIcon?: InputIcons;
-  prefixText?: string;
-  suffixIcon?: InputIcons;
-  suffixText?: string;
-}
+import { InputProps, InputTypes, InputIcons } from '../../types/input.types';
 
 @Component({
   selector: 'app-input',
