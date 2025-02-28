@@ -1,0 +1,4 @@
+<p-checkbox [inputId]="inputId" [name]="name" [value]="value" [(ngModel)]="checked" [disabled]="disabled"
+  [required]="required"
+  [formControlName]="formControlName !== undefined && formControlName !== '' ? formControlName : null">></p-checkbox>
+<label [class.required]="required" [for]="inputId" class="ml-2"> {{label}} </label>

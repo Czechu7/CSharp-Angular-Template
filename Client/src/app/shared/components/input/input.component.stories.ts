@@ -17,8 +17,8 @@ const args: InputProps = {
   errorMessage: 'This field is required',
 };
 
-type UserDetailsStory = StoryObj<InputComponent<any>>;
+type InputStory = StoryObj<InputComponent<any>>;
 
-export const primary: UserDetailsStory = {
+export const primary: InputStory = {
   args: args,
 };

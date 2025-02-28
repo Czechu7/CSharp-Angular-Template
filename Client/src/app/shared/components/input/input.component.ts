@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   FormsModule,
   NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
   type ControlValueAccessor,
 } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -21,6 +22,7 @@ import { InputProps, InputTypes, InputIcons } from '../../types/input.types';
     InputNumberModule,
     InputGroupModule,
     InputGroupAddonModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
@@ -43,6 +45,7 @@ export class InputComponent<T> implements ControlValueAccessor, InputProps {
   @Input() prefixText?: string;
   @Input() suffixIcon?: InputIcons;
   @Input() suffixText?: string;
+  @Input() formControlName?: string;
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;

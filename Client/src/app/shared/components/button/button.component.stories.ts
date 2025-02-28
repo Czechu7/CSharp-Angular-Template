@@ -24,8 +24,8 @@ const args: ButtonProps = {
   ariaLabel: '',
 };
 
-type UserDetailsStory = StoryObj<ButtonComponent>;
+type ButtonStory = StoryObj<ButtonComponent>;
 
-export const primary: UserDetailsStory = {
+export const primary: ButtonStory = {
   args: args,
 };
