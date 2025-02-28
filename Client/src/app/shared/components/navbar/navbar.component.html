@@ -1,0 +1,61 @@
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <div class="navbar-brand">
+      <img *ngIf="logo" [src]="logo" alt="Logo" class="navbar-logo">
+      <h1 class="navbar-title">{{ title }}</h1>
+    </div>
+
+
+    <button class="navbar-mobile-toggle" (click)="toggleMobileMenu()">
+      <span class="toggle-icon"></span>
+    </button>
+
+
+    <div class="navbar-menu" [class.open]="mobileMenuOpen">
+      <ul class="navbar-nav">
+        <li *ngFor="let item of combinedMenuItems" class="nav-item" [class.has-dropdown]="item.items?.length">
+
+          <div *ngIf="item.items?.length" class="nav-link dropdown-toggle" (click)="toggleDropdown(item)">
+            <i *ngIf="item.icon" class="nav-icon {{ item.icon }}"></i>
+            {{ item.label }}
+            <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
+          </div>
+
+
+          <div *ngIf="!item.items?.length" class="nav-link" [class.disabled]="item.disabled"
+            (click)="!item.disabled && navigateTo(item)">
+            <i *ngIf="item.icon" class="nav-icon {{ item.icon }}"></i>
+            {{ item.label }}
+          </div>
+
+
+          <ul *ngIf="item.items?.length" class="dropdown-menu" [class.show]="item.expanded">
+            <li *ngFor="let subItem of item.items" class="dropdown-item" [class.disabled]="subItem.disabled"
+              (click)="!subItem.disabled && navigateTo(subItem)">
+              <i *ngIf="subItem.icon" class="nav-icon {{ subItem.icon }}"></i>
+              {{ subItem.label }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <div *ngIf="isAuthenticated" class="user-section">
+        <div class="user-info">
+          <span class="user-name">{{ userName }}</span>
+          <div class="user-avatar">
+            <img *ngIf="userAvatar" [src]="userAvatar" alt="User Avatar">
+            <div *ngIf="!userAvatar" class="avatar-placeholder">
+              {{ userName.charAt(0).toUpperCase() }}
+            </div>
+          </div>
+        </div>
+        <button class="logout-button" (click)="logout()">
+          <i class="logout-icon"></i>
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -367,14 +367,34 @@
             "extends": []
         },
         {
-            "name": "PasswordInputProps",
-            "id": "interface-PasswordInputProps-deeec7e95d968407b469305a8902b1a0023aea1d1ef87d64514792380c6e4888a8f5a53895477740d1e4bc967dbb59fbb102f3bb279c3e49341a03ec68d192ae",
-            "file": "src/app/shared/types/password-input.types.ts",
+            "name": "MenuItem",
+            "id": "interface-MenuItem-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+            "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: string;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: string;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
             "properties": [
+                {
+                    "name": "command",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                },
                 {
                     "name": "disabled",
                     "deprecated": false,
@@ -383,10 +403,70 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "expanded",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
                     "line": 4
                 },
                 {
-                    "name": "errorMessage",
+                    "name": "queryParams",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "routerLink",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -396,77 +476,27 @@
                     "line": 6
                 },
                 {
-                    "name": "feedback",
+                    "name": "state",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "formControlName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "label",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 2
-                },
-                {
-                    "name": "mediumLabel",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
+                    "type": "literal type",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
                     "line": 11
                 },
                 {
-                    "name": "placeholder",
+                    "name": "styleClass",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 3
+                    "line": 14
                 },
                 {
-                    "name": "promptLabel",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "required",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 5
-                },
-                {
-                    "name": "size",
+                    "name": "target",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -476,7 +506,7 @@
                     "line": 13
                 },
                 {
-                    "name": "strongLabel",
+                    "name": "url",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -486,7 +516,137 @@
                     "line": 12
                 },
                 {
-                    "name": "weakLabel",
+                    "name": "visible",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "NavbarProps",
+            "id": "interface-NavbarProps-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+            "file": "src/app/shared/types/navbar.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "authMenuItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "commonMenuItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "customClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "logo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "nonAuthMenuItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "sticky",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "theme",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"light\" | \"dark\" | \"custom\"",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "PasswordInputProps",
+            "id": "interface-PasswordInputProps-4c1b44c5055c3a024fbaf92496280cc61e32c3ee8793b9e8dce242d5c355f05081f50b10fed5ae98a00217d33a202b9c805035ee3abe8d91ba25c14eba3bc8f4",
+            "file": "src/app/shared/types/password-input.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export type Size = 'small' | 'large';\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: boolean;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: Size;\r\n  variant?: Variant;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "errorMessage",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -494,6 +654,116 @@
                     "optional": true,
                     "description": "",
                     "line": 10
+                },
+                {
+                    "name": "feedback",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "formControlName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "mediumLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "promptLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "required",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Size",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "strongLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "variant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Variant",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "weakLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
                 }
             ],
             "indexSignatures": [],
@@ -525,6 +795,80 @@
             "kind": 171,
             "methods": [],
             "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721-1",
+            "file": "src/app/shared/types/navbar.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "avatar",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "role",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "indexSignatures": [
+                {
+                    "id": "index-declaration-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "any",
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "kind": 181,
+            "methods": [],
+            "extends": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "User-1"
         }
     ],
     "injectables": [],
@@ -1680,6 +2024,281 @@
             "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" [class.required]=\"required\">{{ label }}</label>\r\n  }\r\n\r\n  <p-inputgroup>\r\n    @if (prefixIcon || prefixText) {\r\n    <p-inputgroup-addon>\r\n      @if (prefixIcon) {\r\n      <i class=\"pi pi-{{ prefixIcon }}\"></i>\r\n      } @if (prefixText) {\r\n      {{ prefixText }}\r\n      }\r\n    </p-inputgroup-addon>\r\n    } @if (type === 'number') {\r\n    <p-inputnumber [id]=\"id\" [placeholder]=\"placeholder\" [disabled]=\"disabled\" [required]=\"required\" [(ngModel)]=\"value\"\r\n      (ngModelChange)=\"onInput($event)\" (onBlur)=\"onTouched()\" [useGrouping]=\"false\" />\r\n    } @else {\r\n    <input [id]=\"id\" pInputText [type]=\"type\" [placeholder]=\"placeholder\" [disabled]=\"disabled\" [required]=\"required\"\r\n      [ngModel]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\"\r\n      [formControlName]=\"formControlName || ''\" />\r\n    } @if (suffixIcon || suffixText) {\r\n    <p-inputgroup-addon>\r\n      @if (suffixIcon) {\r\n      <i class=\"pi pi-{{ suffixIcon }}\"></i>\r\n      } @if (suffixText) {\r\n      {{ suffixText }}\r\n      }\r\n    </p-inputgroup-addon>\r\n    }\r\n  </p-inputgroup>\r\n\r\n  @if (errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
         },
         {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-44ed1f9fe43d9ae9f714f3321eb4bb24987c7dad87652dd4357149deabc55e795076e6aedab58a04176ce1e00575c5a9a7b8a6bad1bef8d3a4f1b31d0bb0a1fb",
+            "file": "src/app/shared/components/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "authMenuItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "isAuthenticated",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "logo",
+                    "defaultValue": "'assets/logo.png'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "menuItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "nonAuthMenuItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'My Application'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "userAvatar",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "userName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "combinedMenuItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "mobileMenuOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleDropdown",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleMobileMenu",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateMenu",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MenubarModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { MenuItem, User } from '../../types/navbar.types';\r\nimport { MenubarModule } from 'primeng/menubar';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [MenubarModule],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit {\r\n  @Input() title: string = 'My Application';\r\n  @Input() logo: string = 'assets/logo.png';\r\n  @Input() menuItems: any[] = [];\r\n  @Input() authMenuItems: any[] = [];\r\n  @Input() nonAuthMenuItems: any[] = [];\r\n  @Input() isAuthenticated: boolean = false;\r\n  @Input() userName: string = '';\r\n  @Input() userAvatar: string = '';\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    // Start with the common menu items\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    // Add authenticated or non-authenticated items based on status\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    // Filter any items with visible: false\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    // Close mobile menu when navigating\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    // This method would be called from the menu item's command\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
+            "styleUrl": "./navbar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- navbar.component.html -->\r\n<nav class=\"navbar\">\r\n  <div class=\"navbar-container\">\r\n    <!-- Logo and Brand -->\r\n    <div class=\"navbar-brand\">\r\n      <img *ngIf=\"logo\" [src]=\"logo\" alt=\"Logo\" class=\"navbar-logo\">\r\n      <h1 class=\"navbar-title\">{{ title }}</h1>\r\n    </div>\r\n\r\n    <!-- Mobile Menu Toggle -->\r\n    <button class=\"navbar-mobile-toggle\" (click)=\"toggleMobileMenu()\">\r\n      <span class=\"toggle-icon\"></span>\r\n    </button>\r\n\r\n    <!-- Navigation Menu -->\r\n    <div class=\"navbar-menu\" [class.open]=\"mobileMenuOpen\">\r\n      <ul class=\"navbar-nav\">\r\n        <li *ngFor=\"let item of combinedMenuItems\" class=\"nav-item\" [class.has-dropdown]=\"item.items?.length\">\r\n          <!-- Items with dropdown -->\r\n          <div *ngIf=\"item.items?.length\" class=\"nav-link dropdown-toggle\" (click)=\"toggleDropdown(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n            <i class=\"dropdown-arrow\" [class.expanded]=\"item.expanded\"></i>\r\n          </div>\r\n\r\n          <!-- Regular items -->\r\n          <div *ngIf=\"!item.items?.length\" class=\"nav-link\" [class.disabled]=\"item.disabled\"\r\n            (click)=\"!item.disabled && navigateTo(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n          </div>\r\n\r\n          <!-- Dropdown Menu -->\r\n          <ul *ngIf=\"item.items?.length\" class=\"dropdown-menu\" [class.show]=\"item.expanded\">\r\n            <li *ngFor=\"let subItem of item.items\" class=\"dropdown-item\" [class.disabled]=\"subItem.disabled\"\r\n              (click)=\"!subItem.disabled && navigateTo(subItem)\">\r\n              <i *ngIf=\"subItem.icon\" class=\"nav-icon {{ subItem.icon }}\"></i>\r\n              {{ subItem.label }}\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n\r\n      <!-- User Section -->\r\n      <div *ngIf=\"isAuthenticated\" class=\"user-section\">\r\n        <div class=\"user-info\">\r\n          <span class=\"user-name\">{{ userName }}</span>\r\n          <div class=\"user-avatar\">\r\n            <img *ngIf=\"userAvatar\" [src]=\"userAvatar\" alt=\"User Avatar\">\r\n            <div *ngIf=\"!userAvatar\" class=\"avatar-placeholder\">\r\n              {{ userName.charAt(0).toUpperCase() }}\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <button class=\"logout-button\" (click)=\"logout()\">\r\n          <i class=\"logout-icon\"></i>\r\n          Logout\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
+        },
+        {
             "name": "PageComponent",
             "id": "component-PageComponent-79bfb042a722f49579739dfd01d8f1b67681d0272a72a283c14edeb22f0462775c80ba4f7c1eb0fa4bd5fa1844083da0140980e75b5500cd98cc26421ec6d569",
             "file": "src/stories/page.component.ts",
@@ -1775,7 +2394,7 @@
         },
         {
             "name": "PasswordInputComponent",
-            "id": "component-PasswordInputComponent-6b3bf27b5f0de43427edf5cf48fb7ef766f9f164ca97d185adb26da78bbd155e782d0cbbbeaef333fc4cfe1f332fe0a811ee15ec67d758b275ecb402f4447655",
+            "id": "component-PasswordInputComponent-e04d0e290947390cd006dbf4679948326e133cb1895e5f1582325ce6a0f7ff6601dc0bf25751c1e65c4e917ce75e5e9246d5f8143ee2b2cbcb03e52b13685cc1",
             "file": "src/app/shared/components/password-input/password-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1801,7 +2420,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 35,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1809,7 +2428,7 @@
                     "name": "errorMessage",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 37,
                     "type": "string",
                     "decorators": []
                 },
@@ -1817,15 +2436,15 @@
                     "name": "feedback",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
-                    "type": "string",
+                    "line": 39,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "formControlName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -1833,7 +2452,7 @@
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 },
@@ -1841,7 +2460,7 @@
                     "name": "mediumLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 42,
                     "type": "string",
                     "decorators": []
                 },
@@ -1850,7 +2469,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 34,
                     "type": "string",
                     "decorators": []
                 },
@@ -1858,7 +2477,7 @@
                     "name": "promptLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 40,
                     "type": "string",
                     "decorators": []
                 },
@@ -1867,7 +2486,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 36,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1875,23 +2494,31 @@
                     "name": "size",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "string",
+                    "line": 44,
+                    "type": "Size",
                     "decorators": []
                 },
                 {
                     "name": "strongLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "Variant",
                     "decorators": []
                 },
                 {
                     "name": "weakLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 41,
                     "type": "string",
                     "decorators": []
                 }
@@ -1907,7 +2534,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 47
                 },
                 {
                     "name": "onChange",
@@ -1918,7 +2545,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46,
+                    "line": 51,
                     "modifierKind": [
                         123
                     ]
@@ -1932,7 +2559,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 52
                 },
                 {
                     "name": "touched",
@@ -1943,7 +2570,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 48
                 },
                 {
                     "name": "value",
@@ -1954,7 +2581,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 49
                 }
             ],
             "methodsClass": [
@@ -1971,7 +2598,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 72,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2007,7 +2634,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2044,7 +2671,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2073,7 +2700,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2101,7 +2728,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2143,7 +2770,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport { PasswordInputProps } from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: string;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: string;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport {\r\n  PasswordInputProps,\r\n  Size,\r\n  Variant,\r\n} from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: boolean;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: Size;\r\n  @Input() variant?: Variant;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
             "styleUrl": "./password-input.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2153,7 +2780,7 @@
                 "ControlValueAccessor",
                 "PasswordInputProps"
             ],
-            "templateData": "<div class=\"field-container\">\r\n  <label *ngIf=\"label\" [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n\r\n  <div class=\"field\">\r\n    <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\"\r\n      [disabled]=\"disabled\" [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\"\r\n      [weakLabel]=\"weakLabel\" [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\"></p-password>\r\n  </div>\r\n\r\n  <small *ngIf=\"errorMessage && touched\" class=\"error-message\">\r\n    {{ errorMessage }}\r\n  </small>\r\n</div>\r\n"
+            "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n  }\r\n\r\n  <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\" [disabled]=\"disabled\"\r\n    [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\" [weakLabel]=\"weakLabel\"\r\n    [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\" [variant]=\"variant\"></p-password>\r\n\r\n  @if (errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
         }
     ],
     "modules": [],
@@ -2264,6 +2891,28 @@
                 "subtype": "typealias",
                 "rawtype": "\"text\" | \"number\" | \"email\" | \"password\" | \"tel\" | \"url\"",
                 "file": "src/app/shared/types/input.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Size",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"small\" | \"large\"",
+                "file": "src/app/shared/types/password-input.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Variant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"filled\" | \"outlined\"",
+                "file": "src/app/shared/types/password-input.types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2392,12 +3041,36 @@
                     "description": "",
                     "kind": 192
                 }
+            ],
+            "src/app/shared/types/password-input.types.ts": [
+                {
+                    "name": "Size",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"small\" | \"large\"",
+                    "file": "src/app/shared/types/password-input.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "Variant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"filled\" | \"outlined\"",
+                    "file": "src/app/shared/types/password-input.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -2447,12 +3120,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/19",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/password-input/password-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "PasswordInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -2553,12 +3235,59 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/types/navbar.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "MenuItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/16",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/navbar.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "NavbarProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/navbar.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/types/password-input.types.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "PasswordInputProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/13",
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/password-input.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Size",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/password-input.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Variant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
