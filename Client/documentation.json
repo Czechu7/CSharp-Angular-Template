@@ -847,6 +847,81 @@
             "extends": []
         },
         {
+            "name": "ToastProps",
+            "id": "interface-ToastProps-a1dfa6914018b1fa3ca63d6ca0fab50c21af65c68af13efb921f44acc6191b2ee3c9fa6b1bf50d24df16fa3cec8c4eaa382904f7504ac49cd2b5d765560c6dc1",
+            "file": "src/app/shared/types/toast.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export type Positions =\r\n  | 'top-left'\r\n  | 'top-center'\r\n  | 'top-right'\r\n  | 'bottom-left'\r\n  | 'bottom-center'\r\n  | 'bottom-right'\r\n  | 'center';\r\n\r\nexport type Severity = 'success' | 'info' | 'warn' | 'error';\r\n\r\nexport type Keys = 'tl' | 'tc' | 'tr' | 'bl' | 'bc' | 'br' | 'c';\r\n\r\nexport interface ToastProps {\r\n  severity: Severity;\r\n  summary: string;\r\n  detail: string;\r\n  life?: number;\r\n  position?: Positions;\r\n  key?: Keys;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "detail",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "key",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Keys",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "life",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "position",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Positions",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "severity",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Severity",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "summary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "User",
             "id": "interface-User-23c11020a2831beb3fa02ee911a75b64009c31bb46f73a01145c2560cb13b7f7e641105b678bd8fb01a5a199117001f3da4a78351d29d85d213ed7b82982091f",
             "file": "src/stories/user.ts",
@@ -3197,6 +3272,239 @@
                 "PasswordInputProps"
             ],
             "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n  }\r\n\r\n  <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\" [disabled]=\"disabled\"\r\n    [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\" [weakLabel]=\"weakLabel\"\r\n    [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\" [variant]=\"variant\"></p-password>\r\n\r\n  @if (errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
+        },
+        {
+            "name": "ToastComponent",
+            "id": "component-ToastComponent-5b0c95126df858734a2b9dd8f084ae4f227ad8a97705327f9ef07e4c2569cb2949b0a201284432714869e837fb6c4b7d8bc44b1ed544d7ab37cd24a90b37d0bc",
+            "file": "src/app/shared/components/toast/toast.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "MessageService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "app-toast",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./toast.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "detail",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "key",
+                    "defaultValue": "'tr'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "Keys",
+                    "decorators": []
+                },
+                {
+                    "name": "life",
+                    "defaultValue": "3000",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "'top-right'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "Positions",
+                    "decorators": []
+                },
+                {
+                    "name": "severity",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "Severity",
+                    "decorators": []
+                },
+                {
+                    "name": "summary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onShow",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "show",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "Toast"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "Ripple"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MessageService } from 'primeng/api';\r\nimport { Toast } from 'primeng/toast';\r\nimport { ButtonModule } from 'primeng/button';\r\nimport { Ripple } from 'primeng/ripple';\r\nimport { Keys, Positions, Severity, ToastProps } from '../../types/toast.types';\r\n\r\n@Component({\r\n  selector: 'app-toast',\r\n  standalone: true,\r\n  imports: [Toast, ButtonModule, Ripple],\r\n  providers: [MessageService],\r\n  templateUrl: './toast.component.html',\r\n  styleUrl: './toast.component.scss',\r\n})\r\nexport class ToastComponent implements ToastProps {\r\n  @Input() severity!: Severity;\r\n  @Input() summary!: string;\r\n  @Input() detail!: string;\r\n  @Input() life: number = 3000;\r\n  @Input() position: Positions = 'top-right';\r\n  @Input() key: Keys = 'tr';\r\n\r\n  @Output() onShow = new EventEmitter<void>();\r\n\r\n  constructor(private messageService: MessageService) {}\r\n\r\n  show() {\r\n    this.messageService.add({\r\n      severity: this.severity,\r\n      summary: this.summary,\r\n      detail: this.detail,\r\n      life: this.life,\r\n    });\r\n    this.onShow.emit();\r\n  }\r\n}\r\n",
+            "styleUrl": "./toast.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "ToastProps"
+            ],
+            "templateData": "<p-toast [position]=\"position\" [key]=\"key\" />"
+        },
+        {
+            "name": "ToastDemoComponent",
+            "id": "component-ToastDemoComponent-2a50a540703376e377391d091ed093accd16143dae3c47d6873237b438e56af4db354e8f64b67a1e05fc47081684124236b286ba18b8038293e7d06661af659c",
+            "file": "src/app/shared/components/toast-demo/toast-demo.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-toast-demo",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./toast-demo.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "toastComponent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ToastComponent",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'toast'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "showToast",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ToastComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\r\nimport { ToastComponent } from '../toast/toast.component';\r\nimport { ButtonComponent } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'app-toast-demo',\r\n  standalone: true,\r\n  imports: [ToastComponent, ButtonComponent],\r\n  templateUrl: './toast-demo.component.html',\r\n  styleUrl: './toast-demo.component.scss',\r\n})\r\nexport class ToastDemoComponent {\r\n  @ViewChild('toast') toastComponent!: ToastComponent;\r\n\r\n  showToast() {\r\n    this.toastComponent.show();\r\n  }\r\n}\r\n",
+            "styleUrl": "./toast-demo.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-toast [severity]=\"'success'\" [detail]=\"'detail'\"></app-toast>\r\n<app-button (onClick)=\"showToast()\">Show Toast</app-button>\r\n"
         }
     ],
     "modules": [],
@@ -3329,6 +3637,39 @@
                 "subtype": "typealias",
                 "rawtype": "\"text\" | \"number\" | \"email\" | \"password\" | \"tel\" | \"url\"",
                 "file": "src/app/shared/types/input.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Keys",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"tl\" | \"tc\" | \"tr\" | \"bl\" | \"bc\" | \"br\" | \"c\"",
+                "file": "src/app/shared/types/toast.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Positions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"top-left\" | \"top-center\" | \"top-right\" | \"bottom-left\" | \"bottom-center\" | \"bottom-right\" | \"center\"",
+                "file": "src/app/shared/types/toast.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Severity",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"success\" | \"info\" | \"warn\" | \"error\"",
+                "file": "src/app/shared/types/toast.types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3504,6 +3845,41 @@
                     "kind": 192
                 }
             ],
+            "src/app/shared/types/toast.types.ts": [
+                {
+                    "name": "Keys",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"tl\" | \"tc\" | \"tr\" | \"bl\" | \"bc\" | \"br\" | \"c\"",
+                    "file": "src/app/shared/types/toast.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "Positions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"top-left\" | \"top-center\" | \"top-right\" | \"bottom-left\" | \"bottom-center\" | \"bottom-right\" | \"center\"",
+                    "file": "src/app/shared/types/toast.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "Severity",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"success\" | \"info\" | \"warn\" | \"error\"",
+                    "file": "src/app/shared/types/toast.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                }
+            ],
             "src/app/shared/types/password-input.types.ts": [
                 {
                     "name": "Size",
@@ -3624,6 +4000,24 @@
                 "name": "PasswordInputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/24",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/toast-demo/toast-demo.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToastDemoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/toast/toast.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToastComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -3804,6 +4198,45 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "Variant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/toast.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ToastProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/toast.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Keys",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/toast.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Positions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/toast.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Severity",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
