@@ -1620,6 +1620,148 @@
             "templateData": "<p-checkbox [inputId]=\"inputId\" [name]=\"name\" [value]=\"value\" [(ngModel)]=\"checked\" [disabled]=\"disabled\"\r\n  [required]=\"required\"\r\n  [formControlName]=\"formControlName !== undefined && formControlName !== '' ? formControlName : null\">></p-checkbox>\r\n<label [class.required]=\"required\" [for]=\"inputId\" class=\"ml-2\"> {{label}} </label>\r\n"
         },
         {
+            "name": "ConfirmModalComponent",
+            "id": "component-ConfirmModalComponent-7a43e97b3e7b5fbfe22e8d2737d549b725bce3f3db71081444305616f913270e31e8a86fd7e074447e025fbcffc53eb104d40535ae85bd6befcf69635bdef4c8",
+            "file": "src/app/shared/components/confirm-modal/confirm-modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-confirm-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./confirm-modal.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "header",
+                    "defaultValue": "'Confirm'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "message",
+                    "defaultValue": "'Are you sure?'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "noLabel",
+                    "defaultValue": "'No'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "visible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "yesLabel",
+                    "defaultValue": "'Yes'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "no",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "yes",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onNo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onYes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "DialogModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { DialogModule } from 'primeng/dialog';\r\nimport { ConfirmModalProps } from '../../types/modal.types';\r\nimport { ButtonModule } from 'primeng/button';\r\nimport { ButtonComponent } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'app-confirm-modal',\r\n  standalone: true,\r\n  imports: [DialogModule, CommonModule, ButtonModule, ButtonComponent],\r\n  templateUrl: './confirm-modal.component.html',\r\n  styleUrl: './confirm-modal.component.scss',\r\n})\r\nexport class ConfirmModalComponent implements ConfirmModalProps {\r\n  @Input() header = 'Confirm';\r\n  @Input() visible = false;\r\n  @Input() message = 'Are you sure?';\r\n  @Input() yesLabel = 'Yes';\r\n  @Input() noLabel = 'No';\r\n  @Output() yes = new EventEmitter<void>();\r\n  @Output() no = new EventEmitter<void>();\r\n\r\n  onYes() {\r\n    this.yes.emit();\r\n    this.visible = false;\r\n  }\r\n\r\n  onNo() {\r\n    this.no.emit();\r\n    this.visible = false;\r\n  }\r\n}\r\n",
+            "styleUrl": "./confirm-modal.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "ConfirmModalProps"
+            ],
+            "templateData": "<p-dialog [header]=\"header\" [modal]=\"true\" [(visible)]=\"visible\" [style]=\"{ width: '20rem' }\">\r\n  <span class=\"p-text-secondary block mb-4\">{{ message }}</span>\r\n  <div class=\"flex justify-end gap-2\">\r\n    <app-button label=\"{{ noLabel }}\" type=\"secondary\" (click)=\"onNo()\"></app-button>\r\n    <app-button label=\"{{ yesLabel }}\" type=\"warn\" (click)=\"onYes()\"></app-button>\r\n  </div>\r\n</p-dialog>\r\n"
+        },
+        {
             "name": "FooterComponent",
             "id": "component-FooterComponent-122b1aa08311b2b06b7b6cf7e006a9fd83c88795e7315d5abb4f03b016ce58c362d4b5208961a4752b32f70758e81f211328675a8e65aa55c984e1303af1ed85",
             "file": "src/app/shared/components/footer/footer.component.ts",
@@ -1813,6 +1955,92 @@
             ],
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "InfoModalComponent",
+            "id": "component-InfoModalComponent-52b1cc7f7ad9856293df17d74c16ae79f3f2bdc3a3875afb3a0287a4c701db11d627fedcc0d442287c26cc802c6da37c68d8fa1a6742c266d5c1e830ffa2aa59",
+            "file": "src/app/shared/components/info-modal/info-modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-info-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./info-modal.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "header",
+                    "defaultValue": "'Information'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "message",
+                    "defaultValue": "'Default information message'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "visible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "DialogModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { DialogModule } from 'primeng/dialog';\r\nimport { InfoModalProps } from '../../types/modal.types';\r\nimport { ButtonModule } from 'primeng/button';\r\nimport { ButtonComponent } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'app-info-modal',\r\n  standalone: true,\r\n  imports: [DialogModule, CommonModule, ButtonModule, ButtonComponent],\r\n  templateUrl: './info-modal.component.html',\r\n  styleUrl: './info-modal.component.scss',\r\n})\r\nexport class InfoModalComponent implements InfoModalProps {\r\n  @Input() header = 'Information';\r\n  @Input() visible = false;\r\n  @Input() message = 'Default information message';\r\n}\r\n",
+            "styleUrl": "./info-modal.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "InfoModalProps"
+            ],
+            "templateData": "<p-dialog header=\"Information\" [modal]=\"true\" [(visible)]=\"visible\" [style]=\"{ width: '20rem' }\">\r\n  <span class=\"p-text-secondary block mb-4\">{{ message }}</span>\r\n  <div class=\"flex justify-end\">\r\n    <app-button label=\"OK\" (click)=\"visible = false\"></app-button>\r\n  </div>\r\n</p-dialog>\r\n"
         },
         {
             "name": "InputComponent",
@@ -3063,6 +3291,28 @@
                 "kind": 192
             },
             {
+                "name": "ConfirmModalProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/shared/types/modal.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "InfoModalProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/shared/types/modal.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
                 "name": "InputIcons",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -3206,6 +3456,30 @@
                     "kind": 192
                 }
             ],
+            "src/app/shared/types/modal.types.ts": [
+                {
+                    "name": "ConfirmModalProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/shared/types/modal.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "InfoModalProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/shared/types/modal.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
             "src/app/shared/types/input.types.ts": [
                 {
                     "name": "InputIcons",
@@ -3299,12 +3573,30 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/confirm-modal/confirm-modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ConfirmModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/footer/footer.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "FooterComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/info-modal/info-modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InfoModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -3436,6 +3728,26 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "InputTypes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/modal.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ConfirmModalProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/modal.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "InfoModalProps",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

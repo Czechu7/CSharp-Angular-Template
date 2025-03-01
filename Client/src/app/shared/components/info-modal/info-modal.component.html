@@ -1,0 +1,6 @@
+<p-dialog header="Information" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
+  <span class="p-text-secondary block mb-4">{{ message }}</span>
+  <div class="flex justify-end">
+    <app-button label="OK" (click)="visible = false"></app-button>
+  </div>
+</p-dialog>
