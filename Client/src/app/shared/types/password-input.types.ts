@@ -1,4 +1,4 @@
-export type Size = 'small' | 'large';
+export type Size = 'small' | 'large' | undefined;
 
 export type Variant = 'filled' | 'outlined';
 
@@ -15,5 +15,5 @@ export interface PasswordInputProps {
   mediumLabel?: string;
   strongLabel?: string;
   size?: Size;
-  variant?: Variant;
+  variant: Variant;
 }

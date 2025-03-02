@@ -5,6 +5,5 @@ export interface FooterProps {
   title?: string;
   links?: MenuItem[];
   socialLinks?: MenuItem[];
-  theme?: 'light' | 'dark' | 'custom';
   customClass?: string;
 }

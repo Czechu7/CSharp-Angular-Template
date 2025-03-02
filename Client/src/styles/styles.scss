@@ -3,3 +3,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "./utils/variables";
+@import "./utils/extends";
+@import "./utils/mixins";

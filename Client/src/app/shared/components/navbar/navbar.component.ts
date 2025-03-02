@@ -12,7 +12,7 @@ import { MenubarModule } from 'primeng/menubar';
 })
 export class NavbarComponent implements OnInit {
   @Input() title: string = 'My Application';
-  @Input() logo: string = 'assets/logo.png';
+  @Input() logo?: string;
   @Input() menuItems: any[] = [];
   @Input() authMenuItems: any[] = [];
   @Input() nonAuthMenuItems: any[] = [];

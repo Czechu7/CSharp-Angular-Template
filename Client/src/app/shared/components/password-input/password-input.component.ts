@@ -42,7 +42,7 @@ export class PasswordInputComponent<T>
   @Input() mediumLabel?: string;
   @Input() strongLabel?: string;
   @Input() size?: Size;
-  @Input() variant?: Variant;
+  @Input() variant: Variant = 'outlined';
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;

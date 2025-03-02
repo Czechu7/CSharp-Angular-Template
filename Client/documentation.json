@@ -703,12 +703,12 @@
         },
         {
             "name": "PasswordInputProps",
-            "id": "interface-PasswordInputProps-4c1b44c5055c3a024fbaf92496280cc61e32c3ee8793b9e8dce242d5c355f05081f50b10fed5ae98a00217d33a202b9c805035ee3abe8d91ba25c14eba3bc8f4",
+            "id": "interface-PasswordInputProps-b91594279d22140165b320ce0c09080b7dc533696a63d903c4cae67e590afa70373889ee7664830a3f3593c766ede4987412c1c9d6538c95a9750252215eb76e",
             "file": "src/app/shared/types/password-input.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export type Size = 'small' | 'large';\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: boolean;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: Size;\r\n  variant?: Variant;\r\n}\r\n",
+            "sourceCode": "export type Size = 'small' | 'large' | undefined;\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: boolean;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: Size;\r\n  variant: Variant;\r\n}\r\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -826,7 +826,7 @@
                     "deprecationMessage": "",
                     "type": "Variant",
                     "indexKey": "",
-                    "optional": true,
+                    "optional": false,
                     "description": "",
                     "line": 18
                 },
@@ -839,81 +839,6 @@
                     "optional": true,
                     "description": "",
                     "line": 14
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "ToastProps",
-            "id": "interface-ToastProps-a1dfa6914018b1fa3ca63d6ca0fab50c21af65c68af13efb921f44acc6191b2ee3c9fa6b1bf50d24df16fa3cec8c4eaa382904f7504ac49cd2b5d765560c6dc1",
-            "file": "src/app/shared/types/toast.types.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export type Positions =\r\n  | 'top-left'\r\n  | 'top-center'\r\n  | 'top-right'\r\n  | 'bottom-left'\r\n  | 'bottom-center'\r\n  | 'bottom-right'\r\n  | 'center';\r\n\r\nexport type Severity = 'success' | 'info' | 'warn' | 'error';\r\n\r\nexport type Keys = 'tl' | 'tc' | 'tr' | 'bl' | 'bc' | 'br' | 'c';\r\n\r\nexport interface ToastProps {\r\n  severity: Severity;\r\n  summary: string;\r\n  detail: string;\r\n  life?: number;\r\n  position?: Positions;\r\n  key?: Keys;\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "detail",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                },
-                {
-                    "name": "key",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Keys",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 20
-                },
-                {
-                    "name": "life",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 18
-                },
-                {
-                    "name": "position",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Positions",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 19
-                },
-                {
-                    "name": "severity",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Severity",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                },
-                {
-                    "name": "summary",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
                 }
             ],
             "indexSignatures": [],
@@ -1021,7 +946,479 @@
             "duplicateName": "User-1"
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "ToastService",
+            "id": "injectable-ToastService-e5713add78749e026fe4b02b23bc8ae97fa4532253da1dbebed7fc18066c7f277d2ea8e5cf0e59a86fa8e8a3df39eb40ca4ed862eaeef98dc18d3d75e4940f5d",
+            "file": "src/app/shared/services/toast.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "clear",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "show",
+                    "args": [
+                        {
+                            "name": "severity",
+                            "type": "Severity",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "severity",
+                            "type": "Severity",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showError",
+                    "args": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showInfo",
+                    "args": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showSuccess",
+                    "args": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showWarning",
+                    "args": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "summary",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "detail",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "key",
+                            "type": "Keys",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "life",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { MessageService } from 'primeng/api';\r\nimport type { Keys, Severity } from '../types/toast.types';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class ToastService {\r\n  constructor(private messageService: MessageService) {}\r\n\r\n  show(\r\n    severity: Severity,\r\n    summary: string,\r\n    detail: string,\r\n    key?: Keys,\r\n    life?: number\r\n  ) {\r\n    this.messageService.add({\r\n      severity,\r\n      summary,\r\n      detail,\r\n      key,\r\n      life,\r\n    });\r\n  }\r\n\r\n  showSuccess(summary: string, detail: string, key?: Keys, life?: number) {\r\n    this.show('success', summary, detail, key, life);\r\n  }\r\n\r\n  showInfo(summary: string, detail: string, key?: Keys, life?: number) {\r\n    this.show('info', summary, detail, key, life);\r\n  }\r\n\r\n  showWarning(summary: string, detail: string, key?: Keys, life?: number) {\r\n    this.show('warn', summary, detail, key, life);\r\n  }\r\n\r\n  showError(summary: string, detail: string, key?: Keys, life?: number) {\r\n    this.show('error', summary, detail, key, life);\r\n  }\r\n\r\n  clear(key?: string) {\r\n    this.messageService.clear(key);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -1838,7 +2235,7 @@
         },
         {
             "name": "FooterComponent",
-            "id": "component-FooterComponent-122b1aa08311b2b06b7b6cf7e006a9fd83c88795e7315d5abb4f03b016ce58c362d4b5208961a4752b32f70758e81f211328675a8e65aa55c984e1303af1ed85",
+            "id": "component-FooterComponent-ea97dafe63c9730955b32a5e77a72b8207a9195c783da07afe06921613a3fcdff760905422d776a3146d27a81bac7fedaee7239b4e7a3880def1aa70eb3b0ae0",
             "file": "src/app/shared/components/footer/footer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1858,7 +2255,7 @@
                     "name": "customClass",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -1867,7 +2264,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 17,
                     "type": "MenuItem[]",
                     "decorators": []
                 },
@@ -1875,7 +2272,7 @@
                     "name": "logo",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "string",
                     "decorators": []
                 },
@@ -1884,7 +2281,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "MenuItem[]",
                     "decorators": []
                 },
@@ -1893,7 +2290,7 @@
                     "defaultValue": "'dark'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "\"light\" | \"dark\" | \"custom\"",
                     "decorators": []
                 },
@@ -1901,7 +2298,7 @@
                     "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "string",
                     "decorators": []
                 }
@@ -1918,12 +2315,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { FooterProps } from '../../types/footer.types';\r\nimport { MenuItem } from '../../types/navbar.types';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './footer.component.html',\r\n  styleUrl: './footer.component.scss',\r\n})\r\nexport class FooterComponent implements FooterProps {\r\n  @Input() logo?: string;\r\n  @Input() title?: string;\r\n  @Input() links: MenuItem[] = [];\r\n  @Input() socialLinks: MenuItem[] = [];\r\n  @Input() theme: 'light' | 'dark' | 'custom' = 'dark';\r\n  @Input() customClass?: string;\r\n\r\n  get currentYear(): number {\r\n    return new Date().getFullYear();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { FooterProps } from '../../types/footer.types';\r\nimport { MenuItem } from '../../types/navbar.types';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './footer.component.html',\r\n  styleUrl: './footer.component.scss',\r\n})\r\nexport class FooterComponent implements FooterProps {\r\n  @Input() logo?: string;\r\n  @Input() title?: string;\r\n  @Input() links: MenuItem[] = [];\r\n  @Input() socialLinks: MenuItem[] = [];\r\n  @Input() theme: 'light' | 'dark' | 'custom' = 'dark';\r\n  @Input() customClass?: string;\r\n\r\n  get currentYear(): number {\r\n    return new Date().getFullYear();\r\n  }\r\n}\r\n",
             "styleUrl": "./footer.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1939,7 +2340,7 @@
                         "name": "currentYear",
                         "type": "number",
                         "returnType": "number",
-                        "line": 21
+                        "line": 22
                     }
                 }
             },
@@ -2512,7 +2913,7 @@
         },
         {
             "name": "NavbarComponent",
-            "id": "component-NavbarComponent-afe071a3152f17244feb187270374ed079c4beaaa1a25ed466fa74767db8ae9fb7a03a16cfdbd209d1cedc62a0b25d484416bc5eaa9df2cc23291d6582508640",
+            "id": "component-NavbarComponent-a41c7968e1a8769a1d1cc81513b35987c68b309445bd03cabeff59b5e539b9c9d4d7d56b738df5cae63e9ff35f17e115f37de3a7fc13f392ef23913d2108e4a4",
             "file": "src/app/shared/components/navbar/navbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2548,7 +2949,6 @@
                 },
                 {
                     "name": "logo",
-                    "defaultValue": "'assets/logo.png'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 15,
@@ -2752,7 +3152,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [MenubarModule, CommonModule],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit {\r\n  @Input() title: string = 'My Application';\r\n  @Input() logo: string = 'assets/logo.png';\r\n  @Input() menuItems: any[] = [];\r\n  @Input() authMenuItems: any[] = [];\r\n  @Input() nonAuthMenuItems: any[] = [];\r\n  @Input() isAuthenticated: boolean = false;\r\n  @Input() userName: string = '';\r\n  @Input() userAvatar: string = '';\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [MenubarModule, CommonModule],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit {\r\n  @Input() title: string = 'My Application';\r\n  @Input() logo?: string;\r\n  @Input() menuItems: any[] = [];\r\n  @Input() authMenuItems: any[] = [];\r\n  @Input() nonAuthMenuItems: any[] = [];\r\n  @Input() isAuthenticated: boolean = false;\r\n  @Input() userName: string = '';\r\n  @Input() userAvatar: string = '';\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
             "styleUrl": "./navbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2885,7 +3285,7 @@
         },
         {
             "name": "PasswordInputComponent",
-            "id": "component-PasswordInputComponent-e04d0e290947390cd006dbf4679948326e133cb1895e5f1582325ce6a0f7ff6601dc0bf25751c1e65c4e917ce75e5e9246d5f8143ee2b2cbcb03e52b13685cc1",
+            "id": "component-PasswordInputComponent-c17e042b8f81d120287baa6d387606dd8055e5bb0da3a58ce86c65523e49d8c2d02cd8dd9dbb315f28ea956f0b98a680b0ba8e6433a543c593d6ef33db1eea3d",
             "file": "src/app/shared/components/password-input/password-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2999,6 +3399,7 @@
                 },
                 {
                     "name": "variant",
+                    "defaultValue": "'outlined'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 45,
@@ -3261,7 +3662,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport {\r\n  PasswordInputProps,\r\n  Size,\r\n  Variant,\r\n} from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: boolean;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: Size;\r\n  @Input() variant?: Variant;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport {\r\n  PasswordInputProps,\r\n  Size,\r\n  Variant,\r\n} from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: boolean;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: Size;\r\n  @Input() variant: Variant = 'outlined';\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
             "styleUrl": "./password-input.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3275,18 +3676,13 @@
         },
         {
             "name": "ToastComponent",
-            "id": "component-ToastComponent-5b0c95126df858734a2b9dd8f084ae4f227ad8a97705327f9ef07e4c2569cb2949b0a201284432714869e837fb6c4b7d8bc44b1ed544d7ab37cd24a90b37d0bc",
+            "id": "component-ToastComponent-f6940796b404d8d39296f2824080619643aef31c5f8bc6302593ff07e1d6ef7bb6e1da1fb99af4d26c8de40586517608b496db1f468ce9b34332b73391e855b4",
             "file": "src/app/shared/components/toast/toast.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [
-                {
-                    "name": "MessageService",
-                    "type": "injectable"
-                }
-            ],
+            "providers": [],
             "selector": "app-toast",
             "styleUrls": [],
             "styles": [],
@@ -3295,82 +3691,10 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "detail",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 19,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "key",
-                    "defaultValue": "'tr'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "Keys",
-                    "decorators": []
-                },
-                {
-                    "name": "life",
-                    "defaultValue": "3000",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 20,
-                    "type": "number",
-                    "decorators": []
-                },
-                {
-                    "name": "position",
-                    "defaultValue": "'top-right'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 21,
-                    "type": "Positions",
-                    "decorators": []
-                },
-                {
-                    "name": "severity",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "Severity",
-                    "decorators": []
-                },
-                {
-                    "name": "summary",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 18,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onShow",
-                    "defaultValue": "new EventEmitter<void>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 24,
-                    "type": "EventEmitter"
-                }
-            ],
+            "inputsClass": [],
+            "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "show",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 28,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -3378,133 +3702,20 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "Toast"
-                },
-                {
-                    "name": "ButtonModule",
+                    "name": "ToastModule",
                     "type": "module"
-                },
-                {
-                    "name": "Ripple"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MessageService } from 'primeng/api';\r\nimport { Toast } from 'primeng/toast';\r\nimport { ButtonModule } from 'primeng/button';\r\nimport { Ripple } from 'primeng/ripple';\r\nimport { Keys, Positions, Severity, ToastProps } from '../../types/toast.types';\r\n\r\n@Component({\r\n  selector: 'app-toast',\r\n  standalone: true,\r\n  imports: [Toast, ButtonModule, Ripple],\r\n  providers: [MessageService],\r\n  templateUrl: './toast.component.html',\r\n  styleUrl: './toast.component.scss',\r\n})\r\nexport class ToastComponent implements ToastProps {\r\n  @Input() severity!: Severity;\r\n  @Input() summary!: string;\r\n  @Input() detail!: string;\r\n  @Input() life: number = 3000;\r\n  @Input() position: Positions = 'top-right';\r\n  @Input() key: Keys = 'tr';\r\n\r\n  @Output() onShow = new EventEmitter<void>();\r\n\r\n  constructor(private messageService: MessageService) {}\r\n\r\n  show() {\r\n    this.messageService.add({\r\n      severity: this.severity,\r\n      summary: this.summary,\r\n      detail: this.detail,\r\n      life: this.life,\r\n    });\r\n    this.onShow.emit();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ToastModule } from 'primeng/toast';\r\n\r\n@Component({\r\n  selector: 'app-toast',\r\n  standalone: true,\r\n  imports: [ToastModule],\r\n  templateUrl: './toast.component.html',\r\n  styleUrl: './toast.component.scss',\r\n})\r\nexport class ToastComponent {}\r\n",
             "styleUrl": "./toast.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "messageService",
-                        "type": "MessageService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 24,
-                "jsdoctags": [
-                    {
-                        "name": "messageService",
-                        "type": "MessageService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
-            "implements": [
-                "ToastProps"
-            ],
-            "templateData": "<p-toast [position]=\"position\" [key]=\"key\" />"
-        },
-        {
-            "name": "ToastDemoComponent",
-            "id": "component-ToastDemoComponent-2a50a540703376e377391d091ed093accd16143dae3c47d6873237b438e56af4db354e8f64b67a1e05fc47081684124236b286ba18b8038293e7d06661af659c",
-            "file": "src/app/shared/components/toast-demo/toast-demo.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-toast-demo",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./toast-demo.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "toastComponent",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ToastComponent",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'toast'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "showToast",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 15,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "ToastComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\r\nimport { ToastComponent } from '../toast/toast.component';\r\nimport { ButtonComponent } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'app-toast-demo',\r\n  standalone: true,\r\n  imports: [ToastComponent, ButtonComponent],\r\n  templateUrl: './toast-demo.component.html',\r\n  styleUrl: './toast-demo.component.scss',\r\n})\r\nexport class ToastDemoComponent {\r\n  @ViewChild('toast') toastComponent!: ToastComponent;\r\n\r\n  showToast() {\r\n    this.toastComponent.show();\r\n  }\r\n}\r\n",
-            "styleUrl": "./toast-demo.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<app-toast [severity]=\"'success'\" [detail]=\"'detail'\"></app-toast>\r\n<app-button (onClick)=\"showToast()\">Show Toast</app-button>\r\n"
+            "templateData": "<p-toast></p-toast>\r\n"
         }
     ],
     "modules": [],
@@ -3518,7 +3729,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),\r\n    provideAnimationsAsync(),\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura,\r\n      },\r\n    }),\r\n  ],\r\n}"
+                "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),\r\n    provideAnimationsAsync(),\r\n    ɵBrowserAnimationBuilder,\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura,\r\n      },\r\n    }),\r\n    MessageService,\r\n  ],\r\n}"
             },
             {
                 "name": "environment",
@@ -3679,7 +3890,7 @@
                 "name": "Size",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"small\" | \"large\"",
+                "rawtype": "\"small\" | \"large\" | undefined",
                 "file": "src/app/shared/types/password-input.types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3709,7 +3920,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),\r\n    provideAnimationsAsync(),\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura,\r\n      },\r\n    }),\r\n  ],\r\n}"
+                    "defaultValue": "{\r\n  providers: [\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes),\r\n    provideAnimationsAsync(),\r\n    ɵBrowserAnimationBuilder,\r\n    providePrimeNG({\r\n      theme: {\r\n        preset: Aura,\r\n      },\r\n    }),\r\n    MessageService,\r\n  ],\r\n}"
                 }
             ],
             "src/environments/environment.development.ts": [
@@ -3885,7 +4096,7 @@
                     "name": "Size",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "\"small\" | \"large\"",
+                    "rawtype": "\"small\" | \"large\" | undefined",
                     "file": "src/app/shared/types/password-input.types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -4003,21 +4214,21 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/toast-demo/toast-demo.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ToastDemoComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/shared/components/toast/toast.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ToastComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/services/toast.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ToastService",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -4200,15 +4411,6 @@
                 "name": "Variant",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/types/toast.types.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "ToastProps",
-                "coveragePercent": 0,
-                "coverageCount": "0/7",
                 "status": "low"
             },
             {

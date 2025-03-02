@@ -18,6 +18,7 @@ const args: PasswordInputProps = {
   mediumLabel: 'Average complexity',
   strongLabel: 'Strong password',
   feedback: true,
+  variant: 'outlined',
 };
 
 type PasswordInputStory = StoryObj<PasswordInputComponent<any>>;

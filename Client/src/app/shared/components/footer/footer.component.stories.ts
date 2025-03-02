@@ -21,7 +21,6 @@ const args: FooterProps = {
     { label: 'Twitter', icon: 'fa-twitter', url: 'https://twitter.com' },
     { label: 'Instagram', icon: 'fa-instagram', url: 'https://instagram.com' },
   ],
-  theme: 'dark',
   customClass: 'footer',
 };
 

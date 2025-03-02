@@ -1,18 +1,11 @@
-$navbar-height: 64px;
-$navbar-bg: #ffffff;
-$navbar-text: #333333;
-$navbar-hover: #f2f2f2;
-$navbar-active: #e6e6e6;
-$primary-color: #3f51b5;
-$border-color: #e0e0e0;
-$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-$transition-speed: 0.3s;
+@import "../../../../styles/utils/variables";
+@import "../../../../styles/utils/mixins";
 
 .navbar {
   height: $navbar-height;
   background-color: $navbar-bg;
   color: $navbar-text;
-  box-shadow: $box-shadow;
+  box-shadow: $global-box-shadow;
   position: relative;
   z-index: 100;
 
@@ -21,8 +14,8 @@ $transition-speed: 0.3s;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding: 0 20px;
-    max-width: 1200px;
+    padding: $global-container-padding;
+    max-width: $global-max-width;
     margin: 0 auto;
   }
 }
@@ -32,13 +25,13 @@ $transition-speed: 0.3s;
   align-items: center;
 
   .navbar-logo {
-    height: 40px;
-    margin-right: 10px;
+    height: $navbar-height * 0.625; 
+    margin-right: map-get($spacers, 2);
   }
 
   .navbar-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
     margin: 0;
   }
 }
@@ -65,7 +58,7 @@ $transition-speed: 0.3s;
   .nav-link {
     display: flex;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 map-get($spacers, 3);
     height: $navbar-height;
     cursor: pointer;
 
@@ -79,19 +72,19 @@ $transition-speed: 0.3s;
     }
 
     .nav-icon {
-      margin-right: 8px;
+      margin-right: map-get($spacers, 1);
     }
   }
 
   .dropdown-toggle {
     .dropdown-arrow {
-      margin-left: 8px;
+      margin-left: map-get($spacers, 1);
       border: solid $navbar-text;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 3px;
       transform: rotate(45deg);
-      transition: transform $transition-speed;
+      transition: transform $global-transition-speed;
 
       &.expanded {
         transform: rotate(-135deg);
@@ -105,8 +98,8 @@ $transition-speed: 0.3s;
     left: 0;
     width: 200px;
     background-color: $navbar-bg;
-    box-shadow: $box-shadow;
-    border: 1px solid $border-color;
+    box-shadow: $global-box-shadow;
+    border: 1px solid $navbar-border;
     border-top: none;
     list-style: none;
     padding: 0;
@@ -121,7 +114,7 @@ $transition-speed: 0.3s;
     .dropdown-item {
       display: flex;
       align-items: center;
-      padding: 10px 15px;
+      padding: map-get($spacers, 2) map-get($spacers, 3);
       cursor: pointer;
 
       &:hover {
@@ -139,14 +132,14 @@ $transition-speed: 0.3s;
 .user-section {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: map-get($spacers, 4);
 
   .user-info {
     display: flex;
     align-items: center;
 
     .user-name {
-      margin-right: 10px;
+      margin-right: map-get($spacers, 2);
     }
 
     .user-avatar {
@@ -154,7 +147,7 @@ $transition-speed: 0.3s;
       height: 36px;
       border-radius: 50%;
       overflow: hidden;
-      background-color: $primary-color;
+      background-color: color("primary");
       display: flex;
       align-items: center;
       justify-content: center;
@@ -167,27 +160,27 @@ $transition-speed: 0.3s;
       }
 
       .avatar-placeholder {
-        font-weight: bold;
+        font-weight: $font-weight-bold;
       }
     }
   }
 
   .logout-button {
-    margin-left: 15px;
+    margin-left: map-get($spacers, 3);
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: map-get($spacers, 1) map-get($spacers, 2);
+    border-radius: $global-border-radius;
 
     &:hover {
       background-color: $navbar-hover;
     }
 
     .logout-icon {
-      margin-right: 5px;
+      margin-right: map-get($spacers, 1);
       position: relative;
       width: 16px;
       height: 16px;
@@ -233,7 +226,7 @@ $transition-speed: 0.3s;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: background-color $transition-speed;
+    transition: background-color $global-transition-speed;
 
     &:before,
     &:after {
@@ -243,7 +236,7 @@ $transition-speed: 0.3s;
       height: 3px;
       background-color: $navbar-text;
       left: 0;
-      transition: transform $transition-speed;
+      transition: transform $global-transition-speed;
     }
 
     &:before {
@@ -256,7 +249,7 @@ $transition-speed: 0.3s;
   }
 }
 
-@media screen and (max-width: 768px) {
+@include respond-below(md) {
   .navbar-mobile-toggle {
     display: block;
   }
@@ -270,7 +263,7 @@ $transition-speed: 0.3s;
     flex-direction: column;
     align-items: stretch;
     display: none;
-    box-shadow: $box-shadow;
+    box-shadow: $global-box-shadow;
 
     &.open {
       display: flex;
@@ -286,7 +279,7 @@ $transition-speed: 0.3s;
 
     .nav-link {
       height: auto;
-      padding: 15px;
+      padding: map-get($spacers, 3);
     }
 
     .dropdown-menu {
@@ -298,12 +291,12 @@ $transition-speed: 0.3s;
     }
 
     .user-section {
-      margin: 15px;
+      margin: map-get($spacers, 3);
       flex-direction: column;
       align-items: flex-start;
 
       .user-info {
-        margin-bottom: 10px;
+        margin-bottom: map-get($spacers, 2);
       }
 
       .logout-button {

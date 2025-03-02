@@ -1,0 +1,111 @@
+$global-max-width: 1200px;
+$global-container-padding: 0 20px;
+$global-mobile-breakpoint: 768px;
+$global-transition-speed: 0.3s;
+$global-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$global-border-radius: 4px;
+
+$color-schemes: (
+  "default": (
+    "primary": #3f51b5,
+    "primary-light": lighten(#3f51b5, 15%),
+    "primary-dark": darken(#3f51b5, 15%),
+    "secondary": #e0e0e0,
+    "text-primary": #333333,
+    "text-secondary": #666666,
+    "background": #ffffff,
+    "border": #e0e0e0,
+    "hover": #f2f2f2,
+    "active": #e6e6e6,
+  ),
+  "purple": (
+    "primary": #211c84,
+    "primary-light": #7a73d1,
+    "primary-dark": darken(#211c84, 10%),
+    "secondary": #b5a8d5,
+    "text-primary": #333333,
+    "text-secondary": #666666,
+    "background": #ffffff,
+    "border": #e0e0e0,
+    "hover": #f2f2f2,
+    "active": #e6e6e6,
+  ),
+  "teal": (
+    "primary": #00adb5,
+    "primary-light": lighten(#00adb5, 15%),
+    "primary-dark": #222831,
+    "secondary": #393e46,
+    "text-primary": #222831,
+    "text-secondary": #393e46,
+    "background": #eeeeee,
+    "border": #393e46,
+    "hover": darken(#eeeeee, 5%),
+    "active": darken(#eeeeee, 10%),
+  ),
+  "natural": (
+    "primary": #7e99a3,
+    "primary-light": #a5bfcc,
+    "primary-dark": #4c585b,
+    "secondary": #f4edd3,
+    "text-primary": #4c585b,
+    "text-secondary": #7e99a3,
+    "background": #f4edd3,
+    "border": #a5bfcc,
+    "hover": darken(#f4edd3, 5%),
+    "active": darken(#f4edd3, 10%),
+  ),
+);
+
+$active-scheme: "default";
+
+@function color($name) {
+  @return map-get(map-get($color-schemes, $active-scheme), $name);
+}
+
+$navbar-height: 64px;
+$navbar-bg: color("background");
+$navbar-text: color("text-primary");
+$navbar-hover: color("hover");
+$navbar-active: color("active");
+$navbar-border: color("border");
+
+$footer-bg: color("primary-dark");
+$footer-text: white;
+$footer-padding: 20px 0;
+$footer-link-gap: 5px;
+$footer-link-margin: 0 10px;
+$footer-link-hover: lighten(color("primary-light"), 20%);
+$footer-branding-gap: 10px;
+$footer-logo-height: 40px;
+$footer-title-size: 24px;
+$footer-copyright-size: 14px;
+$footer-social-size: 20px;
+$footer-max-width: $global-max-width;
+$footer-container-padding: $global-container-padding;
+$footer-mobile-breakpoint: $global-mobile-breakpoint;
+
+$breakpoints: (
+  "sm": 576px,
+  "md": $global-mobile-breakpoint,
+  "lg": 992px,
+  "xl": 1200px,
+);
+
+$spacer: 8px;
+$spacers: (
+  0: 0,
+  1: $spacer,
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+);
+
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 16px;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.25;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
