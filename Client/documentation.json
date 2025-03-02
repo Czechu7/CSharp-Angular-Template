@@ -243,12 +243,12 @@
         },
         {
             "name": "FooterProps",
-            "id": "interface-FooterProps-fa98c5e76eedeb43c01bb841ba5da271beb73bf676a2726846cd2d779839479dcd9393283a0d3e17129af4e96b27f007bf832a0944fa6f21c6c0a16d65f96a7b",
+            "id": "interface-FooterProps-ad0091619db532e1406378ce0534a1c162b99e988659afb9cdfc2eaaa954b6b99460a32363834c8ed8fae1b22b2ea14ea6fa7bd3f6d65e5e7bef6123ab04842a",
             "file": "src/app/shared/types/footer.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { MenuItem } from './navbar.types';\r\n\r\nexport interface FooterProps {\r\n  logo?: string;\r\n  title?: string;\r\n  links?: MenuItem[];\r\n  socialLinks?: MenuItem[];\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "sourceCode": "import { MenuItem } from './navbar.types';\r\n\r\nexport interface FooterProps {\r\n  logo?: string;\r\n  title?: string;\r\n  links?: MenuItem[];\r\n  socialLinks?: MenuItem[];\r\n  customClass?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "customClass",
@@ -258,7 +258,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 9
+                    "line": 8
                 },
                 {
                     "name": "links",
@@ -289,16 +289,6 @@
                     "optional": true,
                     "description": "",
                     "line": 7
-                },
-                {
-                    "name": "theme",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "\"light\" | \"dark\" | \"custom\"",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 8
                 },
                 {
                     "name": "title",
@@ -839,6 +829,231 @@
                     "optional": true,
                     "description": "",
                     "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "SelectProps",
+            "id": "interface-SelectProps-7cb7f6d116a2031f5de59af56f64d86e80dbec827b0a77ccee1f8ddeb90214cfd06c0ad586ab2aa507a86271d6fa9ce4d66f8f878af7d089174b2e4204ce2d49",
+            "file": "src/app/shared/types/select.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export type SelectOption = {\r\n  label: string;\r\n  value: string;\r\n};\r\n\r\nexport type SelectOptions = SelectOption[];\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport type Size = 'small' | 'large';\r\n\r\nexport type LabelVariant = 'over' | 'in' | 'on';\r\n\r\nexport interface SelectProps<T = any> {\r\n  formControlName?: string;\r\n  checkmark: boolean;\r\n  showClear: boolean;\r\n  editable: boolean;\r\n  loading: boolean;\r\n  options?: T[];\r\n  optionLabel?: string;\r\n  optionValue?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  filter?: boolean;\r\n  filterBy?: string;\r\n  virtualScroll?: boolean;\r\n  virtualScrollItemSize?: number;\r\n  value?: T;\r\n  variant?: Variant;\r\n  size?: Size;\r\n  label?: string;\r\n  labelVariant?: LabelVariant;\r\n  inputId?: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "checkmark",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "editable",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "filter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "filterBy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "formControlName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "inputId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "labelVariant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "LabelVariant",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "loading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "optionLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T[]",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "optionValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "required",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "showClear",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Size",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "variant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Variant",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "virtualScroll",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "virtualScrollItemSize",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 29
                 }
             ],
             "indexSignatures": [],
@@ -2235,7 +2450,7 @@
         },
         {
             "name": "FooterComponent",
-            "id": "component-FooterComponent-ea97dafe63c9730955b32a5e77a72b8207a9195c783da07afe06921613a3fcdff760905422d776a3146d27a81bac7fedaee7239b4e7a3880def1aa70eb3b0ae0",
+            "id": "component-FooterComponent-41c1a16f5e520c489a843b759022bc5c7578961666791f0c1fb6a01e5ec4e80cfcabe2729b355c49085bddc669e52a411322d6fc7645e51839980f0bee3fae27",
             "file": "src/app/shared/components/footer/footer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2255,7 +2470,7 @@
                     "name": "customClass",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -2283,15 +2498,6 @@
                     "deprecationMessage": "",
                     "line": 18,
                     "type": "MenuItem[]",
-                    "decorators": []
-                },
-                {
-                    "name": "theme",
-                    "defaultValue": "'dark'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 19,
-                    "type": "\"light\" | \"dark\" | \"custom\"",
                     "decorators": []
                 },
                 {
@@ -2324,7 +2530,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { FooterProps } from '../../types/footer.types';\r\nimport { MenuItem } from '../../types/navbar.types';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './footer.component.html',\r\n  styleUrl: './footer.component.scss',\r\n})\r\nexport class FooterComponent implements FooterProps {\r\n  @Input() logo?: string;\r\n  @Input() title?: string;\r\n  @Input() links: MenuItem[] = [];\r\n  @Input() socialLinks: MenuItem[] = [];\r\n  @Input() theme: 'light' | 'dark' | 'custom' = 'dark';\r\n  @Input() customClass?: string;\r\n\r\n  get currentYear(): number {\r\n    return new Date().getFullYear();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { FooterProps } from '../../types/footer.types';\r\nimport { MenuItem } from '../../types/navbar.types';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './footer.component.html',\r\n  styleUrl: './footer.component.scss',\r\n})\r\nexport class FooterComponent implements FooterProps {\r\n  @Input() logo?: string;\r\n  @Input() title?: string;\r\n  @Input() links: MenuItem[] = [];\r\n  @Input() socialLinks: MenuItem[] = [];\r\n  @Input() customClass?: string;\r\n\r\n  get currentYear(): number {\r\n    return new Date().getFullYear();\r\n  }\r\n}\r\n",
             "styleUrl": "./footer.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2340,11 +2546,11 @@
                         "name": "currentYear",
                         "type": "number",
                         "returnType": "number",
-                        "line": 22
+                        "line": 21
                     }
                 }
             },
-            "templateData": "<footer [class]=\"['footer', theme, customClass]\">\r\n  <div class=\"container\">\r\n    <div class=\"branding\">\r\n      <img *ngIf=\"logo\" [src]=\"logo\" alt=\"Logo\" class=\"logo-img\" />\r\n      <span class=\"title\" *ngIf=\"title\">{{ title }}</span>\r\n    </div>\r\n\r\n    <div class=\"links\" *ngIf=\"links && links.length\">\r\n      <ng-container *ngFor=\"let link of links\">\r\n        <a *ngIf=\"link.routerLink\" [routerLink]=\"link.routerLink\" [queryParams]=\"link.queryParams\" [state]=\"link.state\">\r\n          <i *ngIf=\"link.icon\" class=\"{{ link.icon }}\"></i> {{ link.label }}\r\n        </a>\r\n        <a *ngIf=\"link.url\" [href]=\"link.url\" [target]=\"link.target\">\r\n          <i *ngIf=\"link.icon\" class=\"{{ link.icon }}\"></i> {{ link.label }}\r\n        </a>\r\n      </ng-container>\r\n    </div>\r\n    <div class=\"social-links\" *ngIf=\"socialLinks && socialLinks.length\">\r\n      <ng-container *ngFor=\"let social of socialLinks\">\r\n        <a *ngIf=\"social.url\" [href]=\"social.url\" [target]=\"social.target\">\r\n          <i *ngIf=\"social.icon\" class=\"{{ social.icon }}\"></i> {{ social.label }}\r\n        </a>\r\n      </ng-container>\r\n    </div>\r\n\r\n    <div class=\"copyright\">\r\n      &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. Wszelkie prawa zastrzeżone.\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
+            "templateData": "<footer [class]=\"['footer', customClass]\">\r\n  <div class=\"container\">\r\n    <div class=\"branding\">\r\n      <img *ngIf=\"logo\" [src]=\"logo\" alt=\"Logo\" class=\"logo-img\" />\r\n      <span class=\"title\" *ngIf=\"title\">{{ title }}</span>\r\n    </div>\r\n\r\n    <div class=\"links\" *ngIf=\"links && links.length\">\r\n      <ng-container *ngFor=\"let link of links\">\r\n        <a *ngIf=\"link.routerLink\" [routerLink]=\"link.routerLink\" [queryParams]=\"link.queryParams\" [state]=\"link.state\">\r\n          <i *ngIf=\"link.icon\" class=\"{{ link.icon }}\"></i> {{ link.label }}\r\n        </a>\r\n        <a *ngIf=\"link.url\" [href]=\"link.url\" [target]=\"link.target\">\r\n          <i *ngIf=\"link.icon\" class=\"{{ link.icon }}\"></i> {{ link.label }}\r\n        </a>\r\n      </ng-container>\r\n    </div>\r\n    <div class=\"social-links\" *ngIf=\"socialLinks && socialLinks.length\">\r\n      <ng-container *ngFor=\"let social of socialLinks\">\r\n        <a *ngIf=\"social.url\" [href]=\"social.url\" [target]=\"social.target\">\r\n          <i *ngIf=\"social.icon\" class=\"{{ social.icon }}\"></i> {{ social.label }}\r\n        </a>\r\n      </ng-container>\r\n    </div>\r\n\r\n    <div class=\"copyright\">\r\n      &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. Wszelkie prawa zastrzeżone.\r\n    </div>\r\n  </div>\r\n</footer>\r\n"
         },
         {
             "name": "HeaderComponent",
@@ -3675,6 +3881,518 @@
             "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n  }\r\n\r\n  <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\" [disabled]=\"disabled\"\r\n    [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\" [weakLabel]=\"weakLabel\"\r\n    [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\" [variant]=\"variant\"></p-password>\r\n\r\n  @if (errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
         },
         {
+            "name": "SelectComponent",
+            "id": "component-SelectComponent-49b1eda3c17509baabb6684126b28d3d4e722551c5d13605a26ade656ce740d79e76c4361d30b27e1a3ea9a4101d612cc5199044124e1409f93a1dc30110b15a",
+            "file": "src/app/shared/components/select/select.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true,\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "app-select",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./select.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "checkmark",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "editable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "filter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "filterBy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formControlName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inputId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 59,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 57,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "labelVariant",
+                    "defaultValue": "'over'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 58,
+                    "type": "LabelVariant",
+                    "decorators": []
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "optionLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "T[]",
+                    "decorators": []
+                },
+                {
+                    "name": "optionValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "required",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showClear",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 51,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "Size",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 74,
+                    "type": "T | null",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'filled'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54,
+                    "type": "Variant",
+                    "decorators": []
+                },
+                {
+                    "name": "virtualScroll",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "virtualScrollItemSize",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onChangeEvent",
+                    "defaultValue": "new EventEmitter<{\r\n    originalEvent: Event;\r\n    value: T;\r\n  }>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 63,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onSelect",
+                    "defaultValue": "new EventEmitter<{ originalEvent: Event; value: T }>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<T>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 61,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_value",
+                    "defaultValue": "undefined",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T | undefined",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 68
+                },
+                {
+                    "name": "onChangeCallback",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "onTouchCallback",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 84,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 108,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleSelect",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 104,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 96,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 100,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "SelectModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FloatLabelModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n  forwardRef,\r\n} from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { SelectModule } from 'primeng/select';\r\nimport { FloatLabelModule } from 'primeng/floatlabel';\r\nimport {\r\n  SelectProps,\r\n  Size,\r\n  Variant,\r\n  LabelVariant,\r\n} from '../../types/select.types';\r\n\r\n@Component({\r\n  selector: 'app-select',\r\n  standalone: true,\r\n  imports: [SelectModule, ReactiveFormsModule, FormsModule, FloatLabelModule],\r\n  templateUrl: './select.component.html',\r\n  styleUrl: './select.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SelectComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class SelectComponent<T = any>\r\n  implements SelectProps<T>, ControlValueAccessor\r\n{\r\n  @Input() formControlName: string = '';\r\n  @Input() options?: T[];\r\n  @Input() optionLabel?: string;\r\n  @Input() optionValue?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() disabled?: boolean;\r\n  @Input() filter?: boolean;\r\n  @Input() checkmark: boolean = false;\r\n  @Input() editable: boolean = false;\r\n  @Input() filterBy?: string;\r\n  @Input() loading: boolean = false;\r\n  @Input() showClear: boolean = false;\r\n  @Input() virtualScroll?: boolean;\r\n  @Input() virtualScrollItemSize?: number;\r\n  @Input() variant: Variant = 'filled';\r\n  @Input() size?: Size;\r\n  @Input() required?: boolean;\r\n  @Input() label?: string;\r\n  @Input() labelVariant: LabelVariant = 'over';\r\n  @Input() inputId?: string;\r\n\r\n  @Output() valueChange = new EventEmitter<T>();\r\n  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();\r\n  @Output() onChangeEvent = new EventEmitter<{\r\n    originalEvent: Event;\r\n    value: T;\r\n  }>();\r\n\r\n  _value: T | undefined = undefined;\r\n\r\n  get value(): T | undefined {\r\n    return this._value;\r\n  }\r\n\r\n  @Input() set value(val: T | null) {\r\n    if (val !== this._value) {\r\n      this._value = val === null ? undefined : val;\r\n      this.onChangeCallback(val);\r\n      this.onTouchCallback();\r\n      this.valueChange.emit(val === null ? undefined : val);\r\n    }\r\n  }\r\n\r\n  private onChangeCallback: any = () => {};\r\n  private onTouchCallback: any = () => {};\r\n\r\n  writeValue(value: T): void {\r\n    if (value !== this._value) {\r\n      this._value = value;\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.onChangeCallback = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  handleSelect(event: { originalEvent: Event; value: T }): void {\r\n    this.onSelect.emit(event);\r\n  }\r\n\r\n  handleChange(event: { originalEvent: Event; value: T }): void {\r\n    this.onChangeCallback(event.value);\r\n    this.onTouchCallback();\r\n    this.valueChange.emit(event.value);\r\n    this.onChangeEvent.emit(event);\r\n  }\r\n}\r\n",
+            "styleUrl": "./select.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "SelectProps",
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "T | null",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 74,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "T | null",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "",
+                        "returnType": "T | undefined",
+                        "line": 70
+                    }
+                }
+            },
+            "templateData": "<ng-container *ngIf=\"!label; else withLabel\">\r\n  <p-select [formControlName]=\"formControlName\" [checkmark]=\"checkmark\" [showClear]=\"showClear\" [editable]=\"editable\"\r\n    [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\" [virtualScroll]=\"virtualScroll\"\r\n    [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\" [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\"\r\n    [optionValue]=\"optionValue\" [placeholder]=\"placeholder\" [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\"\r\n    class=\"w-full md:w-56\" (onChange)=\"handleChange($event)\" (onSelect)=\"handleSelect($event)\" />\r\n</ng-container>\r\n\r\n<ng-template #withLabel>\r\n  <p-floatlabel class=\"w-full md:w-56\" [variant]=\"labelVariant\">\r\n    <p-select [formControlName]=\"formControlName\" [inputId]=\"inputId || formControlName\" [checkmark]=\"checkmark\"\r\n      [showClear]=\"showClear\" [editable]=\"editable\" [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\"\r\n      [virtualScroll]=\"virtualScroll\" [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\"\r\n      [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\" [optionValue]=\"optionValue\" [variant]=\"variant\" [size]=\"size\"\r\n      [disabled]=\"disabled\" styleClass=\"w-full\" (onChange)=\"handleChange($event)\" (onSelect)=\"handleSelect($event)\" />\r\n    <label [for]=\"inputId || formControlName\" [class.required-label]=\"required\">{{ label }}</label>\r\n  </p-floatlabel>\r\n</ng-template>\r\n"
+        },
+        {
             "name": "ToastComponent",
             "id": "component-ToastComponent-f6940796b404d8d39296f2824080619643aef31c5f8bc6302593ff07e1d6ef7bb6e1da1fb99af4d26c8de40586517608b496db1f468ce9b34332b73391e855b4",
             "file": "src/app/shared/components/toast/toast.component.ts",
@@ -3865,6 +4583,17 @@
                 "kind": 192
             },
             {
+                "name": "LabelVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"over\" | \"in\" | \"on\"",
+                "file": "src/app/shared/types/select.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
                 "name": "Positions",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -3874,6 +4603,28 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 192
+            },
+            {
+                "name": "SelectOption",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/shared/types/select.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "SelectOptions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "SelectOption[]",
+                "file": "src/app/shared/types/select.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 188
             },
             {
                 "name": "Severity",
@@ -3898,11 +4649,33 @@
                 "kind": 192
             },
             {
+                "name": "Size",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"small\" | \"large\"",
+                "file": "src/app/shared/types/select.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
                 "name": "Variant",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "\"filled\" | \"outlined\"",
                 "file": "src/app/shared/types/password-input.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "Variant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"filled\" | \"outlined\"",
+                "file": "src/app/shared/types/select.types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4091,6 +4864,63 @@
                     "kind": 192
                 }
             ],
+            "src/app/shared/types/select.types.ts": [
+                {
+                    "name": "LabelVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"over\" | \"in\" | \"on\"",
+                    "file": "src/app/shared/types/select.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "SelectOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/shared/types/select.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "SelectOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "SelectOption[]",
+                    "file": "src/app/shared/types/select.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 188
+                },
+                {
+                    "name": "Size",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"small\" | \"large\"",
+                    "file": "src/app/shared/types/select.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "Variant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"filled\" | \"outlined\"",
+                    "file": "src/app/shared/types/select.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                }
+            ],
             "src/app/shared/types/password-input.types.ts": [
                 {
                     "name": "Size",
@@ -4119,7 +4949,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 2,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -4174,7 +5004,7 @@
                 "linktype": "component",
                 "name": "FooterComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -4211,6 +5041,15 @@
                 "name": "PasswordInputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/24",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/select/select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/34",
                 "status": "low"
             },
             {
@@ -4305,7 +5144,7 @@
                 "linktype": "interface",
                 "name": "FooterProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -4405,6 +5244,65 @@
             },
             {
                 "filePath": "src/app/shared/types/password-input.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Variant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "SelectProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/22",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "LabelVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SelectOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "SelectOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Size",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/select.types.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
