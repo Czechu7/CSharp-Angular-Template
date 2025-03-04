@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { BaseResponse } from '../../_models/base-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     body?: any,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     const headers = options?.headers
       ? options.headers
       : this.getDefaultHeaders();
@@ -35,7 +36,7 @@ export class RequestFactoryService {
       body,
     };
 
-    return this.http.request<T>(
+    return this.http.request<BaseResponse<T>>(
       method,
       `${environment.apiURL}/${endpoint}`,
       configuration
@@ -45,7 +46,7 @@ export class RequestFactoryService {
   get<T>(
     endpoint: ApiEndpoints,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
@@ -53,7 +54,7 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     body: any,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     return this.request<T>('POST', endpoint, body, options);
   }
 
@@ -61,7 +62,7 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     body: any,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     return this.request<T>('PUT', endpoint, body, options);
   }
 
@@ -69,14 +70,14 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     body: any,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     return this.request<T>('PATCH', endpoint, body, options);
   }
 
   delete<T>(
     endpoint: ApiEndpoints,
     options?: { params?: HttpParams; headers?: HttpHeaders }
-  ): Observable<T> {
+  ): Observable<BaseResponse<T>> {
     return this.request<T>('DELETE', endpoint, null, options);
   }
 }
