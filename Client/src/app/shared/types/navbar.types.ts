@@ -13,7 +13,6 @@ export interface MenuItem {
   id?: string;
   expanded?: boolean;
   disabled?: boolean;
-  data?: any;
 }
 
 export interface User {
@@ -21,7 +20,6 @@ export interface User {
   avatar?: string;
   id?: string;
   role?: string;
-  [key: string]: any;
 }
 
 export type Langs = { label: string; value: string }[];

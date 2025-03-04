@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   @Input() commonMenuItems: MenuItem[] = [];
   @Input() langs: Langs = [];
 
-  combinedMenuItems: any[] = [];
+  combinedMenuItems: MenuItem[] = [];
   mobileMenuOpen = false;
   isDarkTheme = false;
   currentLang = '';

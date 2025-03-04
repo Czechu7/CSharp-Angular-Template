@@ -17,33 +17,3 @@
     }
   }
 }
-
-@mixin hamburger-icon($color, $width, $height) {
-  position: absolute;
-  width: $width;
-  height: $height;
-  background-color: $color;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: background-color $global-transition-speed;
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    width: $width;
-    height: $height;
-    background-color: $color;
-    left: 0;
-    transition: transform $global-transition-speed;
-  }
-
-  &:before {
-    top: -8px;
-  }
-
-  &:after {
-    top: 8px;
-  }
-}
