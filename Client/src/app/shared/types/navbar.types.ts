@@ -24,6 +24,8 @@ export interface User {
   [key: string]: any;
 }
 
+export type Langs = { label: string; value: string }[];
+
 export interface NavbarProps {
   title: string;
   logo?: string;
@@ -31,6 +33,10 @@ export interface NavbarProps {
   authMenuItems: MenuItem[];
   nonAuthMenuItems: MenuItem[];
   sticky?: boolean;
-  theme?: 'light' | 'dark' | 'custom';
   customClass?: string;
+  showSwitchTheme?: boolean;
+  showSwtichLang?: boolean;
+  langs: Langs;
+  isAuthenticated?: boolean;
+  user?: User;
 }

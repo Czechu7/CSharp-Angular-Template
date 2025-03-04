@@ -433,12 +433,12 @@
         },
         {
             "name": "MenuItem",
-            "id": "interface-MenuItem-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+            "id": "interface-MenuItem-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "command",
@@ -598,12 +598,12 @@
         },
         {
             "name": "NavbarProps",
-            "id": "interface-NavbarProps-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+            "id": "interface-NavbarProps-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "authMenuItems",
@@ -613,7 +613,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 33
                 },
                 {
                     "name": "commonMenuItems",
@@ -623,7 +623,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 32
                 },
                 {
                     "name": "customClass",
@@ -633,7 +633,27 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 35
+                    "line": 36
+                },
+                {
+                    "name": "isAuthenticated",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "langs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Langs",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
                 },
                 {
                     "name": "logo",
@@ -643,7 +663,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 29
+                    "line": 31
                 },
                 {
                     "name": "nonAuthMenuItems",
@@ -653,7 +673,27 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 34
+                },
+                {
+                    "name": "showSwitchTheme",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "showSwtichLang",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 38
                 },
                 {
                     "name": "sticky",
@@ -663,17 +703,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 33
-                },
-                {
-                    "name": "theme",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "\"light\" | \"dark\" | \"custom\"",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 34
+                    "line": 35
                 },
                 {
                     "name": "title",
@@ -683,7 +713,17 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 30
+                },
+                {
+                    "name": "user",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 41
                 }
             ],
             "indexSignatures": [],
@@ -1153,12 +1193,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721-1",
+            "id": "interface-User-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35-1",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  theme?: 'light' | 'dark' | 'custom';\r\n  customClass?: string;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "avatar",
@@ -1203,7 +1243,7 @@
             ],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-03bddf3285b00fbb7eac67f81a14b8bc99939f89e1373b1214b25b7093572ffdc9bf5a93b390057d0827742b2f3f807028c7a0c29335fe41f1e132a87b0e6721",
+                    "id": "index-declaration-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
                     "args": [
                         {
                             "name": "key",
@@ -3184,7 +3224,7 @@
         },
         {
             "name": "NavbarComponent",
-            "id": "component-NavbarComponent-a41c7968e1a8769a1d1cc81513b35987c68b309445bd03cabeff59b5e539b9c9d4d7d56b738df5cae63e9ff35f17e115f37de3a7fc13f392ef23913d2108e4a4",
+            "id": "component-NavbarComponent-beefd35d0c8e03bc1d031797d5862f42a9be0d9c7e80ab85999e69716c0483b3d56b2512105e3e4ec70a1fa25bf681288d158565caa47acc4c34a07659110117",
             "file": "src/app/shared/components/navbar/navbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3205,8 +3245,17 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
-                    "type": "any[]",
+                    "line": 28,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "commonMenuItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "MenuItem[]",
                     "decorators": []
                 },
                 {
@@ -3214,15 +3263,24 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 30,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "langs",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "Langs",
                     "decorators": []
                 },
                 {
                     "name": "logo",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -3231,8 +3289,8 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
-                    "type": "any[]",
+                    "line": 27,
+                    "type": "MenuItem[]",
                     "decorators": []
                 },
                 {
@@ -3240,8 +3298,26 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
-                    "type": "any[]",
+                    "line": 29,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "showSwitchTheme",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showSwtichLang",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -3249,7 +3325,7 @@
                     "defaultValue": "'My Application'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -3258,7 +3334,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 32,
                     "type": "string",
                     "decorators": []
                 },
@@ -3267,7 +3343,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 31,
                     "type": "string",
                     "decorators": []
                 }
@@ -3283,28 +3359,60 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 38
+                },
+                {
+                    "name": "currentLang",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "isDarkTheme",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
                 },
                 {
                     "name": "mobileMenuOpen",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "boolean",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 39
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "checkCurrentTheme",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 115,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "logout",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 97,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3321,7 +3429,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3342,7 +3450,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3352,9 +3460,37 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "switchLanguage",
+                    "args": [
+                        {
+                            "name": "langValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "langValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "toggleDropdown",
@@ -3369,7 +3505,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3390,7 +3526,17 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleTheme",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 103,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3400,7 +3546,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3418,12 +3564,28 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ToggleSwitchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [MenubarModule, CommonModule],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit {\r\n  @Input() title: string = 'My Application';\r\n  @Input() logo?: string;\r\n  @Input() menuItems: any[] = [];\r\n  @Input() authMenuItems: any[] = [];\r\n  @Input() nonAuthMenuItems: any[] = [];\r\n  @Input() isAuthenticated: boolean = false;\r\n  @Input() userName: string = '';\r\n  @Input() userAvatar: string = '';\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen: boolean = false;\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, type OnInit } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\nimport type { Langs, MenuItem, NavbarProps } from '../../types/navbar.types';\r\nimport { ButtonComponent } from '../button/button.component';\r\nimport { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [\r\n    MenubarModule,\r\n    CommonModule,\r\n    ButtonComponent,\r\n    ToggleSwitchComponent,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit, NavbarProps {\r\n  @Input() title = 'My Application';\r\n  @Input() logo?: string;\r\n  @Input() menuItems: MenuItem[] = [];\r\n  @Input() authMenuItems: MenuItem[] = [];\r\n  @Input() nonAuthMenuItems: MenuItem[] = [];\r\n  @Input() isAuthenticated = false;\r\n  @Input() userName = '';\r\n  @Input() userAvatar = '';\r\n  @Input() showSwitchTheme = false;\r\n  @Input() showSwtichLang = false;\r\n  @Input() commonMenuItems: MenuItem[] = [];\r\n  @Input() langs: Langs = [];\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen = false;\r\n  isDarkTheme = false;\r\n  currentLang = '';\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n    if (this.langs.length > 0) {\r\n      this.currentLang = this.langs[0].value;\r\n    }\r\n    this.checkCurrentTheme();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n\r\n  toggleTheme() {\r\n    this.isDarkTheme = !this.isDarkTheme;\r\n\r\n    if (this.isDarkTheme) {\r\n      document.body.classList.add('dark-theme');\r\n    } else {\r\n      document.body.classList.remove('dark-theme');\r\n    }\r\n\r\n    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');\r\n  }\r\n\r\n  checkCurrentTheme() {\r\n    const savedTheme = localStorage.getItem('theme');\r\n    if (savedTheme === 'dark') {\r\n      this.isDarkTheme = true;\r\n      document.body.classList.add('dark-theme');\r\n    } else if (savedTheme === 'light') {\r\n      this.isDarkTheme = false;\r\n      document.body.classList.remove('dark-theme');\r\n    } else {\r\n      const prefersDark = window.matchMedia(\r\n        '(prefers-color-scheme: dark)'\r\n      ).matches;\r\n      this.isDarkTheme = prefersDark;\r\n      if (prefersDark) {\r\n        document.body.classList.add('dark-theme');\r\n      }\r\n    }\r\n  }\r\n\r\n  switchLanguage(langValue: string) {\r\n    this.currentLang = langValue;\r\n    localStorage.setItem('language', langValue);\r\n  }\r\n}\r\n",
             "styleUrl": "./navbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3441,7 +3603,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 24,
+                "line": 41,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -3456,9 +3618,10 @@
             },
             "extends": [],
             "implements": [
-                "OnInit"
+                "OnInit",
+                "NavbarProps"
             ],
-            "templateData": "<nav class=\"navbar\">\r\n  <div class=\"navbar-container\">\r\n\r\n    <div class=\"navbar-brand\">\r\n      <img *ngIf=\"logo\" [src]=\"logo\" alt=\"Logo\" class=\"navbar-logo\">\r\n      <h1 class=\"navbar-title\">{{ title }}</h1>\r\n    </div>\r\n\r\n\r\n    <button class=\"navbar-mobile-toggle\" (click)=\"toggleMobileMenu()\">\r\n      <span class=\"toggle-icon\"></span>\r\n    </button>\r\n\r\n\r\n    <div class=\"navbar-menu\" [class.open]=\"mobileMenuOpen\">\r\n      <ul class=\"navbar-nav\">\r\n        <li *ngFor=\"let item of combinedMenuItems\" class=\"nav-item\" [class.has-dropdown]=\"item.items?.length\">\r\n\r\n          <div *ngIf=\"item.items?.length\" class=\"nav-link dropdown-toggle\" (click)=\"toggleDropdown(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n            <i class=\"dropdown-arrow\" [class.expanded]=\"item.expanded\"></i>\r\n          </div>\r\n\r\n\r\n          <div *ngIf=\"!item.items?.length\" class=\"nav-link\" [class.disabled]=\"item.disabled\"\r\n            (click)=\"!item.disabled && navigateTo(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n          </div>\r\n\r\n\r\n          <ul *ngIf=\"item.items?.length\" class=\"dropdown-menu\" [class.show]=\"item.expanded\">\r\n            <li *ngFor=\"let subItem of item.items\" class=\"dropdown-item\" [class.disabled]=\"subItem.disabled\"\r\n              (click)=\"!subItem.disabled && navigateTo(subItem)\">\r\n              <i *ngIf=\"subItem.icon\" class=\"nav-icon {{ subItem.icon }}\"></i>\r\n              {{ subItem.label }}\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n\r\n\r\n      <div *ngIf=\"isAuthenticated\" class=\"user-section\">\r\n        <div class=\"user-info\">\r\n          <span class=\"user-name\">{{ userName }}</span>\r\n          <div class=\"user-avatar\">\r\n            <img *ngIf=\"userAvatar\" [src]=\"userAvatar\" alt=\"User Avatar\">\r\n            <div *ngIf=\"!userAvatar\" class=\"avatar-placeholder\">\r\n              {{ userName.charAt(0).toUpperCase() }}\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <button class=\"logout-button\" (click)=\"logout()\">\r\n          <i class=\"logout-icon\"></i>\r\n          Logout\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
+            "templateData": "<nav class=\"navbar\">\r\n  <div class=\"navbar-container\">\r\n\r\n    <div class=\"navbar-brand\">\r\n      <img *ngIf=\"logo\" [src]=\"logo\" alt=\"Logo\" class=\"navbar-logo\">\r\n      <h1 class=\"navbar-title\">{{ title }}</h1>\r\n    </div>\r\n\r\n\r\n    <button class=\"navbar-mobile-toggle\" (click)=\"toggleMobileMenu()\">\r\n      <span class=\"toggle-icon\"></span>\r\n    </button>\r\n\r\n\r\n    <div class=\"navbar-menu\" [class.open]=\"mobileMenuOpen\">\r\n      <ul class=\"navbar-nav\">\r\n        <li *ngFor=\"let item of combinedMenuItems\" class=\"nav-item\" [class.has-dropdown]=\"item.items?.length\">\r\n\r\n          <div *ngIf=\"item.items?.length\" class=\"nav-link dropdown-toggle\" (click)=\"toggleDropdown(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n            <i class=\"dropdown-arrow\" [class.expanded]=\"item.expanded\"></i>\r\n          </div>\r\n\r\n\r\n          <div *ngIf=\"!item.items?.length\" class=\"nav-link\" [class.disabled]=\"item.disabled\"\r\n            (click)=\"!item.disabled && navigateTo(item)\">\r\n            <i *ngIf=\"item.icon\" class=\"nav-icon {{ item.icon }}\"></i>\r\n            {{ item.label }}\r\n          </div>\r\n\r\n\r\n          <ul *ngIf=\"item.items?.length\" class=\"dropdown-menu\" [class.show]=\"item.expanded\">\r\n            <li *ngFor=\"let subItem of item.items\" class=\"dropdown-item\" [class.disabled]=\"subItem.disabled\"\r\n              (click)=\"!subItem.disabled && navigateTo(subItem)\">\r\n              <i *ngIf=\"subItem.icon\" class=\"nav-icon {{ subItem.icon }}\"></i>\r\n              {{ subItem.label }}\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n\r\n      <div *ngIf=\"showSwtichLang && langs.length > 0\" class=\"language-switcher\">\r\n        <app-button *ngFor=\"let lang of langs\" [label]=\"lang.label\"\r\n          [styleClass]=\"currentLang === lang.value ? 'active-lang' : ''\"\r\n          [variant]=\"currentLang === lang.value ? 'outlined' : 'text'\"\r\n          [severity]=\"currentLang === lang.value ? 'primary' : 'secondary'\" (onClick)=\"switchLanguage(lang.value)\">\r\n        </app-button>\r\n      </div>\r\n\r\n      <div *ngIf=\"showSwitchTheme\" class=\"theme-switcher\">\r\n        <app-toggle-switch [iconOn]=\"'pi-moon'\" [iconOff]=\"'pi-sun'\" [(ngModel)]=\"isDarkTheme\">\r\n        </app-toggle-switch>\r\n      </div>\r\n\r\n      <div *ngIf=\"isAuthenticated\" class=\"user-section\">\r\n        <div class=\"user-info\">\r\n          <span class=\"user-name\">{{ userName }}</span>\r\n          <div class=\"user-avatar\">\r\n            <img *ngIf=\"userAvatar\" [src]=\"userAvatar\" alt=\"User Avatar\">\r\n            <div *ngIf=\"!userAvatar\" class=\"avatar-placeholder\">\r\n              {{ userName.charAt(0).toUpperCase() }}\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <button class=\"logout-button\" (click)=\"logout()\">\r\n          <i class=\"logout-icon\"></i>\r\n          Logout\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
         },
         {
             "name": "PageComponent",
@@ -5050,6 +5213,17 @@
                 "kind": 192
             },
             {
+                "name": "Langs",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type[]",
+                "file": "src/app/shared/types/navbar.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 188
+            },
+            {
                 "name": "Positions",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -5377,6 +5551,19 @@
                     "kind": 192
                 }
             ],
+            "src/app/shared/types/navbar.types.ts": [
+                {
+                    "name": "Langs",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type[]",
+                    "file": "src/app/shared/types/navbar.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 188
+                }
+            ],
             "src/app/shared/types/password-input.types.ts": [
                 {
                     "name": "Size",
@@ -5487,7 +5674,7 @@
                 "linktype": "component",
                 "name": "NavbarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/28",
                 "status": "low"
             },
             {
@@ -5676,7 +5863,7 @@
                 "linktype": "interface",
                 "name": "NavbarProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
@@ -5686,6 +5873,16 @@
                 "name": "User",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/navbar.types.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Langs",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

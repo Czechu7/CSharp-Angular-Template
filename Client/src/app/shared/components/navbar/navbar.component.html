@@ -40,6 +40,18 @@
         </li>
       </ul>
 
+      <div *ngIf="showSwtichLang && langs.length > 0" class="language-switcher">
+        <app-button *ngFor="let lang of langs" [label]="lang.label"
+          [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
+          [variant]="currentLang === lang.value ? 'outlined' : 'text'"
+          [severity]="currentLang === lang.value ? 'primary' : 'secondary'" (onClick)="switchLanguage(lang.value)">
+        </app-button>
+      </div>
+
+      <div *ngIf="showSwitchTheme" class="theme-switcher">
+        <app-toggle-switch [iconOn]="'pi-moon'" [iconOff]="'pi-sun'" [(ngModel)]="isDarkTheme">
+        </app-toggle-switch>
+      </div>
 
       <div *ngIf="isAuthenticated" class="user-section">
         <div class="user-info">

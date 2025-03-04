@@ -1,16 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { NavbarComponent } from './navbar.component';
-
-interface NavbarProps {
-  title: string;
-  logo?: string;
-  menuItems: any[];
-  authMenuItems: any[];
-  nonAuthMenuItems: any[];
-  isAuthenticated?: boolean;
-  userName?: string;
-  userAvatar?: string;
-}
+import { NavbarProps } from '../../types/navbar.types';
 
 const meta: Meta<NavbarComponent> = {
   title: 'Components/NavbarComponent',
@@ -21,11 +11,6 @@ export default meta;
 const args: NavbarProps = {
   title: 'My Application',
   logo: 'assets/logo.png',
-  menuItems: [
-    { label: 'Home', routerLink: '/home' },
-    { label: 'About', routerLink: '/about' },
-    { label: 'Contact', routerLink: '/contact' },
-  ],
   authMenuItems: [
     { label: 'Profile', routerLink: '/profile' },
     { label: 'Logout', command: () => {} },
@@ -35,8 +20,20 @@ const args: NavbarProps = {
     { label: 'Register', routerLink: '/register' },
   ],
   isAuthenticated: false,
-  userName: 'John Doe',
-  userAvatar: 'assets/avatar.png',
+  user: {
+    name: 'John Doe',
+    avatar: 'assets/avatar.png',
+  },
+  showSwitchTheme: true,
+  showSwtichLang: true,
+  commonMenuItems: [
+    { label: 'Settings', routerLink: '/settings' },
+    { label: 'Help', routerLink: '/help' },
+  ],
+  langs: [
+    { label: 'English', value: 'en' },
+    { label: 'Spanish', value: 'es' },
+  ],
 };
 
 type NavbarStory = StoryObj<NavbarComponent>;
