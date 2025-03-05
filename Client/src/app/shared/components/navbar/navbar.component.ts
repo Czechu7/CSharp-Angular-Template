@@ -58,20 +58,12 @@ export class NavbarComponent implements OnInit, NavbarProps {
     this.combinedMenuItems = [...this.menuItems];
 
     if (this.isAuthenticated) {
-      this.combinedMenuItems = [
-        ...this.combinedMenuItems,
-        ...this.authMenuItems,
-      ];
+      this.combinedMenuItems = [...this.combinedMenuItems, ...this.authMenuItems];
     } else {
-      this.combinedMenuItems = [
-        ...this.combinedMenuItems,
-        ...this.nonAuthMenuItems,
-      ];
+      this.combinedMenuItems = [...this.combinedMenuItems, ...this.nonAuthMenuItems];
     }
 
-    this.combinedMenuItems = this.combinedMenuItems.filter(
-      (item) => item.visible !== false
-    );
+    this.combinedMenuItems = this.combinedMenuItems.filter(item => item.visible !== false);
   }
 
   toggleMobileMenu() {
@@ -129,7 +121,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
     // }
   }
 
-  switchLanguage(langValue: string) {
+  switchLanguage(_langValue: string) {
     // this.currentLang = langValue;
     // localStorage.setItem('language', langValue);
   }

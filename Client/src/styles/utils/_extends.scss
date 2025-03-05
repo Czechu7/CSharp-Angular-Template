@@ -9,7 +9,7 @@
   font-weight: 500;
 
   &.required:after {
-    content: "*";
+    content: '*';
     color: var(--red-500);
     margin-left: 0.25rem;
   }

@@ -6,11 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
-import {
-  PasswordInputProps,
-  Size,
-  Variant,
-} from '../../types/password-input.types';
+import { PasswordInputProps, Size, Variant } from '../../types/password-input.types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -27,9 +23,7 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class PasswordInputComponent<T>
-  implements ControlValueAccessor, PasswordInputProps
-{
+export class PasswordInputComponent<T> implements ControlValueAccessor, PasswordInputProps {
   @Input() label?: string;
   @Input() placeholder?: string = '';
   @Input() disabled = false;
@@ -49,7 +43,7 @@ export class PasswordInputComponent<T>
   touched = false;
   value: T | null = null;
 
-  private onChange = (value: T) => {};
+  private onChange = (_value: T) => {};
   onTouched = () => {
     this.touched = true;
   };

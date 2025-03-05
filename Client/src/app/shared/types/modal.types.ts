@@ -1,4 +1,4 @@
-export type ConfirmModalProps = {
+export interface ConfirmModalProps {
   header: string;
   visible: boolean;
   message: string;
@@ -6,10 +6,10 @@ export type ConfirmModalProps = {
   noLabel: string;
   onYes: () => void;
   onNo: () => void;
-};
+}
 
-export type InfoModalProps = {
+export interface InfoModalProps {
   header: string;
   visible: boolean;
   message: string;
-};
+}

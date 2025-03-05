@@ -5,7 +5,7 @@ export interface MenuItem {
   url?: string;
   target?: string;
   command?: () => void;
-  queryParams?: { [key: string]: string };
+  queryParams?: Record<string, string>;
   items?: MenuItem[];
   visible?: boolean;
   disabled?: boolean;

@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  forwardRef,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -13,24 +7,13 @@ import {
 } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import {
-  SelectProps,
-  Size,
-  Variant,
-  LabelVariant,
-} from '../../types/select.types';
+import { SelectProps, Size, Variant, LabelVariant } from '../../types/select.types';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-select',
   standalone: true,
-  imports: [
-    SelectModule,
-    ReactiveFormsModule,
-    FormsModule,
-    FloatLabelModule,
-    CommonModule,
-  ],
+  imports: [SelectModule, ReactiveFormsModule, FormsModule, FloatLabelModule, CommonModule],
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',
   providers: [
@@ -41,21 +24,19 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class SelectComponent<T = any>
-  implements SelectProps<T>, ControlValueAccessor
-{
-  @Input() formControlName: string = '';
+export class SelectComponent<T = any> implements SelectProps<T>, ControlValueAccessor {
+  @Input() formControlName = '';
   @Input() options?: T[];
   @Input() optionLabel?: string;
   @Input() optionValue?: string;
   @Input() placeholder?: string;
-  @Input() disabled: boolean = false;
+  @Input() disabled = false;
   @Input() filter?: boolean;
-  @Input() checkmark: boolean = false;
-  @Input() editable: boolean = false;
+  @Input() checkmark = false;
+  @Input() editable = false;
   @Input() filterBy?: string;
-  @Input() loading: boolean = false;
-  @Input() showClear: boolean = false;
+  @Input() loading = false;
+  @Input() showClear = false;
   @Input() virtualScroll?: boolean;
   @Input() virtualScrollItemSize?: number;
   @Input() variant: Variant = 'filled';

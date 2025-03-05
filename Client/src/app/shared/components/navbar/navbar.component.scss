@@ -1,5 +1,5 @@
-@import "../../../../styles/utils/variables";
-@import "../../../../styles/utils/mixins";
+@import '../../../../styles/utils/variables';
+@import '../../../../styles/utils/mixins';
 
 .navbar {
   height: $navbar-height;
@@ -186,7 +186,7 @@
       height: 16px;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         width: 10px;
         height: 10px;
@@ -197,7 +197,7 @@
       }
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 8px;
         height: 2px;
@@ -230,7 +230,7 @@
 
     &:before,
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 24px;
       height: 3px;
