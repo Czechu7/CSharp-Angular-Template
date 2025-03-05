@@ -1,0 +1,27 @@
+<form [formGroup]='loginForm' (ngSubmit)='onLogin()'>
+  <div class='form-input'>
+    <mat-form-field appearance='fill'>
+      <mat-label>Login</mat-label>
+      <input matInput [formControl]='controls.login'>
+      <mat-error *ngIf='controls.login.invalid'>{{ getErrorMessage(controls.login) }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class='form-input'>
+    <mat-form-field appearance='fill'>
+      <mat-label>Hasło</mat-label>
+      <input type='password' matInput [formControl]='controls.password'>
+      <mat-error *ngIf='controls.password.invalid'>{{ getErrorMessage(controls.password) }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class='alert alert-warning alert-dismissible fade show mt-2' role='alert' *ngIf='errorMsg$ | async as error'>
+    {{ error }}
+  </div>
+  <div class='mt-2' *ngIf='loading$ | async'>
+    Aktualnie trwa zapytanie HTTP...
+  </div>
+  <div class='d-flex justify-content-end'>
+    <button mat-raised-button color='primary' [disabled]='loginForm.invalid'>Zaloguj się</button>
+  </div>
+  <p class='text-center'>Zapomniałeś hasła? <a routerLink='/odzyskaj-haslo'>Odzyskaj hasło</a></p>
+  <p class='text-center'>Nie masz konta? <a routerLink='/rejestracja'>Zarejestruj się</a></p>
+</form>
