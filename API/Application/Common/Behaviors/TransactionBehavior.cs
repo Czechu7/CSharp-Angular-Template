@@ -16,7 +16,7 @@ public class TransactionBehavior<TRequest, TResponse>(
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
-        
+
         try
         {
             if (_dbContext.HasActiveTransaction)
@@ -30,14 +30,17 @@ public class TransactionBehavior<TRequest, TResponse>(
             {
                 using (var transaction = await _dbContext.BeginTransactionAsync())
                 {
-                    _logger.LogInformation("Beginning transaction for {RequestName}", requestName);
-                    
-                    var response = await next();
-                    
-                    await _dbContext.CommitTransactionAsync(transaction);
-                    _logger.LogInformation("Committed transaction for {RequestName}", requestName);
-                    
-                    return response;
+                    try
+                    {
+                        var response = await next();
+                        await transaction.CommitAsync();
+                        return response;
+                    }
+                    catch (Exception)
+                    {
+                        await transaction.RollbackAsync();
+                        throw;
+                    }
                 }
             });
         }

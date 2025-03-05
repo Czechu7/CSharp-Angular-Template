@@ -8,21 +8,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Base.Commands;
 
-public class UpdateCommandHandler<TDto, TEntity> : CommandHandlerBase<UpdateCommand<TDto>>
+public class UpdateCommandHandler<TDto, TEntity>(
+    IGenericRepository<TEntity> repository,
+    IMapper mapper,
+    ILogger<UpdateCommandHandler<TDto, TEntity>> logger) : CommandHandlerBase<UpdateCommand<TDto>>(logger)
     where TEntity : BaseEntity
 {
-    private readonly IGenericRepository<TEntity> _repository;
-    private readonly IMapper _mapper;
-    
-    public UpdateCommandHandler(
-        IGenericRepository<TEntity> repository,
-        IMapper mapper,
-        ILogger<UpdateCommandHandler<TDto, TEntity>> logger) : base(logger)
-    {
-        _repository = repository;
-        _mapper = mapper;
-    }
-    
+    private readonly IGenericRepository<TEntity> _repository = repository;
+    private readonly IMapper _mapper = mapper;
+
     protected override async Task HandleCommand(UpdateCommand<TDto> request, CancellationToken cancellationToken)
     {
         var entity = await _repository.GetByIdAsync(request.Id) 

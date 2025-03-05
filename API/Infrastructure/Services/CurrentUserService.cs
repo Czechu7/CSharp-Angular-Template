@@ -5,14 +5,9 @@ using System.Security.Claims;
 
 namespace Infrastructure.Services;
 
-public class CurrentUserService : ICurrentUserService
+public class CurrentUserService(IHttpContextAccessor httpContextAccessor) : ICurrentUserService
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public CurrentUserService(IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
+    private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
     public string? UserId => _httpContextAccessor.HttpContext?.User?.Claims
         .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;

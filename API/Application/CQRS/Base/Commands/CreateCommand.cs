@@ -4,12 +4,7 @@ using MediatR;
 
 namespace Application.CQRS.Base.Commands;
 
-public class CreateCommand<TDto> : ICommand<ResponseBase>, IRequest<ResponseBase>
+public class CreateCommand<TDto>(TDto data) : ICommand<ResponseBase>, IRequest<ResponseBase>
 {
-    public TDto Data { get; set; }
-    
-    public CreateCommand(TDto data)
-    {
-        Data = data;
-    }
+    public TDto Data { get; set; } = data;
 }

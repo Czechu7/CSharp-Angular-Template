@@ -1,6 +1,5 @@
 using System.Reflection;
 using AutoMapper;
-using Application.Common.Mappings;
 
 namespace Application.Common.Mappings;
 
@@ -17,37 +16,18 @@ public class MappingProfile : Profile
         
         var mappingMethodName = nameof(IMapFrom<object>.Mapping);
 
-        bool HasInterface(Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == mapFromType;
-        
-        var types = assembly.GetExportedTypes().Where(t => 
-            t.GetInterfaces().Any(HasInterface)).ToList();
-        
-        var argumentTypes = new Type[] { typeof(Profile) };
+        var mappingTypes = assembly.GetExportedTypes()
+            .Where(t => t.GetInterfaces().Any(i => 
+                i.IsGenericType && i.GetGenericTypeDefinition() == mapFromType));
 
-        foreach (var type in types)
+        foreach (var type in mappingTypes)
         {
             var instance = Activator.CreateInstance(type);
             
-            var methodInfo = type.GetMethod(mappingMethodName);
-
-            if (methodInfo != null)
-            {
-                methodInfo.Invoke(instance, [this]);
-            }
-            else
-            {
-                var interfaces = type.GetInterfaces().Where(HasInterface).ToList();
-
-                if (interfaces.Count > 0)
-                {
-                    foreach (var @interface in interfaces)
-                    {
-                        var interfaceMethodInfo = @interface.GetMethod(mappingMethodName, argumentTypes);
-
-                        interfaceMethodInfo?.Invoke(instance, [this]);
-                    }
-                }
-            }
+            var methodInfo = type.GetMethod(mappingMethodName) 
+                ?? type.GetInterface(mapFromType.Name)?.GetMethod(mappingMethodName);
+                
+            methodInfo?.Invoke(instance, new object[] { this });
         }
     }
 }

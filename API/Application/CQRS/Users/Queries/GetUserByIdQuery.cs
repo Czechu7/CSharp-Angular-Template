@@ -3,9 +3,6 @@ using Application.CQRS.Users.DTOs;
 
 namespace Application.CQRS.Users.Queries.GetUserById;
 
-public class GetUserByIdQuery : GetByIdQuery<UserDto>
+public class GetUserByIdQuery(Guid id) : GetByIdQuery<UserDto>(id)
 {
-    public GetUserByIdQuery(Guid id) : base(id)
-    {
-    }
 }

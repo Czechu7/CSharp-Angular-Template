@@ -9,18 +9,13 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Base.Queries;
 
-public class GetPagedQueryHandler<TResult, TEntity> 
-    : QueryHandlerBase<GetPagedQuery<TResult, TEntity>, PagedResult<TResult>, TEntity>
+public class GetPagedQueryHandler<TResult, TEntity>(
+    IGenericRepository<TEntity> repository,
+    IMapper mapper,
+    ILogger<GetPagedQueryHandler<TResult, TEntity>> logger)
+    : QueryHandlerBase<GetPagedQuery<TResult, TEntity>, PagedResult<TResult>, TEntity>(repository, mapper, logger)
     where TEntity : BaseEntity
 {
-    public GetPagedQueryHandler(
-        IGenericRepository<TEntity> repository,
-        IMapper mapper,
-        ILogger<GetPagedQueryHandler<TResult, TEntity>> logger) 
-        : base(repository, mapper, logger)
-    {
-    }
-    
     protected override async Task<PagedResult<TResult>> HandleQuery(GetPagedQuery<TResult, TEntity> request, CancellationToken cancellationToken)
     {
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? ordering = null;

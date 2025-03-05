@@ -7,21 +7,15 @@ using System.Reflection;
 
 namespace Infrastructure.Persistence;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext(
+    DbContextOptions<ApplicationDbContext> options,
+    IDateTime dateTime,
+    ICurrentUserService currentUserService) : DbContext(options), IApplicationDbContext
 {
     
-    private readonly IDateTime _dateTime;
-    private readonly ICurrentUserService _currentUserService;
+    private readonly IDateTime _dateTime = dateTime;
+    private readonly ICurrentUserService _currentUserService = currentUserService;
     private IDbContextTransaction? _currentTransaction;
-
-    public ApplicationDbContext(
-        DbContextOptions<ApplicationDbContext> options,
-        IDateTime dateTime,
-        ICurrentUserService currentUserService) : base(options)
-    {
-        _dateTime = dateTime;
-        _currentUserService = currentUserService;
-    }
 
     public DbSet<User> Users => Set<User>();
     

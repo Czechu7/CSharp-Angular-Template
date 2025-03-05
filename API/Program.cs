@@ -3,10 +3,11 @@ using Autofac.Extensions.DependencyInjection;
 using Application;
 using Infrastructure;
 using Presentation;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Use Autofac as the service provider factory
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => 
 {
@@ -27,10 +28,12 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Add controllers
+
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
+
 // Register layered architecture
+
 // Application layer (contains MediatR and AutoMapper registration)
 builder.Services.AddApplication();
 
@@ -40,6 +43,10 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Presentation layer (contains controllers and API-specific services)
 builder.Services.AddPresentation();
 
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => 
+{
+    containerBuilder.RegisterModule(new Infrastructure.DI.AutofacModule());
+});
 
 builder.Services.AddCors(options =>
 {
@@ -51,11 +58,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-// using (var scope = app.Services.CreateScope())
-// {
-//     var initializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
-//     await initializer.InitializeAsync();
-// }
+
 
 if (app.Environment.IsDevelopment())
 {

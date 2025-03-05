@@ -6,21 +6,14 @@ using MediatR;
 
 namespace Application.CQRS.Base.Queries;
 
-public class GetPagedQuery<TResult, TEntity> : 
+public class GetPagedQuery<TResult, TEntity>(int pageNumber, int pageSize, bool includeInactive = false) : 
     IQuery<PagedResult<TResult>>, 
     IRequest<Response<PagedResult<TResult>>>
 {
-    public int PageNumber { get; set; }
-    public int PageSize { get; set; }
+    public int PageNumber { get; set; } = pageNumber > 0 ? pageNumber : 1;
+    public int PageSize { get; set; } = pageSize > 0 ? pageSize : 10;
     public Expression<Func<TEntity, bool>>? Filter { get; set; }
     public string? SortBy { get; set; }
     public bool SortDescending { get; set; }
-    public bool IncludeInactive { get; set; }
-    
-    public GetPagedQuery(int pageNumber, int pageSize, bool includeInactive = false)
-    {
-        PageNumber = pageNumber > 0 ? pageNumber : 1;
-        PageSize = pageSize > 0 ? pageSize : 10;
-        IncludeInactive = includeInactive;
-    }
+    public bool IncludeInactive { get; set; } = includeInactive;
 }

@@ -8,24 +8,17 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS;
 
-public abstract class QueryHandlerBase<TQuery, TResult, TEntity> 
+public abstract class QueryHandlerBase<TQuery, TResult, TEntity>(
+    IGenericRepository<TEntity> repository,
+    IMapper mapper,
+    ILogger<QueryHandlerBase<TQuery, TResult, TEntity>> logger)
     : IRequestHandler<TQuery, Response<TResult>>
     where TQuery : IRequest<Response<TResult>>  // Updated to require only IRequest<Response<TResult>>
     where TEntity : BaseEntity
 {
-    protected readonly IGenericRepository<TEntity> Repository;
-    protected readonly IMapper Mapper;
-    protected readonly ILogger<QueryHandlerBase<TQuery, TResult, TEntity>> Logger;
-
-    protected QueryHandlerBase(
-        IGenericRepository<TEntity> repository,
-        IMapper mapper,
-        ILogger<QueryHandlerBase<TQuery, TResult, TEntity>> logger)
-    {
-        Repository = repository;
-        Mapper = mapper;
-        Logger = logger;
-    }
+    protected readonly IGenericRepository<TEntity> Repository = repository;
+    protected readonly IMapper Mapper = mapper;
+    protected readonly ILogger<QueryHandlerBase<TQuery, TResult, TEntity>> Logger = logger;
 
     public virtual async Task<Response<TResult>> Handle(TQuery request, CancellationToken cancellationToken)
     {

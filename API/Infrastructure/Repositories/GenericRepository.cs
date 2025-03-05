@@ -6,14 +6,9 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories;
 
-public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
+public class GenericRepository<TEntity>(IApplicationDbContext dbContext) : IGenericRepository<TEntity> where TEntity : BaseEntity
 {
-    protected readonly IApplicationDbContext _dbContext;
-
-    public GenericRepository(IApplicationDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    protected readonly IApplicationDbContext _dbContext = dbContext;
 
     public virtual async Task<TEntity?> GetByIdAsync(Guid id, bool includeInactive = false)
     {

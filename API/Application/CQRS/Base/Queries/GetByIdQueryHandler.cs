@@ -7,18 +7,13 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Base.Queries;
 
-public class GetByIdQueryHandler<TResult, TEntity> 
-    : QueryHandlerBase<GetByIdQuery<TResult>, TResult, TEntity>
+public class GetByIdQueryHandler<TResult, TEntity>(
+    IGenericRepository<TEntity> repository,
+    IMapper mapper,
+    ILogger<GetByIdQueryHandler<TResult, TEntity>> logger)
+    : QueryHandlerBase<GetByIdQuery<TResult>, TResult, TEntity>(repository, mapper, logger)
     where TEntity : BaseEntity
 {
-    public GetByIdQueryHandler(
-        IGenericRepository<TEntity> repository,
-        IMapper mapper,
-        ILogger<GetByIdQueryHandler<TResult, TEntity>> logger) 
-        : base(repository, mapper, logger)
-    {
-    }
-    
     protected override async Task<TResult> HandleQuery(GetByIdQuery<TResult> request, CancellationToken cancellationToken)
     {
         var entity = await Repository.GetByIdAsync(request.Id) 

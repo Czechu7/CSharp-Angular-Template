@@ -5,16 +5,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Base;
 
-public abstract class CommandHandlerBase<TCommand> 
+public abstract class CommandHandlerBase<TCommand>(ILogger<CommandHandlerBase<TCommand>> logger)
     : IRequestHandler<TCommand, ResponseBase>
     where TCommand : ICommand<ResponseBase>, IRequest<ResponseBase>
 {
-    protected readonly ILogger<CommandHandlerBase<TCommand>> Logger;
-
-    protected CommandHandlerBase(ILogger<CommandHandlerBase<TCommand>> logger)
-    {
-        Logger = logger;
-    }
+    protected readonly ILogger<CommandHandlerBase<TCommand>> Logger = logger;
 
     public virtual async Task<ResponseBase> Handle(TCommand request, CancellationToken cancellationToken)
     {

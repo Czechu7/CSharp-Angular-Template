@@ -7,14 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Users.Queries.GetUserById;
 
-public class GetUserByIdQueryHandler : GetByIdQueryHandler<UserDto, User>
+public class GetUserByIdQueryHandler(
+    IGenericRepository<User> repository,
+    IMapper mapper,
+    ILogger<GetUserByIdQueryHandler> logger) : GetByIdQueryHandler<UserDto, User>(repository, mapper, logger)
 {
-    public GetUserByIdQueryHandler(
-        IGenericRepository<User> repository,
-        IMapper mapper,
-        ILogger<GetUserByIdQueryHandler> logger)
-        : base(repository, mapper, logger)
-    {
-    }
-
 }
