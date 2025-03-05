@@ -62,6 +62,8 @@ $active-scheme: "default";
   @return map-get(map-get($color-schemes, $active-scheme), $name);
 }
 
+$primary: color("primary");
+
 $navbar-height: 64px;
 $navbar-top-height: 36px;
 $navbar-bg: color("background");

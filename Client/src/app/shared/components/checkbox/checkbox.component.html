@@ -1,11 +1,12 @@
 <div class="field">
-
   <p-checkbox [inputId]="inputId" [name]="name" [value]="value" [(ngModel)]="checked" [disabled]="disabled"
     [required]="required"
     [formControlName]="formControlName !== undefined && formControlName !== '' ? formControlName : null">></p-checkbox>
   @if (label) {
   <label [class.required]="required" [for]="inputId" class="ml-2"> {{label}} </label>
-  <span *ngIf="required" class="required-marker">*</span>
+  @if(required){
+  <span class="required-marker">*</span>
+  }
   }
   @if (invalid && errorMessage && touched) {
   <small class="p-error">{{errorMessage}}</small>

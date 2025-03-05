@@ -1,13 +1,16 @@
 <div>
-
   @if (label) {
-  <label [class.required]="required" [for]="id" class="ml-2"> {{label}} </label>
-  <span *ngIf="required" class="required-marker">*</span>
+  <label [class.required]="required" [for]="id" class="ml-2">
+    {{label}}
+    @if (required) {
+    <span class="required-marker">*</span>
+    }
+  </label>
   }
 
-  @if(iconOff && iconOn){
+  @if (iconOff && iconOn) {
   <p-toggleswitch [(ngModel)]="value" [formControlName]="formControlName"
-    [class]=" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass" [disabled]="disabled"
+    [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass" [disabled]="disabled"
     (ngModelChange)="onInput($event)">
     <ng-template #handle [let-checked]="value">
       <i [ngClass]="['!text-xs', 'pi', value ? iconOn : iconOff]"></i>
@@ -15,12 +18,12 @@
   </p-toggleswitch>
   } @else {
   <p-toggleswitch [(ngModel)]="value" [formControlName]="formControlName"
-    [class]=" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass" [disabled]="disabled"
-    (ngModelChange)="onInput($event)" />
+    [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass" [disabled]="disabled"
+    (ngModelChange)="onInput($event)">
+  </p-toggleswitch>
   }
 
   @if (invalid && errorMessage && touched) {
   <small class="p-error">{{errorMessage}}</small>
   }
-
 </div>

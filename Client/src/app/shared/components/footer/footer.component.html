@@ -1,27 +1,51 @@
 <footer [class]="['footer', customClass]">
   <div class="container">
     <div class="branding">
-      <img *ngIf="logo" [src]="logo" alt="Logo" class="logo-img" />
-      <span class="title" *ngIf="title">{{ title }}</span>
+      @if (logo) {
+      <img [src]="logo" alt="Logo" class="logo-img" />
+      }
+      @if (title) {
+      <span class="title">{{ title }}</span>
+      }
     </div>
 
-    <div class="links" *ngIf="links && links.length">
-      <ng-container *ngFor="let link of links">
-        <a *ngIf="link.routerLink" [routerLink]="link.routerLink" [queryParams]="link.queryParams" [state]="link.state">
-          <i *ngIf="link.icon" class="{{ link.icon }}"></i> {{ link.label }}
-        </a>
-        <a *ngIf="link.url" [href]="link.url" [target]="link.target">
-          <i *ngIf="link.icon" class="{{ link.icon }}"></i> {{ link.label }}
-        </a>
-      </ng-container>
+    @if (links && links.length) {
+    <div class="links">
+      @for (link of links; track link) {
+      @if (link.routerLink) {
+      <a [routerLink]="link.routerLink" [queryParams]="link.queryParams">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
+        }
+        {{ link.label }}
+      </a>
+      }
+      @if (link.url) {
+      <a [href]="link.url" [target]="link.target">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
+        }
+        {{ link.label }}
+      </a>
+      }
+      }
     </div>
-    <div class="social-links" *ngIf="socialLinks && socialLinks.length">
-      <ng-container *ngFor="let social of socialLinks">
-        <a *ngIf="social.url" [href]="social.url" [target]="social.target">
-          <i *ngIf="social.icon" class="{{ social.icon }}"></i> {{ social.label }}
-        </a>
-      </ng-container>
+    }
+
+    @if (socialLinks && socialLinks.length) {
+    <div class="social-links">
+      @for (social of socialLinks; track social) {
+      @if (social.url) {
+      <a [href]="social.url" [target]="social.target">
+        @if (social.icon) {
+        <i class="{{ social.icon }}"></i>
+        }
+        {{ social.label }}
+      </a>
+      }
+      }
     </div>
+    }
 
     <div class="copyright">
       &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. Wszelkie prawa zastrzeżone.

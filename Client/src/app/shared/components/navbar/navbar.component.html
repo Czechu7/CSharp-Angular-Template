@@ -1,66 +1,82 @@
 <nav class="navbar">
   <div class="navbar-container">
-
     <div class="navbar-brand">
-      <img *ngIf="logo" [src]="logo" alt="Logo" class="navbar-logo">
+      @if (logo) {
+      <img [src]="logo" alt="Logo" class="navbar-logo">
+      }
       <h1 class="navbar-title">{{ title }}</h1>
     </div>
-
 
     <button class="navbar-mobile-toggle" (click)="toggleMobileMenu()">
       <span class="toggle-icon"></span>
     </button>
 
-
     <div class="navbar-menu" [class.open]="mobileMenuOpen">
       <ul class="navbar-nav">
-        <li *ngFor="let item of combinedMenuItems" class="nav-item" [class.has-dropdown]="item.items?.length">
-
-          <div *ngIf="item.items?.length" class="nav-link dropdown-toggle" (click)="toggleDropdown(item)">
-            <i *ngIf="item.icon" class="nav-icon {{ item.icon }}"></i>
+        @for (item of combinedMenuItems; track item) {
+        <li class="nav-item" [class.has-dropdown]="item.items?.length">
+          @if (item.items?.length) {
+          <div class="nav-link dropdown-toggle" (click)="toggleDropdown(item)">
+            @if (item.icon) {
+            <i class="nav-icon {{ item.icon }}"></i>
+            }
             {{ item.label }}
             <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
           </div>
 
-
-          <div *ngIf="!item.items?.length" class="nav-link" [class.disabled]="item.disabled"
-            (click)="!item.disabled && navigateTo(item)">
-            <i *ngIf="item.icon" class="nav-icon {{ item.icon }}"></i>
-            {{ item.label }}
-          </div>
-
-
-          <ul *ngIf="item.items?.length" class="dropdown-menu" [class.show]="item.expanded">
-            <li *ngFor="let subItem of item.items" class="dropdown-item" [class.disabled]="subItem.disabled"
+          <ul class="dropdown-menu" [class.show]="item.expanded">
+            @for (subItem of item.items; track subItem) {
+            <li class="dropdown-item" [class.disabled]="subItem.disabled"
               (click)="!subItem.disabled && navigateTo(subItem)">
-              <i *ngIf="subItem.icon" class="nav-icon {{ subItem.icon }}"></i>
+              @if (subItem.icon) {
+              <i class="nav-icon {{ subItem.icon }}"></i>
+              }
               {{ subItem.label }}
             </li>
+            }
           </ul>
+          } @else {
+          <div class="nav-link" [class.disabled]="item.disabled" (click)="!item.disabled && navigateTo(item)">
+            @if (item.icon) {
+            <i class="nav-icon {{ item.icon }}"></i>
+            }
+            {{ item.label }}
+          </div>
+          }
         </li>
+        }
       </ul>
 
-      <div *ngIf="showSwtichLang && langs.length > 0" class="language-switcher">
-        <app-button *ngFor="let lang of langs" [label]="lang.label"
-          [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
+      @if (showSwtichLang && langs.length > 0) {
+      <div class="language-switcher">
+        @for (lang of langs; track lang) {
+        <app-button [label]="lang.label" [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
           [variant]="currentLang === lang.value ? 'outlined' : 'text'"
           [severity]="currentLang === lang.value ? 'primary' : 'secondary'" (onClick)="switchLanguage(lang.value)">
         </app-button>
+        }
       </div>
+      }
 
-      <div *ngIf="showSwitchTheme" class="theme-switcher">
+      @if (showSwitchTheme) {
+      <div class="theme-switcher">
         <app-toggle-switch [iconOn]="'pi-moon'" [iconOff]="'pi-sun'" [(ngModel)]="isDarkTheme">
         </app-toggle-switch>
       </div>
+      }
 
-      <div *ngIf="isAuthenticated" class="user-section">
+      @if (isAuthenticated) {
+      <div class="user-section">
         <div class="user-info">
           <span class="user-name">{{ userName }}</span>
           <div class="user-avatar">
-            <img *ngIf="userAvatar" [src]="userAvatar" alt="User Avatar">
-            <div *ngIf="!userAvatar" class="avatar-placeholder">
+            @if (userAvatar) {
+            <img [src]="userAvatar" alt="User Avatar">
+            } @else {
+            <div class="avatar-placeholder">
               {{ userName.charAt(0).toUpperCase() }}
             </div>
+            }
           </div>
         </div>
         <button class="logout-button" (click)="logout()">
@@ -68,6 +84,7 @@
           Logout
         </button>
       </div>
+      }
     </div>
   </div>
 </nav>
