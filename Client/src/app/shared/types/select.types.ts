@@ -33,4 +33,6 @@ export interface SelectProps<T = any> {
   label?: string;
   labelVariant?: LabelVariant;
   inputId?: string;
+  inavlid?: boolean;
+  errorMessage?: string;
 }

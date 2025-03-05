@@ -1,3 +1,12 @@
+@import "../../../../styles/utils/extends";
+.field {
+  @extend %field-layout;
+}
+
+label {
+  @extend %label-style;
+}
+
 :host {
   display: block;
 }

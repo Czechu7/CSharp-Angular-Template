@@ -14,6 +14,7 @@ const args: ToggleSwitchProps = {
   iconOn: 'pi-check',
   iconOff: 'pi-times',
   invalid: false,
+  errorMessage: 'Error message',
 };
 
 type ToggleSwitchStory = StoryObj<ToggleSwitchComponent>;

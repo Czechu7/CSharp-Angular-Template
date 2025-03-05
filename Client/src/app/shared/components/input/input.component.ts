@@ -41,11 +41,13 @@ export class InputComponent<T> implements ControlValueAccessor, InputProps {
   @Input() disabled = false;
   @Input() required = false;
   @Input() errorMessage?: string;
+  @Input() invalid?: boolean;
   @Input() prefixIcon?: InputIcons;
   @Input() prefixText?: string;
   @Input() suffixIcon?: InputIcons;
   @Input() suffixText?: string;
   @Input() formControlName?: string;
+  @Input() autocomplete?: string;
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;

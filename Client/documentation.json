@@ -158,12 +158,12 @@
         },
         {
             "name": "CheckboxProps",
-            "id": "interface-CheckboxProps-af448ffe5dcfd9520f000013ee4f001f8c62c3bbcdbeeb572054a654669b6be5460044742fd9354ef8c4174a86dacbdac2442f0e2744d03ba8af683d933adbc1",
+            "id": "interface-CheckboxProps-d56c7b58d42ee5ba650eac48ed6c8b6e03716ff15463cbc9f1b12a84cc9178b93a7e9855981d6b184c31046478d4e9e34db0e9cdf3f3b525780892fac0eddbfc",
             "file": "src/app/shared/types/checkbox.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface CheckboxProps {\r\n  label?: string;\r\n  inputId?: string;\r\n  name?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  formControlName?: string;\r\n  value?: boolean;\r\n}\r\n",
+            "sourceCode": "export interface CheckboxProps {\r\n  label?: string;\r\n  inputId?: string;\r\n  name?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  formControlName?: string;\r\n  value?: boolean;\r\n  inavlid?: boolean;\r\n  errorMessage?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -176,6 +176,16 @@
                     "line": 5
                 },
                 {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
                     "name": "formControlName",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -184,6 +194,16 @@
                     "optional": true,
                     "description": "",
                     "line": 7
+                },
+                {
+                    "name": "inavlid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
                 },
                 {
                     "name": "inputId",
@@ -308,13 +328,23 @@
         },
         {
             "name": "InputProps",
-            "id": "interface-InputProps-e461f5fe8193ada98f37a99bf17f149a93df3db7547ad3aa1db4983c94da8ec4b0e93894804f2904481984973809a31cadcf29afe305b458858e1144b0db1a27",
+            "id": "interface-InputProps-10275cf8d1102abec79069cdc17f932722fe1f9e1b02d263a674a2d18272622190d7b21c917f005a9f2fbb72a6c908e37cbef8385d3668ae583ba69498059186",
             "file": "src/app/shared/types/input.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export type InputTypes =\r\n  | 'text'\r\n  | 'number'\r\n  | 'email'\r\n  | 'password'\r\n  | 'tel'\r\n  | 'url';\r\n\r\nexport type InputIcons =\r\n  | 'user'\r\n  | 'map'\r\n  | 'clock'\r\n  | 'star'\r\n  | 'check'\r\n  | 'times'\r\n  | 'shopping-cart';\r\n\r\nexport interface InputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  type?: InputTypes;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  prefixIcon?: InputIcons;\r\n  prefixText?: string;\r\n  suffixIcon?: InputIcons;\r\n  suffixText?: string;\r\n  formControlName?: string;\r\n}\r\n",
+            "sourceCode": "export type InputTypes =\r\n  | 'text'\r\n  | 'number'\r\n  | 'email'\r\n  | 'password'\r\n  | 'tel'\r\n  | 'url';\r\n\r\nexport type InputIcons =\r\n  | 'user'\r\n  | 'map'\r\n  | 'clock'\r\n  | 'star'\r\n  | 'check'\r\n  | 'times'\r\n  | 'shopping-cart';\r\n\r\nexport interface InputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  type?: InputTypes;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  prefixIcon?: InputIcons;\r\n  prefixText?: string;\r\n  suffixIcon?: InputIcons;\r\n  suffixText?: string;\r\n  formControlName?: string;\r\n  inavlid?: boolean;\r\n  autocomplete?: string;\r\n}\r\n",
             "properties": [
+                {
+                    "name": "autocomplete",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 31
+                },
                 {
                     "name": "disabled",
                     "deprecated": false,
@@ -344,6 +374,16 @@
                     "optional": true,
                     "description": "",
                     "line": 29
+                },
+                {
+                    "name": "inavlid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 30
                 },
                 {
                     "name": "label",
@@ -433,12 +473,12 @@
         },
         {
             "name": "MenuItem",
-            "id": "interface-MenuItem-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
+            "id": "interface-MenuItem-65811dc7505737ac623c008fbacb4bd37e392d721c2bd1f9cd1d3d7dc54afddafaa0982cbeef5a74838b62723b46bef7d424d9e043e0f3ecb574bc531d87db0c",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  url?: string;\r\n  target?: string;\r\n  command?: () => void;\r\n  items?: MenuItem[];\r\n  visible?: boolean;\r\n  disabled?: boolean;\r\n  expanded?: boolean;\r\n}\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "command",
@@ -451,16 +491,6 @@
                     "line": 7
                 },
                 {
-                    "name": "data",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "any",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 16
-                },
-                {
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -468,7 +498,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 15
+                    "line": 10
                 },
                 {
                     "name": "expanded",
@@ -478,7 +508,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 11
                 },
                 {
                     "name": "icon",
@@ -491,16 +521,6 @@
                     "line": 3
                 },
                 {
-                    "name": "id",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 13
-                },
-                {
                     "name": "items",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -508,7 +528,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 6
+                    "line": 8
                 },
                 {
                     "name": "label",
@@ -521,16 +541,6 @@
                     "line": 2
                 },
                 {
-                    "name": "queryParams",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "literal type",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 8
-                },
-                {
                     "name": "routerLink",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -541,26 +551,6 @@
                     "line": 4
                 },
                 {
-                    "name": "state",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "literal type",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "styleClass",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 12
-                },
-                {
                     "name": "target",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -568,7 +558,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11
+                    "line": 6
                 },
                 {
                     "name": "url",
@@ -578,7 +568,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 5
                 },
                 {
                     "name": "visible",
@@ -588,7 +578,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 5
+                    "line": 9
                 }
             ],
             "indexSignatures": [],
@@ -598,12 +588,12 @@
         },
         {
             "name": "NavbarProps",
-            "id": "interface-NavbarProps-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
+            "id": "interface-NavbarProps-65811dc7505737ac623c008fbacb4bd37e392d721c2bd1f9cd1d3d7dc54afddafaa0982cbeef5a74838b62723b46bef7d424d9e043e0f3ecb574bc531d87db0c",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  url?: string;\r\n  target?: string;\r\n  command?: () => void;\r\n  items?: MenuItem[];\r\n  visible?: boolean;\r\n  disabled?: boolean;\r\n  expanded?: boolean;\r\n}\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "authMenuItems",
@@ -613,7 +603,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 26
                 },
                 {
                     "name": "commonMenuItems",
@@ -623,7 +613,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 25
                 },
                 {
                     "name": "customClass",
@@ -633,7 +623,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 36
+                    "line": 29
                 },
                 {
                     "name": "isAuthenticated",
@@ -643,7 +633,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 40
+                    "line": 33
                 },
                 {
                     "name": "langs",
@@ -653,7 +643,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 32
                 },
                 {
                     "name": "logo",
@@ -663,7 +653,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 31
+                    "line": 24
                 },
                 {
                     "name": "nonAuthMenuItems",
@@ -673,7 +663,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 27
                 },
                 {
                     "name": "showSwitchTheme",
@@ -683,7 +673,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 37
+                    "line": 30
                 },
                 {
                     "name": "showSwtichLang",
@@ -693,7 +683,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 38
+                    "line": 31
                 },
                 {
                     "name": "sticky",
@@ -703,7 +693,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 35
+                    "line": 28
                 },
                 {
                     "name": "title",
@@ -713,7 +703,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 23
                 },
                 {
                     "name": "user",
@@ -723,7 +713,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 41
+                    "line": 34
                 }
             ],
             "indexSignatures": [],
@@ -733,12 +723,12 @@
         },
         {
             "name": "PasswordInputProps",
-            "id": "interface-PasswordInputProps-b91594279d22140165b320ce0c09080b7dc533696a63d903c4cae67e590afa70373889ee7664830a3f3593c766ede4987412c1c9d6538c95a9750252215eb76e",
+            "id": "interface-PasswordInputProps-4d6dbeb498416933972c6e87d459b57cc4b4f4d30a4d269858859c0d11977e4ca179049966bc8068a7fd9b6987b9e0e569cd812a1ccd289fd6c35808e80a4e65",
             "file": "src/app/shared/types/password-input.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export type Size = 'small' | 'large' | undefined;\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: boolean;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: Size;\r\n  variant: Variant;\r\n}\r\n",
+            "sourceCode": "export type Size = 'small' | 'large' | undefined;\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport interface PasswordInputProps {\r\n  label?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  invalid?: boolean;\r\n  errorMessage?: string;\r\n  formControlName?: string;\r\n  feedback?: boolean;\r\n  promptLabel?: string;\r\n  weakLabel?: string;\r\n  mediumLabel?: string;\r\n  strongLabel?: string;\r\n  size?: Size;\r\n  variant: Variant;\r\n  inavlid?: boolean;\r\n}\r\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -758,7 +748,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 11
                 },
                 {
                     "name": "feedback",
@@ -768,7 +758,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 13
                 },
                 {
                     "name": "formControlName",
@@ -778,7 +768,27 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11
+                    "line": 12
+                },
+                {
+                    "name": "inavlid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "invalid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
                 },
                 {
                     "name": "label",
@@ -798,7 +808,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 15
+                    "line": 16
                 },
                 {
                     "name": "placeholder",
@@ -818,7 +828,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 14
                 },
                 {
                     "name": "required",
@@ -838,7 +848,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 17
+                    "line": 18
                 },
                 {
                     "name": "strongLabel",
@@ -848,7 +858,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 16
+                    "line": 17
                 },
                 {
                     "name": "variant",
@@ -858,7 +868,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 19
                 },
                 {
                     "name": "weakLabel",
@@ -868,7 +878,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 15
                 }
             ],
             "indexSignatures": [],
@@ -878,12 +888,12 @@
         },
         {
             "name": "SelectProps",
-            "id": "interface-SelectProps-7cb7f6d116a2031f5de59af56f64d86e80dbec827b0a77ccee1f8ddeb90214cfd06c0ad586ab2aa507a86271d6fa9ce4d66f8f878af7d089174b2e4204ce2d49",
+            "id": "interface-SelectProps-e97c652fab3bbcd2d066725176f343e5d07385fe3ca243cc93635873c746e67ead53ae06c38ec9402bbee1c70de0325e597d1903e6edaf7be9b202c5617eca74",
             "file": "src/app/shared/types/select.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export type SelectOption = {\r\n  label: string;\r\n  value: string;\r\n};\r\n\r\nexport type SelectOptions = SelectOption[];\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport type Size = 'small' | 'large';\r\n\r\nexport type LabelVariant = 'over' | 'in' | 'on';\r\n\r\nexport interface SelectProps<T = any> {\r\n  formControlName?: string;\r\n  checkmark: boolean;\r\n  showClear: boolean;\r\n  editable: boolean;\r\n  loading: boolean;\r\n  options?: T[];\r\n  optionLabel?: string;\r\n  optionValue?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  filter?: boolean;\r\n  filterBy?: string;\r\n  virtualScroll?: boolean;\r\n  virtualScrollItemSize?: number;\r\n  value?: T;\r\n  variant?: Variant;\r\n  size?: Size;\r\n  label?: string;\r\n  labelVariant?: LabelVariant;\r\n  inputId?: string;\r\n}\r\n",
+            "sourceCode": "export type SelectOption = {\r\n  label: string;\r\n  value: string;\r\n};\r\n\r\nexport type SelectOptions = SelectOption[];\r\n\r\nexport type Variant = 'filled' | 'outlined';\r\n\r\nexport type Size = 'small' | 'large';\r\n\r\nexport type LabelVariant = 'over' | 'in' | 'on';\r\n\r\nexport interface SelectProps<T = any> {\r\n  formControlName?: string;\r\n  checkmark: boolean;\r\n  showClear: boolean;\r\n  editable: boolean;\r\n  loading: boolean;\r\n  options?: T[];\r\n  optionLabel?: string;\r\n  optionValue?: string;\r\n  placeholder?: string;\r\n  disabled?: boolean;\r\n  required?: boolean;\r\n  filter?: boolean;\r\n  filterBy?: string;\r\n  virtualScroll?: boolean;\r\n  virtualScrollItemSize?: number;\r\n  value?: T;\r\n  variant?: Variant;\r\n  size?: Size;\r\n  label?: string;\r\n  labelVariant?: LabelVariant;\r\n  inputId?: string;\r\n  inavlid?: boolean;\r\n  errorMessage?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "checkmark",
@@ -916,6 +926,16 @@
                     "line": 18
                 },
                 {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 37
+                },
+                {
                     "name": "filter",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -944,6 +964,16 @@
                     "optional": true,
                     "description": "",
                     "line": 15
+                },
+                {
+                    "name": "inavlid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 36
                 },
                 {
                     "name": "inputId",
@@ -1103,12 +1133,12 @@
         },
         {
             "name": "ToggleSwitchProps",
-            "id": "interface-ToggleSwitchProps-801436c1e68a1cc0779df46bad9415fd99d9ad6cdf5192ee698cd1f9e08a2a8fd7ee880906c43819bf353d7f8cadcc0f1a9320be4b910d18fbc0a3601b7868c4",
+            "id": "interface-ToggleSwitchProps-e96f0c2676c8dc7965e0d0e763bb73c4dce1f99fb04c1221740c5af53925a8845e202c1f120efd7112a0a7c02688491b311542c5f1d91110c6b57dc0f96ac183",
             "file": "src/app/shared/types/toogleSwitch.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface ToggleSwitchProps {\r\n  formControlName: string | null;\r\n  disabled: boolean;\r\n  iconOn?: string;\r\n  iconOff?: string;\r\n  invalid: boolean;\r\n}\r\n",
+            "sourceCode": "export interface ToggleSwitchProps {\r\n  formControlName: string | null;\r\n  disabled: boolean;\r\n  iconOn?: string;\r\n  iconOff?: string;\r\n  invalid?: boolean;\r\n  errorMessage?: string;\r\n  required?: boolean;\r\n  label?: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "disabled",
@@ -1119,6 +1149,16 @@
                     "optional": false,
                     "description": "",
                     "line": 3
+                },
+                {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
                 },
                 {
                     "name": "formControlName",
@@ -1156,9 +1196,29 @@
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 6
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "required",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
                 }
             ],
             "indexSignatures": [],
@@ -1193,12 +1253,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35-1",
+            "id": "interface-User-65811dc7505737ac623c008fbacb4bd37e392d721c2bd1f9cd1d3d7dc54afddafaa0982cbeef5a74838b62723b46bef7d424d9e043e0f3ecb574bc531d87db0c-1",
             "file": "src/app/shared/types/navbar.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  visible?: boolean;\r\n  items?: MenuItem[];\r\n  command?: () => void;\r\n  queryParams?: { [key: string]: any };\r\n  state?: { [key: string]: any };\r\n  url?: string;\r\n  target?: string;\r\n  styleClass?: string;\r\n  id?: string;\r\n  expanded?: boolean;\r\n  disabled?: boolean;\r\n  data?: any;\r\n}\r\n\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
+            "sourceCode": "export interface MenuItem {\r\n  label: string;\r\n  icon?: string;\r\n  routerLink?: string;\r\n  url?: string;\r\n  target?: string;\r\n  command?: () => void;\r\n  items?: MenuItem[];\r\n  visible?: boolean;\r\n  disabled?: boolean;\r\n  expanded?: boolean;\r\n}\r\nexport interface User {\r\n  name: string;\r\n  avatar?: string;\r\n  id?: string;\r\n  role?: string;\r\n}\r\n\r\nexport type Langs = { label: string; value: string }[];\r\n\r\nexport interface NavbarProps {\r\n  title: string;\r\n  logo?: string;\r\n  commonMenuItems: MenuItem[];\r\n  authMenuItems: MenuItem[];\r\n  nonAuthMenuItems: MenuItem[];\r\n  sticky?: boolean;\r\n  customClass?: string;\r\n  showSwitchTheme?: boolean;\r\n  showSwtichLang?: boolean;\r\n  langs: Langs;\r\n  isAuthenticated?: boolean;\r\n  user?: User;\r\n}\r\n",
             "properties": [
                 {
                     "name": "avatar",
@@ -1208,7 +1268,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 21
+                    "line": 15
                 },
                 {
                     "name": "id",
@@ -1218,7 +1278,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 22
+                    "line": 16
                 },
                 {
                     "name": "name",
@@ -1228,7 +1288,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 14
                 },
                 {
                     "name": "role",
@@ -1238,27 +1298,11 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 23
+                    "line": 17
                 }
             ],
-            "indexSignatures": [
-                {
-                    "id": "index-declaration-4bfa71ccb26580e5a1bd62991e74a8a9d164c5931bc1712f779f1de77386d20308955977f9db77544930200b40f0532b15414809555c6e7cd339d9ed39345e35",
-                    "args": [
-                        {
-                            "name": "key",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "returnType": "any",
-                    "line": 23,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "kind": 181,
+            "indexSignatures": [],
+            "kind": 171,
             "methods": [],
             "extends": [],
             "isDuplicate": true,
@@ -2135,7 +2179,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-e4bdd22915787032065aaee42c4a3fe891b212d6359acc8ac2d8214fd2d9c31252f2b05cbc299a9df410b60f1146fe8b3d7ba792b248908eb99dbd87bd83b032",
+            "id": "component-CheckboxComponent-50bcc497607e1029d60e1883d05f13c5c54b803e7e8de838c5b633f15ce595f771998433073d81f609924b82732ba5b01ef39224397f40dc8df22ecd28b8a834",
             "file": "src/app/shared/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2190,6 +2234,14 @@
                     "decorators": []
                 },
                 {
+                    "name": "invalid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2234,29 +2286,40 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 39
                 },
                 {
                     "name": "onChange",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 36
-                },
-                {
-                    "name": "onTouch",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "any",
+                    "type": "function",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 37
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
                 }
             ],
             "methodsClass": [
@@ -2265,23 +2328,39 @@
                     "args": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "boolean",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "boolean",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
                             "tagName": {
                                 "text": "param"
                             }
@@ -2293,23 +2372,25 @@
                     "args": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "function": []
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "function": [],
                             "tagName": {
                                 "text": "param"
                             }
@@ -2329,7 +2410,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2357,7 +2438,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2399,7 +2480,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { CheckboxModule } from 'primeng/checkbox';\r\nimport { CheckboxProps } from '../../types/checkbox.types';\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [CommonModule, CheckboxModule, FormsModule, ReactiveFormsModule],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => CheckboxComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class CheckboxComponent implements CheckboxProps, ControlValueAccessor {\r\n  @Input() inputId?: string;\r\n  @Input() name?: string;\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() label?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() value?: boolean;\r\n  @Input() errorMessage?: string;\r\n\r\n  onChange: any = () => {};\r\n  onTouch: any = () => {};\r\n  checked = false;\r\n\r\n  writeValue(value: boolean): void {\r\n    this.checked = value;\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouch = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { CheckboxModule } from 'primeng/checkbox';\r\nimport { CheckboxProps } from '../../types/checkbox.types';\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [CommonModule, CheckboxModule, FormsModule, ReactiveFormsModule],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => CheckboxComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class CheckboxComponent implements CheckboxProps, ControlValueAccessor {\r\n  @Input() inputId?: string;\r\n  @Input() name?: string;\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() label?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() value?: boolean;\r\n  @Input() errorMessage?: string;\r\n  @Input() invalid?: boolean;\r\n\r\n  onChange: (value: boolean) => void = () => {};\r\n\r\n  checked = false;\r\n  touched = false;\r\n\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: boolean): void {\r\n    this.checked = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: boolean) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n}\r\n",
             "styleUrl": "./checkbox.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2409,7 +2490,7 @@
                 "CheckboxProps",
                 "ControlValueAccessor"
             ],
-            "templateData": "<p-checkbox [inputId]=\"inputId\" [name]=\"name\" [value]=\"value\" [(ngModel)]=\"checked\" [disabled]=\"disabled\"\r\n  [required]=\"required\"\r\n  [formControlName]=\"formControlName !== undefined && formControlName !== '' ? formControlName : null\">></p-checkbox>\r\n<label [class.required]=\"required\" [for]=\"inputId\" class=\"ml-2\"> {{label}} </label>\r\n"
+            "templateData": "<div class=\"field\">\r\n\r\n  <p-checkbox [inputId]=\"inputId\" [name]=\"name\" [value]=\"value\" [(ngModel)]=\"checked\" [disabled]=\"disabled\"\r\n    [required]=\"required\"\r\n    [formControlName]=\"formControlName !== undefined && formControlName !== '' ? formControlName : null\">></p-checkbox>\r\n  @if (label) {\r\n  <label [class.required]=\"required\" [for]=\"inputId\" class=\"ml-2\"> {{label}} </label>\r\n  <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  }\r\n  @if (invalid && errorMessage && touched) {\r\n  <small class=\"p-error\">{{errorMessage}}</small>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "ConfirmModalComponent",
@@ -2831,7 +2912,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-c5b00164c0e0a31fbd12bcd1da1f0bda52a6e0d9cd659d7fbd95ab9db69b5d8b060cf9cb3d6169ea365dca14696591a299755a963e6876a94819fe2d2680c4fc",
+            "id": "component-InputComponent-385cddb895a623566d4a8c3ffbaf0372df93610a71fffc0835c60fe5f667fa0c5d93bfe2fd37aa24a5cecff9339b1b628e0410bda06f1fcba5906c858284e2cf",
             "file": "src/app/shared/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2855,6 +2936,14 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "autocomplete",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "disabled",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -2875,8 +2964,16 @@
                     "name": "formControlName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 49,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "invalid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -2900,7 +2997,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 45,
                     "type": "InputIcons",
                     "decorators": []
                 },
@@ -2908,7 +3005,7 @@
                     "name": "prefixText",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -2925,7 +3022,7 @@
                     "name": "suffixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 46,
+                    "line": 47,
                     "type": "InputIcons",
                     "decorators": []
                 },
@@ -2933,7 +3030,7 @@
                     "name": "suffixText",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
+                    "line": 48,
                     "type": "string",
                     "decorators": []
                 },
@@ -2958,7 +3055,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 52
                 },
                 {
                     "name": "onChange",
@@ -2969,7 +3066,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 54,
+                    "line": 56,
                     "modifierKind": [
                         123
                     ]
@@ -2983,7 +3080,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 57
                 },
                 {
                     "name": "touched",
@@ -2994,7 +3091,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 53
                 },
                 {
                     "name": "value",
@@ -3005,7 +3102,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 54
                 }
             ],
             "methodsClass": [
@@ -3022,7 +3119,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3058,7 +3155,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3095,7 +3192,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3124,7 +3221,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3152,7 +3249,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3206,11 +3303,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport {\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n  type ControlValueAccessor,\r\n} from '@angular/forms';\r\nimport { InputTextModule } from 'primeng/inputtext';\r\nimport { InputNumberModule } from 'primeng/inputnumber';\r\nimport { InputGroupModule } from 'primeng/inputgroup';\r\nimport { InputGroupAddonModule } from 'primeng/inputgroupaddon';\r\nimport { InputProps, InputTypes, InputIcons } from '../../types/input.types';\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    InputTextModule,\r\n    InputNumberModule,\r\n    InputGroupModule,\r\n    InputGroupAddonModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => InputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class InputComponent<T> implements ControlValueAccessor, InputProps {\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() type: InputTypes = 'text';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() prefixIcon?: InputIcons;\r\n  @Input() prefixText?: string;\r\n  @Input() suffixIcon?: InputIcons;\r\n  @Input() suffixText?: string;\r\n  @Input() formControlName?: string;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport {\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n  type ControlValueAccessor,\r\n} from '@angular/forms';\r\nimport { InputTextModule } from 'primeng/inputtext';\r\nimport { InputNumberModule } from 'primeng/inputnumber';\r\nimport { InputGroupModule } from 'primeng/inputgroup';\r\nimport { InputGroupAddonModule } from 'primeng/inputgroupaddon';\r\nimport { InputProps, InputTypes, InputIcons } from '../../types/input.types';\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    InputTextModule,\r\n    InputNumberModule,\r\n    InputGroupModule,\r\n    InputGroupAddonModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => InputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class InputComponent<T> implements ControlValueAccessor, InputProps {\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() type: InputTypes = 'text';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() invalid?: boolean;\r\n  @Input() prefixIcon?: InputIcons;\r\n  @Input() prefixText?: string;\r\n  @Input() suffixIcon?: InputIcons;\r\n  @Input() suffixText?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() autocomplete?: string;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".field {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 0.5rem;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\nlabel {\r\n  font-weight: 500;\r\n}\r\n\r\nlabel.required:after {\r\n  content: \"*\";\r\n  color: var(--red-500);\r\n  margin-left: 0.25rem;\r\n}\r\n",
+                    "data": "@import \"../../../../styles/utils/extends\";\r\n.field {\r\n  @extend %field-layout;\r\n}\r\n\r\nlabel {\r\n  @extend %label-style;\r\n}\r\n",
                     "styleUrl": "./input.component.scss"
                 }
             ],
@@ -3224,7 +3321,7 @@
         },
         {
             "name": "NavbarComponent",
-            "id": "component-NavbarComponent-beefd35d0c8e03bc1d031797d5862f42a9be0d9c7e80ab85999e69716c0483b3d56b2512105e3e4ec70a1fa25bf681288d158565caa47acc4c34a07659110117",
+            "id": "component-NavbarComponent-060ee31b8225d63129d87f283d78d4d67a6329c61dce8d62824e3b2186761efb9233a7b9c7d5cc85d96d3786cbb0dad564230cd3a469684cd95e853657433d63",
             "file": "src/app/shared/components/navbar/navbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3355,7 +3452,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any[]",
+                    "type": "MenuItem[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -3402,7 +3499,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 113,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3421,7 +3518,7 @@
                     "args": [
                         {
                             "name": "item",
-                            "type": "any",
+                            "type": "MenuItem",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -3435,7 +3532,7 @@
                     "jsdoctags": [
                         {
                             "name": "item",
-                            "type": "any",
+                            "type": "MenuItem",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -3477,7 +3574,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 132,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3497,7 +3594,7 @@
                     "args": [
                         {
                             "name": "item",
-                            "type": "any",
+                            "type": "MenuItem",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -3511,7 +3608,7 @@
                     "jsdoctags": [
                         {
                             "name": "item",
-                            "type": "any",
+                            "type": "MenuItem",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -3585,7 +3682,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, type OnInit } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\nimport type { Langs, MenuItem, NavbarProps } from '../../types/navbar.types';\r\nimport { ButtonComponent } from '../button/button.component';\r\nimport { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [\r\n    MenubarModule,\r\n    CommonModule,\r\n    ButtonComponent,\r\n    ToggleSwitchComponent,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit, NavbarProps {\r\n  @Input() title = 'My Application';\r\n  @Input() logo?: string;\r\n  @Input() menuItems: MenuItem[] = [];\r\n  @Input() authMenuItems: MenuItem[] = [];\r\n  @Input() nonAuthMenuItems: MenuItem[] = [];\r\n  @Input() isAuthenticated = false;\r\n  @Input() userName = '';\r\n  @Input() userAvatar = '';\r\n  @Input() showSwitchTheme = false;\r\n  @Input() showSwtichLang = false;\r\n  @Input() commonMenuItems: MenuItem[] = [];\r\n  @Input() langs: Langs = [];\r\n\r\n  combinedMenuItems: any[] = [];\r\n  mobileMenuOpen = false;\r\n  isDarkTheme = false;\r\n  currentLang = '';\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n    if (this.langs.length > 0) {\r\n      this.currentLang = this.langs[0].value;\r\n    }\r\n    this.checkCurrentTheme();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: any) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: any) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n\r\n  toggleTheme() {\r\n    this.isDarkTheme = !this.isDarkTheme;\r\n\r\n    if (this.isDarkTheme) {\r\n      document.body.classList.add('dark-theme');\r\n    } else {\r\n      document.body.classList.remove('dark-theme');\r\n    }\r\n\r\n    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');\r\n  }\r\n\r\n  checkCurrentTheme() {\r\n    const savedTheme = localStorage.getItem('theme');\r\n    if (savedTheme === 'dark') {\r\n      this.isDarkTheme = true;\r\n      document.body.classList.add('dark-theme');\r\n    } else if (savedTheme === 'light') {\r\n      this.isDarkTheme = false;\r\n      document.body.classList.remove('dark-theme');\r\n    } else {\r\n      const prefersDark = window.matchMedia(\r\n        '(prefers-color-scheme: dark)'\r\n      ).matches;\r\n      this.isDarkTheme = prefersDark;\r\n      if (prefersDark) {\r\n        document.body.classList.add('dark-theme');\r\n      }\r\n    }\r\n  }\r\n\r\n  switchLanguage(langValue: string) {\r\n    this.currentLang = langValue;\r\n    localStorage.setItem('language', langValue);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, type OnInit } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { MenubarModule } from 'primeng/menubar';\r\nimport type { Langs, MenuItem, NavbarProps } from '../../types/navbar.types';\r\nimport { ButtonComponent } from '../button/button.component';\r\nimport { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';\r\n\r\n@Component({\r\n  selector: 'app-navbar',\r\n  standalone: true,\r\n  imports: [\r\n    MenubarModule,\r\n    CommonModule,\r\n    ButtonComponent,\r\n    ToggleSwitchComponent,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  templateUrl: './navbar.component.html',\r\n  styleUrl: './navbar.component.scss',\r\n})\r\nexport class NavbarComponent implements OnInit, NavbarProps {\r\n  @Input() title = 'My Application';\r\n  @Input() logo?: string;\r\n  @Input() menuItems: MenuItem[] = [];\r\n  @Input() authMenuItems: MenuItem[] = [];\r\n  @Input() nonAuthMenuItems: MenuItem[] = [];\r\n  @Input() isAuthenticated = false;\r\n  @Input() userName = '';\r\n  @Input() userAvatar = '';\r\n  @Input() showSwitchTheme = false;\r\n  @Input() showSwtichLang = false;\r\n  @Input() commonMenuItems: MenuItem[] = [];\r\n  @Input() langs: Langs = [];\r\n\r\n  combinedMenuItems: MenuItem[] = [];\r\n  mobileMenuOpen = false;\r\n  isDarkTheme = false;\r\n  currentLang = '';\r\n\r\n  constructor(private router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.updateMenu();\r\n    if (this.langs.length > 0) {\r\n      this.currentLang = this.langs[0].value;\r\n    }\r\n    this.checkCurrentTheme();\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.updateMenu();\r\n  }\r\n\r\n  updateMenu() {\r\n    this.combinedMenuItems = [...this.menuItems];\r\n\r\n    if (this.isAuthenticated) {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.authMenuItems,\r\n      ];\r\n    } else {\r\n      this.combinedMenuItems = [\r\n        ...this.combinedMenuItems,\r\n        ...this.nonAuthMenuItems,\r\n      ];\r\n    }\r\n\r\n    this.combinedMenuItems = this.combinedMenuItems.filter(\r\n      (item) => item.visible !== false\r\n    );\r\n  }\r\n\r\n  toggleMobileMenu() {\r\n    this.mobileMenuOpen = !this.mobileMenuOpen;\r\n  }\r\n\r\n  toggleDropdown(item: MenuItem) {\r\n    item.expanded = !item.expanded;\r\n  }\r\n\r\n  navigateTo(item: MenuItem) {\r\n    if (item.routerLink) {\r\n      this.router.navigate([item.routerLink]);\r\n    } else if (item.url) {\r\n      window.open(item.url, item.target || '_self');\r\n    } else if (item.command) {\r\n      item.command();\r\n    }\r\n\r\n    this.mobileMenuOpen = false;\r\n  }\r\n\r\n  logout() {\r\n    this.isAuthenticated = false;\r\n    this.updateMenu();\r\n    this.router.navigate(['/login']);\r\n  }\r\n\r\n  toggleTheme() {\r\n    // this.isDarkTheme = !this.isDarkTheme;\r\n    // if (this.isDarkTheme) {\r\n    //   document.body.classList.add('dark-theme');\r\n    // } else {\r\n    //   document.body.classList.remove('dark-theme');\r\n    // }\r\n    // localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');\r\n  }\r\n\r\n  checkCurrentTheme() {\r\n    // const savedTheme = localStorage.getItem('theme');\r\n    // if (savedTheme === 'dark') {\r\n    //   this.isDarkTheme = true;\r\n    //   document.body.classList.add('dark-theme');\r\n    // } else if (savedTheme === 'light') {\r\n    //   this.isDarkTheme = false;\r\n    //   document.body.classList.remove('dark-theme');\r\n    // } else {\r\n    //   const prefersDark = window.matchMedia(\r\n    //     '(prefers-color-scheme: dark)'\r\n    //   ).matches;\r\n    //   this.isDarkTheme = prefersDark;\r\n    //   if (prefersDark) {\r\n    //     document.body.classList.add('dark-theme');\r\n    //   }\r\n    // }\r\n  }\r\n\r\n  switchLanguage(langValue: string) {\r\n    // this.currentLang = langValue;\r\n    // localStorage.setItem('language', langValue);\r\n  }\r\n}\r\n",
             "styleUrl": "./navbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3719,7 +3816,7 @@
         },
         {
             "name": "PasswordInputComponent",
-            "id": "component-PasswordInputComponent-c17e042b8f81d120287baa6d387606dd8055e5bb0da3a58ce86c65523e49d8c2d02cd8dd9dbb315f28ea956f0b98a680b0ba8e6433a543c593d6ef33db1eea3d",
+            "id": "component-PasswordInputComponent-a828f8598ab9561ae46d6f5655e184bbfd9e6dae526181c2f07df5fcb27d7b90e1c294130747274dd6df6d6a94f01e6e81d7646669f2e267109d356c77451c47",
             "file": "src/app/shared/components/password-input/password-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3753,7 +3850,7 @@
                     "name": "errorMessage",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -3761,7 +3858,7 @@
                     "name": "feedback",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 40,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3769,8 +3866,17 @@
                     "name": "formControlName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 39,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "invalid",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -3785,7 +3891,7 @@
                     "name": "mediumLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 43,
                     "type": "string",
                     "decorators": []
                 },
@@ -3802,7 +3908,7 @@
                     "name": "promptLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 41,
                     "type": "string",
                     "decorators": []
                 },
@@ -3819,7 +3925,7 @@
                     "name": "size",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 45,
                     "type": "Size",
                     "decorators": []
                 },
@@ -3827,7 +3933,7 @@
                     "name": "strongLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "line": 44,
                     "type": "string",
                     "decorators": []
                 },
@@ -3836,7 +3942,7 @@
                     "defaultValue": "'outlined'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45,
+                    "line": 46,
                     "type": "Variant",
                     "decorators": []
                 },
@@ -3844,7 +3950,7 @@
                     "name": "weakLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 41,
+                    "line": 42,
                     "type": "string",
                     "decorators": []
                 }
@@ -3860,7 +3966,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 48
                 },
                 {
                     "name": "onChange",
@@ -3871,7 +3977,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51,
+                    "line": 52,
                     "modifierKind": [
                         123
                     ]
@@ -3885,7 +3991,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 53
                 },
                 {
                     "name": "touched",
@@ -3896,7 +4002,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 49
                 },
                 {
                     "name": "value",
@@ -3907,7 +4013,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 50
                 }
             ],
             "methodsClass": [
@@ -3924,7 +4030,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 72,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3960,7 +4066,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3997,7 +4103,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4026,7 +4132,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4054,7 +4160,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4096,7 +4202,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport {\r\n  PasswordInputProps,\r\n  Size,\r\n  Variant,\r\n} from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: boolean;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: Size;\r\n  @Input() variant: Variant = 'outlined';\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { PasswordModule } from 'primeng/password';\r\nimport {\r\n  PasswordInputProps,\r\n  Size,\r\n  Variant,\r\n} from '../../types/password-input.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-password-input',\r\n  standalone: true,\r\n  imports: [PasswordModule, CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './password-input.component.html',\r\n  styleUrl: './password-input.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => PasswordInputComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class PasswordInputComponent<T>\r\n  implements ControlValueAccessor, PasswordInputProps\r\n{\r\n  @Input() label?: string;\r\n  @Input() placeholder?: string = '';\r\n  @Input() disabled = false;\r\n  @Input() required = false;\r\n  @Input() invalid = false;\r\n  @Input() errorMessage?: string;\r\n  @Input() formControlName?: string;\r\n  @Input() feedback?: boolean;\r\n  @Input() promptLabel?: string;\r\n  @Input() weakLabel?: string;\r\n  @Input() mediumLabel?: string;\r\n  @Input() strongLabel?: string;\r\n  @Input() size?: Size;\r\n  @Input() variant: Variant = 'outlined';\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n  touched = false;\r\n  value: T | null = null;\r\n\r\n  private onChange = (value: T) => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: T): void {\r\n    this.value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: T) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: T): void {\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n}\r\n",
             "styleUrl": "./password-input.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4106,11 +4212,11 @@
                 "ControlValueAccessor",
                 "PasswordInputProps"
             ],
-            "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n  }\r\n\r\n  <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\" [disabled]=\"disabled\"\r\n    [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\" [weakLabel]=\"weakLabel\"\r\n    [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\" [variant]=\"variant\"></p-password>\r\n\r\n  @if (errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div class=\"field\">\r\n  @if (label) {\r\n  <label [for]=\"id\" class=\"field-label\">\r\n    {{ label }}\r\n    <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  </label>\r\n  }\r\n\r\n  <p-password [id]=\"id\" [(ngModel)]=\"value\" (ngModelChange)=\"onInput($event)\" (blur)=\"onTouched()\" [disabled]=\"disabled\"\r\n    [placeholder]=\"placeholder\" [feedback]=\"feedback\" [promptLabel]=\"promptLabel\" [weakLabel]=\"weakLabel\"\r\n    [mediumLabel]=\"mediumLabel\" [strongLabel]=\"strongLabel\" [size]=\"size\" [variant]=\"variant\"></p-password>\r\n\r\n  @if (invalid && errorMessage && touched) {\r\n  <small class=\"p-error\">{{ errorMessage }}</small>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-0016368b6d8fc001f14b885de3f604cbe322a4cd0480877b177bdb6635b26faebb29b9afedc7a4b27e1819dfa356966e5ce35594b616e99d277d1bbe3624575f",
+            "id": "component-SelectComponent-7aed5ac31d1ee8d604a00fbfb6572d69bbeb26910645e8974ff813d1d0331b5fa052d5f55d158e73f4ea51fbe3d7934b4a0fc4660f0b6d78753157c6548a5e14",
             "file": "src/app/shared/components/select/select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4142,6 +4248,7 @@
                 },
                 {
                     "name": "disabled",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 52,
@@ -4155,6 +4262,14 @@
                     "deprecationMessage": "",
                     "line": 55,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 67,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -4188,6 +4303,14 @@
                     "deprecationMessage": "",
                     "line": 66,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "invalid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 68,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -4277,7 +4400,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 81,
+                    "line": 69,
                     "type": "T | null",
                     "decorators": []
                 },
@@ -4313,7 +4436,7 @@
                     "defaultValue": "new EventEmitter<{\r\n    originalEvent: Event;\r\n    value: T;\r\n  }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70,
+                    "line": 80,
                     "type": "EventEmitter"
                 },
                 {
@@ -4321,7 +4444,7 @@
                     "defaultValue": "new EventEmitter<{ originalEvent: Event; value: T }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
+                    "line": 79,
                     "type": "EventEmitter"
                 },
                 {
@@ -4329,7 +4452,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 68,
+                    "line": 78,
                     "type": "EventEmitter"
                 }
             ],
@@ -4343,18 +4466,29 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 75
+                    "line": 87
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`input-${Math.random().toString(36).substr(2, 9)}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 85
                 },
                 {
                     "name": "onChangeCallback",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "function",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 90,
+                    "line": 99,
                     "modifierKind": [
                         123
                     ]
@@ -4364,14 +4498,36 @@
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "function",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 91,
+                    "line": 100,
                     "modifierKind": [
                         123
                     ]
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 95
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 93
                 }
             ],
             "methodsClass": [
@@ -4388,7 +4544,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 123,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4416,7 +4572,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 111,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4436,23 +4592,39 @@
                     "args": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T | null",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 108,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "T | null",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
                             "tagName": {
                                 "text": "param"
                             }
@@ -4464,23 +4636,25 @@
                     "args": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "function": []
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "fn",
-                            "type": "any",
+                            "type": "function",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "function": [],
                             "tagName": {
                                 "text": "param"
                             }
@@ -4500,7 +4674,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 115,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4528,7 +4702,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4574,7 +4748,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n  forwardRef,\r\n} from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { SelectModule } from 'primeng/select';\r\nimport { FloatLabelModule } from 'primeng/floatlabel';\r\nimport {\r\n  SelectProps,\r\n  Size,\r\n  Variant,\r\n  LabelVariant,\r\n} from '../../types/select.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-select',\r\n  standalone: true,\r\n  imports: [\r\n    SelectModule,\r\n    ReactiveFormsModule,\r\n    FormsModule,\r\n    FloatLabelModule,\r\n    CommonModule,\r\n  ],\r\n  templateUrl: './select.component.html',\r\n  styleUrl: './select.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SelectComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class SelectComponent<T = any>\r\n  implements SelectProps<T>, ControlValueAccessor\r\n{\r\n  @Input() formControlName: string = '';\r\n  @Input() options?: T[];\r\n  @Input() optionLabel?: string;\r\n  @Input() optionValue?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() disabled?: boolean;\r\n  @Input() filter?: boolean;\r\n  @Input() checkmark: boolean = false;\r\n  @Input() editable: boolean = false;\r\n  @Input() filterBy?: string;\r\n  @Input() loading: boolean = false;\r\n  @Input() showClear: boolean = false;\r\n  @Input() virtualScroll?: boolean;\r\n  @Input() virtualScrollItemSize?: number;\r\n  @Input() variant: Variant = 'filled';\r\n  @Input() size?: Size;\r\n  @Input() required?: boolean;\r\n  @Input() label?: string;\r\n  @Input() labelVariant: LabelVariant = 'over';\r\n  @Input() inputId?: string;\r\n\r\n  @Output() valueChange = new EventEmitter<T>();\r\n  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();\r\n  @Output() onChangeEvent = new EventEmitter<{\r\n    originalEvent: Event;\r\n    value: T;\r\n  }>();\r\n\r\n  _value: T | undefined = undefined;\r\n\r\n  get value(): T | undefined {\r\n    return this._value;\r\n  }\r\n\r\n  @Input() set value(val: T | null) {\r\n    if (val !== this._value) {\r\n      this._value = val === null ? undefined : val;\r\n      this.onChangeCallback(val);\r\n      this.onTouchCallback();\r\n      this.valueChange.emit(val === null ? undefined : val);\r\n    }\r\n  }\r\n\r\n  private onChangeCallback: any = () => {};\r\n  private onTouchCallback: any = () => {};\r\n\r\n  writeValue(value: T): void {\r\n    if (value !== this._value) {\r\n      this._value = value;\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.onChangeCallback = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  handleSelect(event: { originalEvent: Event; value: T }): void {\r\n    this.onSelect.emit(event);\r\n  }\r\n\r\n  handleChange(event: { originalEvent: Event; value: T }): void {\r\n    this.onChangeCallback(event.value);\r\n    this.onTouchCallback();\r\n    this.valueChange.emit(event.value);\r\n    this.onChangeEvent.emit(event);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n  forwardRef,\r\n} from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { SelectModule } from 'primeng/select';\r\nimport { FloatLabelModule } from 'primeng/floatlabel';\r\nimport {\r\n  SelectProps,\r\n  Size,\r\n  Variant,\r\n  LabelVariant,\r\n} from '../../types/select.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-select',\r\n  standalone: true,\r\n  imports: [\r\n    SelectModule,\r\n    ReactiveFormsModule,\r\n    FormsModule,\r\n    FloatLabelModule,\r\n    CommonModule,\r\n  ],\r\n  templateUrl: './select.component.html',\r\n  styleUrl: './select.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SelectComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class SelectComponent<T = any>\r\n  implements SelectProps<T>, ControlValueAccessor\r\n{\r\n  @Input() formControlName: string = '';\r\n  @Input() options?: T[];\r\n  @Input() optionLabel?: string;\r\n  @Input() optionValue?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() disabled: boolean = false;\r\n  @Input() filter?: boolean;\r\n  @Input() checkmark: boolean = false;\r\n  @Input() editable: boolean = false;\r\n  @Input() filterBy?: string;\r\n  @Input() loading: boolean = false;\r\n  @Input() showClear: boolean = false;\r\n  @Input() virtualScroll?: boolean;\r\n  @Input() virtualScrollItemSize?: number;\r\n  @Input() variant: Variant = 'filled';\r\n  @Input() size?: Size;\r\n  @Input() required?: boolean;\r\n  @Input() label?: string;\r\n  @Input() labelVariant: LabelVariant = 'over';\r\n  @Input() inputId?: string;\r\n  @Input() errorMessage?: string;\r\n  @Input() invalid?: boolean;\r\n  @Input() set value(val: T | null) {\r\n    if (val !== this._value) {\r\n      this._value = val === null ? undefined : val;\r\n      this.onChangeCallback(val);\r\n      this.onTouchCallback();\r\n      this.valueChange.emit(val === null ? undefined : val);\r\n    }\r\n  }\r\n\r\n  @Output() valueChange = new EventEmitter<T>();\r\n  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();\r\n  @Output() onChangeEvent = new EventEmitter<{\r\n    originalEvent: Event;\r\n    value: T;\r\n  }>();\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n\r\n  _value: T | undefined = undefined;\r\n\r\n  get value(): T | undefined {\r\n    return this._value;\r\n  }\r\n\r\n  touched = false;\r\n\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  private onChangeCallback: (value: T | null) => void = () => {};\r\n  private onTouchCallback: () => void = () => {};\r\n\r\n  writeValue(value: T): void {\r\n    if (value !== this._value) {\r\n      this._value = value;\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: (value: T | null) => void): void {\r\n    this.onChangeCallback = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  handleSelect(event: { originalEvent: Event; value: T }): void {\r\n    this.onSelect.emit(event);\r\n  }\r\n\r\n  handleChange(event: { originalEvent: Event; value: T }): void {\r\n    this.onChangeCallback(event.value);\r\n    this.onTouchCallback();\r\n    this.valueChange.emit(event.value);\r\n    this.onChangeEvent.emit(event);\r\n  }\r\n}\r\n",
             "styleUrl": "./select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4601,7 +4775,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 81,
+                        "line": 69,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -4618,11 +4792,11 @@
                         "name": "value",
                         "type": "",
                         "returnType": "T | undefined",
-                        "line": 77
+                        "line": 89
                     }
                 }
             },
-            "templateData": "<ng-container *ngIf=\"!label; else withLabel\">\r\n  <p-select [formControlName]=\"formControlName\" [checkmark]=\"checkmark\" [showClear]=\"showClear\" [editable]=\"editable\"\r\n    [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\" [virtualScroll]=\"virtualScroll\"\r\n    [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\" [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\"\r\n    [optionValue]=\"optionValue\" [placeholder]=\"placeholder\" [variant]=\"variant\" [size]=\"size\" [disabled]=\"disabled\"\r\n    class=\"w-full md:w-56\" (onChange)=\"handleChange($event)\" (onSelect)=\"handleSelect($event)\" />\r\n</ng-container>\r\n\r\n<ng-template #withLabel>\r\n  <p-floatlabel class=\"w-full md:w-56\" [variant]=\"labelVariant\">\r\n    <p-select [formControlName]=\"formControlName\" [inputId]=\"inputId || formControlName\" [checkmark]=\"checkmark\"\r\n      [showClear]=\"showClear\" [editable]=\"editable\" [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\"\r\n      [virtualScroll]=\"virtualScroll\" [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\"\r\n      [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\" [optionValue]=\"optionValue\" [variant]=\"variant\" [size]=\"size\"\r\n      [disabled]=\"disabled\" styleClass=\"w-full\" (onChange)=\"handleChange($event)\" (onSelect)=\"handleSelect($event)\" />\r\n    <label [for]=\"inputId || formControlName\" [class.required-label]=\"required\">{{ label }}</label>\r\n  </p-floatlabel>\r\n</ng-template>\r\n"
+            "templateData": "<div class=\"field\">\r\n\r\n  <ng-container *ngIf=\"!label; else withLabel\">\r\n    <p-select [formControlName]=\"formControlName\" [checkmark]=\"checkmark\" [showClear]=\"showClear\" [editable]=\"editable\"\r\n      [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\" [virtualScroll]=\"virtualScroll\"\r\n      [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\" [(ngModel)]=\"value\"\r\n      [optionLabel]=\"optionLabel\" [optionValue]=\"optionValue\" [placeholder]=\"placeholder\" [variant]=\"variant\"\r\n      [size]=\"size\" [disabled]=\"disabled\" class=\"w-full md:w-56\" (onChange)=\"handleChange($event)\"\r\n      (onSelect)=\"handleSelect($event)\" />\r\n  </ng-container>\r\n\r\n  <ng-template #withLabel>\r\n    <p-floatlabel class=\"w-full md:w-56\" [variant]=\"labelVariant\">\r\n      <p-select [formControlName]=\"formControlName\" [inputId]=\"inputId || formControlName\" [checkmark]=\"checkmark\"\r\n        [showClear]=\"showClear\" [editable]=\"editable\" [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\"\r\n        [virtualScroll]=\"virtualScroll\" [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\"\r\n        [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\" [optionValue]=\"optionValue\" [variant]=\"variant\" [size]=\"size\"\r\n        [disabled]=\"disabled\" styleClass=\"w-full\" (onChange)=\"handleChange($event)\" (onSelect)=\"handleSelect($event)\" />\r\n      <label [for]=\"inputId || formControlName\" [class.required-label]=\"required\">{{ label }}</label>\r\n    </p-floatlabel>\r\n  </ng-template>\r\n\r\n  @if (invalid && errorMessage && touched) {\r\n  <small class=\"p-error\">{{errorMessage}}</small>\r\n  }\r\n\r\n</div>\r\n"
         },
         {
             "name": "ToastComponent",
@@ -4669,7 +4843,7 @@
         },
         {
             "name": "ToggleSwitchComponent",
-            "id": "component-ToggleSwitchComponent-dc4c2f58a8e29921f9090a455e34c40a050b886e70b3b1d3e3877014f3adeba095468242b6e770f18a38b9a8ce17d5be58cad985d7edf70fbcb2315da040306c",
+            "id": "component-ToggleSwitchComponent-9d4c16ff2f45b7855e939e176ba7a9f649c926fc904ba906f5a13a2c5753c62ae16e5f2a02dfb82b5dc31e399d887e7f623b241eeb66f7539a249da0dc7f665b",
             "file": "src/app/shared/components/toggle-switch/toggle-switch.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4763,6 +4937,14 @@
                     "decorators": []
                 },
                 {
+                    "name": "required",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "styleClass",
                     "defaultValue": "''",
                     "deprecated": false,
@@ -4775,7 +4957,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 43,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -4791,10 +4973,21 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 39,
                     "modifierKind": [
                         123
                     ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "`input-${Math.random().toString(36).substr(2, 9)}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
                 },
                 {
                     "name": "onChange",
@@ -4805,18 +4998,29 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 52
                 },
                 {
                     "name": "onTouched",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "function",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 53
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
                 }
             ],
             "methodsClass": [
@@ -4833,7 +5037,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4869,7 +5073,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4906,7 +5110,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4935,7 +5139,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4963,7 +5167,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5005,7 +5209,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { ToggleSwitchModule } from 'primeng/toggleswitch';\r\nimport { ToggleSwitchProps } from '../../types/toogleSwitch.types';\r\n\r\n@Component({\r\n  selector: 'app-toggle-switch',\r\n  standalone: true,\r\n  imports: [ToggleSwitchModule, ReactiveFormsModule, FormsModule, CommonModule],\r\n  templateUrl: './toggle-switch.component.html',\r\n  styleUrl: './toggle-switch.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => ToggleSwitchComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class ToggleSwitchComponent implements ToggleSwitchProps {\r\n  @Input() formControlName: string | null = null;\r\n  @Input() disabled: boolean = false;\r\n  @Input() iconOn?: string = 'pi-check';\r\n  @Input() iconOff?: string = 'pi-times';\r\n  @Input() invalid: boolean = false;\r\n  @Input() label: string = '';\r\n  @Input() labelPosition: string = 'right';\r\n  @Input() styleClass: string = '';\r\n  @Input() errorMessage: string = '';\r\n\r\n  private _value: boolean = false;\r\n\r\n  @Input()\r\n  get value(): boolean {\r\n    return this._value;\r\n  }\r\n  set value(val: boolean) {\r\n    this._value = val;\r\n    this.onChange(val);\r\n    this.onTouched();\r\n  }\r\n\r\n  onChange: (value: boolean) => void = () => {};\r\n  onTouched: () => void = () => {};\r\n\r\n  writeValue(value: boolean): void {\r\n    this._value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: boolean) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: boolean): void {\r\n    this.value = value;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, forwardRef, Input } from '@angular/core';\r\nimport {\r\n  FormsModule,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { ToggleSwitchModule } from 'primeng/toggleswitch';\r\nimport { ToggleSwitchProps } from '../../types/toogleSwitch.types';\r\n\r\n@Component({\r\n  selector: 'app-toggle-switch',\r\n  standalone: true,\r\n  imports: [ToggleSwitchModule, ReactiveFormsModule, FormsModule, CommonModule],\r\n  templateUrl: './toggle-switch.component.html',\r\n  styleUrl: './toggle-switch.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => ToggleSwitchComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class ToggleSwitchComponent implements ToggleSwitchProps {\r\n  @Input() formControlName: string | null = null;\r\n  @Input() disabled: boolean = false;\r\n  @Input() iconOn?: string = 'pi-check';\r\n  @Input() iconOff?: string = 'pi-times';\r\n  @Input() invalid: boolean = false;\r\n  @Input() label: string = '';\r\n  @Input() labelPosition: string = 'right';\r\n  @Input() styleClass: string = '';\r\n  @Input() errorMessage: string = '';\r\n  @Input() required?: boolean;\r\n\r\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\r\n\r\n  private _value: boolean = false;\r\n  touched = false;\r\n\r\n  @Input()\r\n  get value(): boolean {\r\n    return this._value;\r\n  }\r\n  set value(val: boolean) {\r\n    this._value = val;\r\n    this.onChange(val);\r\n    this.onTouched();\r\n  }\r\n\r\n  onChange: (value: boolean) => void = () => {};\r\n  onTouched = () => {\r\n    this.touched = true;\r\n  };\r\n\r\n  writeValue(value: boolean): void {\r\n    this._value = value;\r\n  }\r\n\r\n  registerOnChange(fn: (value: boolean) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(value: boolean): void {\r\n    this.value = value;\r\n  }\r\n}\r\n",
             "styleUrl": "./toggle-switch.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5031,7 +5235,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 42,
+                        "line": 46,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -5048,11 +5252,11 @@
                         "name": "value",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 39
+                        "line": 43
                     }
                 }
             },
-            "templateData": "@if(iconOff && iconOn){\r\n<p-toggleswitch [(ngModel)]=\"value\" [formControlName]=\"formControlName\"\r\n  [class]=\" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass\" [disabled]=\"disabled\" (ngModelChange)=\"onInput($event)\">\r\n  <ng-template #handle [let-checked]=\"value\">\r\n    <i [ngClass]=\"['!text-xs', 'pi', value ? iconOn : iconOff]\"></i>\r\n  </ng-template>\r\n</p-toggleswitch>\r\n} @else {\r\n<p-toggleswitch [(ngModel)]=\"value\" [formControlName]=\"formControlName\"\r\n  [class]=\" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass\" [disabled]=\"disabled\" (ngModelChange)=\"onInput($event)\" />\r\n}\r\n"
+            "templateData": "<div class=\"field\">\r\n\r\n  @if (label) {\r\n  <label [class.required]=\"required\" [for]=\"id\" class=\"ml-2\"> {{label}} </label>\r\n  <span *ngIf=\"required\" class=\"required-marker\">*</span>\r\n  }\r\n\r\n  @if(iconOff && iconOn){\r\n  <p-toggleswitch [(ngModel)]=\"value\" [formControlName]=\"formControlName\"\r\n    [class]=\" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass\" [disabled]=\"disabled\"\r\n    (ngModelChange)=\"onInput($event)\">\r\n    <ng-template #handle [let-checked]=\"value\">\r\n      <i [ngClass]=\"['!text-xs', 'pi', value ? iconOn : iconOff]\"></i>\r\n    </ng-template>\r\n  </p-toggleswitch>\r\n  } @else {\r\n  <p-toggleswitch [(ngModel)]=\"value\" [formControlName]=\"formControlName\"\r\n    [class]=\" invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass\" [disabled]=\"disabled\"\r\n    (ngModelChange)=\"onInput($event)\" />\r\n  }\r\n\r\n  @if (invalid && errorMessage && touched) {\r\n  <small class=\"p-error\">{{errorMessage}}</small>\r\n  }\r\n\r\n</div>\r\n"
         }
     ],
     "modules": [],
@@ -5629,7 +5833,7 @@
                 "linktype": "component",
                 "name": "CheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -5665,7 +5869,7 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -5683,7 +5887,7 @@
                 "linktype": "component",
                 "name": "PasswordInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5692,7 +5896,7 @@
                 "linktype": "component",
                 "name": "SelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/34",
+                "coverageCount": "0/39",
                 "status": "low"
             },
             {
@@ -5710,7 +5914,7 @@
                 "linktype": "component",
                 "name": "ToggleSwitchComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -5787,7 +5991,7 @@
                 "linktype": "interface",
                 "name": "CheckboxProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -5805,7 +6009,7 @@
                 "linktype": "interface",
                 "name": "InputProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/12",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {
@@ -5854,7 +6058,7 @@
                 "linktype": "interface",
                 "name": "MenuItem",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -5891,7 +6095,7 @@
                 "linktype": "interface",
                 "name": "PasswordInputProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -5920,7 +6124,7 @@
                 "linktype": "interface",
                 "name": "SelectProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -6009,7 +6213,7 @@
                 "linktype": "interface",
                 "name": "ToggleSwitchProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {

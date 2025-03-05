@@ -27,4 +27,6 @@ export interface InputProps {
   suffixIcon?: InputIcons;
   suffixText?: string;
   formControlName?: string;
+  inavlid?: boolean;
+  autocomplete?: string;
 }

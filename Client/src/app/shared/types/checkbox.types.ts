@@ -6,4 +6,6 @@ export interface CheckboxProps {
   required?: boolean;
   formControlName?: string;
   value?: boolean;
+  inavlid?: boolean;
+  errorMessage?: string;
 }

@@ -3,5 +3,8 @@ export interface ToggleSwitchProps {
   disabled: boolean;
   iconOn?: string;
   iconOff?: string;
-  invalid: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  required?: boolean;
+  label?: string;
 }

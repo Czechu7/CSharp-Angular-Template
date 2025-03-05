@@ -20,6 +20,7 @@ const args: SelectProps = {
   showClear: false,
   editable: false,
   loading: false,
+  disabled: false,
 };
 
 type SelectStory = StoryObj<SelectComponent<any>>;

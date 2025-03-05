@@ -32,8 +32,12 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
   @Input() labelPosition: string = 'right';
   @Input() styleClass: string = '';
   @Input() errorMessage: string = '';
+  @Input() required?: boolean;
+
+  id = `input-${Math.random().toString(36).substr(2, 9)}`;
 
   private _value: boolean = false;
+  touched = false;
 
   @Input()
   get value(): boolean {
@@ -46,7 +50,9 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
   }
 
   onChange: (value: boolean) => void = () => {};
-  onTouched: () => void = () => {};
+  onTouched = () => {
+    this.touched = true;
+  };
 
   writeValue(value: boolean): void {
     this._value = value;

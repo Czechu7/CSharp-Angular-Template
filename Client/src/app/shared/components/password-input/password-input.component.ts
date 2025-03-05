@@ -34,6 +34,7 @@ export class PasswordInputComponent<T>
   @Input() placeholder?: string = '';
   @Input() disabled = false;
   @Input() required = false;
+  @Input() invalid = false;
   @Input() errorMessage?: string;
   @Input() formControlName?: string;
   @Input() feedback?: boolean;

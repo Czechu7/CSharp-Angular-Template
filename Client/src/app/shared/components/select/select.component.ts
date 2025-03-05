@@ -49,7 +49,7 @@ export class SelectComponent<T = any>
   @Input() optionLabel?: string;
   @Input() optionValue?: string;
   @Input() placeholder?: string;
-  @Input() disabled?: boolean;
+  @Input() disabled: boolean = false;
   @Input() filter?: boolean;
   @Input() checkmark: boolean = false;
   @Input() editable: boolean = false;
@@ -64,20 +64,8 @@ export class SelectComponent<T = any>
   @Input() label?: string;
   @Input() labelVariant: LabelVariant = 'over';
   @Input() inputId?: string;
-
-  @Output() valueChange = new EventEmitter<T>();
-  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();
-  @Output() onChangeEvent = new EventEmitter<{
-    originalEvent: Event;
-    value: T;
-  }>();
-
-  _value: T | undefined = undefined;
-
-  get value(): T | undefined {
-    return this._value;
-  }
-
+  @Input() errorMessage?: string;
+  @Input() invalid?: boolean;
   @Input() set value(val: T | null) {
     if (val !== this._value) {
       this._value = val === null ? undefined : val;
@@ -86,6 +74,27 @@ export class SelectComponent<T = any>
       this.valueChange.emit(val === null ? undefined : val);
     }
   }
+
+  @Output() valueChange = new EventEmitter<T>();
+  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();
+  @Output() onChangeEvent = new EventEmitter<{
+    originalEvent: Event;
+    value: T;
+  }>();
+
+  id = `input-${Math.random().toString(36).substr(2, 9)}`;
+
+  _value: T | undefined = undefined;
+
+  get value(): T | undefined {
+    return this._value;
+  }
+
+  touched = false;
+
+  onTouched = () => {
+    this.touched = true;
+  };
 
   private onChangeCallback: (value: T | null) => void = () => {};
   private onTouchCallback: () => void = () => {};
@@ -101,9 +110,8 @@ export class SelectComponent<T = any>
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouchCallback = fn;
+    this.onTouched = fn;
   }
-
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }

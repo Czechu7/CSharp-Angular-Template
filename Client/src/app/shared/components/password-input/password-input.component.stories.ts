@@ -19,6 +19,7 @@ const args: PasswordInputProps = {
   strongLabel: 'Strong password',
   feedback: true,
   variant: 'outlined',
+  invalid: false,
 };
 
 type PasswordInputStory = StoryObj<PasswordInputComponent<any>>;

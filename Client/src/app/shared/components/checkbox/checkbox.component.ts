@@ -32,10 +32,16 @@ export class CheckboxComponent implements CheckboxProps, ControlValueAccessor {
   @Input() formControlName?: string;
   @Input() value?: boolean;
   @Input() errorMessage?: string;
+  @Input() invalid?: boolean;
 
   onChange: (value: boolean) => void = () => {};
-  onTouch: () => void = () => {};
+
   checked = false;
+  touched = false;
+
+  onTouched = () => {
+    this.touched = true;
+  };
 
   writeValue(value: boolean): void {
     this.checked = value;
@@ -46,7 +52,7 @@ export class CheckboxComponent implements CheckboxProps, ControlValueAccessor {
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouch = fn;
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {

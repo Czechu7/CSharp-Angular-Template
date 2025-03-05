@@ -7,6 +7,7 @@ export interface PasswordInputProps {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  invalid?: boolean;
   errorMessage?: string;
   formControlName?: string;
   feedback?: boolean;
@@ -16,4 +17,5 @@ export interface PasswordInputProps {
   strongLabel?: string;
   size?: Size;
   variant: Variant;
+  inavlid?: boolean;
 }
