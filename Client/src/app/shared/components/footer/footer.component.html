@@ -1,0 +1,54 @@
+<footer [class]="['footer', customClass]">
+  <div class="container">
+    <div class="branding">
+      @if (logo) {
+      <img [src]="logo" alt="Logo" class="logo-img" />
+      }
+      @if (title) {
+      <span class="title">{{ title }}</span>
+      }
+    </div>
+
+    @if (links && links.length) {
+    <div class="links">
+      @for (link of links; track link) {
+      @if (link.routerLink) {
+      <a [routerLink]="link.routerLink" [queryParams]="link.queryParams">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
+        }
+        {{ link.label }}
+      </a>
+      }
+      @if (link.url) {
+      <a [href]="link.url" [target]="link.target">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
+        }
+        {{ link.label }}
+      </a>
+      }
+      }
+    </div>
+    }
+
+    @if (socialLinks && socialLinks.length) {
+    <div class="social-links">
+      @for (social of socialLinks; track social) {
+      @if (social.url) {
+      <a [href]="social.url" [target]="social.target">
+        @if (social.icon) {
+        <i class="{{ social.icon }}"></i>
+        }
+        {{ social.label }}
+      </a>
+      }
+      }
+    </div>
+    }
+
+    <div class="copyright">
+      &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. Wszelkie prawa zastrzeżone.
+    </div>
+  </div>
+</footer>
