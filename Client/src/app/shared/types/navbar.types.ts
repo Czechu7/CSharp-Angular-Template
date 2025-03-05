@@ -2,19 +2,14 @@ export interface MenuItem {
   label: string;
   icon?: string;
   routerLink?: string;
-  visible?: boolean;
-  items?: MenuItem[];
-  command?: () => void;
-  queryParams?: { [key: string]: any };
-  state?: { [key: string]: any };
   url?: string;
   target?: string;
-  styleClass?: string;
-  id?: string;
-  expanded?: boolean;
+  command?: () => void;
+  items?: MenuItem[];
+  visible?: boolean;
   disabled?: boolean;
+  expanded?: boolean;
 }
-
 export interface User {
   name: string;
   avatar?: string;

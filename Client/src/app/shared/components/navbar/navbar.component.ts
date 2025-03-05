@@ -78,11 +78,11 @@ export class NavbarComponent implements OnInit, NavbarProps {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  toggleDropdown(item: any) {
+  toggleDropdown(item: MenuItem) {
     item.expanded = !item.expanded;
   }
 
-  navigateTo(item: any) {
+  navigateTo(item: MenuItem) {
     if (item.routerLink) {
       this.router.navigate([item.routerLink]);
     } else if (item.url) {

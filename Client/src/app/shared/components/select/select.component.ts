@@ -87,8 +87,8 @@ export class SelectComponent<T = any>
     }
   }
 
-  private onChangeCallback: any = () => {};
-  private onTouchCallback: any = () => {};
+  private onChangeCallback: (value: T | null) => void = () => {};
+  private onTouchCallback: () => void = () => {};
 
   writeValue(value: T): void {
     if (value !== this._value) {
@@ -96,11 +96,11 @@ export class SelectComponent<T = any>
     }
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: T | null) => void): void {
     this.onChangeCallback = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouchCallback = fn;
   }
 
