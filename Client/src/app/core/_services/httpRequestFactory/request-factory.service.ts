@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { BaseResponse } from '../../_models/base-response.model';
+import { IPagedQueryParams } from '../../_models/paged-query-params.model';
+import { IQueryParams } from '../../_models/query-params.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +21,11 @@ export class RequestFactoryService {
     return new HttpParams();
   }
 
-  request<T>(
+  private request<T>(
     method: string,
-    endpoint: ApiEndpoints,
+    endpoint: ApiEndpoints | string,
     body?: any,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
     const headers = options?.headers
       ? options.headers
@@ -45,7 +47,7 @@ export class RequestFactoryService {
 
   get<T>(
     endpoint: ApiEndpoints,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
@@ -53,31 +55,95 @@ export class RequestFactoryService {
   post<T>(
     endpoint: ApiEndpoints,
     body: any,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
     return this.request<T>('POST', endpoint, body, options);
   }
 
-  put<T>(
+  getAll<T>(
+    endpoint: ApiEndpoints,
+    options?: IQueryParams
+  ): Observable<BaseResponse<T>> {
+    return this.request<T>('GET', endpoint, null, options);
+  }
+
+  getById<T>(
+    endpoint: ApiEndpoints,
+    id: string,
+    options?: IQueryParams
+  ): Observable<BaseResponse<T>> {
+    return this.request<T>('GET', `${endpoint}/${id}`, null, options);
+  }
+
+  getPaged<T>(
+    endpoint: ApiEndpoints,
+    queryParams: IPagedQueryParams,
+    options?: IQueryParams
+  ): Observable<BaseResponse<T>> {
+    const pageNumber = queryParams.pageNumber > 0 ? queryParams.pageNumber : 1;
+    const pageSize = queryParams.pageSize > 0 ? queryParams.pageSize : 10;
+
+    let params = options?.params ? options.params : this.getDefaultParams();
+    params = params
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+
+    if (queryParams.filter) {
+      params = params.set('filter', queryParams.filter);
+    }
+
+    if (queryParams.sortBy) {
+      params = params.set('sortBy', queryParams.sortBy);
+    }
+
+    if (queryParams.sortDescending) {
+      params = params.set(
+        'sortDescending',
+        queryParams.sortDescending.toString()
+      );
+    }
+
+    if (queryParams.includeInactive) {
+      params = params.set(
+        'includeInactive',
+        queryParams.includeInactive.toString()
+      );
+    }
+
+    return this.request<T>('GET', endpoint, null, { params });
+  }
+
+  create<T>(
     endpoint: ApiEndpoints,
     body: any,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('PUT', endpoint, body, options);
+    return this.request<T>('POST', endpoint, body, options);
+  }
+
+  update<T>(
+    endpoint: ApiEndpoints,
+    id: string,
+    body: any,
+    options?: IQueryParams
+  ): Observable<BaseResponse<T>> {
+    return this.request<T>('PUT', `${endpoint}/${id}`, body, options);
   }
 
   patch<T>(
     endpoint: ApiEndpoints,
+    id: string,
     body: any,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('PATCH', endpoint, body, options);
+    return this.request<T>('PATCH', `${endpoint}/${id}`, body, options);
   }
 
   delete<T>(
     endpoint: ApiEndpoints,
-    options?: { params?: HttpParams; headers?: HttpHeaders }
+    id: string,
+    options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('DELETE', endpoint, null, options);
+    return this.request<T>('DELETE', `${endpoint}/${id}`, null, options);
   }
 }
