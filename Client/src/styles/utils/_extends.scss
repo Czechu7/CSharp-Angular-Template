@@ -1,0 +1,16 @@
+%field-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+%label-style {
+  font-weight: 500;
+
+  &.required:after {
+    content: "*";
+    color: var(--red-500);
+    margin-left: 0.25rem;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../../styles/utils/extends";
+.field {
+  @extend %field-layout;
+}
+
+label {
+  @extend %label-style;
+}
+
+:host {
+  display: block;
+}
+
+.required-label::after {
+  content: " *";
+  color: var(--red-500);
+}
+
+:host ::ng-deep {
+  .p-inputwrapper-filled .p-inputtext:focus {
+    border-color: var(--primary-color);
+  }
+
+  .ng-dirty.ng-invalid {
+    .p-dropdown {
+      border-color: var(--red-500);
+    }
+  }
+}
