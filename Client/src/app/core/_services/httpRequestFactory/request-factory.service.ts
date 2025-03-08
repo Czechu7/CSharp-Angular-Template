@@ -137,6 +137,11 @@ export class RequestFactoryService {
     id: string,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('DELETE', `${endpoint}/${id}`, null, options);
+    return this.request<T>(
+      'PATCH',
+      `${endpoint}/${id}`,
+      { isDeleted: 1 },
+      options
+    );
   }
 }
