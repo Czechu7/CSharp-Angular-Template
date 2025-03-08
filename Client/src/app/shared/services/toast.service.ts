@@ -8,13 +8,7 @@ import type { Keys, Severity } from '../types/toast.types';
 export class ToastService {
   constructor(private messageService: MessageService) {}
 
-  show(
-    severity: Severity,
-    summary: string,
-    detail: string,
-    key?: Keys,
-    life?: number
-  ) {
+  show(severity: Severity, summary: string, detail: string, key?: Keys, life?: number) {
     this.messageService.add({
       severity,
       summary,

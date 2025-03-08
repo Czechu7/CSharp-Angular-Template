@@ -24,12 +24,12 @@ export class ButtonComponent implements ButtonProps {
   @Input() badge?: string;
   @Input() badgeSeverity: ButtonBadgeSeverity = 'info';
   @Input() severity: ButtonSeverity = 'primary';
-  @Input() raised: boolean = false;
-  @Input() rounded: boolean = false;
-  @Input() loading: boolean = false;
-  @Input() disabled: boolean = false;
+  @Input() raised = false;
+  @Input() rounded = false;
+  @Input() loading = false;
+  @Input() disabled = false;
   @Input() variant?: ButtonVariant;
-  @Input() outlined: boolean = false;
+  @Input() outlined = false;
   @Input() size?: ButtonSize;
   @Input() styleClass?: string;
   @Input() ariaLabel?: string;

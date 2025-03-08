@@ -1,12 +1,12 @@
-@import "primeicons/primeicons.css";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'primeicons/primeicons.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import "./utils/variables";
-@import "./utils/extends";
-@import "./utils/mixins";
+@import './utils/variables';
+@import './utils/extends';
+@import './utils/mixins';
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

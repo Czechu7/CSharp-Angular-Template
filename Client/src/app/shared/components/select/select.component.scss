@@ -1,4 +1,4 @@
-@import "../../../../styles/utils/extends";
+@import '../../../../styles/utils/extends';
 .field {
   @extend %field-layout;
 }
@@ -12,7 +12,7 @@ label {
 }
 
 .required-label::after {
-  content: " *";
+  content: ' *';
   color: var(--red-500);
 }
 

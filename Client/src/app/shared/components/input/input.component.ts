@@ -53,7 +53,7 @@ export class InputComponent<T> implements ControlValueAccessor, InputProps {
   touched = false;
   value: T | null = null;
 
-  private onChange = (value: T) => {};
+  private onChange = (_value: T) => {};
   onTouched = () => {
     this.touched = true;
   };

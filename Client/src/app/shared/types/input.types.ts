@@ -1,19 +1,6 @@
-export type InputTypes =
-  | 'text'
-  | 'number'
-  | 'email'
-  | 'password'
-  | 'tel'
-  | 'url';
+export type InputTypes = 'text' | 'number' | 'email' | 'password' | 'tel' | 'url';
 
-export type InputIcons =
-  | 'user'
-  | 'map'
-  | 'clock'
-  | 'star'
-  | 'check'
-  | 'times'
-  | 'shopping-cart';
+export type InputIcons = 'user' | 'map' | 'clock' | 'star' | 'check' | 'times' | 'shopping-cart';
 
 export interface InputProps {
   label?: string;
