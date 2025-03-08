@@ -45,13 +45,6 @@ export class RequestFactoryService {
     );
   }
 
-  get<T>(
-    endpoint: ApiEndpoints,
-    options?: IQueryParams
-  ): Observable<BaseResponse<T>> {
-    return this.request<T>('GET', endpoint, null, options);
-  }
-
   post<T>(
     endpoint: ApiEndpoints,
     body: any,
