@@ -21,10 +21,10 @@ export class RequestFactoryService {
     return new HttpParams();
   }
 
-  private request<T>(
+  private request<T, B = undefined>(
     method: string,
     endpoint: ApiEndpoints | string,
-    body?: any,
+    body?: B | null | undefined,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
     const headers = options?.headers
@@ -45,12 +45,12 @@ export class RequestFactoryService {
     );
   }
 
-  post<T>(
+  post<T, B>(
     endpoint: ApiEndpoints,
-    body: any,
+    body: B,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('POST', endpoint, body, options);
+    return this.request<T, B>('POST', endpoint, body, options);
   }
 
   getAll<T>(
@@ -106,30 +106,30 @@ export class RequestFactoryService {
     return this.request<T>('GET', endpoint, null, { params });
   }
 
-  create<T>(
+  create<T, B>(
     endpoint: ApiEndpoints,
-    body: any,
+    body: B,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('POST', endpoint, body, options);
+    return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  update<T>(
+  update<T, B>(
     endpoint: ApiEndpoints,
     id: string,
-    body: any,
+    body: B,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('PUT', `${endpoint}/${id}`, body, options);
+    return this.request<T, B>('PUT', `${endpoint}/${id}`, body, options);
   }
 
-  patch<T>(
+  patch<T, B>(
     endpoint: ApiEndpoints,
     id: string,
-    body: any,
+    body: B,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>('PATCH', `${endpoint}/${id}`, body, options);
+    return this.request<T, B>('PATCH', `${endpoint}/${id}`, body, options);
   }
 
   delete<T>(
@@ -137,7 +137,7 @@ export class RequestFactoryService {
     id: string,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    return this.request<T>(
+    return this.request<T, { isDeleted: number }>(
       'PATCH',
       `${endpoint}/${id}`,
       { isDeleted: 1 },
