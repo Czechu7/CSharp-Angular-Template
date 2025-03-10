@@ -1,4 +1,4 @@
-@import "./variables";
+@import './variables';
 
 @mixin respond-to($breakpoint) {
   $size: map-get($breakpoints, $breakpoint);

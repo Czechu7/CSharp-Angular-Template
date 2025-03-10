@@ -14,12 +14,7 @@ export type ButtonVariant = 'text' | 'outlined';
 
 export type ButtonSize = 'small' | 'large';
 
-export type ButtonBadgeSeverity =
-  | 'info'
-  | 'success'
-  | 'warn'
-  | 'danger'
-  | 'contrast';
+export type ButtonBadgeSeverity = 'info' | 'success' | 'warn' | 'danger' | 'contrast';
 
 export interface ButtonProps {
   label?: string;

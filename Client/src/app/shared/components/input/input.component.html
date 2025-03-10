@@ -1,36 +1,57 @@
 <div class="field">
   @if (label) {
-  <label [for]="id" [class.required]="required">{{ label }}</label>
+    <label [for]="id" [class.required]="required">{{ label }}</label>
   }
 
   <p-inputgroup>
     @if (prefixIcon || prefixText) {
-    <p-inputgroup-addon>
-      @if (prefixIcon) {
-      <i class="pi pi-{{ prefixIcon }}"></i>
-      } @if (prefixText) {
-      {{ prefixText }}
-      }
-    </p-inputgroup-addon>
-    } @if (type === 'number') {
-    <p-inputnumber [id]="id" [placeholder]="placeholder" [disabled]="disabled" [required]="required" [(ngModel)]="value"
-      (ngModelChange)="onInput($event)" (onBlur)="onTouched()" [useGrouping]="false" />
+      <p-inputgroup-addon>
+        @if (prefixIcon) {
+          <i class="pi pi-{{ prefixIcon }}"></i>
+        }
+        @if (prefixText) {
+          {{ prefixText }}
+        }
+      </p-inputgroup-addon>
+    }
+    @if (type === 'number') {
+      <p-inputnumber
+        [id]="id"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [required]="required"
+        [(ngModel)]="value"
+        (ngModelChange)="onInput($event)"
+        (onBlur)="onTouched()"
+        [useGrouping]="false"
+      />
     } @else {
-    <input [id]="id" pInputText [type]="type" [placeholder]="placeholder" [disabled]="disabled" [required]="required"
-      [ngModel]="value" (ngModelChange)="onInput($event)" (blur)="onTouched()"
-      [formControlName]="formControlName || ''" />
-    } @if (suffixIcon || suffixText) {
-    <p-inputgroup-addon>
-      @if (suffixIcon) {
-      <i class="pi pi-{{ suffixIcon }}"></i>
-      } @if (suffixText) {
-      {{ suffixText }}
-      }
-    </p-inputgroup-addon>
+      <input
+        [id]="id"
+        pInputText
+        [type]="type"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [required]="required"
+        [ngModel]="value"
+        (ngModelChange)="onInput($event)"
+        (blur)="onTouched()"
+        [formControlName]="formControlName || ''"
+      />
+    }
+    @if (suffixIcon || suffixText) {
+      <p-inputgroup-addon>
+        @if (suffixIcon) {
+          <i class="pi pi-{{ suffixIcon }}"></i>
+        }
+        @if (suffixText) {
+          {{ suffixText }}
+        }
+      </p-inputgroup-addon>
     }
   </p-inputgroup>
 
   @if (errorMessage && touched) {
-  <small class="p-error">{{ errorMessage }}</small>
+    <small class="p-error">{{ errorMessage }}</small>
   }
 </div>
