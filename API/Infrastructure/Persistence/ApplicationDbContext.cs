@@ -18,6 +18,7 @@ public class ApplicationDbContext(
     private IDbContextTransaction? _currentTransaction;
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     
     
     
