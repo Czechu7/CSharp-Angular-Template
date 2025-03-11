@@ -6,33 +6,32 @@ import { DecodedToken } from '../../_models/decoded-token.model';
   providedIn: 'root',
 })
 export class TokenService {
-  accessToken$ = signal<string | null>(null);
-  refreshToken$ = signal<string | null>(null);
-
   constructor() {}
 
   setAccessToken(token: string): void {
-    this.accessToken$.set(token);
+    localStorage.setItem('accessToken', token);
   }
 
   setRefreshToken(token: string): void {
-    this.refreshToken$.set(token);
+    localStorage.setItem('refreshToken', token);
   }
 
   getAccessToken(): string | null {
-    return this.accessToken$();
+    const accessToken = localStorage.getItem('accessToken');
+    return accessToken;
   }
 
   getRefreshToken(): string | null {
-    return this.refreshToken$();
+    const refreshToken = localStorage.getItem('refreshToken');
+    return refreshToken;
   }
 
   removeTokens(): void {
-    this.accessToken$.set(null);
-    this.refreshToken$.set(null);
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   }
 
-  isValid(): boolean {
+  tokensIsValid(): boolean {
     const accessToken = this.getAccessToken();
     const refreshToken = this.getRefreshToken();
 
