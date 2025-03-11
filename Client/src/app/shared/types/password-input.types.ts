@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export type Size = 'small' | 'large' | undefined;
 
 export type Variant = 'filled' | 'outlined';
@@ -15,7 +17,8 @@ export interface PasswordInputProps {
   weakLabel?: string;
   mediumLabel?: string;
   strongLabel?: string;
-  size?: Size;
+  // size?: Size;
   variant: Variant;
   inavlid?: boolean;
+  formControl: FormControl;
 }
