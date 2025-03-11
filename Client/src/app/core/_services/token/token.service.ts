@@ -1,38 +1,52 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { inject, Injectable, Signal, signal } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '../../_models/decoded-token.model';
+import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
+import { map, Observable } from 'rxjs';
+import { Tokens } from '../../_models/tokens.model';
+import { BaseResponse } from '../../_models/base-response.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  accessToken$ = signal<string | null>(null);
-  refreshToken$ = signal<string | null>(null);
+  requestFactory = inject(RequestFactoryService);
 
   constructor() {}
 
+  refreshToken(refreshToken: string): Observable<Tokens> {
+    return this.requestFactory
+      .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, { refreshToken })
+      .pipe(
+        map((response: BaseResponse<Tokens>) => response.data)
+      );
+  }
+
   setAccessToken(token: string): void {
-    this.accessToken$.set(token);
+    localStorage.setItem('accessToken', token);
   }
 
   setRefreshToken(token: string): void {
-    this.refreshToken$.set(token);
+    localStorage.setItem('refreshToken', token);
   }
 
   getAccessToken(): string | null {
-    return this.accessToken$();
+    const accessToken = localStorage.getItem('accessToken');
+    return accessToken;
   }
 
   getRefreshToken(): string | null {
-    return this.refreshToken$();
+    const refreshToken = localStorage.getItem('refreshToken');
+    return refreshToken;
   }
 
   removeTokens(): void {
-    this.accessToken$.set(null);
-    this.refreshToken$.set(null);
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   }
 
-  isValid(): boolean {
+  tokensIsValid(): boolean {
     const accessToken = this.getAccessToken();
     const refreshToken = this.getRefreshToken();
 
@@ -86,9 +100,13 @@ export class TokenService {
 
   validateToken(token: string): boolean {
     const decodedToken = this.decodeToken(token);
-    if (decodedToken !== null) {
-      return decodedToken.exp * 1000 > Date.now();
-    } else {
+    try {
+      if (decodedToken !== null) {
+        return decodedToken.exp * 1000 > Date.now();
+      } else {
+        return false;
+      }
+    } catch (error) {
       return false;
     }
   }
