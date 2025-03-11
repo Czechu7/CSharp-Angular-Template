@@ -12,7 +12,8 @@
 
     <app-password-input [formControl]="controls.password" placeholder="Hasło" autocomplete="current-password"
       [errorMessage]="getErrorMessage(controls.password)"
-      [invalid]="controls.password.invalid &&  controls.password.touched">
+      [invalid]="controls.password.invalid &&  controls.password.touched" promptLabel="Choose a password"
+      weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" [feedback]="true">
     </app-password-input>
 
     <app-password-input [formControl]="controls.repeatedPassword" placeholder="Hasło" autocomplete="current-password"

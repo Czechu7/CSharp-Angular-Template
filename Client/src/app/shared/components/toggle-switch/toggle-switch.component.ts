@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
 
@@ -19,7 +19,6 @@ import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
   ],
 })
 export class ToggleSwitchComponent implements ToggleSwitchProps {
-  @Input() formControlName: string | null = null;
   @Input() disabled = false;
   @Input() iconOn?: string = 'pi-check';
   @Input() iconOff?: string = 'pi-times';
@@ -29,6 +28,7 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
   @Input() styleClass?: string;
   @Input() errorMessage?: string;
   @Input() required?: boolean;
+  @Input() formControl!: FormControl;
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
 

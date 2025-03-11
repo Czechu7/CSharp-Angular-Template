@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InputComponent } from '../../../shared/components/input/input.component';
 import { RegisterForm } from '../../../shared/models/form.model';
@@ -18,6 +18,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
     CommonModule,
     PasswordInputComponent,
     RouterModule,
+    FormsModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
