@@ -44,11 +44,11 @@ export class FormService {
   initRegisterForm(): FormGroup<RegisterForm> {
     return new FormGroup({
       name: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(8), Validators.maxLength(50)],
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
         nonNullable: true,
       }),
       email: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(8), Validators.maxLength(50)],
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
         nonNullable: true,
       }),
       password: new FormControl('', {

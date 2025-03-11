@@ -1,17 +1,21 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <app-input [formControl]="controls.email" formControlName="email" placeholder="Email" type="email"
-    autocomplete="email" [errorMessage]="getErrorMessage(controls.email)"
-    [invalid]="controls.email.invalid &&  controls.email.touched">
-  </app-input>
+<div class="login-page">
+  <h1>Zaloguj się</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <app-input [formControl]="controls.email" formControlName="email" placeholder="Email" type="email"
+      autocomplete="email" [errorMessage]="getErrorMessage(controls.email)"
+      [invalid]="controls.email.invalid &&  controls.email.touched">
+    </app-input>
 
-  <app-password-input [formControl]="controls.password" formControlName="password" placeholder="Hasło"
-    autocomplete="current-password" [errorMessage]="getErrorMessage(controls.password)"
-    [invalid]="controls.password.invalid &&  controls.password.touched">
-  </app-password-input>
-  <div class="d-flex justify-content-end">
-    <app-button type="submit" [disabled]="loginForm.invalid" severity="primary" [label]="'Zaloguj się'">
-    </app-button>
-  </div>
-  <p class="text-center">Zapomniałeś hasła? <a routerLink="/odzyskaj-haslo">Odzyskaj hasło</a></p>
-  <p class="text-center">Nie masz konta? <a routerLink="/rejestracja">Zarejestruj się</a></p>
-</form>
+    <app-password-input [formControl]="controls.password" formControlName="password" placeholder="Hasło"
+      autocomplete="current-password" [errorMessage]="getErrorMessage(controls.password)"
+      [invalid]="controls.password.invalid &&  controls.password.touched">
+    </app-password-input>
+    <div class="submit-button">
+      <app-button type="submit" [disabled]="loginForm.invalid" severity="primary" [label]="'Zaloguj się'">
+      </app-button>
+    </div>
+    <p class="text-center">Zapomniałeś hasła? <a routerLink="/odzyskaj-haslo">Odzyskaj hasło</a></p>
+    <p class="text-center">Nie masz konta? <a routerLink="/rejestracja">Zarejestruj się</a></p>
+  </form>
+
+</div>

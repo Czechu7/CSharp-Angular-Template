@@ -1,0 +1,31 @@
+<div class="register-page">
+  <h1>Zarejestruj się</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+    <app-input [formControl]="controls.name" placeholder="Imię" type="text" autocomplete="name"
+      [errorMessage]="getErrorMessage(controls.name)" [invalid]="controls.name.invalid &&  controls.name.touched">
+    </app-input>
+
+    <app-input [formControl]="controls.email" placeholder="Email" type="email" autocomplete="email"
+      [errorMessage]="getErrorMessage(controls.email)" [invalid]="controls.email.invalid &&  controls.email.touched">
+    </app-input>
+
+    <app-password-input [formControl]="controls.password" placeholder="Hasło" autocomplete="current-password"
+      [errorMessage]="getErrorMessage(controls.password)"
+      [invalid]="controls.password.invalid &&  controls.password.touched">
+    </app-password-input>
+
+    <app-password-input [formControl]="controls.repeatedPassword" placeholder="Hasło" autocomplete="current-password"
+      [errorMessage]="getErrorMessage(controls.repeatedPassword)"
+      [invalid]="controls.repeatedPassword.invalid &&  controls.repeatedPassword.touched">
+    </app-password-input>
+
+    <div class="submit-button">
+      <app-button type="submit" [disabled]="registerForm.invalid" severity="primary" [label]="'Zarejestruj się'">
+      </app-button>
+    </div>
+    <p class="text-center">Zapomniałeś hasła? <a routerLink="/odzyskaj-haslo">Odzyskaj hasło</a></p>
+    <p class="text-center">Masz konto? <a routerLink="/login">Zaloguj się</a></p>
+  </form>
+
+</div>
