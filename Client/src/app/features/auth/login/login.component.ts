@@ -37,6 +37,9 @@ export class LoginComponent implements OnInit {
     this.loginForm.statusChanges.subscribe(status => {
       console.log('Form status:', status);
     });
+
+    this.loginForm.markAsPristine();
+    this.loginForm.markAsUntouched();
   }
 
   get controls() {

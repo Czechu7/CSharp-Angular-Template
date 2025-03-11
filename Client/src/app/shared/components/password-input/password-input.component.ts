@@ -23,7 +23,6 @@ import { PasswordInputProps, Variant } from '../../types/password-input.types';
       multi: true,
     },
   ],
-  // viewProviders: [{ provide: ControlContainer, useExisting: FormGroupName }],
 })
 export class PasswordInputComponent<T> implements ControlValueAccessor, PasswordInputProps {
   @Input() label?: string;
@@ -32,7 +31,6 @@ export class PasswordInputComponent<T> implements ControlValueAccessor, Password
   @Input() required = false;
   @Input() invalid = false;
   @Input() errorMessage?: string;
-  @Input() formControlName?: string;
   @Input() formControl!: FormControl;
   @Input() feedback?: boolean;
   @Input() promptLabel?: string;

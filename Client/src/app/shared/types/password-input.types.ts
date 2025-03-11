@@ -11,7 +11,6 @@ export interface PasswordInputProps {
   required?: boolean;
   invalid?: boolean;
   errorMessage?: string;
-  formControlName?: string;
   feedback?: boolean;
   promptLabel?: string;
   weakLabel?: string;
