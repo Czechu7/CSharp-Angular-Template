@@ -2,11 +2,7 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
-
-interface Tokens {
-  accessToken: string;
-  refreshToken: string;
-}
+import { Tokens } from '../_models/tokens.model';
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
