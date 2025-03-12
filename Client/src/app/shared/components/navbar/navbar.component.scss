@@ -8,6 +8,9 @@
   box-shadow: $global-box-shadow;
   position: relative;
   z-index: 100;
+  transition:
+    background-color $global-transition-speed,
+    color $global-transition-speed;
 
   .navbar-container {
     display: flex;
@@ -33,6 +36,7 @@
     font-size: $font-size-lg;
     font-weight: $font-weight-bold;
     margin: 0;
+    color: var(--text-primary);
   }
 }
 
@@ -61,6 +65,8 @@
     padding: 0 map-get($spacers, 3);
     height: $navbar-height;
     cursor: pointer;
+    color: var(--text-primary);
+    transition: background-color $global-transition-speed;
 
     &:hover {
       background-color: $navbar-hover;
@@ -79,7 +85,7 @@
   .dropdown-toggle {
     .dropdown-arrow {
       margin-left: map-get($spacers, 1);
-      border: solid $navbar-text;
+      border: solid var(--text-primary);
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 3px;
@@ -116,6 +122,7 @@
       align-items: center;
       padding: map-get($spacers, 2) map-get($spacers, 3);
       cursor: pointer;
+      color: var(--text-primary);
 
       &:hover {
         background-color: $navbar-hover;
@@ -140,6 +147,7 @@
 
     .user-name {
       margin-right: map-get($spacers, 2);
+      color: var(--text-primary);
     }
 
     .user-avatar {
@@ -147,7 +155,7 @@
       height: 36px;
       border-radius: 50%;
       overflow: hidden;
-      background-color: $primary;
+      background-color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -174,6 +182,7 @@
     align-items: center;
     padding: map-get($spacers, 1) map-get($spacers, 2);
     border-radius: $global-border-radius;
+    color: var(--text-primary);
 
     &:hover {
       background-color: $navbar-hover;
@@ -190,7 +199,7 @@
         position: absolute;
         width: 10px;
         height: 10px;
-        border: 2px solid $navbar-text;
+        border: 2px solid currentColor;
         border-radius: 50%;
         top: 0;
         left: 0;
@@ -201,7 +210,7 @@
         position: absolute;
         width: 8px;
         height: 2px;
-        background-color: $navbar-text;
+        background-color: currentColor;
         top: 7px;
         right: 0;
       }
@@ -222,7 +231,7 @@
     position: absolute;
     width: 24px;
     height: 3px;
-    background-color: $navbar-text;
+    background-color: var(--text-primary);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -234,7 +243,7 @@
       position: absolute;
       width: 24px;
       height: 3px;
-      background-color: $navbar-text;
+      background-color: var(--text-primary);
       left: 0;
       transition: transform $global-transition-speed;
     }
@@ -287,7 +296,7 @@
       width: 100%;
       box-shadow: none;
       border: none;
-      background-color: $navbar-hover;
+      background-color: var(--hover);
     }
 
     .user-section {
@@ -309,4 +318,18 @@
 .language-switcher,
 .theme-switcher {
   margin: map-get($spacers, 2);
+  color: var(--text-primary);
+
+  button {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: $global-border-radius;
+    padding: map-get($spacers, 1) map-get($spacers, 2);
+    cursor: pointer;
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
 }

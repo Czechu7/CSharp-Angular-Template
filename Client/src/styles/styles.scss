@@ -8,5 +8,10 @@
 @import './utils/mixins';
 
 body {
-  font-family: 'Roboto', sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: $font-family-base;
+  transition:
+    background-color $global-transition-speed,
+    color $global-transition-speed;
 }

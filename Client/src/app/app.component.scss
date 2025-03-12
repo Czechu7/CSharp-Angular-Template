@@ -1,4 +1,11 @@
 @import '../styles/utils/variables';
+
 .main-container {
-  //   background-color: $bakcground-color;
+  background-color: var(--background);
+  color: var(--text-primary);
+  min-height: calc(100vh - #{$navbar-height} - #{$footer-padding} * 2);
+  padding: map-get($spacers, 4) 0;
+  transition:
+    background-color $global-transition-speed,
+    color $global-transition-speed;
 }

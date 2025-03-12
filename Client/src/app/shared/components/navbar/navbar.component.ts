@@ -114,7 +114,6 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   toggleTheme() {
-    console.log('toggleTheme');
     if (this.isDarkTheme) {
       document.body.classList.add('dark-theme');
     } else {
@@ -124,7 +123,6 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   checkCurrentTheme() {
-    console.log('checkCurrentTheme');
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       this.isDarkTheme = true;

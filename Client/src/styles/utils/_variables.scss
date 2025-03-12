@@ -1,3 +1,4 @@
+// _variables.scss
 $global-max-width: 1200px;
 $global-container-padding: 0 20px;
 $global-mobile-breakpoint: 768px;
@@ -5,106 +6,85 @@ $global-transition-speed: 0.3s;
 $global-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 $global-border-radius: 4px;
 
-$active-scheme: 'default';
-$primary: color('primary');
 $color-schemes: (
-  'default': (
+  'light': (
     'primary': #3f51b5,
-    'primary-light': lighten(#3f51b5, 15%),
-    'primary-dark': darken(#3f51b5, 15%),
+    'primary-light': #7986cb,
+    'primary-dark': #303f9f,
     'secondary': #e0e0e0,
     'text-primary': #333333,
     'text-secondary': #666666,
-    'background': #e2bcbc,
+    'background': #ffffff,
+    'navbar-bg': #ffffff,
     'border': #e0e0e0,
-    'hover': #f2f2f2,
+    'hover': #f5f5f5,
     'active': #e6e6e6,
-    'footer-link-hover': lighten(lighten(#3f51b5, 15%), 20%),
+    'footer-bg': #303f9f,
+    'footer-text': #ffffff,
+    'footer-link-hover': #c5cae9,
   ),
   'dark': (
     'primary': #1e88e5,
-    'primary-light': lighten(#1e88e5, 15%),
-    'primary-dark': darken(#1e88e5, 15%),
+    'primary-light': #64b5f6,
+    'primary-dark': #0d47a1,
     'secondary': #424242,
-    'text-primary': #ffffff,
+    'text-primary': #f5f5f5,
     'text-secondary': #bdbdbd,
     'background': #121212,
+    'navbar-bg': #1e1e1e,
     'border': #424242,
     'hover': #333333,
     'active': #444444,
-    'footer-link-hover': lighten(lighten(#1e88e5, 15%), 20%),
+    'footer-bg': #0d47a1,
+    'footer-text': #f5f5f5,
+    'footer-link-hover': #90caf9,
   ),
 );
 
-@function color($name) {
-  @return map-get(map-get($color-schemes, $active-scheme), $name);
-}
-
-// Default theme CSS variables
 :root {
-  --primary: #{color('primary')};
-  --primary-light: #{color('primary-light')};
-  --primary-dark: #{color('primary-dark')};
-  --secondary: #{color('secondary')};
-  --text-primary: #{color('text-primary')};
-  --text-secondary: #{color('text-secondary')};
-  --background: #{color('background')};
-  --border: #{color('border')};
-  --hover: #{color('hover')};
-  --active: #{color('active')};
-  --footer-link-hover: #{color('footer-link-hover')};
-
-  // Apply the default theme variables
-  background-color: var(--background);
-  color: var(--text-primary);
+  --primary: #{map-get(map-get($color-schemes, 'light'), 'primary')};
+  --primary-light: #{map-get(map-get($color-schemes, 'light'), 'primary-light')};
+  --primary-dark: #{map-get(map-get($color-schemes, 'light'), 'primary-dark')};
+  --secondary: #{map-get(map-get($color-schemes, 'light'), 'secondary')};
+  --text-primary: #{map-get(map-get($color-schemes, 'light'), 'text-primary')};
+  --text-secondary: #{map-get(map-get($color-schemes, 'light'), 'text-secondary')};
+  --background: #{map-get(map-get($color-schemes, 'light'), 'background')};
+  --navbar-bg: #{map-get(map-get($color-schemes, 'light'), 'navbar-bg')};
+  --border: #{map-get(map-get($color-schemes, 'light'), 'border')};
+  --hover: #{map-get(map-get($color-schemes, 'light'), 'hover')};
+  --active: #{map-get(map-get($color-schemes, 'light'), 'active')};
+  --footer-bg: #{map-get(map-get($color-schemes, 'light'), 'footer-bg')};
+  --footer-text: #{map-get(map-get($color-schemes, 'light'), 'footer-text')};
+  --footer-link-hover: #{map-get(map-get($color-schemes, 'light'), 'footer-link-hover')};
 }
 
-// Dark theme CSS variables
 .dark-theme {
-  $active-scheme: 'dark';
-
-  --primary: #{color('primary')};
-  --primary-light: #{color('primary-light')};
-  --primary-dark: #{color('primary-dark')};
-  --secondary: #{color('secondary')};
-  --text-primary: #{color('text-primary')};
-  --text-secondary: #{color('text-secondary')};
-  --background: #{color('background')};
-  --border: #{color('border')};
-  --hover: #{color('hover')};
-  --active: #{color('active')};
-  --footer-link-hover: #{color('footer-link-hover')};
-
-  background-color: var(--background);
-  color: var(--text-primary);
-
-  a {
-    color: var(--primary);
-  }
-
-  input,
-  textarea,
-  select,
-  .main-container,
-  .navbar,
-  .footer {
-    background-color: var(--secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-  }
+  --primary: #{map-get(map-get($color-schemes, 'dark'), 'primary')};
+  --primary-light: #{map-get(map-get($color-schemes, 'dark'), 'primary-light')};
+  --primary-dark: #{map-get(map-get($color-schemes, 'dark'), 'primary-dark')};
+  --secondary: #{map-get(map-get($color-schemes, 'dark'), 'secondary')};
+  --text-primary: #{map-get(map-get($color-schemes, 'dark'), 'text-primary')};
+  --text-secondary: #{map-get(map-get($color-schemes, 'dark'), 'text-secondary')};
+  --background: #{map-get(map-get($color-schemes, 'dark'), 'background')};
+  --navbar-bg: #{map-get(map-get($color-schemes, 'dark'), 'navbar-bg')};
+  --border: #{map-get(map-get($color-schemes, 'dark'), 'border')};
+  --hover: #{map-get(map-get($color-schemes, 'dark'), 'hover')};
+  --active: #{map-get(map-get($color-schemes, 'dark'), 'active')};
+  --footer-bg: #{map-get(map-get($color-schemes, 'dark'), 'footer-bg')};
+  --footer-text: #{map-get(map-get($color-schemes, 'dark'), 'footer-text')};
+  --footer-link-hover: #{map-get(map-get($color-schemes, 'dark'), 'footer-link-hover')};
 }
 
-// Now use CSS variables instead of SCSS variables for theme-dependent styles
 $navbar-height: 64px;
 $navbar-top-height: 36px;
-$navbar-bg: var(--background);
+$navbar-bg: var(--navbar-bg);
 $navbar-text: var(--text-primary);
 $navbar-hover: var(--hover);
 $navbar-active: var(--active);
 $navbar-border: var(--border);
-$background-color: var(--background);
-$footer-bg: var(--primary-dark);
-$footer-text: white;
+
+$footer-bg: var(--footer-bg);
+$footer-text: var(--footer-text);
 $footer-padding: 20px 0;
 $footer-link-gap: 5px;
 $footer-link-margin: 0 10px;

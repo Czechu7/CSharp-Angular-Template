@@ -29,17 +29,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formService.initLoginForm();
-
-    this.loginForm.valueChanges.subscribe(values => {
-      console.log('Form values:', values);
-    });
-
-    this.loginForm.statusChanges.subscribe(status => {
-      console.log('Form status:', status);
-    });
-
-    this.loginForm.markAsPristine();
-    this.loginForm.markAsUntouched();
   }
 
   get controls() {
@@ -52,8 +41,5 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     console.log('Form submitted:', this.loginForm.getRawValue());
-    console.log('Form valid:', this.loginForm.valid);
-    console.log('Email valid:', this.controls.email.valid);
-    console.log('Password valid:', this.controls.password.valid);
   }
 }

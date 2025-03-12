@@ -30,17 +30,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formService.initRegisterForm();
-
-    this.registerForm.valueChanges.subscribe(values => {
-      console.log('Form values:', values);
-    });
-
-    this.registerForm.statusChanges.subscribe(status => {
-      console.log('Form status:', status);
-    });
-
-    this.registerForm.markAsPristine();
-    this.registerForm.markAsUntouched();
   }
 
   get controls() {
@@ -53,8 +42,5 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     console.log('Form submitted:', this.registerForm.getRawValue());
-    console.log('Form valid:', this.registerForm.valid);
-    console.log('Email valid:', this.controls.email.valid);
-    console.log('Password valid:', this.controls.password.valid);
   }
 }
