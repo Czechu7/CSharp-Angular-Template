@@ -7,6 +7,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 import { CommonModule } from '@angular/common';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../core/_services/auth/auth.service';
+import { RouterEnum } from '../../../config/router.enum';
+import { LoginModel } from '../../../core/_models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +27,12 @@ import { RouterModule } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<LoginForm>;
+  RouterEnum = RouterEnum;
 
-  constructor(private formService: FormService) {}
+  constructor(
+    private formService: FormService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.formService.initLoginForm();
@@ -40,6 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    console.log('Form submitted:', this.loginForm.getRawValue());
+    this.authService.singIn(this.loginForm.getRawValue() as LoginModel);
   }
 }

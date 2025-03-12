@@ -14,8 +14,8 @@
       <app-button type="submit" [disabled]="loginForm.invalid" severity="primary" [label]="'Zaloguj się'">
       </app-button>
     </div>
-    <p class="text-center">Zapomniałeś hasła? <a routerLink="/odzyskaj-haslo">Odzyskaj hasło</a></p>
-    <p class="text-center">Nie masz konta? <a routerLink="/rejestracja">Zarejestruj się</a></p>
+    <p class="text-center">Zapomniałeś hasła? <a routerLink="/{{RouterEnum.forgetPassword}}">Odzyskaj hasło</a></p>
+    <p class="text-center">Nie masz konta? <a routerLink="/{{RouterEnum.register}}">Zarejestruj się</a></p>
   </form>
 
 </div>

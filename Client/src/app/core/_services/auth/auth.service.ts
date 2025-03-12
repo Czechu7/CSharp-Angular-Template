@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
+import { LoginModel, RegisterModel } from '../../_models/auth.model';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private requestFactory: RequestFactoryService) {}
+  constructor(private requestFactory: RequestFactoryService) {
+    this.autoLogin();
+  }
 
-  singIn(username: string, password: string) {
+  loggedUser$ = new BehaviorSubject<boolean>(false);
+
+  singIn(values: LoginModel) {
     return this.requestFactory.post(ApiEndpoints.SIGN_IN, {
-      username,
-      password,
+      ...values,
     });
   }
 
@@ -19,12 +24,26 @@ export class AuthService {
     this.requestFactory.post(ApiEndpoints.SIGN_OUT, null);
   }
 
-  signUp(username: string, password: string) {
+  signUp(values: RegisterModel) {
     return this.requestFactory.post(ApiEndpoints.SIGN_UP, {
-      username,
-      password,
+      ...values,
     });
   }
+
+  autoLogin() {
+    return this.requestFactory.getAll(ApiEndpoints.AUTO_LOGIN).pipe(
+      tap(() => {
+        this.loggedUser$.next(true);
+      }),
+      catchError(error => {
+        this.loggedUser$.next(false);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   resetPassword() {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   changePassword() {}
 }

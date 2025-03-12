@@ -7,6 +7,9 @@ import { InputComponent } from '../../../shared/components/input/input.component
 import { RegisterForm } from '../../../shared/models/form.model';
 import { FormService } from '../../../shared/services/form.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { AuthService } from '../../../core/_services/auth/auth.service';
+import { RouterEnum } from '../../../config/router.enum';
+import { RegisterModel } from '../../../core/_models/auth.model';
 
 @Component({
   selector: 'app-register',
@@ -25,8 +28,12 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup<RegisterForm>;
+  RouterEnum = RouterEnum;
 
-  constructor(private formService: FormService) {}
+  constructor(
+    private formService: FormService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formService.initRegisterForm();
@@ -41,6 +48,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    console.log('Form submitted:', this.registerForm.getRawValue());
+    this.authService.signUp(this.registerForm.getRawValue() as RegisterModel);
   }
 }

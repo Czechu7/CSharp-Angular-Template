@@ -49,7 +49,15 @@ export class FormService {
 
   initRegisterForm(): FormGroup<RegisterForm> {
     return new FormGroup({
-      name: new FormControl('', {
+      username: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
+        nonNullable: true,
+      }),
+      firstName: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
+        nonNullable: true,
+      }),
+      lastName: new FormControl('', {
         validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
         nonNullable: true,
       }),
@@ -61,7 +69,7 @@ export class FormService {
         validators: [Validators.required, Validators.minLength(8), Validators.maxLength(75)],
         nonNullable: true,
       }),
-      repeatedPassword: new FormControl('', {
+      confirmPassword: new FormControl('', {
         validators: [Validators.required, Validators.minLength(8), Validators.maxLength(75)],
         nonNullable: true,
       }),

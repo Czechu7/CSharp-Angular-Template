@@ -6,5 +6,6 @@ export enum RouterEnum {
   settings = 'settings',
   changePassword = 'change-password',
   deleteAccount = 'deleteAccount',
+  forgetPassword = 'forget-password',
   preferences = 'preferences',
 }
