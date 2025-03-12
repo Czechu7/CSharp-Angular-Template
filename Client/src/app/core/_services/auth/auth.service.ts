@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
-import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { LoginModel, RegisterModel } from '../../_models/auth.model';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private requestFactory: RequestFactoryService) {
-    this.autoLogin();
-  }
+  constructor(private requestFactory: RequestFactoryService) {}
 
   loggedUser$ = new BehaviorSubject<boolean>(false);
 
@@ -28,18 +26,6 @@ export class AuthService {
     return this.requestFactory.post(ApiEndpoints.SIGN_UP, {
       ...values,
     });
-  }
-
-  autoLogin() {
-    return this.requestFactory.getAll(ApiEndpoints.AUTO_LOGIN).pipe(
-      tap(() => {
-        this.loggedUser$.next(true);
-      }),
-      catchError(error => {
-        this.loggedUser$.next(false);
-        return throwError(() => error);
-      })
-    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
