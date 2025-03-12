@@ -10,10 +10,11 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
+        const accessToken = tokenService.getAccessToken();
         const refreshToken = tokenService.getRefreshToken();
 
-        if (refreshToken) {
-          return tokenService.refreshToken(refreshToken).pipe(
+        if (accessToken && refreshToken) {
+          return tokenService.refreshToken({accessToken, refreshToken}).pipe(
             switchMap((newTokens: Tokens) => {
               tokenService.setAccessToken(newTokens.accessToken);
               tokenService.setRefreshToken(newTokens.refreshToken);

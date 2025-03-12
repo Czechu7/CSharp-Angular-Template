@@ -15,9 +15,9 @@ export class TokenService {
 
   constructor() {}
 
-  refreshToken(refreshToken: string): Observable<Tokens> {
+  refreshToken(tokens: Tokens): Observable<Tokens> {
     return this.requestFactory
-      .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, { refreshToken })
+      .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
       .pipe(
         map((response: BaseResponse<Tokens>) => response.data)
       );
