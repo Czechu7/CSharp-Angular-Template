@@ -34,7 +34,10 @@ public static class DependencyInjection
 
         services.AddScoped<IDateTime, DateTimeService>();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
-
+        services.AddScoped<IPasswordService, PasswordService>();
+        services.AddScoped<ITokenService, TokenService>();
+        var jwtSettings = configuration.GetSection("JwtSettings");
+        var secret = jwtSettings["Secret"];
         return services;
     }
 }
