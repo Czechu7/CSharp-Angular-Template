@@ -6,7 +6,6 @@ import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import Aura from '@primeng/themes/aura';
 import { MessageService } from 'primeng/api';
-import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/_interceptors/auth.interceptor';
 import { refreshTokenInterceptor } from './core/_interceptors/refresh-token.interceptor';
