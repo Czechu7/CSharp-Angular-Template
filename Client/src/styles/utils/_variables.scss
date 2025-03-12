@@ -5,6 +5,8 @@ $global-transition-speed: 0.3s;
 $global-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 $global-border-radius: 4px;
 
+$active-scheme: 'default';
+$primary: color('primary');
 $color-schemes: (
   'default': (
     'primary': #3f51b5,
@@ -13,71 +15,100 @@ $color-schemes: (
     'secondary': #e0e0e0,
     'text-primary': #333333,
     'text-secondary': #666666,
-    'background': #ffffff,
+    'background': #e2bcbc,
     'border': #e0e0e0,
     'hover': #f2f2f2,
     'active': #e6e6e6,
+    'footer-link-hover': lighten(lighten(#3f51b5, 15%), 20%),
   ),
-  'purple': (
-    'primary': #211c84,
-    'primary-light': #7a73d1,
-    'primary-dark': darken(#211c84, 10%),
-    'secondary': #b5a8d5,
-    'text-primary': #333333,
-    'text-secondary': #666666,
-    'background': #ffffff,
-    'border': #e0e0e0,
-    'hover': #f2f2f2,
-    'active': #e6e6e6,
-  ),
-  'teal': (
-    'primary': #00adb5,
-    'primary-light': lighten(#00adb5, 15%),
-    'primary-dark': #222831,
-    'secondary': #393e46,
-    'text-primary': #222831,
-    'text-secondary': #393e46,
-    'background': #eeeeee,
-    'border': #393e46,
-    'hover': darken(#eeeeee, 5%),
-    'active': darken(#eeeeee, 10%),
-  ),
-  'natural': (
-    'primary': #7e99a3,
-    'primary-light': #a5bfcc,
-    'primary-dark': #4c585b,
-    'secondary': #f4edd3,
-    'text-primary': #4c585b,
-    'text-secondary': #7e99a3,
-    'background': #f4edd3,
-    'border': #a5bfcc,
-    'hover': darken(#f4edd3, 5%),
-    'active': darken(#f4edd3, 10%),
+  'dark': (
+    'primary': #1e88e5,
+    'primary-light': lighten(#1e88e5, 15%),
+    'primary-dark': darken(#1e88e5, 15%),
+    'secondary': #424242,
+    'text-primary': #ffffff,
+    'text-secondary': #bdbdbd,
+    'background': #121212,
+    'border': #424242,
+    'hover': #333333,
+    'active': #444444,
+    'footer-link-hover': lighten(lighten(#1e88e5, 15%), 20%),
   ),
 );
-
-$active-scheme: 'default';
 
 @function color($name) {
   @return map-get(map-get($color-schemes, $active-scheme), $name);
 }
 
-$primary: color('primary');
+// Default theme CSS variables
+:root {
+  --primary: #{color('primary')};
+  --primary-light: #{color('primary-light')};
+  --primary-dark: #{color('primary-dark')};
+  --secondary: #{color('secondary')};
+  --text-primary: #{color('text-primary')};
+  --text-secondary: #{color('text-secondary')};
+  --background: #{color('background')};
+  --border: #{color('border')};
+  --hover: #{color('hover')};
+  --active: #{color('active')};
+  --footer-link-hover: #{color('footer-link-hover')};
 
+  // Apply the default theme variables
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+// Dark theme CSS variables
+.dark-theme {
+  $active-scheme: 'dark';
+
+  --primary: #{color('primary')};
+  --primary-light: #{color('primary-light')};
+  --primary-dark: #{color('primary-dark')};
+  --secondary: #{color('secondary')};
+  --text-primary: #{color('text-primary')};
+  --text-secondary: #{color('text-secondary')};
+  --background: #{color('background')};
+  --border: #{color('border')};
+  --hover: #{color('hover')};
+  --active: #{color('active')};
+  --footer-link-hover: #{color('footer-link-hover')};
+
+  background-color: var(--background);
+  color: var(--text-primary);
+
+  a {
+    color: var(--primary);
+  }
+
+  input,
+  textarea,
+  select,
+  .main-container,
+  .navbar,
+  .footer {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+}
+
+// Now use CSS variables instead of SCSS variables for theme-dependent styles
 $navbar-height: 64px;
 $navbar-top-height: 36px;
-$navbar-bg: color('background');
-$navbar-text: color('text-primary');
-$navbar-hover: color('hover');
-$navbar-active: color('active');
-$navbar-border: color('border');
-$bakcground-color: color('background');
-$footer-bg: color('primary-dark');
+$navbar-bg: var(--background);
+$navbar-text: var(--text-primary);
+$navbar-hover: var(--hover);
+$navbar-active: var(--active);
+$navbar-border: var(--border);
+$background-color: var(--background);
+$footer-bg: var(--primary-dark);
 $footer-text: white;
 $footer-padding: 20px 0;
 $footer-link-gap: 5px;
 $footer-link-margin: 0 10px;
-$footer-link-hover: lighten(color('primary-light'), 20%);
+$footer-link-hover: var(--footer-link-hover);
 $footer-branding-gap: 10px;
 $footer-logo-height: 40px;
 $footer-title-size: 24px;

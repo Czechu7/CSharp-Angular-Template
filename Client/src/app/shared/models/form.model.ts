@@ -18,3 +18,7 @@ export interface RegisterForm extends LoginForm {
   name: FormControl<string>;
   repeatedPassword: FormControl<string>;
 }
+
+export interface ThemeForm {
+  theme: FormControl<boolean>;
+}

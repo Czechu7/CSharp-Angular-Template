@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PasswordsForm, LoginForm, RegisterForm, PasswdRecoveryForm } from '../models/form.model';
+import {
+  PasswordsForm,
+  LoginForm,
+  RegisterForm,
+  PasswdRecoveryForm,
+  ThemeForm,
+} from '../models/form.model';
 import { equivalentValidator } from '../validators/equivalent.validator';
 
 @Injectable({
@@ -57,6 +63,15 @@ export class FormService {
       }),
       repeatedPassword: new FormControl('', {
         validators: [Validators.required, Validators.minLength(8), Validators.maxLength(75)],
+        nonNullable: true,
+      }),
+    });
+  }
+
+  initThemeForm(): FormGroup<ThemeForm> {
+    return new FormGroup({
+      theme: new FormControl(false, {
+        validators: [Validators.required],
         nonNullable: true,
       }),
     });

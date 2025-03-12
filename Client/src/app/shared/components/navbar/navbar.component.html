@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <div class="navbar-brand">
       @if (logo) {
-        <img [src]="logo" alt="Logo" class="navbar-logo" />
+      <img [src]="logo" alt="Logo" class="navbar-logo" />
       }
       <h1 class="navbar-title">{{ title }}</h1>
     </div>
@@ -14,87 +14,79 @@
     <div class="navbar-menu" [class.open]="mobileMenuOpen">
       <ul class="navbar-nav">
         @for (item of combinedMenuItems; track item) {
-          <li class="nav-item" [class.has-dropdown]="item.items?.length">
-            @if (item.items?.length) {
-              <div class="nav-link dropdown-toggle" (click)="toggleDropdown(item)">
-                @if (item.icon) {
-                  <i class="nav-icon {{ item.icon }}"></i>
-                }
-                {{ item.label }}
-                <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
-              </div>
-
-              <ul class="dropdown-menu" [class.show]="item.expanded">
-                @for (subItem of item.items; track subItem) {
-                  <li
-                    class="dropdown-item"
-                    [class.disabled]="subItem.disabled"
-                    (click)="!subItem.disabled && navigateTo(subItem)"
-                  >
-                    @if (subItem.icon) {
-                      <i class="nav-icon {{ subItem.icon }}"></i>
-                    }
-                    {{ subItem.label }}
-                  </li>
-                }
-              </ul>
-            } @else {
-              <div
-                class="nav-link"
-                [class.disabled]="item.disabled"
-                (click)="!item.disabled && navigateTo(item)"
-              >
-                @if (item.icon) {
-                  <i class="nav-icon {{ item.icon }}"></i>
-                }
-                {{ item.label }}
-              </div>
+        <li class="nav-item" [class.has-dropdown]="item.items?.length">
+          @if (item.items?.length) {
+          <div class="nav-link dropdown-toggle" (click)="toggleDropdown(item)">
+            @if (item.icon) {
+            <i class="nav-icon {{ item.icon }}"></i>
             }
-          </li>
+            {{ item.label }}
+            <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
+          </div>
+
+          <ul class="dropdown-menu" [class.show]="item.expanded">
+            @for (subItem of item.items; track subItem) {
+            <li class="dropdown-item" [class.disabled]="subItem.disabled"
+              (click)="!subItem.disabled && navigateTo(subItem)">
+              @if (subItem.icon) {
+              <i class="nav-icon {{ subItem.icon }}"></i>
+              }
+              {{ subItem.label }}
+            </li>
+            }
+          </ul>
+          } @else {
+          <div class="nav-link" [class.disabled]="item.disabled" (click)="!item.disabled && navigateTo(item)">
+            @if (item.icon) {
+            <i class="nav-icon {{ item.icon }}"></i>
+            }
+            {{ item.label }}
+          </div>
+          }
+        </li>
         }
       </ul>
 
       @if (showSwtichLang && langs.length > 0) {
-        <div class="language-switcher">
-          @for (lang of langs; track lang) {
-            <app-button
-              [label]="lang.label"
-              [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
-              [variant]="currentLang === lang.value ? 'outlined' : 'text'"
-              [severity]="currentLang === lang.value ? 'primary' : 'secondary'"
-              (onClick)="switchLanguage(lang.value)"
-            >
-            </app-button>
-          }
-        </div>
+      <div class="language-switcher">
+        @for (lang of langs; track lang) {
+        <app-button [label]="lang.label" [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
+          [variant]="currentLang === lang.value ? 'outlined' : 'text'"
+          [severity]="currentLang === lang.value ? 'primary' : 'secondary'" (onClick)="switchLanguage(lang.value)">
+        </app-button>
+        }
+      </div>
       }
 
       @if (showSwitchTheme) {
-        <div class="theme-switcher">
-          <app-toggle-switch [iconOn]="'pi-moon'" [iconOff]="'pi-sun'" [(ngModel)]="isDarkTheme">
+      <div class="theme-switcher">
+        <form [formGroup]="themeForm">
+          <app-toggle-switch [formControl]="controls.theme" [iconOn]="'pi-moon'" [iconOff]="'pi-sun'"
+            (onChange)="toggleTheme()">
           </app-toggle-switch>
-        </div>
+        </form>
+      </div>
       }
 
       @if (isAuthenticated) {
-        <div class="user-section">
-          <div class="user-info">
-            <span class="user-name">{{ userName }}</span>
-            <div class="user-avatar">
-              @if (userAvatar) {
-                <img [src]="userAvatar" alt="User Avatar" />
-              } @else {
-                <div class="avatar-placeholder">
-                  {{ userName.charAt(0).toUpperCase() }}
-                </div>
-              }
+      <div class="user-section">
+        <div class="user-info">
+          <span class="user-name">{{ userName }}</span>
+          <div class="user-avatar">
+            @if (userAvatar) {
+            <img [src]="userAvatar" alt="User Avatar" />
+            } @else {
+            <div class="avatar-placeholder">
+              {{ userName.charAt(0).toUpperCase() }}
             </div>
+            }
           </div>
-          <button class="logout-button" (click)="logout()">
-            <i class="logout-icon"></i>
-            Logout
-          </button>
         </div>
+        <button class="logout-button" (click)="logout()">
+          <i class="logout-icon"></i>
+          Logout
+        </button>
+      </div>
       }
     </div>
   </div>

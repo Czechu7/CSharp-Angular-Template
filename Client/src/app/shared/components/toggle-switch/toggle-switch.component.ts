@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef, Input } from '@angular/core';
-import { FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
 
@@ -18,10 +24,10 @@ import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
     },
   ],
 })
-export class ToggleSwitchComponent implements ToggleSwitchProps {
+export class ToggleSwitchComponent implements ControlValueAccessor, ToggleSwitchProps {
   @Input() disabled = false;
-  @Input() iconOn?: string = 'pi-check';
-  @Input() iconOff?: string = 'pi-times';
+  @Input() iconOn = 'pi-check';
+  @Input() iconOff = 'pi-times';
   @Input() invalid = false;
   @Input() label?: string;
   @Input() labelPosition = 'right';
@@ -30,7 +36,9 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
   @Input() required?: boolean;
   @Input() formControl!: FormControl;
 
-  id = `input-${Math.random().toString(36).substr(2, 9)}`;
+  @Output() valueChange = new EventEmitter<boolean>();
+
+  id = `toggle-switch-${Math.random().toString(36).substr(2, 9)}`;
 
   private _value = false;
   touched = false;
@@ -39,19 +47,22 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
   get value(): boolean {
     return this._value;
   }
-  set value(val: boolean) {
-    this._value = val;
-    this.onChange(val);
-    this.onTouched();
-  }
 
+  set value(val: boolean) {
+    if (this._value !== val) {
+      this._value = val;
+      this.onChange(val);
+      this.valueChange.emit(val);
+    }
+  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onChange: (value: boolean) => void = () => {};
   onTouched = () => {
     this.touched = true;
   };
 
   writeValue(value: boolean): void {
-    this._value = value;
+    this._value = value !== null && value !== undefined ? value : false;
   }
 
   registerOnChange(fn: (value: boolean) => void): void {
@@ -66,7 +77,8 @@ export class ToggleSwitchComponent implements ToggleSwitchProps {
     this.disabled = isDisabled;
   }
 
-  onInput(value: boolean): void {
-    this.value = value;
+  onInput(event: boolean): void {
+    this.value = event;
+    this.onTouched();
   }
 }
