@@ -487,6 +487,136 @@
             "extends": []
         },
         {
+            "name": "IContextMenuEvent",
+            "id": "interface-IContextMenuEvent-49e07701994ec0fde9d08473aceb4105142b409e4016e6ceeeefe83ebbd680d7d9c6ae6fc095336411573df2e2fb3e53ed20fcaa912daf5e012ca2998fbc28c9",
+            "file": "src/app/shared/types/context-menu.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { MenuItem } from 'primeng/api';\r\n\r\nexport interface IContextMenuProps {\r\n  items: MenuItem[];\r\n  global?: boolean;\r\n  appendTo?: string | HTMLElement;\r\n  autoZIndex?: boolean;\r\n  baseZIndex?: number;\r\n  styleClass?: string;\r\n  style?: Record<string, string>;\r\n  triggerEvent?: string;\r\n}\r\n\r\nexport interface IContextMenuEvent {\r\n  originalEvent: MouseEvent;\r\n  item: MenuItem;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "item",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "originalEvent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MouseEvent",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IContextMenuProps",
+            "id": "interface-IContextMenuProps-49e07701994ec0fde9d08473aceb4105142b409e4016e6ceeeefe83ebbd680d7d9c6ae6fc095336411573df2e2fb3e53ed20fcaa912daf5e012ca2998fbc28c9",
+            "file": "src/app/shared/types/context-menu.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { MenuItem } from 'primeng/api';\r\n\r\nexport interface IContextMenuProps {\r\n  items: MenuItem[];\r\n  global?: boolean;\r\n  appendTo?: string | HTMLElement;\r\n  autoZIndex?: boolean;\r\n  baseZIndex?: number;\r\n  styleClass?: string;\r\n  style?: Record<string, string>;\r\n  triggerEvent?: string;\r\n}\r\n\r\nexport interface IContextMenuEvent {\r\n  originalEvent: MouseEvent;\r\n  item: MenuItem;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "appendTo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | HTMLElement",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "autoZIndex",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "baseZIndex",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "global",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "style",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | string>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "styleClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "triggerEvent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "IDecodedToken",
             "id": "interface-IDecodedToken-7779b79cadadbba4c27f2cff6a06011850968cb022f4e48119620ca2ab17624cc9ae1fb66cdc76ea1795a7c7ec0931af90733af596b0103ef9e87f98773c91a3",
             "file": "src/app/core/_models/decoded-token.model.ts",
@@ -553,23 +683,13 @@
         },
         {
             "name": "IEditorProps",
-            "id": "interface-IEditorProps-c49e131cd87fd162e9cb099c4b2f6dea154c288e2b6d5025a055c0c6c3ba802eff8cea89d8494c0f2d514caaaf0a7174659cd824955cc25050ca8ec44fb01cec",
+            "id": "interface-IEditorProps-0d9b5cbd036a3791b3a27899ff20503f5b583c0606da036d1000edde4eb478efb9fa1dadea258ed48de107cb0cbd0dbaede306747bb6928c1c96bbe7db818765",
             "file": "src/app/shared/types/editor.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
+            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
             "properties": [
-                {
-                    "name": "disabled",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 8
-                },
                 {
                     "name": "formats",
                     "deprecated": false,
@@ -1190,12 +1310,12 @@
         },
         {
             "name": "ITextChangeEvent",
-            "id": "interface-ITextChangeEvent-c49e131cd87fd162e9cb099c4b2f6dea154c288e2b6d5025a055c0c6c3ba802eff8cea89d8494c0f2d514caaaf0a7174659cd824955cc25050ca8ec44fb01cec",
+            "id": "interface-ITextChangeEvent-0d9b5cbd036a3791b3a27899ff20503f5b583c0606da036d1000edde4eb478efb9fa1dadea258ed48de107cb0cbd0dbaede306747bb6928c1c96bbe7db818765",
             "file": "src/app/shared/types/editor.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
+            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "delta",
@@ -1205,7 +1325,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 },
                 {
                     "name": "htmlValue",
@@ -1215,7 +1335,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 11
                 },
                 {
                     "name": "source",
@@ -1225,7 +1345,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 14
                 },
                 {
                     "name": "textValue",
@@ -1235,7 +1355,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 12
                 }
             ],
             "indexSignatures": [],
@@ -4890,110 +5010,160 @@
             "templateData": "<p-dialog [header]=\"header\" [modal]=\"true\" [(visible)]=\"visible\" [style]=\"{ width: '20rem' }\">\n  <span class=\"p-text-secondary block mb-4\">{{ message }}</span>\n  <div class=\"flex justify-end gap-2\">\n    <app-button label=\"{{ noLabel }}\" type=\"secondary\" (click)=\"onNo()\"></app-button>\n    <app-button label=\"{{ yesLabel }}\" type=\"warn\" (click)=\"onYes()\"></app-button>\n  </div>\n</p-dialog>\n"
         },
         {
-            "name": "DashboardComponent",
-            "id": "component-DashboardComponent-8297f01e690fcce231cd2f22f4312d966401aa19e1141245592319f359fe7452013d73660321941eff1483aa8e0c6cc3b7e465a4102c8820bee29bbf74471747",
-            "file": "src/app/features/dashboard/dashboard/dashboard.component.ts",
+            "name": "ContextMenuComponent",
+            "id": "component-ContextMenuComponent-d849d8071476810810c83dffe09274df2cec608ee5dd4c15942365852b46ef8aca6424615c18e03aff6986bedc91b8ff17db61b0edc81df35239be9fc8d4daca",
+            "file": "src/app/shared/components/context-menu/context-menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-dashboard",
+            "selector": "app-context-menu",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./dashboard.component.html"
+                "./context-menu.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
+            "inputsClass": [
                 {
-                    "name": "accept",
-                    "defaultValue": "'image/*'",
+                    "name": "appendTo",
+                    "defaultValue": "'body'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
+                    "line": 16,
+                    "type": "string | HTMLElement",
+                    "decorators": []
                 },
                 {
-                    "name": "emptyMessage",
-                    "defaultValue": "'Drag and drop files to here to upload.'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                },
-                {
-                    "name": "maxFileSize",
-                    "defaultValue": "1000000",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                },
-                {
-                    "name": "mode",
-                    "defaultValue": "'advanced'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "multiple",
+                    "name": "autoZIndex",
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13
+                    "line": 17,
+                    "type": "boolean",
+                    "decorators": []
                 },
                 {
-                    "name": "name",
-                    "defaultValue": "'demo[]'",
+                    "name": "baseZIndex",
+                    "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
                 },
                 {
-                    "name": "url",
-                    "defaultValue": "'https://www.primefaces.org/primeng'",
+                    "name": "global",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "items",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "Record<string | string>",
+                    "decorators": []
+                },
+                {
+                    "name": "styleClass",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "triggerEvent",
+                    "defaultValue": "'contextmenu'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onHide",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onItemSelect",
+                    "defaultValue": "new EventEmitter<IContextMenuEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onShow",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "contextMenu",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ContextMenu",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'cm'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "handleUploadedFiles",
+                    "name": "handleHide",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleItemSelect",
                     "args": [
                         {
-                            "name": "files",
-                            "type": "File[]",
+                            "name": "event",
+                            "type": "IContextMenuEvent",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -5001,13 +5171,117 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "files",
-                            "type": "File[]",
+                            "name": "event",
+                            "type": "IContextMenuEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleShow",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "hide",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onContextMenu",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setTarget",
+                    "args": [
+                        {
+                            "name": "target",
+                            "type": "HTMLElement",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "target",
+                            "type": "HTMLElement",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "show",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -5024,24 +5298,67 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "FileUploaderComponent",
-                    "type": "component"
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ContextMenu"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FileUploaderComponent } from '../../../shared/components/file-uploader/file-uploader.component';\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  standalone: true,\r\n  imports: [FileUploaderComponent],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss',\r\n})\r\nexport class DashboardComponent {\r\n  url = 'https://www.primefaces.org/primeng';\r\n  multiple = true;\r\n  accept = 'image/*';\r\n  maxFileSize = 1000000;\r\n  mode = 'advanced';\r\n  emptyMessage = 'Drag and drop files to here to upload.';\r\n  name = 'demo[]';\r\n\r\n  handleUploadedFiles(files: File[]) {\r\n    console.log('Uploaded files:', files);\r\n    // Zrób coś z przesłanymi plikami\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MenuItem } from 'primeng/api';\r\nimport { ContextMenu } from 'primeng/contextmenu';\r\nimport { IContextMenuProps, IContextMenuEvent } from '../../types/context-menu.types';\r\n\r\n@Component({\r\n  selector: 'app-context-menu',\r\n  standalone: true,\r\n  imports: [CommonModule, ContextMenu],\r\n  templateUrl: './context-menu.component.html',\r\n})\r\nexport class ContextMenuComponent implements IContextMenuProps {\r\n  @Input() items: MenuItem[] = [];\r\n  @Input() global = false;\r\n  @Input() appendTo: string | HTMLElement = 'body';\r\n  @Input() autoZIndex = true;\r\n  @Input() baseZIndex = 0;\r\n  @Input() styleClass = '';\r\n  @Input() style: Record<string, string> = {};\r\n  @Input() triggerEvent = 'contextmenu';\r\n\r\n  @Output() onShow = new EventEmitter<void>();\r\n  @Output() onHide = new EventEmitter<void>();\r\n  @Output() onItemSelect = new EventEmitter<IContextMenuEvent>();\r\n\r\n  @ViewChild('cm') contextMenu!: ContextMenu;\r\n\r\n  show(event: MouseEvent): void {\r\n    if (this.contextMenu) {\r\n      this.contextMenu.show(event);\r\n    }\r\n  }\r\n\r\n  hide(): void {\r\n    if (this.contextMenu) {\r\n      this.contextMenu.hide();\r\n    }\r\n  }\r\n\r\n  setTarget(target: HTMLElement): void {\r\n    if (this.contextMenu) {\r\n      this.contextMenu.target = target;\r\n    }\r\n  }\r\n\r\n  onContextMenu(event: MouseEvent): void {\r\n    this.show(event);\r\n    event.preventDefault();\r\n  }\r\n\r\n  handleShow(): void {\r\n    this.onShow.emit();\r\n  }\r\n\r\n  handleHide(): void {\r\n    this.onHide.emit();\r\n  }\r\n\r\n  handleItemSelect(event: IContextMenuEvent): void {\r\n    this.onItemSelect.emit(event);\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "IContextMenuProps"
+            ],
+            "templateData": "<p-contextMenu #cm [global]=\"global\" [appendTo]=\"appendTo\" [autoZIndex]=\"autoZIndex\" [baseZIndex]=\"baseZIndex\"\r\n  [styleClass]=\"styleClass\" [style]=\"style\" [triggerEvent]=\"triggerEvent\" [model]=\"items\" (onShow)=\"handleShow()\"\r\n  (onHide)=\"handleHide()\" (onItemClick)=\"handleItemSelect($event)\">\r\n</p-contextMenu>\r\n"
+        },
+        {
+            "name": "DashboardComponent",
+            "id": "component-DashboardComponent-2b684253817c86a3756d9ec1b0481a474bfc4aa289cac2a3c2b3f6d6fec00975ba60d4aa911829569f20f657a28c28d111fa763b84a52143db1d58f3d59681fa",
+            "file": "src/app/features/dashboard/dashboard/dashboard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dashboard",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss'\r\n})\r\nexport class DashboardComponent {\r\n\r\n}\r\n",
             "styleUrl": "./dashboard.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>dashboard works!</p>\r\n<app-file-uploader  (onFileUpload)=\"handleUploadedFiles($event)\"></app-file-uploader>\r\n"
+            "templateData": "<p>dashboard works!</p>\r\n"
         },
         {
             "name": "EditorComponent",
-            "id": "component-EditorComponent-7da6ff0aa94fc7e73d43a0eb448985d650b66ac98b2d4f6a476720e876d843b42eb34c428c5238857c9009f6f846c2348b03218ca6f266acf5818f2846f49c60",
+            "id": "component-EditorComponent-eefe35a9bc363792f344f2ad838e030d20a489d5ce767e6f39ec0a2e3176f5c68ae5c129a59788c4410bf1a52ec8a651fca575229b9aab39e11a7b3f306ee2e5",
             "file": "src/app/shared/components/editor/editor.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -5065,15 +5382,6 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 34,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
                     "name": "formats",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -5083,7 +5391,6 @@
                 },
                 {
                     "name": "formControl",
-                    "defaultValue": "new FormControl()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 27,
@@ -5144,7 +5451,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 37
                 },
                 {
                     "name": "onTouch",
@@ -5155,7 +5462,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 39
                 },
                 {
                     "name": "value",
@@ -5166,7 +5473,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 35
                 }
             ],
             "methodsClass": [
@@ -5183,7 +5490,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5219,7 +5526,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5256,7 +5563,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5266,34 +5573,6 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "function": [],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "setDisabledState",
-                    "args": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 56,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": "",
                             "tagName": {
                                 "text": "param"
                             }
@@ -5313,7 +5592,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5350,7 +5629,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, forwardRef, ViewEncapsulation } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormControl,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { Editor } from 'primeng/editor';\r\nimport { IEditorProps, ITextChangeEvent } from '../../types/editor.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-editor',\r\n  templateUrl: './editor.component.html',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule, Editor, CommonModule],\r\n  encapsulation: ViewEncapsulation.None,\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => EditorComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class EditorComponent implements ControlValueAccessor, IEditorProps {\r\n  @Input() formControl: FormControl = new FormControl();\r\n  @Input() style?: Record<string, string> = { height: '320px' };\r\n  @Input() styleClass?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() formats?: string[];\r\n  @Input() modules?: Record<string, unknown>;\r\n  @Input() readOnly = false;\r\n  @Input() disabled = false;\r\n\r\n  value = '';\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onChange: (value: string) => void = () => {};\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onTouch: () => void = () => {};\r\n\r\n  // Implementacja ControlValueAccessor\r\n  writeValue(value: string): void {\r\n    this.value = value;\r\n    this.formControl.setValue(value, { emitEvent: false });\r\n  }\r\n\r\n  registerOnChange(fn: (value: string) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouch = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n    if (isDisabled) {\r\n      this.formControl.disable();\r\n    } else {\r\n      this.formControl.enable();\r\n    }\r\n  }\r\n\r\n  onTextChange(event: ITextChangeEvent): void {\r\n    this.value = event.htmlValue || '';\r\n    this.onChange(this.value);\r\n    this.onTouch();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, forwardRef, ViewEncapsulation } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormControl,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { Editor } from 'primeng/editor';\r\nimport { IEditorProps, ITextChangeEvent } from '../../types/editor.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-editor',\r\n  templateUrl: './editor.component.html',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule, Editor, CommonModule],\r\n  encapsulation: ViewEncapsulation.None,\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => EditorComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class EditorComponent implements ControlValueAccessor, IEditorProps {\r\n  @Input() formControl!: FormControl;\r\n  @Input() style?: Record<string, string> = { height: '320px' };\r\n  @Input() styleClass?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() formats?: string[];\r\n  @Input() modules?: Record<string, unknown>;\r\n  @Input() readOnly = false;\r\n\r\n  value = '';\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onChange: (value: string) => void = () => {};\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onTouch: () => void = () => {};\r\n\r\n  // Implementacja ControlValueAccessor\r\n  writeValue(value: string): void {\r\n    this.value = value;\r\n    this.formControl.setValue(value, { emitEvent: false });\r\n  }\r\n\r\n  registerOnChange(fn: (value: string) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouch = fn;\r\n  }\r\n\r\n  onTextChange(event: ITextChangeEvent): void {\r\n    this.value = event.htmlValue || '';\r\n    this.onChange(this.value);\r\n    this.onTouch();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5359,7 +5638,7 @@
                 "ControlValueAccessor",
                 "IEditorProps"
             ],
-            "templateData": "<div class=\"card\">\r\n  <p-editor [formControl]=\"formControl\" [style]=\"style\" [styleClass]=\"styleClass\" [placeholder]=\"placeholder\"\r\n    [formats]=\"formats\" [modules]=\"modules\" [readonly]=\"readOnly\" [disabled]=\"disabled\"\r\n    (onTextChange)=\"onTextChange($event)\">\r\n  </p-editor>\r\n</div>\r\n"
+            "templateData": "<div class=\"card\">\r\n  <p-editor [formControl]=\"formControl\" [style]=\"style\" [styleClass]=\"styleClass\" [placeholder]=\"placeholder\"\r\n    [formats]=\"formats\" [modules]=\"modules\" [readonly]=\"readOnly\" (onTextChange)=\"onTextChange($event)\">\r\n  </p-editor>\r\n</div>\r\n"
         },
         {
             "name": "FileUploaderComponent",
@@ -9719,7 +9998,7 @@
                 "linktype": "component",
                 "name": "DashboardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -9750,12 +10029,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/context-menu/context-menu.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContextMenuComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/editor/editor.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "EditorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -9971,12 +10259,30 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/types/context-menu.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IContextMenuEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/context-menu.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IContextMenuProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/types/editor.types.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "IEditorProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
