@@ -1,0 +1,14 @@
+<div class="card">
+  <p-fileupload [name]="name" [url]="url" (onUpload)="onUpload($event)" [multiple]="multiple" [accept]="accept"
+    [maxFileSize]="maxFileSize" [mode]="mode" [auto]="auto" [showCancelButton]="showCancelButton"
+    [showUploadButton]="showUploadButton">
+    <ng-template #empty>
+      <div>{{emptyMessage}}</div>
+    </ng-template>
+    <ng-template #content>
+      <ul *ngIf="uploadedFiles.length">
+        <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+      </ul>
+    </ng-template>
+  </p-fileupload>
+</div>
