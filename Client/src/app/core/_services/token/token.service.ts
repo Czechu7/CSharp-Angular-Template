@@ -25,16 +25,20 @@ export class TokenService {
     const accessToken = this.getAccessToken();
     const refreshToken = this.getRefreshToken();
 
-    if (accessToken === null || refreshToken === null) {
+    if (!accessToken || !refreshToken) {
       return false;
     }
 
     if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
       return true;
-    } else {
-      this.removeTokens();
-      return false;
     }
+
+    if (!this.validateToken(accessToken) && this.validateToken(refreshToken)) {
+      return true;
+    }
+
+    this.removeTokens();
+    return false;
   }
 
   setAccessToken(token: string): void {
