@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { PasswordInputComponent } from './password-input.component';
 import { PasswordInputProps } from '../../types/password-input.types';
+import { FormControl } from '@angular/forms';
 
 const meta: Meta<PasswordInputComponent<any>> = {
   title: 'Components/PasswordInput',
@@ -20,6 +21,7 @@ const args: PasswordInputProps = {
   feedback: true,
   variant: 'outlined',
   invalid: false,
+  formControl: new FormControl(),
 };
 
 type PasswordInputStory = StoryObj<PasswordInputComponent<any>>;

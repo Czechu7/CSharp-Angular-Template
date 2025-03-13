@@ -1,6 +1,7 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -46,13 +47,14 @@ export class InputComponent<T> implements ControlValueAccessor, InputProps {
   @Input() prefixText?: string;
   @Input() suffixIcon?: InputIcons;
   @Input() suffixText?: string;
-  @Input() formControlName?: string;
+  @Input() formControl!: FormControl;
   @Input() autocomplete?: string;
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;
   value: T | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   private onChange = (_value: T) => {};
   onTouched = () => {
     this.touched = true;

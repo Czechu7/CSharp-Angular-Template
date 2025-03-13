@@ -33,6 +33,7 @@ export class ButtonComponent implements ButtonProps {
   @Input() size?: ButtonSize;
   @Input() styleClass?: string;
   @Input() ariaLabel?: string;
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
 
   @Output() onClick = new EventEmitter<MouseEvent>();
 }

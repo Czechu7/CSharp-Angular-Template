@@ -36,5 +36,6 @@ export class AuthService {
   }
 
   resetPassword() {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   changePassword() {}
 }

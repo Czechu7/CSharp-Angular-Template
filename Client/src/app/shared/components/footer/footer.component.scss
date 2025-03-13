@@ -6,6 +6,9 @@
   color: $footer-text;
   padding: $footer-padding;
   text-align: center;
+  transition:
+    background-color $global-transition-speed,
+    color $global-transition-speed;
 
   .container {
     max-width: $footer-max-width;
