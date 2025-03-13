@@ -9,12 +9,15 @@ import { routes } from './app.routes';
 import { authInterceptor } from './core/_interceptors/auth.interceptor';
 import { refreshTokenInterceptor } from './core/_interceptors/refresh-token.interceptor';
 import { providePrimeNG } from 'primeng/config';
+import { errorInterceptor } from './core/_interceptors/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor, refreshTokenInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, refreshTokenInterceptor, errorInterceptor])
+    ),
     provideAnimationsAsync(),
     ɵBrowserAnimationBuilder,
     providePrimeNG({
