@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
@@ -11,7 +11,7 @@ import { IQueryParams } from '../../_models/query-params.model';
   providedIn: 'root',
 })
 export class RequestFactoryService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   private getDefaultHeaders(): HttpHeaders {
     return new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -27,9 +27,7 @@ export class RequestFactoryService {
     body?: B | null | undefined,
     options?: IQueryParams
   ): Observable<BaseResponse<T>> {
-    const headers = options?.headers
-      ? options.headers
-      : this.getDefaultHeaders();
+    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
     const params = options?.params ? options.params : this.getDefaultParams();
 
     const configuration = {
@@ -45,18 +43,11 @@ export class RequestFactoryService {
     );
   }
 
-  post<T, B>(
-    endpoint: ApiEndpoints,
-    body: B,
-    options?: IQueryParams
-  ): Observable<BaseResponse<T>> {
+  post<T, B>(endpoint: ApiEndpoints, body: B, options?: IQueryParams): Observable<BaseResponse<T>> {
     return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  getAll<T>(
-    endpoint: ApiEndpoints,
-    options?: IQueryParams
-  ): Observable<BaseResponse<T>> {
+  getAll<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<BaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
@@ -77,9 +68,7 @@ export class RequestFactoryService {
     const pageSize = queryParams.pageSize > 0 ? queryParams.pageSize : 10;
 
     let params = options?.params ? options.params : this.getDefaultParams();
-    params = params
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+    params = params.set('pageNumber', pageNumber.toString()).set('pageSize', pageSize.toString());
 
     if (queryParams.filter) {
       params = params.set('filter', queryParams.filter);
@@ -90,17 +79,11 @@ export class RequestFactoryService {
     }
 
     if (queryParams.sortDescending) {
-      params = params.set(
-        'sortDescending',
-        queryParams.sortDescending.toString()
-      );
+      params = params.set('sortDescending', queryParams.sortDescending.toString());
     }
 
     if (queryParams.includeInactive) {
-      params = params.set(
-        'includeInactive',
-        queryParams.includeInactive.toString()
-      );
+      params = params.set('includeInactive', queryParams.includeInactive.toString());
     }
 
     return this.request<T>('GET', endpoint, null, { params });

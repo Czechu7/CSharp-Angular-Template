@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { tap } from 'rxjs';
@@ -11,7 +11,7 @@ import { LoginDto } from '../../_models/DTOs/loginDto.model';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private requestFactory: RequestFactoryService) {}
+  private requestFactory = inject(RequestFactoryService);
 
   signIn(loginData: LoginDto) {
     return this.requestFactory.post<Tokens, LoginDto>(ApiEndpoints.SIGN_IN, loginData).pipe(

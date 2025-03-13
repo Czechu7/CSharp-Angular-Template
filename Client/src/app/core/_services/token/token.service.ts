@@ -11,7 +11,7 @@ import { BaseResponse } from '../../_models/base-response.model';
   providedIn: 'root',
 })
 export class TokenService {
-  requestFactory = inject(RequestFactoryService);
+  private requestFactory = inject(RequestFactoryService);
 
   constructor() {}
 
