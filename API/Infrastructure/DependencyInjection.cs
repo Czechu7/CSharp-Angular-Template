@@ -96,12 +96,12 @@ public static class DependencyInjection
         // Authorization policies
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("All", policy => policy.RequireAuthenticatedUser());
-            options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-            options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
-            options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
+            options.AddPolicy("ALL", policy => policy.RequireAuthenticatedUser());
+            options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("ADMIN"));
+            options.AddPolicy("RequireUserRole", policy => policy.RequireRole("USER"));
+            options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("MODERATOR"));
             options.AddPolicy("AdminOrModerator", policy =>
-                policy.RequireRole("Admin", "Moderator"));
+                policy.RequireRole("ADMIN", "MODERATOR"));
         });
     }
 }

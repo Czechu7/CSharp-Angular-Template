@@ -22,7 +22,7 @@ public class UsersController : ApiControllerBase
     // }
     
     [HttpGet("{id}")]
-    [Authorize(Policy = "All")]
+    [Authorize(Policy = "ALL")]
     [ProducesResponseType(typeof(Response<UserDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Response<UserDto>>> GetById(Guid id)
