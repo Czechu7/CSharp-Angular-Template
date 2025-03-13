@@ -4,12 +4,7 @@ using Application.CQRS.Auth.DTOs;
 
 namespace Application.CQRS.Auth.Commands;
 
-public class RegisterCommand : ICommand<ResponseBase>
+public class RegisterCommand(RegisterDto registerData) : ICommand<ResponseBase>
 {
-    public RegisterDto RegisterData { get; set; }
-
-    public RegisterCommand(RegisterDto registerData)
-    {
-        RegisterData = registerData;
-    }
+    public RegisterDto RegisterData { get; set; } = registerData;
 }

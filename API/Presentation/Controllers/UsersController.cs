@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Controllers;
 using Application.CQRS.Users.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Presentation.Controllers;
 
@@ -21,6 +22,7 @@ public class UsersController : ApiControllerBase
     // }
     
     [HttpGet("{id}")]
+    [Authorize(Policy = "All")]
     [ProducesResponseType(typeof(Response<UserDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Response<UserDto>>> GetById(Guid id)

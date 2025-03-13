@@ -13,21 +13,14 @@ using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 
-public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, Response<AuthResponseDto>>
+public class RefreshTokenCommandHandler(
+    IApplicationDbContext dbContext,
+    ITokenService tokenService,
+    ILogger<RefreshTokenCommandHandler> logger) : IRequestHandler<RefreshTokenCommand, Response<AuthResponseDto>>
 {
-    private readonly IApplicationDbContext _dbContext;
-    private readonly ITokenService _tokenService;
-    private readonly ILogger<RefreshTokenCommandHandler> _logger;
-
-    public RefreshTokenCommandHandler(
-        IApplicationDbContext dbContext,
-        ITokenService tokenService,
-        ILogger<RefreshTokenCommandHandler> logger)
-    {
-        _dbContext = dbContext;
-        _tokenService = tokenService;
-        _logger = logger;
-    }
+    private readonly IApplicationDbContext _dbContext = dbContext;
+    private readonly ITokenService _tokenService = tokenService;
+    private readonly ILogger<RefreshTokenCommandHandler> _logger = logger;
 
     public async Task<Response<AuthResponseDto>> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
     {

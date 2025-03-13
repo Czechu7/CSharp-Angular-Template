@@ -12,8 +12,6 @@ public static class DependencyInjection
         services.AddMvc()
             .AddApplicationPart(Assembly.GetExecutingAssembly());
             
-        // Add any presentation-specific services here
-            
         return services;
     }
 }

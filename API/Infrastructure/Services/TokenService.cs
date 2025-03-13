@@ -11,39 +11,45 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Services;
 
-public class TokenService : ITokenService
+public class TokenService(IConfiguration configuration) : ITokenService
 {
-    private readonly IConfiguration _configuration;
-
-    public TokenService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    private readonly IConfiguration _configuration = configuration;
 
     public string GenerateAccessToken(User user)
+{
+    var jwtSettings = _configuration.GetSection("JwtSettings");
+    var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
+    
+    var claims = new List<Claim>
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
-        var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
-        
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var tokenDescriptor = new SecurityTokenDescriptor
+        new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new(ClaimTypes.Name, user.Username),
+        new(ClaimTypes.Email, user.Email),
+        new("SecurityStamp", user.SecurityStamp)
+    };
+    
+    if (!string.IsNullOrEmpty(user.Roles))
+    {
+        var roles = user.Roles.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var role in roles)
         {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim("SecurityStamp", user.SecurityStamp)
-            }),
-            Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["AccessTokenExpirationMinutes"]!)),
-            Issuer = jwtSettings["Issuer"],
-            Audience = jwtSettings["Audience"],
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
-        
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+            claims.Add(new Claim(ClaimTypes.Role, role.Trim()));
+        }
     }
+    
+    var tokenHandler = new JwtSecurityTokenHandler();
+    var tokenDescriptor = new SecurityTokenDescriptor
+    {
+        Subject = new ClaimsIdentity(claims),
+        Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["AccessTokenExpirationMinutes"]!)),
+        Issuer = jwtSettings["Issuer"],
+        Audience = jwtSettings["Audience"],
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    };
+    
+    var token = tokenHandler.CreateToken(tokenDescriptor);
+    return tokenHandler.WriteToken(token);
+}
 
     public string GenerateRefreshToken()
     {

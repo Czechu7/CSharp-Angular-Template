@@ -10,21 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 
-public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ResponseBase>
+public class RegisterCommandHandler(
+    IGenericRepository<User> userRepository,
+    IPasswordService passwordService,
+    ILogger<RegisterCommandHandler> logger) : IRequestHandler<RegisterCommand, ResponseBase>
 {
-    private readonly IGenericRepository<User> _userRepository;
-    private readonly IPasswordService _passwordService;
-    private readonly ILogger<RegisterCommandHandler> _logger;
-
-    public RegisterCommandHandler(
-        IGenericRepository<User> userRepository,
-        IPasswordService passwordService,
-        ILogger<RegisterCommandHandler> logger)
-    {
-        _userRepository = userRepository;
-        _passwordService = passwordService;
-        _logger = logger;
-    }
+    private readonly IGenericRepository<User> _userRepository = userRepository;
+    private readonly IPasswordService _passwordService = passwordService;
+    private readonly ILogger<RegisterCommandHandler> _logger = logger;
 
     public async Task<ResponseBase> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
@@ -48,7 +41,8 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ResponseB
                 PasswordHash = _passwordService.HashPassword(request.RegisterData.Password),
                 SecurityStamp = _passwordService.GenerateSecurityStamp(),
                 IsActive = true,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                Roles = "USER"
             };
 
             await _userRepository.AddAsync(user);
