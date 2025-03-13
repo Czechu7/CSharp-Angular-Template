@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Application.Common.Models;
 using Application.CQRS.Users.Commands.CreateUser;
 using Application.CQRS.Users.Queries.GetUserById;
