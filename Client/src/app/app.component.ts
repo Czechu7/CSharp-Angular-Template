@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { MenuConfig } from './config/menu.config';
+import { AuthService } from './core/_services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { MenuConfig } from './config/menu.config';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  protected authService = inject(AuthService);
+
   title = MenuConfig.title;
   langs = MenuConfig.langs;
   authMenuItems = MenuConfig.authMenuItems;
