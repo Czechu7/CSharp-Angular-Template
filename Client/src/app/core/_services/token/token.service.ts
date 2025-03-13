@@ -134,7 +134,7 @@ export class TokenService {
     localStorage.removeItem('refreshTokenExpiresAt');
   }
 
-  private validateToken(token: IAccessToken): boolean {
+  public validateToken(token: IAccessToken): boolean {
     const decodedToken = this.decodeToken(token);
     try {
       if (decodedToken !== null) {
