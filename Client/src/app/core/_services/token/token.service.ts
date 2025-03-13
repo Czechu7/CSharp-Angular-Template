@@ -18,9 +18,23 @@ export class TokenService {
   refreshToken(tokens: Tokens): Observable<Tokens> {
     return this.requestFactory
       .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
-      .pipe(
-        map((response: BaseResponse<Tokens>) => response.data)
-      );
+      .pipe(map((response: BaseResponse<Tokens>) => response.data));
+  }
+
+  isAuth(): boolean {
+    const accessToken = this.getAccessToken();
+    const refreshToken = this.getRefreshToken();
+
+    if (accessToken === null || refreshToken === null) {
+      return false;
+    }
+
+    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
+      return true;
+    } else {
+      this.removeTokens();
+      return false;
+    }
   }
 
   setAccessToken(token: string): void {
@@ -44,21 +58,6 @@ export class TokenService {
   removeTokens(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-  }
-
-  tokensIsValid(): boolean {
-    const accessToken = this.getAccessToken();
-    const refreshToken = this.getRefreshToken();
-
-    if (accessToken === null || refreshToken === null) {
-      return false;
-    }
-
-    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   getUserId(): string | null {
