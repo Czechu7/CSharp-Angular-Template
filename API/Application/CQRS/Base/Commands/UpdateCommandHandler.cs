@@ -1,9 +1,6 @@
-using Application.Common.Commands;
 using Application.Common.Interfaces;
-using Application.Common.Models;
 using AutoMapper;
 using Domain.Common;
-using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Base.Commands;

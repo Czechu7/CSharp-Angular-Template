@@ -1,8 +1,5 @@
-using System;
-using System.Linq;
 using Application.Common.Interfaces;
 using Application.Common.Models;
-using Application.Common.Queries;
 using AutoMapper;
 using Domain.Common;
 using Microsoft.Extensions.Logging;
