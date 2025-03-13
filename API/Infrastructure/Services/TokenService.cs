@@ -22,9 +22,9 @@ public class TokenService(IConfiguration configuration) : ITokenService
 
         var claims = new List<Claim>
     {
-        new("sub", user.Id.ToString()),
-        new(ClaimTypes.Name, user.Username),
-        new(ClaimTypes.Email, user.Email),
+        new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        new(JwtRegisteredClaimNames.UniqueName, user.Username),
+        new(JwtRegisteredClaimNames.Email, user.Email),
         new("security_stamp", user.SecurityStamp)
     };
 
