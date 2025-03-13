@@ -4,8 +4,7 @@ import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { tap } from 'rxjs';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { ITokens } from '../../_models/tokens.model';
-import { RegisterDto } from '../../_models/DTOs/registerDto.model';
-import { LoginDto } from '../../_models/DTOs/loginDto.model';
+import { ILoginDto, IRegisterDto } from '../../_models/DTOs/authDto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +12,8 @@ import { LoginDto } from '../../_models/DTOs/loginDto.model';
 export class AuthService {
   private requestFactory = inject(RequestFactoryService);
 
-  signIn(loginData: LoginDto) {
-    return this.requestFactory.post<ITokens, LoginDto>(ApiEndpoints.SIGN_IN, loginData).pipe(
+  signIn(loginData: ILoginDto) {
+    return this.requestFactory.post<ITokens, ILoginDto>(ApiEndpoints.SIGN_IN, loginData).pipe(
       tap((res: IBaseResponse<ITokens>) => {
         localStorage.setItem('accessToken', res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
@@ -22,8 +21,8 @@ export class AuthService {
     );
   }
 
-  signUp(registerData: RegisterDto) {
-    return this.requestFactory.post<ITokens, RegisterDto>(ApiEndpoints.SIGN_UP, registerData).pipe(
+  signUp(registerData: IRegisterDto) {
+    return this.requestFactory.post<ITokens, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData).pipe(
       tap((res: IBaseResponse<ITokens>) => {
         localStorage.setItem('accessToken', res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
