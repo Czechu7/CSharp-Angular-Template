@@ -108,9 +108,6 @@ public class RefreshTokenCommandHandler(
                 AccessToken = accessToken,
                 RefreshToken = newRefreshToken,
                 ExpiresAt = _tokenService.GetAccessTokenExpiration(),
-                UserId = user.Id,
-                Username = user.Username,
-                Email = user.Email
             };
 
             _logger.LogInformation("Successfully refreshed token for user {UserId}", user.Id);

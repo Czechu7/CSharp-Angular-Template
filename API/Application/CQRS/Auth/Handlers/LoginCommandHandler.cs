@@ -68,9 +68,6 @@ public class LoginCommandHandler(
                 AccessToken = accessToken,
                 RefreshToken = refreshToken,
                 ExpiresAt = _tokenService.GetAccessTokenExpiration(),
-                UserId = user.Id,
-                Username = user.Username,
-                Email = user.Email
             };
 
             return Response<AuthResponseDto>.SuccessWithData(response, "Login successful");
