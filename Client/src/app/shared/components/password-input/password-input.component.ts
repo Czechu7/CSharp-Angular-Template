@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
-import { PasswordInputProps, Size, Variant } from '../../types/password-input.types';
-import { CommonModule } from '@angular/common';
+import { PasswordInputProps, Variant } from '../../types/password-input.types';
 
 @Component({
   selector: 'app-password-input',
@@ -30,19 +31,20 @@ export class PasswordInputComponent<T> implements ControlValueAccessor, Password
   @Input() required = false;
   @Input() invalid = false;
   @Input() errorMessage?: string;
-  @Input() formControlName?: string;
+  @Input() formControl!: FormControl;
   @Input() feedback?: boolean;
   @Input() promptLabel?: string;
   @Input() weakLabel?: string;
   @Input() mediumLabel?: string;
   @Input() strongLabel?: string;
-  @Input() size?: Size;
+  // @Input() size?: Size;
   @Input() variant: Variant = 'outlined';
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;
   value: T | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   private onChange = (_value: T) => {};
   onTouched = () => {
     this.touched = true;

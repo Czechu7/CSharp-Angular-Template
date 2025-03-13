@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export type InputTypes = 'text' | 'number' | 'email' | 'password' | 'tel' | 'url';
 
 export type InputIcons = 'user' | 'map' | 'clock' | 'star' | 'check' | 'times' | 'shopping-cart';
@@ -13,7 +15,7 @@ export interface InputProps {
   prefixText?: string;
   suffixIcon?: InputIcons;
   suffixText?: string;
-  formControlName?: string;
   inavlid?: boolean;
   autocomplete?: string;
+  formControl: FormControl;
 }

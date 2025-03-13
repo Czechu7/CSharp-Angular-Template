@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
+import { of } from 'rxjs';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { LoginModel, RegisterModel } from '../../_models/auth.model';
+import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private requestFactory: RequestFactoryService) {}
+  constructor(private requestFactory: RequestFactoryService) {
+    this.isAuth();
+  }
 
-  singIn(username: string, password: string) {
+  singIn(values: LoginModel) {
     return this.requestFactory.post(ApiEndpoints.SIGN_IN, {
-      username,
-      password,
+      ...values,
     });
   }
 
@@ -19,12 +22,18 @@ export class AuthService {
     this.requestFactory.post(ApiEndpoints.SIGN_OUT, null);
   }
 
-  signUp(username: string, password: string) {
+  signUp(values: RegisterModel) {
     return this.requestFactory.post(ApiEndpoints.SIGN_UP, {
-      username,
-      password,
+      ...values,
     });
   }
+
+  isAuth() {
+    return of(true);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   resetPassword() {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   changePassword() {}
 }

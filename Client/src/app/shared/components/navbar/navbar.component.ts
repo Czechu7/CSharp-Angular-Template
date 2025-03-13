@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, type OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import type { Langs, MenuItem, NavbarProps } from '../../types/navbar.types';
 import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
+import { ThemeForm } from '../../models/form.model';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-navbar',
@@ -39,8 +41,16 @@ export class NavbarComponent implements OnInit, NavbarProps {
   mobileMenuOpen = false;
   isDarkTheme = false;
   currentLang = '';
+  themeForm!: FormGroup<ThemeForm>;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private formService: FormService
+  ) {}
+
+  get controls() {
+    return this.themeForm.controls;
+  }
 
   ngOnInit() {
     this.updateMenu();
@@ -48,6 +58,17 @@ export class NavbarComponent implements OnInit, NavbarProps {
       this.currentLang = this.langs[0].value;
     }
     this.checkCurrentTheme();
+
+    this.themeForm = this.formService.initThemeForm();
+
+    this.controls.theme.setValue(this.isDarkTheme);
+
+    this.controls.theme.valueChanges.subscribe(isDark => {
+      if (isDark !== this.isDarkTheme) {
+        this.isDarkTheme = isDark;
+        this.toggleTheme();
+      }
+    });
   }
 
   ngOnChanges() {
@@ -93,34 +114,30 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   toggleTheme() {
-    // this.isDarkTheme = !this.isDarkTheme;
-    // if (this.isDarkTheme) {
-    //   document.body.classList.add('dark-theme');
-    // } else {
-    //   document.body.classList.remove('dark-theme');
-    // }
-    // localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+    if (this.isDarkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
   }
 
   checkCurrentTheme() {
-    // const savedTheme = localStorage.getItem('theme');
-    // if (savedTheme === 'dark') {
-    //   this.isDarkTheme = true;
-    //   document.body.classList.add('dark-theme');
-    // } else if (savedTheme === 'light') {
-    //   this.isDarkTheme = false;
-    //   document.body.classList.remove('dark-theme');
-    // } else {
-    //   const prefersDark = window.matchMedia(
-    //     '(prefers-color-scheme: dark)'
-    //   ).matches;
-    //   this.isDarkTheme = prefersDark;
-    //   if (prefersDark) {
-    //     document.body.classList.add('dark-theme');
-    //   }
-    // }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      this.isDarkTheme = true;
+      document.body.classList.add('dark-theme');
+    } else if (savedTheme === 'light') {
+      this.isDarkTheme = false;
+      document.body.classList.remove('dark-theme');
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.isDarkTheme = prefersDark;
+      if (prefersDark) document.body.classList.add('dark-theme');
+    }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   switchLanguage(_langValue: string) {
     // this.currentLang = langValue;
     // localStorage.setItem('language', langValue);

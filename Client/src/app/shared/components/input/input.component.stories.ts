@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { InputProps } from '../../types/input.types';
 import { InputComponent } from './input.component';
+import { FormControl } from '@angular/forms';
 
 const meta: Meta<InputComponent<any>> = {
   title: 'Components/Input',
@@ -15,6 +16,7 @@ const args: InputProps = {
   prefixIcon: 'user',
   required: true,
   errorMessage: 'This field is required',
+  formControl: new FormControl(),
 };
 
 type InputStory = StoryObj<InputComponent<any>>;

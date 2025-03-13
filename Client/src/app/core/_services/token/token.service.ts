@@ -1,11 +1,11 @@
-import { inject, Injectable, Signal, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-import { DecodedToken } from '../../_models/decoded-token.model';
-import { ApiEndpoints } from '../../_models/api-endpoints.enum';
-import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { map, Observable } from 'rxjs';
-import { Tokens } from '../../_models/tokens.model';
+import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { BaseResponse } from '../../_models/base-response.model';
+import { DecodedToken } from '../../_models/decoded-token.model';
+import { Tokens } from '../../_models/tokens.model';
+import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +18,7 @@ export class TokenService {
   refreshToken(refreshToken: string): Observable<Tokens> {
     return this.requestFactory
       .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, { refreshToken })
-      .pipe(
-        map((response: BaseResponse<Tokens>) => response.data)
-      );
+      .pipe(map((response: BaseResponse<Tokens>) => response.data));
   }
 
   setAccessToken(token: string): void {

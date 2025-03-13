@@ -1,0 +1,43 @@
+<div class="register-page">
+  <h1>Zarejestruj się</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+    <app-input [formControl]="controls.username" placeholder="Username" type="text" autocomplete="name"
+      [errorMessage]="getErrorMessage(controls.username)"
+      [invalid]="controls.username.invalid &&  controls.username.touched">
+    </app-input>
+
+    <app-input [formControl]="controls.firstName" placeholder="Imię" type="text" autocomplete="given-name"
+      [errorMessage]="getErrorMessage(controls.firstName)"
+      [invalid]="controls.firstName.invalid &&  controls.firstName.touched">
+    </app-input>
+
+    <app-input [formControl]="controls.lastName" placeholder="Nazwisko" type="text" autocomplete="family-name"
+      [errorMessage]="getErrorMessage(controls.lastName)"
+      [invalid]="controls.lastName.invalid &&  controls.lastName.touched">
+    </app-input>
+
+    <app-input [formControl]="controls.email" placeholder="Email" type="email" autocomplete="email"
+      [errorMessage]="getErrorMessage(controls.email)" [invalid]="controls.email.invalid &&  controls.email.touched">
+    </app-input>
+
+    <app-password-input [formControl]="controls.password" placeholder="Hasło" autocomplete="current-password"
+      [errorMessage]="getErrorMessage(controls.password)"
+      [invalid]="controls.password.invalid &&  controls.password.touched" promptLabel="Choose a password"
+      weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" [feedback]="true">
+    </app-password-input>
+
+    <app-password-input [formControl]="controls.confirmPassword" placeholder="Powtórz hasło"
+      autocomplete="current-password" [errorMessage]="getErrorMessage(controls.confirmPassword)"
+      [invalid]="controls.confirmPassword.invalid &&  controls.confirmPassword.touched">
+    </app-password-input>
+
+    <div class="submit-button">
+      <app-button type="submit" [disabled]="registerForm.invalid" severity="primary" [label]="'Zarejestruj się'">
+      </app-button>
+    </div>
+    <p class="text-center">Zapomniałeś hasła? <a routerLink="/{{RouterEnum.forgetPassword}}">Odzyskaj hasło</a></p>
+    <p class="text-center">Masz konto? <a routerLink="/{{RouterEnum.login}}">Zaloguj się</a></p>
+  </form>
+
+</div>
