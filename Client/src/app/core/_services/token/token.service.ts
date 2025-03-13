@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IDecodedToken } from '../../_models/decoded-token.model';
-import { ITokens } from '../../_models/tokens.model';
+import { IAccessToken, IRefreshToken, ITokens } from '../../_models/tokens.model';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
@@ -15,56 +15,13 @@ export class TokenService {
 
   constructor() {}
 
-  refreshToken(tokens: ITokens): Observable<ITokens> {
+  public refreshToken(tokens: ITokens): Observable<ITokens> {
     return this.requestFactory
-      .post<ITokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
+      .post<ITokens, { refreshToken: IRefreshToken }>(ApiEndpoints.REFRESH_TOKEN, tokens)
       .pipe(map((response: IBaseResponse<ITokens>) => response.data));
   }
 
-  isAuth(): boolean {
-    const accessToken = this.getAccessToken();
-    const refreshToken = this.getRefreshToken();
-
-    if (!accessToken || !refreshToken) {
-      return false;
-    }
-
-    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
-      return true;
-    }
-
-    if (!this.validateToken(accessToken) && this.validateToken(refreshToken)) {
-      return true;
-    }
-
-    this.removeTokens();
-    return false;
-  }
-
-  setAccessToken(token: string): void {
-    localStorage.setItem('accessToken', token);
-  }
-
-  setRefreshToken(token: string): void {
-    localStorage.setItem('refreshToken', token);
-  }
-
-  getAccessToken(): string | null {
-    const accessToken = localStorage.getItem('accessToken');
-    return accessToken;
-  }
-
-  getRefreshToken(): string | null {
-    const refreshToken = localStorage.getItem('refreshToken');
-    return refreshToken;
-  }
-
-  removeTokens(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-  }
-
-  getUserId(): string | null {
+  public getUserId() {
     const accessToken = this.getAccessToken();
     if (accessToken !== null) {
       const decodedToken = this.decodeToken(accessToken);
@@ -74,26 +31,26 @@ export class TokenService {
     }
   }
 
-  saveTokens(accessToken: string, refreshToken: string): void {
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
-  }
-
-  loadTokens(): void {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    if (accessToken === null || refreshToken === null) {
-      return;
-    }
-
-    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
-      this.setAccessToken(accessToken);
-      this.setRefreshToken(refreshToken);
+  public getUserName() {
+    const accessToken = this.getAccessToken();
+    if (accessToken !== null) {
+      const decodedToken = this.decodeToken(accessToken);
+      return decodedToken ? decodedToken.unique_name : null;
+    } else {
+      return null;
     }
   }
+  public getUserEmail() {
+    const accessToken: IAccessToken | null = this.getAccessToken();
+    if (accessToken !== null) {
+      const decodedToken = this.decodeToken(accessToken);
+      return decodedToken ? decodedToken.email : null;
+    } else {
+      return null;
+    }
+  }
 
-  decodeToken(token: string): IDecodedToken | null {
+  private decodeToken(token: IAccessToken): IDecodedToken | null {
     if (token !== null) {
       return jwtDecode<IDecodedToken>(token);
     } else {
@@ -101,7 +58,83 @@ export class TokenService {
     }
   }
 
-  validateToken(token: string): boolean {
+  public isAuth(): boolean {
+    const accessToken = this.getAccessToken();
+    const refreshToken = this.getRefreshToken();
+
+    if (!accessToken || !refreshToken) {
+      return false;
+    }
+
+    if (this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
+      return true;
+    }
+
+    if (!this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
+      return true;
+    }
+
+    this.removeTokens();
+    return false;
+  }
+
+  public setAccessToken(accessToken: IAccessToken): void {
+    localStorage.setItem('accessToken', accessToken);
+  }
+
+  public setRefreshToken(refreshToken: IRefreshToken): void {
+    localStorage.setItem('refreshToken', refreshToken.refreshToken);
+    localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
+  }
+
+  public getAccessToken(): IAccessToken | null {
+    const accessToken = localStorage.getItem('accessToken');
+    return accessToken;
+  }
+
+  public getRefreshToken(): IRefreshToken | null {
+    const refreshToken = localStorage.getItem('refreshToken');
+    const refreshTokenExpiresAt = localStorage.getItem('refreshTokenExpiresAt');
+
+    if (refreshToken === null || refreshTokenExpiresAt === null) {
+      return null;
+    }
+
+    const token: IRefreshToken = {
+      refreshToken: refreshToken,
+      expiresAt: refreshTokenExpiresAt,
+    };
+
+    return token;
+  }
+
+  private saveTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken.refreshToken);
+    localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
+  }
+
+  private loadTokens(): void {
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken: IRefreshToken | null = this.getRefreshToken();
+
+    if (accessToken === null || refreshToken === null) {
+      return;
+    }
+
+    if (this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
+      this.setAccessToken(accessToken);
+      this.setRefreshToken(refreshToken);
+    }
+  }
+
+  public removeTokens(): void {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('refreshTokenExpiresAt');
+  }
+
+  private validateToken(token: IAccessToken): boolean {
     const decodedToken = this.decodeToken(token);
     try {
       if (decodedToken !== null) {
@@ -110,6 +143,17 @@ export class TokenService {
         return false;
       }
     } catch (error) {
+      return false;
+    }
+  }
+
+  private validateRefreshToken(refreshToken: IRefreshToken): boolean {
+    const expiresAt = new Date(refreshToken.expiresAt);
+    const currentDate = new Date();
+
+    if (refreshToken !== null) {
+      return expiresAt > currentDate;
+    } else {
       return false;
     }
   }

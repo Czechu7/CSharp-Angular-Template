@@ -1,7 +1,12 @@
 export interface IDecodedToken {
   sub: string;
-  name: string;
-  iat: number;
+  unique_name: string;
+  email: string;
+  security_stamp: string;
+  role: string;
+  nbf: number;
   exp: number;
-  roles: string[];
+  iat: number;
+  iss: string;
+  aud: string;
 }
