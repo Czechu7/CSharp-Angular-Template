@@ -29,61 +29,12 @@ export class TokenService {
       .pipe(map((response: IBaseResponse<IAuthTokensResponseDto>) => response.data));
   }
 
-  public getUserId() {
-    const accessToken = this.getAccessToken();
-    if (accessToken !== null) {
-      const decodedToken = this.decodeToken(accessToken);
-      return decodedToken ? decodedToken.sub : null;
-    } else {
-      return null;
-    }
-  }
-
-  public getUserName() {
-    const accessToken = this.getAccessToken();
-    if (accessToken !== null) {
-      const decodedToken = this.decodeToken(accessToken);
-      return decodedToken ? decodedToken.unique_name : null;
-    } else {
-      return null;
-    }
-  }
-  public getUserEmail() {
-    const accessToken: IAccessToken | null = this.getAccessToken();
-    if (accessToken !== null) {
-      const decodedToken = this.decodeToken(accessToken);
-      return decodedToken ? decodedToken.email : null;
-    } else {
-      return null;
-    }
-  }
-
-  private decodeToken(token: IAccessToken): IDecodedToken | null {
+  public decodeToken(token: IAccessToken): IDecodedToken | null {
     if (token !== null) {
       return jwtDecode<IDecodedToken>(token);
     } else {
       return null;
     }
-  }
-
-  public isAuth(): boolean {
-    const accessToken = this.getAccessToken();
-    const refreshToken = this.getRefreshToken();
-
-    if (!accessToken || !refreshToken) {
-      return false;
-    }
-
-    if (this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
-      return true;
-    }
-
-    if (!this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
-      return true;
-    }
-
-    this.removeTokens();
-    return false;
   }
 
   public setAccessToken(accessToken: IAccessToken): void {
@@ -155,7 +106,7 @@ export class TokenService {
     }
   }
 
-  private validateRefreshToken(refreshToken: IRefreshToken): boolean {
+  public validateRefreshToken(refreshToken: IRefreshToken): boolean {
     const expiresAt = new Date(refreshToken.expiresAt);
     const currentDate = new Date();
 
