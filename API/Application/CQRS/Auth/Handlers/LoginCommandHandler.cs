@@ -12,27 +12,18 @@ using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 
-public class LoginCommandHandler : IRequestHandler<LoginCommand, Response<AuthResponseDto>>
+public class LoginCommandHandler(
+    IApplicationDbContext dbContext,
+    IPasswordService passwordService,
+    ITokenService tokenService,
+    ILogger<LoginCommandHandler> logger,
+    ICurrentUserService currentUserService) : IRequestHandler<LoginCommand, Response<AuthResponseDto>>
 {
-    private readonly IApplicationDbContext _dbContext;
-    private readonly IPasswordService _passwordService;
-    private readonly ITokenService _tokenService;
-    private readonly ILogger<LoginCommandHandler> _logger;
-    private readonly ICurrentUserService _currentUserService;
-
-    public LoginCommandHandler(
-        IApplicationDbContext dbContext,
-        IPasswordService passwordService,
-        ITokenService tokenService,
-        ILogger<LoginCommandHandler> logger,
-        ICurrentUserService currentUserService)
-    {
-        _dbContext = dbContext;
-        _passwordService = passwordService;
-        _tokenService = tokenService;
-        _logger = logger;
-        _currentUserService = currentUserService;
-    }
+    private readonly IApplicationDbContext _dbContext = dbContext;
+    private readonly IPasswordService _passwordService = passwordService;
+    private readonly ITokenService _tokenService = tokenService;
+    private readonly ILogger<LoginCommandHandler> _logger = logger;
+    private readonly ICurrentUserService _currentUserService = currentUserService;
 
     public async Task<Response<AuthResponseDto>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {

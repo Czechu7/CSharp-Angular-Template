@@ -1,11 +1,10 @@
 using Application.Common.Models;
 using Application.CQRS.Auth.Commands;
 using Application.CQRS.Auth.DTOs;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Controllers;
-using System.Threading.Tasks;
+
 
 namespace Presentation.Controllers;
 

@@ -3,12 +3,7 @@ using Application.CQRS.Auth.DTOs;
 
 namespace Application.CQRS.Auth.Commands;
 
-public class LoginCommand : IQuery<AuthResponseDto>
+public class LoginCommand(LoginDto loginData) : IQuery<AuthResponseDto>
 {
-    public LoginDto LoginData { get; set; }
-
-    public LoginCommand(LoginDto loginData)
-    {
-        LoginData = loginData;
-    }
+    public LoginDto LoginData { get; set; } = loginData;
 }
