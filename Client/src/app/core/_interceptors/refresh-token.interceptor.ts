@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { Tokens } from '../_models/tokens.model';
+import { ITokens } from '../_models/tokens.model';
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
@@ -10,11 +10,12 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
+        const accessToken = tokenService.getAccessToken();
         const refreshToken = tokenService.getRefreshToken();
 
-        if (refreshToken) {
-          return tokenService.refreshToken(refreshToken).pipe(
-            switchMap((newTokens: Tokens) => {
+        if (accessToken && refreshToken) {
+          return tokenService.refreshToken({ accessToken, refreshToken }).pipe(
+            switchMap((newTokens: ITokens) => {
               tokenService.setAccessToken(newTokens.accessToken);
               tokenService.setRefreshToken(newTokens.refreshToken);
 
@@ -25,7 +26,7 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               });
               return next(clonedReq);
             }),
-            catchError((refreshError) => {
+            catchError(refreshError => {
               tokenService.removeTokens();
               return throwError(refreshError);
             })

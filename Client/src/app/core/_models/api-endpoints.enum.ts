@@ -1,9 +1,13 @@
 export enum ApiEndpoints {
-  SIGN_IN = 'auth/signin',
-  SIGN_UP = 'auth/signup',
-  SIGN_OUT = 'auth/signout',
-  AUTO_LOGIN = 'auth/auto-login',
-  RESET_PASSWORD = 'auth/reset-password',
-  CHANGE_PASSWORD = 'auth/change-password',
-  REFRESH_TOKEN = 'auth/refresh-token',
+  // AUTH
+  SIGN_IN = 'api/auth/login',
+  SIGN_UP = 'api/auth/register',
+  SIGN_OUT = '', // Not implemented
+  RESET_PASSWORD = '', // Not implemented
+  CHANGE_PASSWORD = '', // Not implemented
+  REFRESH_TOKEN = 'api/auth/refresh-token',
+  REVOKE_TOKEN = 'api/auth/revoke-token',
+  // USERS
+  GET_USERS = 'api/users',
+  GET_USER = 'api/users',
 }

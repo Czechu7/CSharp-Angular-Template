@@ -2,23 +2,43 @@ import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { map, Observable } from 'rxjs';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
-import { BaseResponse } from '../../_models/base-response.model';
-import { DecodedToken } from '../../_models/decoded-token.model';
-import { Tokens } from '../../_models/tokens.model';
+import { IBaseResponse } from '../../_models/base-response.model';
+import { IDecodedToken } from '../../_models/decoded-token.model';
+import { ITokens } from '../../_models/tokens.model';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  requestFactory = inject(RequestFactoryService);
+  private requestFactory = inject(RequestFactoryService);
 
   constructor() {}
 
-  refreshToken(refreshToken: string): Observable<Tokens> {
+  refreshToken(tokens: ITokens): Observable<ITokens> {
     return this.requestFactory
-      .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, { refreshToken })
-      .pipe(map((response: BaseResponse<Tokens>) => response.data));
+      .post<ITokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
+      .pipe(map((response: IBaseResponse<ITokens>) => response.data));
+  }
+
+  isAuth(): boolean {
+    const accessToken = this.getAccessToken();
+    const refreshToken = this.getRefreshToken();
+
+    if (!accessToken || !refreshToken) {
+      return false;
+    }
+
+    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
+      return true;
+    }
+
+    if (!this.validateToken(accessToken) && this.validateToken(refreshToken)) {
+      return true;
+    }
+
+    this.removeTokens();
+    return false;
   }
 
   setAccessToken(token: string): void {
@@ -42,21 +62,6 @@ export class TokenService {
   removeTokens(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-  }
-
-  tokensIsValid(): boolean {
-    const accessToken = this.getAccessToken();
-    const refreshToken = this.getRefreshToken();
-
-    if (accessToken === null || refreshToken === null) {
-      return false;
-    }
-
-    if (this.validateToken(accessToken) && this.validateToken(refreshToken)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   getUserId(): string | null {
@@ -88,9 +93,9 @@ export class TokenService {
     }
   }
 
-  decodeToken(token: string): DecodedToken | null {
+  decodeToken(token: string): IDecodedToken | null {
     if (token !== null) {
-      return jwtDecode<DecodedToken>(token);
+      return jwtDecode<IDecodedToken>(token);
     } else {
       return null;
     }

@@ -9,7 +9,7 @@ import { PasswordInputComponent } from '../../../shared/components/password-inpu
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../config/router.enum';
-import { LoginModel } from '../../../core/_models/auth.model';
+import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
 
 @Component({
   selector: 'app-login',
@@ -47,6 +47,15 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.authService.singIn(this.loginForm.getRawValue() as LoginModel);
+    this.authService.signIn(this.loginForm.getRawValue() as ILoginDto).subscribe({
+      next: res => {
+        console.log('Login successful');
+        console.log(res);
+      },
+      error: error => {
+        console.error('Login failed');
+        console.error(error);
+      },
+    });
   }
 }

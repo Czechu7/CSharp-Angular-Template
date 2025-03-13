@@ -1,9 +1,9 @@
-export interface LoginModel {
+export interface ILoginDto {
   email: string;
   password: string;
 }
 
-export interface RegisterModel extends LoginModel {
+export interface IRegisterDto extends ILoginDto {
   confirmPassword: string;
   firstName: string;
   lastName: string;

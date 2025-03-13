@@ -5,10 +5,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideRouter } from '@angular/router';
 import Aura from '@primeng/themes/aura';
 import { MessageService } from 'primeng/api';
-import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/_interceptors/auth.interceptor';
 import { refreshTokenInterceptor } from './core/_interceptors/refresh-token.interceptor';
+import { providePrimeNG } from 'primeng/config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
