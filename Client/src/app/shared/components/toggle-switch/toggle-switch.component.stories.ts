@@ -9,7 +9,6 @@ const meta: Meta<ToggleSwitchComponent> = {
 export default meta;
 
 const args: ToggleSwitchProps = {
-  formControlName: 'toggle',
   disabled: false,
   iconOn: 'pi-check',
   iconOff: 'pi-times',
