@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
-import { FileUploaderComponent } from './file-uploader.component';
 import { HttpClientModule } from '@angular/common/http';
+import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { MessageService } from 'primeng/api';
+import { FileUploaderComponent } from './file-uploader.component';
+import { IFileUploadProps } from '../../types/fileUploader.types';
 
 const meta: Meta<FileUploaderComponent> = {
   title: 'Components/FileUploaderComponent',
@@ -10,7 +10,7 @@ const meta: Meta<FileUploaderComponent> = {
   decorators: [
     moduleMetadata({
       imports: [HttpClientModule],
-      providers: [MessageService],
+      providers: [],
     }),
   ],
   parameters: {
@@ -20,11 +20,18 @@ const meta: Meta<FileUploaderComponent> = {
       },
     },
   },
+  argTypes: {
+    onFileUpload: { action: 'onFileUpload' },
+  },
 };
 
 export default meta;
 
-export const Primary: StoryObj<FileUploaderComponent> = {
+type Story = StoryObj<FileUploaderComponent> & {
+  args: IFileUploadProps;
+};
+
+export const Primary: Story = {
   args: {
     url: 'https://httpbin.org/post',
     multiple: true,
@@ -39,7 +46,7 @@ export const Primary: StoryObj<FileUploaderComponent> = {
   },
 };
 
-export const BasicMode: StoryObj<FileUploaderComponent> = {
+export const BasicMode: Story = {
   args: {
     ...Primary.args,
     mode: 'basic',
@@ -47,7 +54,7 @@ export const BasicMode: StoryObj<FileUploaderComponent> = {
   },
 };
 
-export const AutoUpload: StoryObj<FileUploaderComponent> = {
+export const AutoUpload: Story = {
   args: {
     ...Primary.args,
     auto: true,

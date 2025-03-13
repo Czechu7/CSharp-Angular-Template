@@ -347,121 +347,6 @@
             "extends": []
         },
         {
-            "name": "FileUploadProps",
-            "id": "interface-FileUploadProps-3889352cf886437faad14bde40c151fa25db16e362444d94de5cdf18bdb582ea8abd2a236de4ec8328f06ec143de05c7fd60ad922ecb338e63ab1daa5594d501",
-            "file": "src/app/shared/types/fileUploader.types.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import { HttpEvent } from '@angular/common/http';\r\n\r\nexport type FileUploadMode = 'basic' | 'advanced';\r\n\r\nexport interface FileUploadProps {\r\n  url: string;\r\n  multiple: boolean;\r\n  accept: string;\r\n  maxFileSize: number;\r\n  mode: FileUploadMode;\r\n  emptyMessage: string;\r\n  name: string;\r\n  auto?: boolean;\r\n  showCancelButton?: boolean;\r\n  showUploadButton?: boolean;\r\n}\r\n\r\nexport interface UploadEvent {\r\n  originalEvent: HttpEvent<unknown>;\r\n  files: File[];\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "accept",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "auto",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 13
-                },
-                {
-                    "name": "emptyMessage",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                },
-                {
-                    "name": "maxFileSize",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "mode",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FileUploadMode",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 10
-                },
-                {
-                    "name": "multiple",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "showCancelButton",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 14
-                },
-                {
-                    "name": "showUploadButton",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 15
-                },
-                {
-                    "name": "url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 6
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
             "name": "FooterProps",
             "id": "interface-FooterProps-5d21e8605e987fdbe95f60ced3d16f852cbb4a6fcd13b6c718d9c1142dcbb1613ddb8ed5aa56590c60996d573845bbaa396509b89f99f58c592e3f40d275873f",
             "file": "src/app/shared/types/footer.types.ts",
@@ -659,6 +544,206 @@
                     "optional": false,
                     "description": "",
                     "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IEditorProps",
+            "id": "interface-IEditorProps-c49e131cd87fd162e9cb099c4b2f6dea154c288e2b6d5025a055c0c6c3ba802eff8cea89d8494c0f2d514caaaf0a7174659cd824955cc25050ca8ec44fb01cec",
+            "file": "src/app/shared/types/editor.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "formats",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "modules",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | >",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "readOnly",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "style",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | string>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "styleClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IFileUploadProps",
+            "id": "interface-IFileUploadProps-9ed5beea1cd12733bedf60e7308812271173ce19e6e97286610d34a963fb061b714b70d528c61b5772b2d06da818b00fdeb671db229cbaffbae6bc416421e85d",
+            "file": "src/app/shared/types/fileUploader.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { HttpEvent } from '@angular/common/http';\r\n\r\nexport type IFileUploadMode = 'basic' | 'advanced';\r\n\r\nexport interface IFileUploadProps {\r\n  url: string;\r\n  multiple: boolean;\r\n  accept: string;\r\n  maxFileSize: number;\r\n  mode: IFileUploadMode;\r\n  emptyMessage: string;\r\n  name: string;\r\n  auto?: boolean;\r\n  showCancelButton?: boolean;\r\n  showUploadButton?: boolean;\r\n}\r\n\r\nexport interface IUploadEvent {\r\n  originalEvent: HttpEvent<unknown>;\r\n  files: File[];\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "accept",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "auto",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "emptyMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "maxFileSize",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "mode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IFileUploadMode",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "multiple",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "showCancelButton",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "showUploadButton",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
                 }
             ],
             "indexSignatures": [],
@@ -1104,6 +1189,61 @@
             ]
         },
         {
+            "name": "ITextChangeEvent",
+            "id": "interface-ITextChangeEvent-c49e131cd87fd162e9cb099c4b2f6dea154c288e2b6d5025a055c0c6c3ba802eff8cea89d8494c0f2d514caaaf0a7174659cd824955cc25050ca8ec44fb01cec",
+            "file": "src/app/shared/types/editor.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IEditorProps {\r\n  style?: Record<string, string>;\r\n  styleClass?: string;\r\n  placeholder?: string;\r\n  formats?: string[];\r\n  modules?: Record<string, unknown>;\r\n  readOnly?: boolean;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport interface ITextChangeEvent {\r\n  htmlValue: string;\r\n  textValue: string;\r\n  delta: unknown;\r\n  source: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "delta",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "htmlValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "source",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "textValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "ITokens",
             "id": "interface-ITokens-f684637b9e6b17d89e67e90f3815dd0257565b8c8a057f5a918841aa7171be8f9f3e4e1435c1c1531481fec2a74ff95f2089d767f1d6199ebb0bf8254bf2af28",
             "file": "src/app/core/_models/tokens.model.ts",
@@ -1131,6 +1271,41 @@
                     "optional": false,
                     "description": "",
                     "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IUploadEvent",
+            "id": "interface-IUploadEvent-9ed5beea1cd12733bedf60e7308812271173ce19e6e97286610d34a963fb061b714b70d528c61b5772b2d06da818b00fdeb671db229cbaffbae6bc416421e85d",
+            "file": "src/app/shared/types/fileUploader.types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { HttpEvent } from '@angular/common/http';\r\n\r\nexport type IFileUploadMode = 'basic' | 'advanced';\r\n\r\nexport interface IFileUploadProps {\r\n  url: string;\r\n  multiple: boolean;\r\n  accept: string;\r\n  maxFileSize: number;\r\n  mode: IFileUploadMode;\r\n  emptyMessage: string;\r\n  name: string;\r\n  auto?: boolean;\r\n  showCancelButton?: boolean;\r\n  showUploadButton?: boolean;\r\n}\r\n\r\nexport interface IUploadEvent {\r\n  originalEvent: HttpEvent<unknown>;\r\n  files: File[];\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "files",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "File[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "originalEvent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HttpEvent<>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
                 }
             ],
             "indexSignatures": [],
@@ -2098,41 +2273,6 @@
                     "optional": true,
                     "description": "",
                     "line": 10
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "UploadEvent",
-            "id": "interface-UploadEvent-3889352cf886437faad14bde40c151fa25db16e362444d94de5cdf18bdb582ea8abd2a236de4ec8328f06ec143de05c7fd60ad922ecb338e63ab1daa5594d501",
-            "file": "src/app/shared/types/fileUploader.types.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import { HttpEvent } from '@angular/common/http';\r\n\r\nexport type FileUploadMode = 'basic' | 'advanced';\r\n\r\nexport interface FileUploadProps {\r\n  url: string;\r\n  multiple: boolean;\r\n  accept: string;\r\n  maxFileSize: number;\r\n  mode: FileUploadMode;\r\n  emptyMessage: string;\r\n  name: string;\r\n  auto?: boolean;\r\n  showCancelButton?: boolean;\r\n  showUploadButton?: boolean;\r\n}\r\n\r\nexport interface UploadEvent {\r\n  originalEvent: HttpEvent<unknown>;\r\n  files: File[];\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "files",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "File[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 20
-                },
-                {
-                    "name": "originalEvent",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "HttpEvent<>",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 19
                 }
             ],
             "indexSignatures": [],
@@ -4900,19 +5040,336 @@
             "templateData": "<p>dashboard works!</p>\r\n<app-file-uploader  (onFileUpload)=\"handleUploadedFiles($event)\"></app-file-uploader>\r\n"
         },
         {
-            "name": "FileUploaderComponent",
-            "id": "component-FileUploaderComponent-637e407a3408d9607440ef676096a6d24a162a962ae41d7823662a6e30a08f022628367d5cea419495440351845714fef65bc7c146446f10730a801996fa5d0f",
-            "file": "src/app/shared/components/file-uploader/file-uploader.component.ts",
-            "encapsulation": [],
+            "name": "EditorComponent",
+            "id": "component-EditorComponent-7da6ff0aa94fc7e73d43a0eb448985d650b66ac98b2d4f6a476720e876d843b42eb34c428c5238857c9009f6f846c2348b03218ca6f266acf5818f2846f49c60",
+            "file": "src/app/shared/components/editor/editor.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [
                 {
-                    "name": "MessageService",
-                    "type": "injectable"
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => EditorComponent), multi: true,\n}",
+                    "type": "component"
                 }
             ],
+            "selector": "app-editor",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./editor.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "formats",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "defaultValue": "new FormControl()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "FormControl",
+                    "decorators": []
+                },
+                {
+                    "name": "modules",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "Record<string | >",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "readOnly",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "{ height: '320px' }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "Record<string | string>",
+                    "decorators": []
+                },
+                {
+                    "name": "styleClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "onTouch",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onTextChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ITextChangeEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ITextChangeEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "Editor"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, forwardRef, ViewEncapsulation } from '@angular/core';\r\nimport {\r\n  ControlValueAccessor,\r\n  FormControl,\r\n  NG_VALUE_ACCESSOR,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { Editor } from 'primeng/editor';\r\nimport { IEditorProps, ITextChangeEvent } from '../../types/editor.types';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-editor',\r\n  templateUrl: './editor.component.html',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule, Editor, CommonModule],\r\n  encapsulation: ViewEncapsulation.None,\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => EditorComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class EditorComponent implements ControlValueAccessor, IEditorProps {\r\n  @Input() formControl: FormControl = new FormControl();\r\n  @Input() style?: Record<string, string> = { height: '320px' };\r\n  @Input() styleClass?: string;\r\n  @Input() placeholder?: string;\r\n  @Input() formats?: string[];\r\n  @Input() modules?: Record<string, unknown>;\r\n  @Input() readOnly = false;\r\n  @Input() disabled = false;\r\n\r\n  value = '';\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onChange: (value: string) => void = () => {};\r\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\r\n  onTouch: () => void = () => {};\r\n\r\n  // Implementacja ControlValueAccessor\r\n  writeValue(value: string): void {\r\n    this.value = value;\r\n    this.formControl.setValue(value, { emitEvent: false });\r\n  }\r\n\r\n  registerOnChange(fn: (value: string) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouch = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n    if (isDisabled) {\r\n      this.formControl.disable();\r\n    } else {\r\n      this.formControl.enable();\r\n    }\r\n  }\r\n\r\n  onTextChange(event: ITextChangeEvent): void {\r\n    this.value = event.htmlValue || '';\r\n    this.onChange(this.value);\r\n    this.onTouch();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "ControlValueAccessor",
+                "IEditorProps"
+            ],
+            "templateData": "<div class=\"card\">\r\n  <p-editor [formControl]=\"formControl\" [style]=\"style\" [styleClass]=\"styleClass\" [placeholder]=\"placeholder\"\r\n    [formats]=\"formats\" [modules]=\"modules\" [readonly]=\"readOnly\" [disabled]=\"disabled\"\r\n    (onTextChange)=\"onTextChange($event)\">\r\n  </p-editor>\r\n</div>\r\n"
+        },
+        {
+            "name": "FileUploaderComponent",
+            "id": "component-FileUploaderComponent-a5506cc3764bad5796ddc39e07d3fdd134a8032fdfe2843104744a2bf13215c99a50e24ed9efbdf69bb4360e68498b6f5afa78a2d29edcda65a39862ef9db133",
+            "file": "src/app/shared/components/file-uploader/file-uploader.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
             "selector": "app-file-uploader",
             "styleUrls": [],
             "styles": [],
@@ -4927,7 +5384,7 @@
                     "defaultValue": "'image/*'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 15,
                     "type": "string",
                     "decorators": []
                 },
@@ -4936,7 +5393,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 20,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4945,7 +5402,7 @@
                     "defaultValue": "'Drag and drop files to here to upload.'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -4954,7 +5411,7 @@
                     "defaultValue": "1000000",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 16,
                     "type": "number",
                     "decorators": []
                 },
@@ -4963,8 +5420,8 @@
                     "defaultValue": "'advanced'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
-                    "type": "FileUploadMode",
+                    "line": 17,
+                    "type": "IFileUploadMode",
                     "decorators": []
                 },
                 {
@@ -4972,7 +5429,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 14,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4981,7 +5438,7 @@
                     "defaultValue": "'demo[]'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -4990,7 +5447,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 21,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4999,7 +5456,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -5008,7 +5465,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 13,
                     "type": "string",
                     "decorators": []
                 }
@@ -5019,7 +5476,7 @@
                     "defaultValue": "new EventEmitter<File[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 24,
                     "type": "EventEmitter"
                 }
             ],
@@ -5033,7 +5490,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 25
                 }
             ],
             "methodsClass": [
@@ -5043,7 +5500,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5052,7 +5509,7 @@
                     "args": [
                         {
                             "name": "event",
-                            "type": "UploadEvent",
+                            "type": "IUploadEvent",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -5060,13 +5517,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "UploadEvent",
+                            "type": "IUploadEvent",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -5093,13 +5550,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MessageService } from 'primeng/api';\r\nimport { FileUpload } from 'primeng/fileupload';\r\nimport { FileUploadMode, FileUploadProps, UploadEvent } from '../../types/fileUploader.types';\r\n\r\n@Component({\r\n  selector: 'app-file-uploader',\r\n  templateUrl: './file-uploader.component.html',\r\n  standalone: true,\r\n  imports: [FileUpload, CommonModule],\r\n  providers: [MessageService],\r\n})\r\nexport class FileUploaderComponent implements FileUploadProps {\r\n  @Input() url = '';\r\n  @Input() multiple = true;\r\n  @Input() accept = 'image/*';\r\n  @Input() maxFileSize = 1000000;\r\n  @Input() mode: FileUploadMode = 'advanced';\r\n  @Input() emptyMessage = 'Drag and drop files to here to upload.';\r\n  @Input() name = 'demo[]';\r\n  @Input() auto = false;\r\n  @Input() showCancelButton = true;\r\n  @Input() showUploadButton = true;\r\n\r\n  @Output() onFileUpload = new EventEmitter<File[]>();\r\n  uploadedFiles: File[] = [];\r\n\r\n  onUpload(event: UploadEvent) {\r\n    for (const file of event.files) {\r\n      this.uploadedFiles.push(file);\r\n    }\r\n    this.onFileUpload.emit(event.files);\r\n  }\r\n\r\n  clearUploadedFiles() {\r\n    this.uploadedFiles = [];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { FileUpload } from 'primeng/fileupload';\r\nimport { IFileUploadMode, IFileUploadProps, IUploadEvent } from '../../types/fileUploader.types';\r\n\r\n@Component({\r\n  selector: 'app-file-uploader',\r\n  templateUrl: './file-uploader.component.html',\r\n  standalone: true,\r\n  imports: [FileUpload, CommonModule],\r\n})\r\nexport class FileUploaderComponent implements IFileUploadProps {\r\n  @Input() url = '';\r\n  @Input() multiple = true;\r\n  @Input() accept = 'image/*';\r\n  @Input() maxFileSize = 1000000;\r\n  @Input() mode: IFileUploadMode = 'advanced';\r\n  @Input() emptyMessage = 'Drag and drop files to here to upload.';\r\n  @Input() name = 'demo[]';\r\n  @Input() auto = false;\r\n  @Input() showCancelButton = true;\r\n  @Input() showUploadButton = true;\r\n\r\n  @Output() onFileUpload = new EventEmitter<File[]>();\r\n  uploadedFiles: File[] = [];\r\n\r\n  onUpload(event: IUploadEvent) {\r\n    for (const file of event.files) {\r\n      this.uploadedFiles.push(file);\r\n    }\r\n    this.onFileUpload.emit(event.files);\r\n  }\r\n\r\n  clearUploadedFiles() {\r\n    this.uploadedFiles = [];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
             "implements": [
-                "FileUploadProps"
+                "IFileUploadProps"
             ],
             "templateData": "<div class=\"card\">\r\n  <p-fileupload [name]=\"name\" [url]=\"url\" (onUpload)=\"onUpload($event)\" [multiple]=\"multiple\" [accept]=\"accept\"\r\n    [maxFileSize]=\"maxFileSize\" [mode]=\"mode\" [auto]=\"auto\" [showCancelButton]=\"showCancelButton\"\r\n    [showUploadButton]=\"showUploadButton\">\r\n    <ng-template #empty>\r\n      <div>{{emptyMessage}}</div>\r\n    </ng-template>\r\n    <ng-template #content>\r\n      <ul *ngIf=\"uploadedFiles.length\">\r\n        <li *ngFor=\"let file of uploadedFiles\">{{ file.name }} - {{ file.size }} bytes</li>\r\n      </ul>\r\n    </ng-template>\r\n  </p-fileupload>\r\n</div>\r\n"
         },
@@ -8306,7 +8763,7 @@
                 "kind": 192
             },
             {
-                "name": "FileUploadMode",
+                "name": "IFileUploadMode",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "\"basic\" | \"advanced\"",
@@ -8900,7 +9357,7 @@
             ],
             "src/app/shared/types/fileUploader.types.ts": [
                 {
-                    "name": "FileUploadMode",
+                    "name": "IFileUploadMode",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "\"basic\" | \"advanced\"",
@@ -9057,7 +9514,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -9293,6 +9750,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/editor/editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/file-uploader/file-uploader.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -9505,10 +9971,28 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/types/editor.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IEditorProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/types/editor.types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ITextChangeEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/types/fileUploader.types.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "FileUploadProps",
+                "name": "IFileUploadProps",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
                 "status": "low"
@@ -9517,7 +10001,7 @@
                 "filePath": "src/app/shared/types/fileUploader.types.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "UploadEvent",
+                "name": "IUploadEvent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
@@ -9527,7 +10011,7 @@
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
-                "name": "FileUploadMode",
+                "name": "IFileUploadMode",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

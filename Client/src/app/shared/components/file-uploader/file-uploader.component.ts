@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 import { IFileUploadMode, IFileUploadProps, IUploadEvent } from '../../types/fileUploader.types';
 
@@ -9,7 +8,6 @@ import { IFileUploadMode, IFileUploadProps, IUploadEvent } from '../../types/fil
   templateUrl: './file-uploader.component.html',
   standalone: true,
   imports: [FileUpload, CommonModule],
-  providers: [MessageService],
 })
 export class FileUploaderComponent implements IFileUploadProps {
   @Input() url = '';
