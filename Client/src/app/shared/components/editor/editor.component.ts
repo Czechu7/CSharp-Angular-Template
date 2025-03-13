@@ -38,7 +38,6 @@ export class EditorComponent implements ControlValueAccessor, IEditorProps {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouch: () => void = () => {};
 
-  // Implementacja ControlValueAccessor
   writeValue(value: string): void {
     this.value = value;
     this.formControl.setValue(value, { emitEvent: false });
