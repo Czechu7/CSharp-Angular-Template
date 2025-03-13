@@ -1,4 +1,4 @@
-export interface BaseResponse<T> {
+export interface IBaseResponse<T> {
   success: boolean;
   statusCode: number;
   message: string;

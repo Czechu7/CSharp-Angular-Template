@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { map, Observable } from 'rxjs';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
-import { BaseResponse } from '../../_models/base-response.model';
-import { DecodedToken } from '../../_models/decoded-token.model';
-import { Tokens } from '../../_models/tokens.model';
+import { IBaseResponse } from '../../_models/base-response.model';
+import { IDecodedToken } from '../../_models/decoded-token.model';
+import { ITokens } from '../../_models/tokens.model';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 
 @Injectable({
@@ -15,10 +15,10 @@ export class TokenService {
 
   constructor() {}
 
-  refreshToken(tokens: Tokens): Observable<Tokens> {
+  refreshToken(tokens: ITokens): Observable<ITokens> {
     return this.requestFactory
-      .post<Tokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
-      .pipe(map((response: BaseResponse<Tokens>) => response.data));
+      .post<ITokens, { refreshToken: string }>(ApiEndpoints.REFRESH_TOKEN, tokens)
+      .pipe(map((response: IBaseResponse<ITokens>) => response.data));
   }
 
   isAuth(): boolean {
@@ -93,9 +93,9 @@ export class TokenService {
     }
   }
 
-  decodeToken(token: string): DecodedToken | null {
+  decodeToken(token: string): IDecodedToken | null {
     if (token !== null) {
-      return jwtDecode<DecodedToken>(token);
+      return jwtDecode<IDecodedToken>(token);
     } else {
       return null;
     }

@@ -9,7 +9,7 @@ import { FormService } from '../../../shared/services/form.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../config/router.enum';
-import { RegisterModel } from '../../../core/_models/auth.model';
+import { IRegisterDto } from '../../../core/_models/DTOs/authDto.model';
 
 @Component({
   selector: 'app-register',
@@ -48,6 +48,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    this.authService.signUp(this.registerForm.getRawValue() as RegisterModel);
+    this.authService.signUp(this.registerForm.getRawValue() as IRegisterDto).subscribe({
+      next: res => {
+        console.log('Register successful');
+        console.log(res);
+      },
+      error: error => {
+        console.error('Register failed');
+        console.error(error);
+      },
+    });
   }
 }

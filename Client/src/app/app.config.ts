@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/_interceptors/auth.interceptor';
 import { refreshTokenInterceptor } from './core/_interceptors/refresh-token.interceptor';
+import { providePrimeNG } from 'primeng/config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
