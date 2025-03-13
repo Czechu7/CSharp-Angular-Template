@@ -1,15 +1,10 @@
+using Application.Common.Commands;
 using Application.Common.Models;
 using Application.CQRS.Auth.DTOs;
-using MediatR;
 
 namespace Application.CQRS.Auth.Commands;
 
-public class RevokeTokenCommand : IRequest<ResponseBase>
+public class RevokeTokenCommand(RevokeTokenDto revokeToken) : ICommand<ResponseBase>
 {
-    public string RefreshToken { get; }
-
-    public RevokeTokenCommand(RevokeTokenDto tokenData)
-    {
-        RefreshToken = tokenData.RefreshToken;
-    }
+    public RevokeTokenDto RevokeToken { get; set; } = revokeToken;
 }

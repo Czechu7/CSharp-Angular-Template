@@ -69,9 +69,16 @@ public class AuthController : ApiControllerBase
     [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<ActionResult<ResponseBase>> RevokeToken([FromBody] string refreshToken)
+    public async Task<ActionResult<ResponseBase>> RevokeToken([FromBody] RevokeTokenDto revokeTokenDto)
     {
-        //tba 
-        return Ok(ResponseBase.SuccessResponse("Token revoked"));
+        var command = new RevokeTokenCommand(revokeTokenDto);
+        var response = await Mediator.Send(command);
+
+        if (!response.Success)
+        {
+            return BadRequest(response);
+        }
+
+        return Ok(response);
     }
 }

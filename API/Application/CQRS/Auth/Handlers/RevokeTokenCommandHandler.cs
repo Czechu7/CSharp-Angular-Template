@@ -23,7 +23,8 @@ public class RevokeTokenCommandHandler : IRequestHandler<RevokeTokenCommand, Res
         try
         {
             var refreshToken = await _dbContext.RefreshTokens
-                .FirstOrDefaultAsync(rt => rt.Token == request.RefreshToken, cancellationToken);
+                .Include(rt => rt.User)
+                .FirstOrDefaultAsync(rt => rt.Token == request.RevokeToken.RefreshToken, cancellationToken);
 
             if (refreshToken == null)
             {
