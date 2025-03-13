@@ -14,7 +14,7 @@ export class FileUploaderComponent implements IFileUploadProps {
   @Input() multiple = true;
   @Input() accept = 'image/*';
   @Input() maxFileSize = 1000000;
-  @Input() mode: IFileUploadMode = 'advanced';
+  @Input() mode: IFileUploadMode = 'basic';
   @Input() emptyMessage = 'Drag and drop files to here to upload.';
   @Input() name = 'demo[]';
   @Input() auto = false;
