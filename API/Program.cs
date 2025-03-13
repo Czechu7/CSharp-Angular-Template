@@ -3,8 +3,8 @@ using Autofac.Extensions.DependencyInjection;
 using Application;
 using Infrastructure;
 using Presentation;
-using MediatR;
 using Microsoft.OpenApi.Models;
+using Infrastructure.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,7 +55,12 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.DefaultIgnoreCondition = 
+            System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+    });
 builder.Services.AddHttpContextAccessor();
 
 // Register layered architecture
@@ -98,6 +103,7 @@ app.UseHttpsRedirection();
 app.UseCors("AllowSpecificOrigin");
 
 app.UseRouting();
+app.UseSecurityMiddleware();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

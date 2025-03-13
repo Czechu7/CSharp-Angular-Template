@@ -6,10 +6,6 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 
@@ -108,9 +104,6 @@ public class RefreshTokenCommandHandler(
                 AccessToken = accessToken,
                 RefreshToken = newRefreshToken,
                 ExpiresAt = _tokenService.GetAccessTokenExpiration(),
-                UserId = user.Id,
-                Username = user.Username,
-                Email = user.Email
             };
 
             _logger.LogInformation("Successfully refreshed token for user {UserId}", user.Id);

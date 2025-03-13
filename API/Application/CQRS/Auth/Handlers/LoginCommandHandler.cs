@@ -6,9 +6,6 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 
@@ -68,9 +65,6 @@ public class LoginCommandHandler(
                 AccessToken = accessToken,
                 RefreshToken = refreshToken,
                 ExpiresAt = _tokenService.GetAccessTokenExpiration(),
-                UserId = user.Id,
-                Username = user.Username,
-                Email = user.Email
             };
 
             return Response<AuthResponseDto>.SuccessWithData(response, "Login successful");

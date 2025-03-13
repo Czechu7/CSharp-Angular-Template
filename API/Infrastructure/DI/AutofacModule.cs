@@ -1,5 +1,4 @@
 using Application.Common.Models;
-using Application.Common.Queries;
 using Application.CQRS.Base.Commands;
 using Application.CQRS.Base.Queries;
 using Autofac;

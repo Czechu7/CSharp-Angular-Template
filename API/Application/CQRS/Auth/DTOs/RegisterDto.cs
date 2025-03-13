@@ -1,6 +1,3 @@
-using Application.Common.Mappings;
-using AutoMapper;
-using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.CQRS.Auth.DTOs;

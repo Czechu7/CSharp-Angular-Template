@@ -1,9 +1,7 @@
 using Application.Common.Interfaces;
-using Application.Common.Models;
 using AutoMapper;
 using Domain.Common;
 using Microsoft.Extensions.Logging;
-using Application.CQRS;
 
 namespace Application.CQRS.Base.Commands;
 

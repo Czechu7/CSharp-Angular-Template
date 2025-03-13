@@ -4,9 +4,6 @@ using Application.CQRS.Auth.Commands;
 using Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.CQRS.Auth.Handlers;
 

@@ -1,6 +1,5 @@
 using Application.Common.Interfaces;
 using Application.Common.Models;
-using Application.Common.Queries;
 using AutoMapper;
 using Domain.Common;
 using MediatR;
@@ -13,7 +12,7 @@ public abstract class QueryHandlerBase<TQuery, TResult, TEntity>(
     IMapper mapper,
     ILogger<QueryHandlerBase<TQuery, TResult, TEntity>> logger)
     : IRequestHandler<TQuery, Response<TResult>>
-    where TQuery : IRequest<Response<TResult>>  // Updated to require only IRequest<Response<TResult>>
+    where TQuery : IRequest<Response<TResult>> 
     where TEntity : BaseEntity
 {
     protected readonly IGenericRepository<TEntity> Repository = repository;
@@ -35,4 +34,5 @@ public abstract class QueryHandlerBase<TQuery, TResult, TEntity>(
     }
 
     protected abstract Task<TResult> HandleQuery(TQuery request, CancellationToken cancellationToken);
+    
 }

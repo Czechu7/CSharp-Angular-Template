@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using API.Infrastructure.Persistence;
 using Infrastructure.Persistence;
 using Application.Common.Interfaces;
 
