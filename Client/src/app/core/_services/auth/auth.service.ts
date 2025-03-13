@@ -3,9 +3,7 @@ import { RequestFactoryService } from '../httpRequestFactory/request-factory.ser
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { tap } from 'rxjs';
 import { IBaseResponse } from '../../_models/base-response.model';
-import { ITokens } from '../../_models/tokens.model';
-import { AuthTokensResponseDto, ILoginDto, IRegisterDto } from '../../_models/DTOs/authDto.model';
-import { TokenService } from '../token/token.service';
+import { IAuthTokensResponseDto, ILoginDto, IRegisterDto } from '../../_models/DTOs/authDto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,24 +13,24 @@ export class AuthService {
 
   signIn(loginData: ILoginDto) {
     return this.requestFactory
-      .post<AuthTokensResponseDto, ILoginDto>(ApiEndpoints.SIGN_IN, loginData)
+      .post<IAuthTokensResponseDto, ILoginDto>(ApiEndpoints.SIGN_IN, loginData)
       .pipe(
-        tap((res: IBaseResponse<AuthTokensResponseDto>) => {
+        tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
           localStorage.setItem('accessToken', res.data.accessToken);
           localStorage.setItem('refreshToken', res.data.refreshToken);
-          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresIn);
+          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresAt);
         })
       );
   }
 
   signUp(registerData: IRegisterDto) {
     return this.requestFactory
-      .post<AuthTokensResponseDto, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData)
+      .post<IAuthTokensResponseDto, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData)
       .pipe(
-        tap((res: IBaseResponse<AuthTokensResponseDto>) => {
+        tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
           localStorage.setItem('accessToken', res.data.accessToken);
           localStorage.setItem('refreshToken', res.data.refreshToken);
-          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresIn);
+          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresAt);
         })
       );
   }

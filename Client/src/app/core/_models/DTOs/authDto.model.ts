@@ -12,8 +12,13 @@ export interface IRegisterDto extends ILoginDto {
   username: string;
 }
 
-export interface AuthTokensResponseDto {
+export interface IAuthTokensResponseDto {
   accessToken: IAccessToken;
   refreshToken: string;
-  expiresIn: string;
+  expiresAt: string;
+}
+
+export interface IAuthRefreshTokensRequestDto {
+  accessToken: string;
+  refreshToken: string;
 }

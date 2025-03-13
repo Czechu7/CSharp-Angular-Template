@@ -6,6 +6,10 @@ import { IBaseResponse } from '../../_models/base-response.model';
 import { IDecodedToken } from '../../_models/decoded-token.model';
 import { IAccessToken, IRefreshToken, ITokens } from '../../_models/tokens.model';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
+import {
+  IAuthRefreshTokensRequestDto,
+  IAuthTokensResponseDto,
+} from '../../_models/DTOs/authDto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +19,14 @@ export class TokenService {
 
   constructor() {}
 
-  public refreshToken(tokens: ITokens): Observable<ITokens> {
+  public refreshToken(tokens: ITokens): Observable<IAuthTokensResponseDto> {
+    const body: IAuthRefreshTokensRequestDto = {
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken.refreshToken,
+    };
     return this.requestFactory
-      .post<ITokens, { refreshToken: IRefreshToken }>(ApiEndpoints.REFRESH_TOKEN, tokens)
-      .pipe(map((response: IBaseResponse<ITokens>) => response.data));
+      .post<IAuthTokensResponseDto, IAuthRefreshTokensRequestDto>(ApiEndpoints.REFRESH_TOKEN, body)
+      .pipe(map((response: IBaseResponse<IAuthTokensResponseDto>) => response.data));
   }
 
   public getUserId() {
