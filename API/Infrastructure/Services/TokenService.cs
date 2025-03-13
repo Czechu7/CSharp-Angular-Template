@@ -16,40 +16,40 @@ public class TokenService(IConfiguration configuration) : ITokenService
     private readonly IConfiguration _configuration = configuration;
 
     public string GenerateAccessToken(User user)
-{
-    var jwtSettings = _configuration.GetSection("JwtSettings");
-    var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
-    
-    var claims = new List<Claim>
     {
-        new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        var jwtSettings = _configuration.GetSection("JwtSettings");
+        var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
+
+        var claims = new List<Claim>
+    {
+        new("sub", user.Id.ToString()),
         new(ClaimTypes.Name, user.Username),
         new(ClaimTypes.Email, user.Email),
-        new("SecurityStamp", user.SecurityStamp)
+        new("security_stamp", user.SecurityStamp)
     };
-    
-    if (!string.IsNullOrEmpty(user.Roles))
-    {
-        var roles = user.Roles.Split(',', StringSplitOptions.RemoveEmptyEntries);
-        foreach (var role in roles)
+
+        if (!string.IsNullOrEmpty(user.Roles))
         {
-            claims.Add(new Claim(ClaimTypes.Role, role.Trim()));
+            var roles = user.Roles.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Trim()));
+            }
         }
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(claims),
+            Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["AccessTokenExpirationMinutes"]!)),
+            Issuer = jwtSettings["Issuer"],
+            Audience = jwtSettings["Audience"],
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
     }
-    
-    var tokenHandler = new JwtSecurityTokenHandler();
-    var tokenDescriptor = new SecurityTokenDescriptor
-    {
-        Subject = new ClaimsIdentity(claims),
-        Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["AccessTokenExpirationMinutes"]!)),
-        Issuer = jwtSettings["Issuer"],
-        Audience = jwtSettings["Audience"],
-        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-    };
-    
-    var token = tokenHandler.CreateToken(tokenDescriptor);
-    return tokenHandler.WriteToken(token);
-}
 
     public string GenerateRefreshToken()
     {
@@ -66,7 +66,7 @@ public class TokenService(IConfiguration configuration) : ITokenService
 
         var jwtSettings = _configuration.GetSection("JwtSettings");
         var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
-        
+
         var tokenHandler = new JwtSecurityTokenHandler();
         try
         {
