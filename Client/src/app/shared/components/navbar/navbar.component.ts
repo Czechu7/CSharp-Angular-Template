@@ -8,6 +8,7 @@ import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
 import { FormService } from '../../services/form.service';
+import { Language, LanguageService } from '../../../core/_services/language/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -40,12 +41,14 @@ export class NavbarComponent implements OnInit, NavbarProps {
   combinedMenuItems: MenuItem[] = [];
   mobileMenuOpen = false;
   isDarkTheme = false;
-  currentLang = '';
+  languages: Language[] = [];
+  currentLang = 'pl';
   themeForm!: FormGroup<ThemeForm>;
 
   constructor(
     private router: Router,
-    private formService: FormService
+    private formService: FormService,
+    private languageService: LanguageService
   ) {}
 
   get controls() {
@@ -53,6 +56,12 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   ngOnInit() {
+    this.languages = this.languageService.languages;
+
+    this.languageService.currentLang$.subscribe(lang => {
+      this.currentLang = lang;
+    });
+
     this.updateMenu();
     if (this.langs.length > 0) {
       this.currentLang = this.langs[0].value;
@@ -137,9 +146,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  switchLanguage(_langValue: string) {
-    // this.currentLang = langValue;
-    // localStorage.setItem('language', langValue);
+  switchLanguage(langValue: string) {
+    this.languageService.changeLanguage(langValue);
   }
 }

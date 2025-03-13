@@ -1,0 +1,22 @@
+{
+  "APP": {
+    "TITLE": "Moja Aplikacja",
+    "WELCOME": "Witaj w mojej aplikacji!"
+  },
+  "NAV": {
+    "HOME": "Strona główna",
+    "ABOUT": "O nas",
+    "CONTACT": "Kontakt",
+    "LOGIN": "Zaloguj się",
+    "REGISTER": "Zarejestruj się"
+  },
+  "AUTH": {
+    "EMAIL": "Adres e-mail",
+    "PASSWORD": "Hasło",
+    "LOGIN": "Zaloguj się",
+    "REGISTER": "Zarejestruj się",
+    "FORGOT_PASSWORD": "Zapomniałeś hasła?",
+    "NO_ACCOUNT": "Nie masz konta?",
+    "HAS_ACCOUNT": "Masz już konto?"
+  }
+}

@@ -49,7 +49,7 @@
 
       @if (showSwtichLang && langs.length > 0) {
       <div class="language-switcher">
-        @for (lang of langs; track lang) {
+        @for (lang of languages; track lang.value) {
         <app-button [label]="lang.label" [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
           [variant]="currentLang === lang.value ? 'outlined' : 'text'"
           [severity]="currentLang === lang.value ? 'primary' : 'secondary'" (onClick)="switchLanguage(lang.value)">

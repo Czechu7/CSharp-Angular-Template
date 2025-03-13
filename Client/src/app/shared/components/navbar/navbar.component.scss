@@ -315,6 +315,18 @@
   }
 }
 
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+:host ::ng-deep {
+  .active-lang {
+    font-weight: 600;
+  }
+}
+
 .language-switcher,
 .theme-switcher {
   margin: map-get($spacers, 2);
