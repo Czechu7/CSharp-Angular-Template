@@ -2,8 +2,9 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
-import { ApiEndpoints } from '../_models/api-endpoints.enum';
+import { IAccessToken, IRefreshToken } from '../_models/tokens.model';
 import { TokenService } from '../_services/token/token.service';
+import { ApiEndpoints } from '../../config/api-endpoints.enum';
 
 let isRefreshing = false;
 
@@ -25,11 +26,12 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
         if (accessToken && refreshToken) {
           return tokenService.refreshToken({ accessToken, refreshToken }).pipe(
             switchMap((newTokens: IAuthTokensResponseDto) => {
-              tokenService.setAccessToken(newTokens.accessToken);
-              tokenService.setRefreshToken({
+              const newAccessToken: IAccessToken = newTokens.accessToken;
+              const newRefreshToken: IRefreshToken = {
                 refreshToken: newTokens.refreshToken,
                 expiresAt: newTokens.expiresAt,
-              });
+              };
+              tokenService.setTokens(newAccessToken, newRefreshToken);
 
               const clonedReq = req.clone({
                 setHeaders: {
@@ -38,20 +40,15 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               });
               isRefreshing = false;
               return next(clonedReq);
-            }),
-            catchError(refreshError => {
-              isRefreshing = false;
-              tokenService.removeTokens();
-              return throwError(refreshError);
             })
           );
         } else {
           isRefreshing = false;
           tokenService.removeTokens();
-          return throwError(error);
+          return throwError(() => new Error(error.message));
         }
       } else {
-        return throwError(error);
+        return throwError(() => new Error(error.message));
       }
     })
   );

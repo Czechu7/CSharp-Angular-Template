@@ -1,9 +1,14 @@
 import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
-import { ApiEndpoints } from '../../_models/api-endpoints.enum';
-import { tap } from 'rxjs';
-import { IBaseResponse } from '../../_models/base-response.model';
-import { IAuthTokensResponseDto, ILoginDto, IRegisterDto } from '../../_models/DTOs/authDto.model';
+import { ApiEndpoints } from '../../../config/api-endpoints.enum';
+import { Observable, tap } from 'rxjs';
+import { IBaseResponse, IBaseResponseWithoutData } from '../../_models/base-response.model';
+import {
+  IAuthTokensResponseDto,
+  ILoginDto,
+  IRegisterDto,
+  IRevokeTokenRequestDto,
+} from '../../_models/DTOs/authDto.model';
 import { TokenService } from '../token/token.service';
 import { IAccessToken } from '../../_models/tokens.model';
 import { Router } from '@angular/router';
@@ -20,13 +25,13 @@ export class AuthService {
 
   isLogged = signal<boolean>(this.isAuth());
 
-  signIn(loginData: ILoginDto) {
+  signIn(loginData: ILoginDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
       .post<IAuthTokensResponseDto, ILoginDto>(ApiEndpoints.SIGN_IN, loginData)
       .pipe(
         tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
           if (res.success && res.data) {
-            this.tokenService.saveTokens(res.data.accessToken, {
+            this.tokenService.setTokens(res.data.accessToken, {
               refreshToken: res.data.refreshToken,
               expiresAt: res.data.expiresAt,
             });
@@ -37,13 +42,13 @@ export class AuthService {
       );
   }
 
-  signUp(registerData: IRegisterDto) {
+  signUp(registerData: IRegisterDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
       .post<IAuthTokensResponseDto, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData)
       .pipe(
         tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
           if (res.success && res.data) {
-            this.tokenService.saveTokens(res.data.accessToken, {
+            this.tokenService.setTokens(res.data.accessToken, {
               refreshToken: res.data.refreshToken,
               expiresAt: res.data.expiresAt,
             });
@@ -62,9 +67,9 @@ export class AuthService {
 
     this.requestFactory
       .post<
-        IBaseResponse<null>,
-        { refreshToken: string }
-      >(ApiEndpoints.REVOKE_TOKEN, { refreshToken: refreshToken?.refreshToken })
+        IBaseResponseWithoutData,
+        IRevokeTokenRequestDto
+      >(ApiEndpoints.REVOKE_TOKEN, { refreshToken: refreshToken.refreshToken })
       .subscribe({
         next: res => {
           if (res.success) {
@@ -91,17 +96,9 @@ export class AuthService {
       return false;
     }
 
-    if (
-      this.tokenService.validateToken(accessToken) &&
-      this.tokenService.validateRefreshToken(refreshToken)
-    ) {
-      return true;
-    }
+    const isRefreshTokenValid = this.tokenService.validateRefreshToken(refreshToken);
 
-    if (
-      !this.tokenService.validateToken(accessToken) &&
-      this.tokenService.validateRefreshToken(refreshToken)
-    ) {
+    if (isRefreshTokenValid) {
       return true;
     }
 
