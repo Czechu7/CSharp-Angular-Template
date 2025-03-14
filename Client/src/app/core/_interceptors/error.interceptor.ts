@@ -1,28 +1,31 @@
-import { HttpErrorResponse, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { ToastService } from '../../shared/services/toast.service';
-import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastService = inject(ToastService);
+  const translateService = inject(TranslateService);
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      let errorMessage = 'Error occurred';
+      let errorKey = 'ERRORS.UNKNOWN';
 
       if (err.status === 401) {
-        errorMessage = 'Unauthorized';
+        errorKey = 'ERRORS.UNAUTHORIZED';
       } else if (err.status === 403) {
-        errorMessage = 'Forbidden';
+        errorKey = 'ERRORS.FORBIDDEN';
       } else if (err.status === 404) {
-        errorMessage = 'Not found';
+        errorKey = 'ERRORS.NOT_FOUND';
       } else if (err.status === 500) {
-        errorMessage = 'Internal server error';
+        errorKey = 'ERRORS.INTERNAL_SERVER_ERROR';
       }
 
-      toastService.showError(errorMessage, err.message);
-      console.error(errorMessage);
+      translateService.get(errorKey).subscribe(errorMessage => {
+        toastService.showError(errorMessage, err.message);
+        console.error(errorMessage);
+      });
 
       return throwError(() => err);
     })

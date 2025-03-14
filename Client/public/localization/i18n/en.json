@@ -40,7 +40,15 @@
     "MIN_LENGTH": "Minimum length: {{minLength}} characters.",
     "MAX_LENGTH": "Maximum length: {{maxLength}} characters.",
     "INVALID_EMAIL": "Invalid email address.",
-    "PASSWORDS_NOT_EQUAL": "Passwords must match."
+    "PASSWORDS_NOT_EQUAL": "Passwords must match.",
+    "UNKNOWN": "An unknown error occurred.",
+    "UNAUTHORIZED": "Unauthorized access.",
+    "FORBIDDEN": "Access forbidden.",
+    "NOT_FOUND": "Resource not found.",
+    "INTERNAL_SERVER_ERROR": "Internal server error.",
+    "BAD_REQUEST": "Bad request.",
+    "SERVICE_UNAVAILABLE": "Service unavailable.",
+    "GATEWAY_TIMEOUT": "Gateway timeout."
   },
   "FOOTER": {
     "COPYRIGHT": "All rights reserved."
