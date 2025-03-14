@@ -4,13 +4,15 @@ using Application.CQRS.Auth.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers;
+
 
 public class AuthController : ApiControllerBase
 {
     [HttpPost("register")]
+    [EnableRateLimiting("auth")]
     [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<ResponseBase>> Register([FromBody] RegisterDto registerDto)

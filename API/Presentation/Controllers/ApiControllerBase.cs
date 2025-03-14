@@ -2,11 +2,13 @@ using System.Security.Claims;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableRateLimiting("standard")]
 public abstract class ApiControllerBase : ControllerBase
 {
     private ISender? _mediator;
