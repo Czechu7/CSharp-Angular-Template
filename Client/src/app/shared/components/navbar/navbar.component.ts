@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, type OnInit } from '@angular/core';
+import { Component, inject, Input, type OnInit } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
@@ -8,6 +8,10 @@ import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
 import { FormService } from '../../services/form.service';
+import { LanguageService } from '../../../core/_services/language/language.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { ILanguage } from '../../../core/_models/language.model';
+import { RouterEnum } from '../../../enums/router.enum';
 import { AuthService } from '../../../core/_services/auth/auth.service';
 
 @Component({
@@ -20,6 +24,7 @@ import { AuthService } from '../../../core/_services/auth/auth.service';
     ToggleSwitchComponent,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -41,28 +46,33 @@ export class NavbarComponent implements OnInit, NavbarProps {
   combinedMenuItems: MenuItem[] = [];
   mobileMenuOpen = false;
   isDarkTheme = false;
-  currentLang = '';
+  languages: ILanguage[] = [];
+  currentLang!: string;
   themeForm!: FormGroup<ThemeForm>;
+  RouterEnum = RouterEnum;
 
-  constructor(
-    private router: Router,
-    private formService: FormService,
-    private authService: AuthService
-  ) {}
+  private router = inject(Router);
+  private formService = inject(FormService);
+  private languageService = inject(LanguageService);
+  private authService = inject(AuthService);
 
   get controls() {
     return this.themeForm.controls;
   }
 
   ngOnInit() {
+    this.languages = this.languageService.languages;
+
+    this.currentLang = this.languageService.currentLang;
+
+    this.languageService.currentLang$.subscribe(lang => {
+      this.currentLang = lang;
+      this.updateMenu();
+    });
     this.updateMenu();
-    if (this.langs.length > 0) {
-      this.currentLang = this.langs[0].value;
-    }
     this.checkCurrentTheme();
 
     this.themeForm = this.formService.initThemeForm();
-
     this.controls.theme.setValue(this.isDarkTheme);
 
     this.controls.theme.valueChanges.subscribe(isDark => {
@@ -112,7 +122,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   logout() {
     this.authService.signOut();
     this.updateMenu();
-    this.router.navigate(['/login']);
+    this.router.navigate([RouterEnum.home]);
   }
 
   toggleTheme() {
@@ -139,9 +149,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  switchLanguage(_langValue: string) {
-    // this.currentLang = langValue;
-    // localStorage.setItem('language', langValue);
+  switchLanguage(langValue: string) {
+    this.languageService.changeLanguage(langValue);
   }
 }

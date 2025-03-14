@@ -1,0 +1,56 @@
+{
+  "APP": {
+    "TITLE": "My Application",
+    "WELCOME": "Welcome to my application!"
+  },
+  "MENU": {
+    "TITLE": "Angular Template",
+    "FOOTER_TITLE": "Karmelki",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout",
+    "LOGIN": "Login",
+    "REGISTER": "Register"
+  },
+  "AUTH": {
+    "LOGIN_TITLE": "Log in",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN_BUTTON": "Log in",
+    "FORGOT_PASSWORD_TEXT": "Forgot your password?",
+    "RECOVER_PASSWORD": "Recover password",
+    "NO_ACCOUNT_TEXT": "Don't have an account?",
+    "REGISTER": "Register",
+    "REGISTER_TITLE": "Register",
+    "USERNAME": "Username",
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+
+    "CONFIRM_PASSWORD": "Confirm password",
+    "PASSWORD_PROMPT": "Choose a password",
+    "PASSWORD_WEAK": "Too simple password",
+    "PASSWORD_MEDIUM": "Average complexity",
+    "PASSWORD_STRONG": "Complex password",
+    "REGISTER_BUTTON": "Register",
+    "HAS_ACCOUNT_TEXT": "Already have an account?",
+    "LOGIN": "Log in"
+  },
+  "ERRORS": {
+    "REQUIRED": "This field is required.",
+    "POSTAL_CODE_FORMAT": "Invalid postal code format.",
+    "MIN_LENGTH": "Minimum length: {{minLength}} characters.",
+    "MAX_LENGTH": "Maximum length: {{maxLength}} characters.",
+    "INVALID_EMAIL": "Invalid email address.",
+    "PASSWORDS_NOT_EQUAL": "Passwords must match.",
+    "UNKNOWN": "An unknown error occurred.",
+    "UNAUTHORIZED": "Unauthorized access.",
+    "FORBIDDEN": "Access forbidden.",
+    "NOT_FOUND": "Resource not found.",
+    "INTERNAL_SERVER_ERROR": "Internal server error.",
+    "BAD_REQUEST": "Bad request.",
+    "SERVICE_UNAVAILABLE": "Service unavailable.",
+    "GATEWAY_TIMEOUT": "Gateway timeout."
+  },
+  "FOOTER": {
+    "COPYRIGHT": "All rights reserved."
+  }
+}

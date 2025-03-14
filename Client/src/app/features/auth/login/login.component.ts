@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginForm } from '../../../shared/models/form.model';
 import { FormService } from '../../../shared/services/form.service';
@@ -8,8 +8,9 @@ import { CommonModule } from '@angular/common';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/_services/auth/auth.service';
-import { RouterEnum } from '../../../config/router.enum';
+import { RouterEnum } from '../../../enums/router.enum';
 import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
     CommonModule,
     PasswordInputComponent,
     RouterModule,
+    TranslateModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -29,10 +31,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup<LoginForm>;
   RouterEnum = RouterEnum;
 
-  constructor(
-    private formService: FormService,
-    private authService: AuthService
-  ) {}
+  private formService = inject(FormService);
+  private authService = inject(AuthService);
 
   ngOnInit() {
     this.loginForm = this.formService.initLoginForm();

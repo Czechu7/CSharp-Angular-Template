@@ -2,53 +2,53 @@
   <div class="container">
     <div class="branding">
       @if (logo) {
-        <img [src]="logo" alt="Logo" class="logo-img" />
+      <img [src]="logo" alt="Logo" class="logo-img" />
       }
       @if (title) {
-        <span class="title">{{ title }}</span>
+      <span class="title">{{ title | translate }}</span>
       }
     </div>
 
     @if (links && links.length) {
-      <div class="links">
-        @for (link of links; track link) {
-          @if (link.routerLink) {
-            <a [routerLink]="link.routerLink" [queryParams]="link.queryParams">
-              @if (link.icon) {
-                <i class="{{ link.icon }}"></i>
-              }
-              {{ link.label }}
-            </a>
-          }
-          @if (link.url) {
-            <a [href]="link.url" [target]="link.target">
-              @if (link.icon) {
-                <i class="{{ link.icon }}"></i>
-              }
-              {{ link.label }}
-            </a>
-          }
+    <div class="links">
+      @for (link of links; track link) {
+      @if (link.routerLink) {
+      <a [routerLink]="link.routerLink" [queryParams]="link.queryParams">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
         }
-      </div>
+        {{ link.label }}
+      </a>
+      }
+      @if (link.url) {
+      <a [href]="link.url" [target]="link.target">
+        @if (link.icon) {
+        <i class="{{ link.icon }}"></i>
+        }
+        {{ link.label }}
+      </a>
+      }
+      }
+    </div>
     }
 
     @if (socialLinks && socialLinks.length) {
-      <div class="social-links">
-        @for (social of socialLinks; track social) {
-          @if (social.url) {
-            <a [href]="social.url" [target]="social.target">
-              @if (social.icon) {
-                <i class="{{ social.icon }}"></i>
-              }
-              {{ social.label }}
-            </a>
-          }
+    <div class="social-links">
+      @for (social of socialLinks; track social) {
+      @if (social.url) {
+      <a [href]="social.url" [target]="social.target">
+        @if (social.icon) {
+        <i class="{{ social.icon }}"></i>
         }
-      </div>
+        {{ social.label }}
+      </a>
+      }
+      }
+    </div>
     }
 
     <div class="copyright">
-      &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. Wszelkie prawa zastrzeżone.
+      &copy; {{ currentYear }} {{ title || 'Twoja Firma' }}. {{'FOOTER.COPYRIGHT' | translate}}
     </div>
   </div>
 </footer>

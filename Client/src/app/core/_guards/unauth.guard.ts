@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { catchError, map, of } from 'rxjs';
-import { RouterEnum } from '../../config/router.enum';
+import { RouterEnum } from '../../enums/router.enum';
 import { AuthService } from '../_services/auth/auth.service';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

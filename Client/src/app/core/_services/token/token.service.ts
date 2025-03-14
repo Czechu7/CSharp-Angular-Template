@@ -17,8 +17,6 @@ import {
 export class TokenService {
   private requestFactory = inject(RequestFactoryService);
 
-  constructor() {}
-
   public refreshToken(tokens: ITokens): Observable<IAuthTokensResponseDto> {
     const body: IAuthRefreshTokensRequestDto = {
       accessToken: tokens.accessToken,
@@ -82,6 +80,7 @@ export class TokenService {
       } else {
         return false;
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       return false;
     }

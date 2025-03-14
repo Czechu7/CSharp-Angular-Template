@@ -4,7 +4,7 @@
       @if (logo) {
       <img [src]="logo" alt="Logo" class="navbar-logo" />
       }
-      <h1 class="navbar-title">{{ title }}</h1>
+      <h1 class="navbar-title">{{ title | translate }}</h1>
     </div>
 
     <button class="navbar-mobile-toggle" (click)="toggleMobileMenu()">
@@ -20,7 +20,7 @@
             @if (item.icon) {
             <i class="nav-icon {{ item.icon }}"></i>
             }
-            {{ item.label }}
+            {{ item.label | translate }}
             <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
           </div>
 
@@ -31,7 +31,7 @@
               @if (subItem.icon) {
               <i class="nav-icon {{ subItem.icon }}"></i>
               }
-              {{ subItem.label }}
+              {{ subItem.label | translate }}
             </li>
             }
           </ul>
@@ -40,7 +40,7 @@
             @if (item.icon) {
             <i class="nav-icon {{ item.icon }}"></i>
             }
-            {{ item.label }}
+            {{ item.label | translate }}
           </div>
           }
         </li>
@@ -49,7 +49,7 @@
 
       @if (showSwtichLang && langs.length > 0) {
       <div class="language-switcher">
-        @for (lang of langs; track lang) {
+        @for (lang of languages; track lang.value) {
         <app-button [label]="lang.label" [styleClass]="currentLang === lang.value ? 'active-lang' : ''"
           [variant]="currentLang === lang.value ? 'outlined' : 'text'"
           [severity]="currentLang === lang.value ? 'primary' : 'secondary'" (onClick)="switchLanguage(lang.value)">
@@ -84,7 +84,7 @@
         </div>
         <button class="logout-button" (click)="logout()">
           <i class="logout-icon"></i>
-          Logout
+          {{ 'LOGOUT' | translate }}
         </button>
       </div>
       }

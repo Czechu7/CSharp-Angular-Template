@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export interface SelectOption {
   label: string;
   value: string;
@@ -12,7 +14,7 @@ export type Size = 'small' | 'large';
 export type LabelVariant = 'over' | 'in' | 'on';
 
 export interface SelectProps<T = any> {
-  formControlName?: string;
+  formControl: FormControl;
   checkmark: boolean;
   showClear: boolean;
   editable: boolean;

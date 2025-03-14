@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -24,8 +25,8 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class SelectComponent<T = any> implements SelectProps<T>, ControlValueAccessor {
-  @Input() formControlName = '';
+export class SelectComponent<T = unknown> implements SelectProps<T>, ControlValueAccessor {
+  @Input() formControl!: FormControl;
   @Input() options?: T[];
   @Input() optionLabel?: string;
   @Input() optionValue?: string;
@@ -67,6 +68,7 @@ export class SelectComponent<T = any> implements SelectProps<T>, ControlValueAcc
 
   _value: T | undefined = undefined;
 
+  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
   get value(): T | undefined {
     return this._value;
   }
@@ -77,7 +79,9 @@ export class SelectComponent<T = any> implements SelectProps<T>, ControlValueAcc
     this.touched = true;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private onChangeCallback: (value: T | null) => void = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private onTouchCallback: () => void = () => {};
 
   writeValue(value: T): void {

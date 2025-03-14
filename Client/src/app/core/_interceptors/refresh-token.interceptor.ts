@@ -1,10 +1,10 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
-import { ApiEndpoints } from '../../config/api-endpoints.enum';
 import { IAccessToken, IRefreshToken } from '../_models/tokens.model';
+import { TokenService } from '../_services/token/token.service';
+import { ApiEndpoints } from '../../config/api-endpoints.enum';
 
 let isRefreshing = false;
 

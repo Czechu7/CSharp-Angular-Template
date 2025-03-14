@@ -1,0 +1,55 @@
+{
+  "APP": {
+    "TITLE": "Moja Aplikacja",
+    "WELCOME": "Witaj w mojej aplikacji!"
+  },
+  "MENU": {
+    "TITLE": "Angular Template",
+    "FOOTER_TITLE": "Karmelki",
+    "PROFILE": "Profil",
+    "LOGOUT": "Wyloguj się",
+    "LOGIN": "Zaloguj się",
+    "REGISTER": "Zarejestruj się"
+  },
+  "AUTH": {
+    "LOGIN_TITLE": "Zaloguj się",
+    "EMAIL": "Email",
+    "PASSWORD": "Hasło",
+    "LOGIN_BUTTON": "Zaloguj się",
+    "FORGOT_PASSWORD_TEXT": "Zapomniałeś hasła?",
+    "RECOVER_PASSWORD": "Odzyskaj hasło",
+    "NO_ACCOUNT_TEXT": "Nie masz konta?",
+    "REGISTER": "Zarejestruj się",
+    "REGISTER_TITLE": "Zarejestruj się",
+    "USERNAME": "Nazwa użytkownika",
+    "FIRST_NAME": "Imię",
+    "LAST_NAME": "Nazwisko",
+    "CONFIRM_PASSWORD": "Powtórz hasło",
+    "PASSWORD_PROMPT": "Wybierz hasło",
+    "PASSWORD_WEAK": "Zbyt proste hasło",
+    "PASSWORD_MEDIUM": "Średnia złożoność",
+    "PASSWORD_STRONG": "Złożone hasło",
+    "REGISTER_BUTTON": "Zarejestruj się",
+    "HAS_ACCOUNT_TEXT": "Masz konto?",
+    "LOGIN": "Zaloguj się"
+  },
+  "ERRORS": {
+    "REQUIRED": "To pole jest wymagane.",
+    "POSTAL_CODE_FORMAT": "Podano kod pocztowy w niepoprawnym formacie.",
+    "MIN_LENGTH": "Minimalna ilość znaków: {{minLength}}.",
+    "MAX_LENGTH": "Maksymalna ilość znaków: {{maxLength}}.",
+    "INVALID_EMAIL": "Niepoprawny adres e-mail.",
+    "PASSWORDS_NOT_EQUAL": "Hasła muszą być takie same.",
+    "UNKNOWN": "Wystąpił nieznany błąd.",
+    "UNAUTHORIZED": "Brak autoryzacji.",
+    "FORBIDDEN": "Brak dostępu.",
+    "NOT_FOUND": "Nie znaleziono zasobu.",
+    "INTERNAL_SERVER_ERROR": "Wewnętrzny błąd serwera.",
+    "BAD_REQUEST": "Nieprawidłowe żądanie.",
+    "SERVICE_UNAVAILABLE": "Usługa niedostępna.",
+    "GATEWAY_TIMEOUT": "Przekroczono limit czasu."
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Wszelkie prawa zastrzeżone."
+  }
+}
