@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../config/router.enum';
 import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
     CommonModule,
     PasswordInputComponent,
     RouterModule,
+    TranslateModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

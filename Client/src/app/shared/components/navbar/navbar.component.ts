@@ -8,7 +8,8 @@ import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
 import { FormService } from '../../services/form.service';
-import { Language, LanguageService } from '../../../core/_services/language/language.service';
+import { ILanguage, LanguageService } from '../../../core/_services/language/language.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,7 @@ import { Language, LanguageService } from '../../../core/_services/language/lang
     ToggleSwitchComponent,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -41,7 +43,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   combinedMenuItems: MenuItem[] = [];
   mobileMenuOpen = false;
   isDarkTheme = false;
-  languages: Language[] = [];
+  languages: ILanguage[] = [];
   currentLang = 'pl';
   themeForm!: FormGroup<ThemeForm>;
 

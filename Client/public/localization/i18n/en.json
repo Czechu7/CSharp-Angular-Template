@@ -3,20 +3,46 @@
     "TITLE": "My Application",
     "WELCOME": "Welcome to my application!"
   },
-  "NAV": {
-    "HOME": "Home",
-    "ABOUT": "About",
-    "CONTACT": "Contact",
+  "MENU": {
+    "TITLE": "Angular Template",
+    "FOOTER_TITLE": "Karmelki",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout",
     "LOGIN": "Login",
     "REGISTER": "Register"
   },
   "AUTH": {
-    "EMAIL": "Email address",
+    "LOGIN_TITLE": "Log in",
+    "EMAIL": "Email",
     "PASSWORD": "Password",
-    "LOGIN": "Login",
+    "LOGIN_BUTTON": "Log in",
+    "FORGOT_PASSWORD_TEXT": "Forgot your password?",
+    "RECOVER_PASSWORD": "Recover password",
+    "NO_ACCOUNT_TEXT": "Don't have an account?",
     "REGISTER": "Register",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "NO_ACCOUNT": "Don't have an account?",
-    "HAS_ACCOUNT": "Already have an account?"
+    "REGISTER_TITLE": "Register",
+    "USERNAME": "Username",
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+
+    "CONFIRM_PASSWORD": "Confirm password",
+    "PASSWORD_PROMPT": "Choose a password",
+    "PASSWORD_WEAK": "Too simple",
+    "PASSWORD_MEDIUM": "Average complexity",
+    "PASSWORD_STRONG": "Complex password",
+    "REGISTER_BUTTON": "Register",
+    "HAS_ACCOUNT_TEXT": "Already have an account?",
+    "LOGIN": "Log in"
+  },
+  "ERRORS": {
+    "REQUIRED": "This field is required.",
+    "POSTAL_CODE_FORMAT": "Invalid postal code format.",
+    "MIN_LENGTH": "Minimum length: {{minLength}} characters.",
+    "MAX_LENGTH": "Maximum length: {{maxLength}} characters.",
+    "INVALID_EMAIL": "Invalid email address.",
+    "PASSWORDS_NOT_EQUAL": "Passwords must match."
+  },
+  "FOOTER": {
+    "COPYRIGHT": "All rights reserved."
   }
 }

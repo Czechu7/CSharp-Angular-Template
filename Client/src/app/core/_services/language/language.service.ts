@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export interface Language {
+export interface ILanguage {
   label: string;
   value: string;
 }
@@ -13,7 +13,7 @@ export interface Language {
 export class LanguageService {
   private currentLangSubject = new BehaviorSubject<string>('pl');
 
-  languages: Language[] = [
+  languages: ILanguage[] = [
     { label: 'Polski', value: 'pl' },
     { label: 'English', value: 'en' },
   ];

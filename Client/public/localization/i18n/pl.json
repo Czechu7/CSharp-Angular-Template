@@ -3,20 +3,45 @@
     "TITLE": "Moja Aplikacja",
     "WELCOME": "Witaj w mojej aplikacji!"
   },
-  "NAV": {
-    "HOME": "Strona główna",
-    "ABOUT": "O nas",
-    "CONTACT": "Kontakt",
+  "MENU": {
+    "TITLE": "Angular Template",
+    "FOOTER_TITLE": "Karmelki",
+    "PROFILE": "Profil",
+    "LOGOUT": "Wyloguj się",
     "LOGIN": "Zaloguj się",
     "REGISTER": "Zarejestruj się"
   },
   "AUTH": {
-    "EMAIL": "Adres e-mail",
+    "LOGIN_TITLE": "Zaloguj się",
+    "EMAIL": "Email",
     "PASSWORD": "Hasło",
-    "LOGIN": "Zaloguj się",
+    "LOGIN_BUTTON": "Zaloguj się",
+    "FORGOT_PASSWORD_TEXT": "Zapomniałeś hasła?",
+    "RECOVER_PASSWORD": "Odzyskaj hasło",
+    "NO_ACCOUNT_TEXT": "Nie masz konta?",
     "REGISTER": "Zarejestruj się",
-    "FORGOT_PASSWORD": "Zapomniałeś hasła?",
-    "NO_ACCOUNT": "Nie masz konta?",
-    "HAS_ACCOUNT": "Masz już konto?"
+    "REGISTER_TITLE": "Zarejestruj się",
+    "USERNAME": "Nazwa użytkownika",
+    "FIRST_NAME": "Imię",
+    "LAST_NAME": "Nazwisko",
+    "CONFIRM_PASSWORD": "Powtórz hasło",
+    "PASSWORD_PROMPT": "Wybierz hasło",
+    "PASSWORD_WEAK": "Za proste",
+    "PASSWORD_MEDIUM": "Średnia złożoność",
+    "PASSWORD_STRONG": "Złożone hasło",
+    "REGISTER_BUTTON": "Zarejestruj się",
+    "HAS_ACCOUNT_TEXT": "Masz konto?",
+    "LOGIN": "Zaloguj się"
+  },
+  "ERRORS": {
+    "REQUIRED": "Ta kontrolka jest wymagana.",
+    "POSTAL_CODE_FORMAT": "Podano kod pocztowy w niepoprawnym formacie.",
+    "MIN_LENGTH": "Minimalna ilość znaków: {{minLength}}.",
+    "MAX_LENGTH": "Maksymalna ilość znaków: {{maxLength}}.",
+    "INVALID_EMAIL": "Niepoprawny adres e-mail.",
+    "PASSWORDS_NOT_EQUAL": "Hasła muszą być takie same."
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Wszelkie prawa zastrzeżone."
   }
 }

@@ -5,6 +5,7 @@ export const MenuConfig = {
   footerTitle: 'Karmelki',
   authMenuItems: [
     { label: 'Profile', routerLink: `/${RouterEnum.settings}` },
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     { label: 'Logout', command: () => {} },
   ],
   nonAuthMenuItems: [

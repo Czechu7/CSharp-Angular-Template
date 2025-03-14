@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import {
   PasswordsForm,
   LoginForm,
@@ -13,6 +14,8 @@ import { equivalentValidator } from '../validators/equivalent.validator';
   providedIn: 'root',
 })
 export class FormService {
+  constructor(private translateService: TranslateService) {}
+
   initPasswordsForm(): FormGroup<PasswordsForm> {
     return new FormGroup(
       {
@@ -96,30 +99,32 @@ export class FormService {
 
   getErrorMessage(control: FormControl): string {
     if (control.hasError('required')) {
-      return 'Ta kontrolka jest wymagana.';
+      return this.translateService.instant('ERRORS.REQUIRED');
     }
 
     if (
       control.hasError('pattern') &&
       control.errors?.['pattern']?.['requiredPattern'] === '/^\\d{2}-\\d{3}$/'
     ) {
-      return 'Podano kod pocztowy w niepoprawnym formacie.';
+      return this.translateService.instant('ERRORS.POSTAL_CODE_FORMAT');
     }
 
     if (control.hasError('minlength')) {
-      return `Minimalna ilość znaków: ${control.errors?.['minlength']?.requiredLength}.`;
+      const minLength = control.errors?.['minlength']?.requiredLength;
+      return this.translateService.instant('ERRORS.MIN_LENGTH', { minLength });
     }
 
     if (control.hasError('maxlength')) {
-      return `Maksymalna ilość znaków: ${control.errors?.['maxlength']?.requiredLength}.`;
+      const maxLength = control.errors?.['maxlength']?.requiredLength;
+      return this.translateService.instant('ERRORS.MAX_LENGTH', { maxLength });
     }
 
     if (control.hasError('email')) {
-      return `Niepoprawny adres e-mail.`;
+      return this.translateService.instant('ERRORS.INVALID_EMAIL');
     }
 
     if (control.hasError('passwordsNotEqual')) {
-      return 'Hasła muszą być takie same.';
+      return this.translateService.instant('ERRORS.PASSWORDS_NOT_EQUAL');
     }
 
     return '';

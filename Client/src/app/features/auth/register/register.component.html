@@ -1,43 +1,81 @@
 <div class="register-page">
-  <h1>Zarejestruj się</h1>
+  <h1>{{ 'AUTH.REGISTER_TITLE' | translate }}</h1>
   <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
 
-    <app-input [formControl]="controls.username" placeholder="Username" type="text" autocomplete="name"
+    <app-input 
+      [formControl]="controls.username" 
+      [placeholder]="'AUTH.USERNAME' | translate" 
+      type="text" 
+      autocomplete="name"
       [errorMessage]="getErrorMessage(controls.username)"
-      [invalid]="controls.username.invalid &&  controls.username.touched">
+      [invalid]="controls.username.invalid && controls.username.touched">
     </app-input>
 
-    <app-input [formControl]="controls.firstName" placeholder="Imię" type="text" autocomplete="given-name"
+    <app-input 
+      [formControl]="controls.firstName" 
+      [placeholder]="'AUTH.FIRST_NAME' | translate" 
+      type="text" 
+      autocomplete="given-name"
       [errorMessage]="getErrorMessage(controls.firstName)"
-      [invalid]="controls.firstName.invalid &&  controls.firstName.touched">
+      [invalid]="controls.firstName.invalid && controls.firstName.touched">
     </app-input>
 
-    <app-input [formControl]="controls.lastName" placeholder="Nazwisko" type="text" autocomplete="family-name"
+    <app-input 
+      [formControl]="controls.lastName" 
+      [placeholder]="'AUTH.LAST_NAME' | translate" 
+      type="text" 
+      autocomplete="family-name"
       [errorMessage]="getErrorMessage(controls.lastName)"
-      [invalid]="controls.lastName.invalid &&  controls.lastName.touched">
+      [invalid]="controls.lastName.invalid && controls.lastName.touched">
     </app-input>
 
-    <app-input [formControl]="controls.email" placeholder="Email" type="email" autocomplete="email"
-      [errorMessage]="getErrorMessage(controls.email)" [invalid]="controls.email.invalid &&  controls.email.touched">
+    <app-input 
+      [formControl]="controls.email" 
+      [placeholder]="'AUTH.EMAIL' | translate" 
+      type="email" 
+      autocomplete="email"
+      [errorMessage]="getErrorMessage(controls.email)" 
+      [invalid]="controls.email.invalid && controls.email.touched">
     </app-input>
 
-    <app-password-input [formControl]="controls.password" placeholder="Hasło" autocomplete="current-password"
+    <app-password-input 
+      [formControl]="controls.password" 
+      [placeholder]="'AUTH.PASSWORD' | translate" 
+      autocomplete="current-password"
       [errorMessage]="getErrorMessage(controls.password)"
-      [invalid]="controls.password.invalid &&  controls.password.touched" promptLabel="Choose a password"
-      weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" [feedback]="true">
+      [invalid]="controls.password.invalid && controls.password.touched" 
+      [promptLabel]="'AUTH.PASSWORD_PROMPT' | translate"
+      [weakLabel]="'AUTH.PASSWORD_WEAK' | translate" 
+      [mediumLabel]="'AUTH.PASSWORD_MEDIUM' | translate" 
+      [strongLabel]="'AUTH.PASSWORD_STRONG' | translate" 
+      [feedback]="true">
     </app-password-input>
 
-    <app-password-input [formControl]="controls.confirmPassword" placeholder="Powtórz hasło"
-      autocomplete="current-password" [errorMessage]="getErrorMessage(controls.confirmPassword)"
-      [invalid]="controls.confirmPassword.invalid &&  controls.confirmPassword.touched">
+    <app-password-input 
+      [formControl]="controls.confirmPassword" 
+      [placeholder]="'AUTH.CONFIRM_PASSWORD' | translate"
+      autocomplete="current-password" 
+      [errorMessage]="getErrorMessage(controls.confirmPassword)"
+      [invalid]="controls.confirmPassword.invalid && controls.confirmPassword.touched">
     </app-password-input>
 
     <div class="submit-button">
-      <app-button type="submit" [disabled]="registerForm.invalid" severity="primary" [label]="'Zarejestruj się'">
+      <app-button 
+        type="submit" 
+        [disabled]="registerForm.invalid" 
+        severity="primary" 
+        [label]="'AUTH.REGISTER_BUTTON' | translate">
       </app-button>
     </div>
-    <p class="text-center">Zapomniałeś hasła? <a routerLink="/{{RouterEnum.forgetPassword}}">Odzyskaj hasło</a></p>
-    <p class="text-center">Masz konto? <a routerLink="/{{RouterEnum.login}}">Zaloguj się</a></p>
+    
+    <p class="text-center">
+      {{ 'AUTH.FORGOT_PASSWORD_TEXT' | translate }} 
+      <a routerLink="/{{RouterEnum.forgetPassword}}">{{ 'AUTH.RECOVER_PASSWORD' | translate }}</a>
+    </p>
+    
+    <p class="text-center">
+      {{ 'AUTH.HAS_ACCOUNT_TEXT' | translate }} 
+      <a routerLink="/{{RouterEnum.login}}">{{ 'AUTH.LOGIN' | translate }}</a>
+    </p>
   </form>
-
 </div>

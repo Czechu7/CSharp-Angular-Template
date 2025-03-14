@@ -10,6 +10,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../config/router.enum';
 import { IRegisterDto } from '../../../core/_models/DTOs/authDto.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -22,6 +23,7 @@ import { IRegisterDto } from '../../../core/_models/DTOs/authDto.model';
     PasswordInputComponent,
     RouterModule,
     FormsModule,
+    TranslateModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',

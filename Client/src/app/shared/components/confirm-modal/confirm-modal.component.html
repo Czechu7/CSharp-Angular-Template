@@ -1,7 +1,7 @@
 <p-dialog [header]="header" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
   <span class="p-text-secondary block mb-4">{{ message }}</span>
   <div class="flex justify-end gap-2">
-    <app-button label="{{ noLabel }}" type="secondary" (click)="onNo()"></app-button>
-    <app-button label="{{ yesLabel }}" type="warn" (click)="onYes()"></app-button>
+    <app-button label="{{ noLabel }}" [severity]="'danger'" type="button" (click)="onNo()"></app-button>
+    <app-button label="{{ yesLabel }}" [severity]="'success'" type="button" (click)="onYes()"></app-button>
   </div>
 </p-dialog>
