@@ -7,6 +7,11 @@ export interface IBaseResponse<T> {
   errors?: string[];
 }
 
+export interface IBaseResponseWithoutData {
+  success: boolean;
+  message: string;
+}
+
 interface IPagination {
   pageSize: number;
   pageNumber: number;
