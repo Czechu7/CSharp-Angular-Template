@@ -4,6 +4,7 @@ import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
 import { ApiEndpoints } from '../../config/api-endpoints.enum';
+import { IAccessToken, IRefreshToken } from '../_models/tokens.model';
 
 let isRefreshing = false;
 
@@ -25,7 +26,12 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
         if (accessToken && refreshToken) {
           return tokenService.refreshToken({ accessToken, refreshToken }).pipe(
             switchMap((newTokens: IAuthTokensResponseDto) => {
-              tokenService.setTokens(accessToken, refreshToken);
+              const newAccessToken: IAccessToken = newTokens.accessToken;
+              const newRefreshToken: IRefreshToken = {
+                refreshToken: newTokens.refreshToken,
+                expiresAt: newTokens.expiresAt,
+              };
+              tokenService.setTokens(newAccessToken, newRefreshToken);
 
               const clonedReq = req.clone({
                 setHeaders: {
