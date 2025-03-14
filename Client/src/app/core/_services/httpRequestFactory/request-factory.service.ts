@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
-import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { ApiEndpoints } from '../../../config/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IPagedQueryParams } from '../../_models/paged-query-params.model';
 import { IQueryParams } from '../../_models/query-params.model';

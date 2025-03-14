@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
-import { ApiEndpoints } from '../_models/api-endpoints.enum';
+import { ApiEndpoints } from '../../config/api-endpoints.enum';
 
 let isRefreshing = false;
 
