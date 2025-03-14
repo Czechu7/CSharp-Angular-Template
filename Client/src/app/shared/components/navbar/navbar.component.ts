@@ -8,6 +8,7 @@ import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
 import { FormService } from '../../services/form.service';
+import { AuthService } from '../../../core/_services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -45,7 +46,8 @@ export class NavbarComponent implements OnInit, NavbarProps {
 
   constructor(
     private router: Router,
-    private formService: FormService
+    private formService: FormService,
+    private authService: AuthService
   ) {}
 
   get controls() {
@@ -108,7 +110,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   logout() {
-    this.isAuthenticated = false;
+    this.authService.signOut();
     this.updateMenu();
     this.router.navigate(['/login']);
   }

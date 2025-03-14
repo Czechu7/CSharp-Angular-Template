@@ -4,16 +4,22 @@ import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { ITokens } from '../_models/tokens.model';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
+import { ApiEndpoints } from '../_models/api-endpoints.enum';
 
 let isRefreshing = false;
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
 
+  if (req.url.includes(ApiEndpoints.REFRESH_TOKEN)) {
+    return next(req);
+  }
+
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401 && !isRefreshing) {
         isRefreshing = true;
+
         const accessToken = tokenService.getAccessToken();
         const refreshToken = tokenService.getRefreshToken();
 

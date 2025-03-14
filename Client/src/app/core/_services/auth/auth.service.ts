@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { ApiEndpoints } from '../../_models/api-endpoints.enum';
 import { tap } from 'rxjs';
@@ -6,6 +6,7 @@ import { IBaseResponse } from '../../_models/base-response.model';
 import { IAuthTokensResponseDto, ILoginDto, IRegisterDto } from '../../_models/DTOs/authDto.model';
 import { TokenService } from '../token/token.service';
 import { IAccessToken } from '../../_models/tokens.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +14,23 @@ import { IAccessToken } from '../../_models/tokens.model';
 export class AuthService {
   private requestFactory = inject(RequestFactoryService);
   private tokenService = inject(TokenService);
+  private route = inject(Router);
+
+  isLogged = signal<boolean>(this.isAuth());
 
   signIn(loginData: ILoginDto) {
     return this.requestFactory
       .post<IAuthTokensResponseDto, ILoginDto>(ApiEndpoints.SIGN_IN, loginData)
       .pipe(
         tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
-          localStorage.setItem('accessToken', res.data.accessToken);
-          localStorage.setItem('refreshToken', res.data.refreshToken);
-          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresAt);
+          if (res.success && res.data) {
+            this.tokenService.saveTokens(res.data.accessToken, {
+              refreshToken: res.data.refreshToken,
+              expiresAt: res.data.expiresAt,
+            });
+            this.isLogged.set(true);
+            this.route.navigate(['/']);
+          }
         })
       );
   }
@@ -31,16 +40,39 @@ export class AuthService {
       .post<IAuthTokensResponseDto, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData)
       .pipe(
         tap((res: IBaseResponse<IAuthTokensResponseDto>) => {
-          localStorage.setItem('accessToken', res.data.accessToken);
-          localStorage.setItem('refreshToken', res.data.refreshToken);
-          localStorage.setItem('refreshTokenExpiresAt', res.data.expiresAt);
+          if (res.success && res.data) {
+            this.tokenService.saveTokens(res.data.accessToken, {
+              refreshToken: res.data.refreshToken,
+              expiresAt: res.data.expiresAt,
+            });
+            this.isLogged.set(true);
+            this.route.navigate(['/']);
+          }
         })
       );
   }
 
   signOut(): void {
-    this.requestFactory.post(ApiEndpoints.SIGN_OUT, null);
+    const refreshToken = this.tokenService.getRefreshToken();
+    if (!refreshToken) {
+      return;
+    }
+
+    this.requestFactory
+      .post<
+        null,
+        { refreshToken: string }
+      >(ApiEndpoints.SIGN_OUT, { refreshToken: refreshToken?.refreshToken })
+      .subscribe({
+        next: res => {
+          console.log(res);
+        },
+        error: error => {
+          console.log(error);
+        },
+      });
     this.tokenService.removeTokens();
+    this.isLogged.set(false);
   }
 
   resetPassword() {}
