@@ -67,7 +67,7 @@ export class TokenService {
     return token;
   }
 
-  private saveTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
+  public saveTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken.refreshToken);
     localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);

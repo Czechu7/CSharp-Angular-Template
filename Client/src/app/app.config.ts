@@ -14,12 +14,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
   new TranslateHttpLoader(http, 'localization/i18n/', '.json');
+import { errorInterceptor } from './core/_interceptors/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor, refreshTokenInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, refreshTokenInterceptor, errorInterceptor])
+    ),
     provideAnimationsAsync(),
     ɵBrowserAnimationBuilder,
     providePrimeNG({

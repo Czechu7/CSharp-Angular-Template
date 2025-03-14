@@ -12,6 +12,7 @@ import { LanguageService } from '../../../core/_services/language/language.servi
 import { TranslateModule } from '@ngx-translate/core';
 import { ILanguage } from '../../../core/_models/language.model';
 import { RouterEnum } from '../../../enums/router.enum';
+import { AuthService } from '../../../core/_services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -53,7 +54,8 @@ export class NavbarComponent implements OnInit, NavbarProps {
   constructor(
     private router: Router,
     private formService: FormService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private authService: AuthService
   ) {}
 
   get controls() {
@@ -120,7 +122,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   logout() {
-    this.isAuthenticated = false;
+    this.authService.signOut();
     this.updateMenu();
     this.router.navigate([RouterEnum.home]);
   }
