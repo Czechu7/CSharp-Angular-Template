@@ -1,4 +1,5 @@
-import { RouterEnum } from './router.enum';
+import { LanguageCode } from '../enums/LanguageCode.enum';
+import { RouterEnum } from '../enums/router.enum';
 
 export const MenuConfig = {
   title: 'MENU.TITLE',
@@ -13,7 +14,7 @@ export const MenuConfig = {
     { label: 'MENU.REGISTER', routerLink: `/${RouterEnum.register}` },
   ],
   langs: [
-    { label: 'English', value: 'en' },
-    { label: 'Polski', value: 'pl' },
+    { label: 'English', value: LanguageCode.ENGLISH },
+    { label: 'Polski', value: LanguageCode.POLISH },
   ],
 };

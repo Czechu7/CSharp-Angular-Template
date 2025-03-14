@@ -26,7 +26,7 @@
     "LAST_NAME": "Nazwisko",
     "CONFIRM_PASSWORD": "Powtórz hasło",
     "PASSWORD_PROMPT": "Wybierz hasło",
-    "PASSWORD_WEAK": "Za proste",
+    "PASSWORD_WEAK": "Zbyt proste hasło",
     "PASSWORD_MEDIUM": "Średnia złożoność",
     "PASSWORD_STRONG": "Złożone hasło",
     "REGISTER_BUTTON": "Zarejestruj się",
@@ -34,7 +34,7 @@
     "LOGIN": "Zaloguj się"
   },
   "ERRORS": {
-    "REQUIRED": "Ta kontrolka jest wymagana.",
+    "REQUIRED": "To pole jest wymagane.",
     "POSTAL_CODE_FORMAT": "Podano kod pocztowy w niepoprawnym formacie.",
     "MIN_LENGTH": "Minimalna ilość znaków: {{minLength}}.",
     "MAX_LENGTH": "Maksymalna ilość znaków: {{maxLength}}.",

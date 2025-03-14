@@ -2,25 +2,21 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MenuConfig } from '../../../config/menu.config';
-
-export interface ILanguage {
-  label: string;
-  value: string;
-}
+import { LanguageCode } from '../../../enums/LanguageCode.enum';
+import { ILanguage } from '../../_models/language.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
-  private currentLangSubject = new BehaviorSubject<string>('pl');
+  private currentLangSubject = new BehaviorSubject<string>(LanguageCode.POLISH);
+  private DEFAULT_LANG = LanguageCode.POLISH;
 
   languages: ILanguage[] = MenuConfig.langs;
 
-  initLanguage() {
-    const browserLang = this.translateService.getBrowserLang();
-    const defaultLang = 'pl';
-    const lang = browserLang && this.isLanguageSupported(browserLang) ? browserLang : defaultLang;
-    this.initializeLanguage(lang);
+  constructor(private translateService: TranslateService) {
+    const langToUse = this.determineInitialLanguage();
+    this.initializeLanguage(langToUse);
   }
 
   get currentLang$(): Observable<string> {
@@ -31,26 +27,9 @@ export class LanguageService {
     return this.currentLangSubject.value;
   }
 
-  constructor(private translateService: TranslateService) {
-    const browserLang = translateService.getBrowserLang();
-    const defaultLang = 'pl';
-
-    const initialLang =
-      browserLang && this.isLanguageSupported(browserLang) ? browserLang : defaultLang;
-
-    const savedLang = localStorage.getItem('selectedLanguage');
-    const langToUse = savedLang && this.isLanguageSupported(savedLang) ? savedLang : initialLang;
-
+  initLanguage(): void {
+    const langToUse = this.determineInitialLanguage();
     this.initializeLanguage(langToUse);
-  }
-
-  initializeLanguage(lang: string): void {
-    this.currentLangSubject.next(lang);
-
-    this.translateService.setDefaultLang('pl');
-    this.translateService.use(lang);
-
-    localStorage.setItem('selectedLanguage', lang);
   }
 
   changeLanguage(lang: string): void {
@@ -59,7 +38,29 @@ export class LanguageService {
     }
   }
 
+  private initializeLanguage(lang: string): void {
+    this.currentLangSubject.next(lang);
+    this.translateService.setDefaultLang(this.DEFAULT_LANG);
+    this.translateService.use(lang);
+    localStorage.setItem('selectedLanguage', lang);
+  }
+
   private isLanguageSupported(lang: string): boolean {
     return this.languages.some(language => language.value === lang);
+  }
+
+  private determineInitialLanguage(): string {
+    const browserLang = this.translateService.getBrowserLang();
+    const savedLang = localStorage.getItem('selectedLanguage');
+
+    if (savedLang && this.isLanguageSupported(savedLang)) {
+      return savedLang;
+    }
+
+    if (browserLang && this.isLanguageSupported(browserLang)) {
+      return browserLang;
+    }
+
+    return this.DEFAULT_LANG;
   }
 }

@@ -8,8 +8,10 @@ import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
 import { FormService } from '../../services/form.service';
-import { ILanguage, LanguageService } from '../../../core/_services/language/language.service';
+import { LanguageService } from '../../../core/_services/language/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ILanguage } from '../../../core/_models/language.model';
+import { RouterEnum } from '../../../enums/router.enum';
 
 @Component({
   selector: 'app-navbar',
@@ -44,8 +46,9 @@ export class NavbarComponent implements OnInit, NavbarProps {
   mobileMenuOpen = false;
   isDarkTheme = false;
   languages: ILanguage[] = [];
-  currentLang = 'pl';
+  currentLang!: string;
   themeForm!: FormGroup<ThemeForm>;
+  RouterEnum = RouterEnum;
 
   constructor(
     private router: Router,
@@ -60,18 +63,16 @@ export class NavbarComponent implements OnInit, NavbarProps {
   ngOnInit() {
     this.languages = this.languageService.languages;
 
+    this.currentLang = this.languageService.currentLang;
+
     this.languageService.currentLang$.subscribe(lang => {
       this.currentLang = lang;
+      this.updateMenu();
     });
-
     this.updateMenu();
-    if (this.langs.length > 0) {
-      this.currentLang = this.langs[0].value;
-    }
     this.checkCurrentTheme();
 
     this.themeForm = this.formService.initThemeForm();
-
     this.controls.theme.setValue(this.isDarkTheme);
 
     this.controls.theme.valueChanges.subscribe(isDark => {
@@ -121,7 +122,7 @@ export class NavbarComponent implements OnInit, NavbarProps {
   logout() {
     this.isAuthenticated = false;
     this.updateMenu();
-    this.router.navigate(['/login']);
+    this.router.navigate([RouterEnum.home]);
   }
 
   toggleTheme() {

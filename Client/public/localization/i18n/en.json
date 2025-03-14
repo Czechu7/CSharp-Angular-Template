@@ -27,7 +27,7 @@
 
     "CONFIRM_PASSWORD": "Confirm password",
     "PASSWORD_PROMPT": "Choose a password",
-    "PASSWORD_WEAK": "Too simple",
+    "PASSWORD_WEAK": "Too simple password",
     "PASSWORD_MEDIUM": "Average complexity",
     "PASSWORD_STRONG": "Complex password",
     "REGISTER_BUTTON": "Register",

@@ -8,7 +8,7 @@ import { RegisterForm } from '../../../shared/models/form.model';
 import { FormService } from '../../../shared/services/form.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AuthService } from '../../../core/_services/auth/auth.service';
-import { RouterEnum } from '../../../config/router.enum';
+import { RouterEnum } from '../../../enums/router.enum';
 import { IRegisterDto } from '../../../core/_models/DTOs/authDto.model';
 import { TranslateModule } from '@ngx-translate/core';
 

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/_services/auth/auth.service';
-import { RouterEnum } from '../../../config/router.enum';
+import { RouterEnum } from '../../../enums/router.enum';
 import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     PasswordInputComponent,
     RouterModule,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

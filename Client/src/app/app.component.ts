@@ -14,16 +14,15 @@ import { LanguageService } from './core/_services/language/language.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-
-  constructor(private languageService: LanguageService) { }
-  
-  ngOnInit() {
-    this.languageService.initLanguage();
-  }
-
   title = MenuConfig.title;
   langs = MenuConfig.langs;
   authMenuItems = MenuConfig.authMenuItems;
   nonAuthMenuItems = MenuConfig.nonAuthMenuItems;
   footerTitle = MenuConfig.footerTitle;
+
+  constructor(private languageService: LanguageService) {}
+
+  ngOnInit() {
+    this.languageService.initLanguage();
+  }
 }
