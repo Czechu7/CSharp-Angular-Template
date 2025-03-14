@@ -40,11 +40,6 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               });
               isRefreshing = false;
               return next(clonedReq);
-            }),
-            catchError(refreshError => {
-              isRefreshing = false;
-              tokenService.removeTokens();
-              return throwError(() => new Error(refreshError));
             })
           );
         } else {
