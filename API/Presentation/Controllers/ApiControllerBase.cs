@@ -8,6 +8,7 @@ namespace Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableRateLimiting("standard")]
 public abstract class ApiControllerBase : ControllerBase
 {
     private ISender? _mediator;
