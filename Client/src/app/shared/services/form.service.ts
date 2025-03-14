@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -14,7 +14,7 @@ import { equivalentValidator } from '../validators/equivalent.validator';
   providedIn: 'root',
 })
 export class FormService {
-  constructor(private translateService: TranslateService) {}
+  translateService = inject(TranslateService);
 
   initPasswordsForm(): FormGroup<PasswordsForm> {
     return new FormGroup(

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   protected authService = inject(AuthService);
 
-  constructor(private languageService: LanguageService) {}
+  private languageService = inject(LanguageService);
 
   ngOnInit() {
     this.languageService.initLanguage();

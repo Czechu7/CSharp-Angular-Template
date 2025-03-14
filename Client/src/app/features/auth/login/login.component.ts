@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginForm } from '../../../shared/models/form.model';
 import { FormService } from '../../../shared/services/form.service';
@@ -31,10 +31,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup<LoginForm>;
   RouterEnum = RouterEnum;
 
-  constructor(
-    private formService: FormService,
-    private authService: AuthService
-  ) {}
+  private formService = inject(FormService);
+  private authService = inject(AuthService);
 
   ngOnInit() {
     this.loginForm = this.formService.initLoginForm();

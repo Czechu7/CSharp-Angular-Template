@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,10 +32,8 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup<RegisterForm>;
   RouterEnum = RouterEnum;
 
-  constructor(
-    private formService: FormService,
-    private authService: AuthService
-  ) {}
+  private formService = inject(FormService);
+  private authService = inject(AuthService);
 
   ngOnInit() {
     this.registerForm = this.formService.initRegisterForm();

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, type OnInit } from '@angular/core';
+import { Component, inject, Input, type OnInit } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
@@ -51,12 +51,10 @@ export class NavbarComponent implements OnInit, NavbarProps {
   themeForm!: FormGroup<ThemeForm>;
   RouterEnum = RouterEnum;
 
-  constructor(
-    private router: Router,
-    private formService: FormService,
-    private languageService: LanguageService,
-    private authService: AuthService
-  ) {}
+  private router = inject(Router);
+  private formService = inject(FormService);
+  private languageService = inject(LanguageService);
+  private authService = inject(AuthService);
 
   get controls() {
     return this.themeForm.controls;

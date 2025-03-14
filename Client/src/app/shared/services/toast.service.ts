@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import type { Keys, Severity } from '../types/toast.types';
 
@@ -6,7 +6,7 @@ import type { Keys, Severity } from '../types/toast.types';
   providedIn: 'root',
 })
 export class ToastService {
-  constructor(private messageService: MessageService) {}
+  messageService = inject(MessageService);
 
   show(severity: Severity, summary: string, detail: string, key?: Keys, life?: number) {
     this.messageService.add({

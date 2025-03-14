@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MenuConfig } from '../../../config/menu.config';
@@ -11,10 +11,11 @@ import { ILanguage } from '../../_models/language.model';
 export class LanguageService {
   private currentLangSubject = new BehaviorSubject<string>(LanguageCode.POLISH);
   private DEFAULT_LANG = LanguageCode.POLISH;
+  private translateService = inject(TranslateService);
 
   languages: ILanguage[] = MenuConfig.langs;
 
-  constructor(private translateService: TranslateService) {
+  constructor() {
     const langToUse = this.determineInitialLanguage();
     this.initializeLanguage(langToUse);
   }
