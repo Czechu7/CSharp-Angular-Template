@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { map, Observable } from 'rxjs';
-import { ApiEndpoints } from '../../_models/api-endpoints.enum';
+import { ApiEndpoints } from '../../../config/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IDecodedToken } from '../../_models/decoded-token.model';
 import { IAccessToken, IRefreshToken, ITokens } from '../../_models/tokens.model';
@@ -37,15 +37,6 @@ export class TokenService {
     }
   }
 
-  public setAccessToken(accessToken: IAccessToken): void {
-    localStorage.setItem('accessToken', accessToken);
-  }
-
-  public setRefreshToken(refreshToken: IRefreshToken): void {
-    localStorage.setItem('refreshToken', refreshToken.refreshToken);
-    localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
-  }
-
   public getAccessToken(): IAccessToken | null {
     const accessToken = localStorage.getItem('accessToken');
     return accessToken;
@@ -67,24 +58,10 @@ export class TokenService {
     return token;
   }
 
-  public saveTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
+  public setTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken.refreshToken);
     localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
-  }
-
-  private loadTokens(): void {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken: IRefreshToken | null = this.getRefreshToken();
-
-    if (accessToken === null || refreshToken === null) {
-      return;
-    }
-
-    if (this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
-      this.setAccessToken(accessToken);
-      this.setRefreshToken(refreshToken);
-    }
   }
 
   public removeTokens(): void {
@@ -93,7 +70,11 @@ export class TokenService {
     localStorage.removeItem('refreshTokenExpiresAt');
   }
 
-  public validateToken(token: IAccessToken): boolean {
+  public validateToken(token: IAccessToken | null): boolean {
+    if (token === null) {
+      return false;
+    }
+
     const decodedToken = this.decodeToken(token);
     try {
       if (decodedToken !== null) {
@@ -106,7 +87,11 @@ export class TokenService {
     }
   }
 
-  public validateRefreshToken(refreshToken: IRefreshToken): boolean {
+  public validateRefreshToken(refreshToken: IRefreshToken | null): boolean {
+    if (refreshToken === null) {
+      return false;
+    }
+
     const expiresAt = new Date(refreshToken.expiresAt);
     const currentDate = new Date();
 
