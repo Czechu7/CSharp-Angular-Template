@@ -2,7 +2,6 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { TokenService } from '../_services/token/token.service';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { ITokens } from '../_models/tokens.model';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
 import { ApiEndpoints } from '../_models/api-endpoints.enum';
 
@@ -26,11 +25,7 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
         if (accessToken && refreshToken) {
           return tokenService.refreshToken({ accessToken, refreshToken }).pipe(
             switchMap((newTokens: IAuthTokensResponseDto) => {
-              tokenService.setAccessToken(newTokens.accessToken);
-              tokenService.setRefreshToken({
-                refreshToken: newTokens.refreshToken,
-                expiresAt: newTokens.expiresAt,
-              });
+              tokenService.setTokens(accessToken, refreshToken);
 
               const clonedReq = req.clone({
                 setHeaders: {
@@ -43,16 +38,16 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
             catchError(refreshError => {
               isRefreshing = false;
               tokenService.removeTokens();
-              return throwError(refreshError);
+              return throwError(() => new Error(refreshError));
             })
           );
         } else {
           isRefreshing = false;
           tokenService.removeTokens();
-          return throwError(error);
+          return throwError(() => new Error(error.message));
         }
       } else {
-        return throwError(error);
+        return throwError(() => new Error(error.message));
       }
     })
   );
