@@ -96,7 +96,6 @@ export class AuthService {
       return false;
     }
 
-    const isAccessTokenValid = this.tokenService.validateToken(accessToken);
     const isRefreshTokenValid = this.tokenService.validateRefreshToken(refreshToken);
 
     if (isRefreshTokenValid) {
