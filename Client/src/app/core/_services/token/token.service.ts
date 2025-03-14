@@ -87,7 +87,11 @@ export class TokenService {
     }
   }
 
-  public validateRefreshToken(refreshToken: IRefreshToken): boolean {
+  public validateRefreshToken(refreshToken: IRefreshToken | null): boolean {
+    if (refreshToken === null) {
+      return false;
+    }
+
     const expiresAt = new Date(refreshToken.expiresAt);
     const currentDate = new Date();
 
