@@ -14,6 +14,26 @@ public static class SecurityExtensions
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
+            options.AddPolicy("standard", context =>
+            {
+                var clientIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                return RateLimitPartition.GetFixedWindowLimiter(clientIp, _ => new()
+                {
+                    PermitLimit = 100,
+                    Window = TimeSpan.FromMinutes(1)
+                });
+            });
+
+            options.AddPolicy("auth", context =>
+            {
+                var clientIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                return RateLimitPartition.GetFixedWindowLimiter(clientIp, _ => new()
+                {
+                    PermitLimit = 10,
+                    Window = TimeSpan.FromMinutes(1)
+                });
+            });
+
             options.AddFixedWindowLimiter("fixed", opt =>
             {
                 opt.PermitLimit = 50;
@@ -21,18 +41,8 @@ public static class SecurityExtensions
                 opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 opt.QueueLimit = 5;
             });
-
-            options.AddPolicy("api", context =>
-            {
-                var clientIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
-                return RateLimitPartition.GetFixedWindowLimiter(clientIp, _ => new FixedWindowRateLimiterOptions
-                {
-                    PermitLimit = 20,
-                    Window = TimeSpan.FromSeconds(10),
-                    QueueLimit = 0
-                });
-            });
         });
+
         services.AddAntiforgery();
         return services;
     }
@@ -52,4 +62,5 @@ public static class SecurityExtensions
 
         return app;
     }
+
 }

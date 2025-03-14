@@ -5,7 +5,7 @@ using Infrastructure;
 using Presentation;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Security;
-
+using Infrastructure.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -101,9 +101,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("AllowSpecificOrigin");
-
-app.UseRouting();
+app.UseCustomExceptionHandler();
 app.UseSecurityMiddleware();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

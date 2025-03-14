@@ -103,7 +103,7 @@ public class RefreshTokenCommandHandler(
             {
                 AccessToken = accessToken,
                 RefreshToken = newRefreshToken,
-                ExpiresAt = _tokenService.GetAccessTokenExpiration(),
+                ExpiresAt = _tokenService.GetRefreshTokenExpiration(),
             };
 
             _logger.LogInformation("Successfully refreshed token for user {UserId}", user.Id);
