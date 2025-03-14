@@ -110,7 +110,6 @@ export class NavbarComponent implements OnInit, NavbarProps {
   }
 
   logout() {
-    // this.isAuthenticated = false;
     this.authService.signOut();
     this.updateMenu();
     this.router.navigate(['/login']);
