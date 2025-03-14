@@ -1,15 +1,13 @@
-export interface IBaseResponse<T> {
+export interface IBaseResponseWithoutData {
   success: boolean;
   statusCode: number;
   message: string;
-  data: T;
-  pagination?: IPagination;
   errors?: string[];
 }
 
-export interface IBaseResponseWithoutData {
-  success: boolean;
-  message: string;
+export interface IBaseResponse<T> extends IBaseResponseWithoutData {
+  data: T;
+  pagination?: IPagination;
 }
 
 interface IPagination {
