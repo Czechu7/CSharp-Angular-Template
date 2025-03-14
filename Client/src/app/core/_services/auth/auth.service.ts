@@ -7,6 +7,7 @@ import { IAuthTokensResponseDto, ILoginDto, IRegisterDto } from '../../_models/D
 import { TokenService } from '../token/token.service';
 import { IAccessToken } from '../../_models/tokens.model';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class AuthService {
   private requestFactory = inject(RequestFactoryService);
   private tokenService = inject(TokenService);
   private route = inject(Router);
+  private toastService = inject(ToastService);
 
   isLogged = signal<boolean>(this.isAuth());
 
@@ -60,19 +62,21 @@ export class AuthService {
 
     this.requestFactory
       .post<
-        null,
+        IBaseResponse<null>,
         { refreshToken: string }
-      >(ApiEndpoints.SIGN_OUT, { refreshToken: refreshToken?.refreshToken })
+      >(ApiEndpoints.REVOKE_TOKEN, { refreshToken: refreshToken?.refreshToken })
       .subscribe({
         next: res => {
-          console.log(res);
+          if (res.success) {
+            this.tokenService.removeTokens();
+            this.isLogged.set(false);
+            this.toastService.showSuccess('Account', 'You have been logged out!');
+          }
         },
         error: error => {
           console.log(error);
         },
       });
-    this.tokenService.removeTokens();
-    this.isLogged.set(false);
   }
 
   resetPassword() {}
