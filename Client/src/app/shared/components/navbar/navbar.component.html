@@ -4,7 +4,7 @@
       @if (logo) {
       <img [src]="logo" alt="Logo" class="navbar-logo" />
       }
-      <h1 class="navbar-title">{{ title }}</h1>
+      <h1 class="navbar-title">{{ title | translate }}</h1>
     </div>
 
     <button class="navbar-mobile-toggle" (click)="toggleMobileMenu()">
@@ -20,7 +20,7 @@
             @if (item.icon) {
             <i class="nav-icon {{ item.icon }}"></i>
             }
-            {{ item.label }}
+            {{ item.label | translate }}
             <i class="dropdown-arrow" [class.expanded]="item.expanded"></i>
           </div>
 
@@ -31,7 +31,7 @@
               @if (subItem.icon) {
               <i class="nav-icon {{ subItem.icon }}"></i>
               }
-              {{ subItem.label }}
+              {{ subItem.label | translate }}
             </li>
             }
           </ul>
@@ -40,7 +40,7 @@
             @if (item.icon) {
             <i class="nav-icon {{ item.icon }}"></i>
             }
-            {{ item.label }}
+            {{ item.label | translate }}
           </div>
           }
         </li>

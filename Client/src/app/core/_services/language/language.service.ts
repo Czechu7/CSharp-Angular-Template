@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MenuConfig } from '../../../config/menu.config';
 
 export interface ILanguage {
   label: string;
@@ -13,10 +14,7 @@ export interface ILanguage {
 export class LanguageService {
   private currentLangSubject = new BehaviorSubject<string>('pl');
 
-  languages: ILanguage[] = [
-    { label: 'Polski', value: 'pl' },
-    { label: 'English', value: 'en' },
-  ];
+  languages: ILanguage[] = MenuConfig.langs;
 
   initLanguage() {
     const browserLang = this.translateService.getBrowserLang();

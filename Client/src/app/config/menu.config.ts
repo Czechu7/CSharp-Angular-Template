@@ -1,16 +1,16 @@
 import { RouterEnum } from './router.enum';
 
 export const MenuConfig = {
-  title: 'Angular Template',
-  footerTitle: 'Karmelki',
+  title: 'MENU.TITLE',
+  footerTitle: 'MENU.FOOTER_TITLE',
   authMenuItems: [
-    { label: 'Profile', routerLink: `/${RouterEnum.settings}` },
+    { label: 'MENU.PROFILE', routerLink: `/${RouterEnum.settings}` },
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    { label: 'Logout', command: () => {} },
+    { label: 'MENU.LOGOUT', command: () => {} },
   ],
   nonAuthMenuItems: [
-    { label: 'Login', routerLink: `/${RouterEnum.login}` },
-    { label: 'Register', routerLink: `/${RouterEnum.register}` },
+    { label: 'MENU.LOGIN', routerLink: `/${RouterEnum.login}` },
+    { label: 'MENU.REGISTER', routerLink: `/${RouterEnum.register}` },
   ],
   langs: [
     { label: 'English', value: 'en' },
