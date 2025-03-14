@@ -22,3 +22,5 @@ export interface IAuthRefreshTokensRequestDto {
   accessToken: string;
   refreshToken: string;
 }
+
+export type IRevokeTokenRequestDto = { refreshToken: string };

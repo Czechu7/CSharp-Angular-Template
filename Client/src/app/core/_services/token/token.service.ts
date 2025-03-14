@@ -37,15 +37,6 @@ export class TokenService {
     }
   }
 
-  public setAccessToken(accessToken: IAccessToken): void {
-    localStorage.setItem('accessToken', accessToken);
-  }
-
-  public setRefreshToken(refreshToken: IRefreshToken): void {
-    localStorage.setItem('refreshToken', refreshToken.refreshToken);
-    localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
-  }
-
   public getAccessToken(): IAccessToken | null {
     const accessToken = localStorage.getItem('accessToken');
     return accessToken;
@@ -67,24 +58,10 @@ export class TokenService {
     return token;
   }
 
-  public saveTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
+  public setTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken.refreshToken);
     localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
-  }
-
-  private loadTokens(): void {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken: IRefreshToken | null = this.getRefreshToken();
-
-    if (accessToken === null || refreshToken === null) {
-      return;
-    }
-
-    if (this.validateToken(accessToken) && this.validateRefreshToken(refreshToken)) {
-      this.setAccessToken(accessToken);
-      this.setRefreshToken(refreshToken);
-    }
   }
 
   public removeTokens(): void {
