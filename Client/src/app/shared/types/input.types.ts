@@ -1,19 +1,27 @@
 import { FormControl } from '@angular/forms';
 
-export type InputTypes = 'text' | 'number' | 'email' | 'password' | 'tel' | 'url';
+export type IInputTypes = 'text' | 'number' | 'email' | 'password' | 'tel' | 'url';
 
-export type InputIcons = 'user' | 'map' | 'clock' | 'star' | 'check' | 'times' | 'shopping-cart';
+export type IInputIcons =
+  | 'user'
+  | 'map'
+  | 'clock'
+  | 'star'
+  | 'check'
+  | 'times'
+  | 'shopping-cart'
+  | 'search';
 
-export interface InputProps {
+export interface IInputProps {
   label?: string;
   placeholder?: string;
-  type?: InputTypes;
+  type?: IInputTypes;
   disabled?: boolean;
   required?: boolean;
   errorMessage?: string;
-  prefixIcon?: InputIcons;
+  prefixIcon?: IInputIcons;
   prefixText?: string;
-  suffixIcon?: InputIcons;
+  suffixIcon?: IInputIcons;
   suffixText?: string;
   inavlid?: boolean;
   autocomplete?: string;

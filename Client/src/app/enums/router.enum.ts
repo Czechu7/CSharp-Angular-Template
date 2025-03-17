@@ -8,4 +8,5 @@ export enum RouterEnum {
   deleteAccount = 'deleteAccount',
   forgetPassword = 'forget-password',
   preferences = 'preferences',
+  fileDetails = 'file-details',
 }

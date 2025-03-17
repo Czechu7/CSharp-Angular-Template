@@ -1,4 +1,4 @@
-export interface MenuItem {
+export interface IMenuItem {
   label: string;
   icon?: string;
   routerLink?: string;
@@ -6,31 +6,36 @@ export interface MenuItem {
   target?: string;
   command?: () => void;
   queryParams?: Record<string, string>;
-  items?: MenuItem[];
+  items?: IMenuItem[];
   visible?: boolean;
   disabled?: boolean;
   expanded?: boolean;
 }
-export interface User {
+export interface IUser {
   name: string;
   avatar?: string;
   id?: string;
   role?: string;
 }
 
-export type Langs = { label: string; value: string }[];
+export interface Ilang {
+  label: string;
+  value: string;
+}
 
-export interface NavbarProps {
+export type ILangs = Ilang[];
+
+export interface INavbarProps {
   title: string;
   logo?: string;
-  commonMenuItems: MenuItem[];
-  authMenuItems: MenuItem[];
-  nonAuthMenuItems: MenuItem[];
+  commonMenuItems: IMenuItem[];
+  authMenuItems: IMenuItem[];
+  nonAuthMenuItems: IMenuItem[];
   sticky?: boolean;
   customClass?: string;
   showSwitchTheme?: boolean;
   showSwtichLang?: boolean;
-  langs: Langs;
+  langs: ILangs;
   isAuthenticated?: boolean;
-  user?: User;
+  user?: IUser;
 }

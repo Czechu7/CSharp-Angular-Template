@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ConfirmModalProps } from '../../types/modal.types';
+import { IConfirmModalProps } from '../../types/modal.types';
 import { ConfirmModalComponent } from './confirm-modal.component';
 
 const meta: Meta<ConfirmModalComponent> = {
@@ -8,7 +8,7 @@ const meta: Meta<ConfirmModalComponent> = {
 };
 export default meta;
 
-const args: ConfirmModalProps = {
+const args: IConfirmModalProps = {
   header: 'Confirm',
   visible: true,
   message: 'Are you sure?',
@@ -18,8 +18,8 @@ const args: ConfirmModalProps = {
   onNo: () => {},
 };
 
-type NavbarStory = StoryObj<ConfirmModalComponent>;
+type ConfirmModalStory = StoryObj<ConfirmModalComponent>;
 
-export const Primary: NavbarStory = {
+export const Primary: ConfirmModalStory = {
   args: args,
 };

@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
+import { IToggleSwitchProps } from '../../types/toogleSwitch.types';
 
 @Component({
   selector: 'app-toggle-switch',
@@ -24,7 +24,7 @@ import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
     },
   ],
 })
-export class ToggleSwitchComponent implements ControlValueAccessor, ToggleSwitchProps {
+export class ToggleSwitchComponent implements ControlValueAccessor, IToggleSwitchProps {
   @Input() disabled = false;
   @Input() iconOn = 'pi-check';
   @Input() iconOff = 'pi-times';

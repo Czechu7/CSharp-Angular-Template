@@ -11,7 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { InputProps, InputTypes, InputIcons } from '../../types/input.types';
+import { IInputProps, IInputTypes, IInputIcons } from '../../types/input.types';
 
 @Component({
   selector: 'app-input',
@@ -35,17 +35,17 @@ import { InputProps, InputTypes, InputIcons } from '../../types/input.types';
     },
   ],
 })
-export class InputComponent<T> implements ControlValueAccessor, InputProps {
+export class InputComponent<T> implements ControlValueAccessor, IInputProps {
   @Input() label?: string;
   @Input() placeholder?: string = '';
-  @Input() type: InputTypes = 'text';
+  @Input() type: IInputTypes = 'text';
   @Input() disabled = false;
   @Input() required = false;
   @Input() errorMessage?: string;
   @Input() invalid?: boolean;
-  @Input() prefixIcon?: InputIcons;
+  @Input() prefixIcon?: IInputIcons;
   @Input() prefixText?: string;
-  @Input() suffixIcon?: InputIcons;
+  @Input() suffixIcon?: IInputIcons;
   @Input() suffixText?: string;
   @Input() formControl!: FormControl;
   @Input() autocomplete?: string;

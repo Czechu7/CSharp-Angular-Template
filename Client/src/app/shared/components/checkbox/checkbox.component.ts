@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
-import { CheckboxProps } from '../../types/checkbox.types';
+import { ICheckboxProps } from '../../types/checkbox.types';
 
 @Component({
   selector: 'app-checkbox',
@@ -23,7 +23,7 @@ import { CheckboxProps } from '../../types/checkbox.types';
     },
   ],
 })
-export class CheckboxComponent implements CheckboxProps, ControlValueAccessor {
+export class CheckboxComponent implements ICheckboxProps, ControlValueAccessor {
   @Input() inputId?: string;
   @Input() name?: string;
   @Input() disabled = false;

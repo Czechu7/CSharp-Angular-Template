@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { SelectProps } from '../../types/select.types';
+import { ISelectProps } from '../../types/select.types';
 import { SelectComponent } from './select.component';
+import { FormControl } from '@angular/forms';
 
-const meta: Meta<SelectComponent<any>> = {
+const meta: Meta<SelectComponent<ISelectProps>> = {
   title: 'Components/SelectComponent',
   component: SelectComponent,
 };
 export default meta;
 
-const args: SelectProps = {
+const args: ISelectProps = {
+  formControl: new FormControl(),
   label: 'Select',
   placeholder: 'Select an option',
   required: true,
@@ -23,7 +25,7 @@ const args: SelectProps = {
   disabled: false,
 };
 
-type SelectStory = StoryObj<SelectComponent<any>>;
+type SelectStory = StoryObj<SelectComponent>;
 
 export const primary: SelectStory = {
   args: args,

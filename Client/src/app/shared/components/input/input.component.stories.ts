@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InputProps } from '../../types/input.types';
+import { IInputProps } from '../../types/input.types';
 import { InputComponent } from './input.component';
 import { FormControl } from '@angular/forms';
 
@@ -9,7 +9,7 @@ const meta: Meta<InputComponent<any>> = {
 };
 export default meta;
 
-const args: InputProps = {
+const args: IInputProps = {
   label: 'Username',
   placeholder: 'Enter username',
   type: 'text',

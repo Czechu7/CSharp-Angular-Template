@@ -43,6 +43,9 @@ export const Primary: Story = {
     auto: false,
     showCancelButton: true,
     showUploadButton: true,
+    chooseLabel: 'Choose Files',
+    uploadLabel: 'Upload Files',
+    cancelLabel: 'Cancel Upload',
   },
 };
 
