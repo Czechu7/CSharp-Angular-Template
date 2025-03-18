@@ -3,7 +3,7 @@ import { IInputProps } from '../../types/input.types';
 import { InputComponent } from './input.component';
 import { FormControl } from '@angular/forms';
 
-const meta: Meta<InputComponent<any>> = {
+const meta: Meta<InputComponent<IInputProps>> = {
   title: 'Components/Input',
   component: InputComponent,
 };
@@ -19,7 +19,7 @@ const args: IInputProps = {
   formControl: new FormControl(),
 };
 
-type InputStory = StoryObj<InputComponent<any>>;
+type InputStory = StoryObj<InputComponent<IInputProps>>;
 
 export const primary: InputStory = {
   args: args,
