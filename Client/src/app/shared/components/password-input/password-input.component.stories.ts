@@ -3,7 +3,7 @@ import { PasswordInputComponent } from './password-input.component';
 import { IPasswordInputProps } from '../../types/password-input.types';
 import { FormControl } from '@angular/forms';
 
-const meta: Meta<PasswordInputComponent<any>> = {
+const meta: Meta<PasswordInputComponent<IPasswordInputProps>> = {
   title: 'Components/PasswordInput',
   component: PasswordInputComponent,
 };
@@ -24,7 +24,7 @@ const args: IPasswordInputProps = {
   formControl: new FormControl(),
 };
 
-type PasswordInputStory = StoryObj<PasswordInputComponent<any>>;
+type PasswordInputStory = StoryObj<PasswordInputComponent<IPasswordInputProps>>;
 
 export const primary: PasswordInputStory = {
   args: args,
