@@ -8,7 +8,6 @@
     <Folder Include="Common\Behaviors\" />
     <Folder Include="Common\Commands\" />
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Queries\" />
     <Folder Include="CQRS\Invoices\" />

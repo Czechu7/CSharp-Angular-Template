@@ -40,7 +40,7 @@ public static class DependencyInjection
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<IPasswordService, PasswordService>();
         services.AddScoped<ITokenService, TokenService>();
-
+        services.AddScoped<IFileService,FileService>();
         // JWT Authentication configuration
         ConfigureJwtAuthentication(services, configuration);
         services.AddSecurityServices();
