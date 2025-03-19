@@ -1,0 +1,26 @@
+::ng-deep {
+  .file-table {
+    position: relative;
+
+    .p-paginator {
+      position: relative;
+      z-index: 1;
+
+      .p-dropdown {
+        z-index: 1000 !important;
+
+        .p-dropdown-panel {
+          z-index: 1001 !important;
+        }
+      }
+    }
+
+    .p-dropdown-panel {
+      z-index: 1001 !important;
+    }
+  }
+
+  .p-dropdown-panel {
+    z-index: 1001 !important;
+  }
+}

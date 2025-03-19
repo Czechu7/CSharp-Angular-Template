@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
-import { ConfirmModalProps } from '../../types/modal.types';
+import { IConfirmModalProps } from '../../types/modal.types';
 import { ButtonModule } from 'primeng/button';
 import { ButtonComponent } from '../button/button.component';
 
@@ -12,7 +12,7 @@ import { ButtonComponent } from '../button/button.component';
   templateUrl: './confirm-modal.component.html',
   styleUrl: './confirm-modal.component.scss',
 })
-export class ConfirmModalComponent implements ConfirmModalProps {
+export class ConfirmModalComponent implements IConfirmModalProps {
   @Input() header = 'Confirm';
   @Input() visible = false;
   @Input() message = 'Are you sure?';

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { PasswordInputComponent } from './password-input.component';
-import { PasswordInputProps } from '../../types/password-input.types';
+import { IPasswordInputProps } from '../../types/password-input.types';
 import { FormControl } from '@angular/forms';
 
-const meta: Meta<PasswordInputComponent<any>> = {
+const meta: Meta<PasswordInputComponent<IPasswordInputProps>> = {
   title: 'Components/PasswordInput',
   component: PasswordInputComponent,
 };
 export default meta;
 
-const args: PasswordInputProps = {
+const args: IPasswordInputProps = {
   label: 'Pasword',
   placeholder: 'Enter password',
   required: true,
@@ -24,7 +24,7 @@ const args: PasswordInputProps = {
   formControl: new FormControl(),
 };
 
-type PasswordInputStory = StoryObj<PasswordInputComponent<any>>;
+type PasswordInputStory = StoryObj<PasswordInputComponent<IPasswordInputProps>>;
 
 export const primary: PasswordInputStory = {
   args: args,

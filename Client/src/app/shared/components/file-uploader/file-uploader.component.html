@@ -1,7 +1,8 @@
 <div class="card">
-  <p-fileupload [name]="name" [url]="url" (onUpload)="onUpload($event)" [multiple]="multiple" [accept]="accept"
-    [maxFileSize]="maxFileSize" [mode]="mode" [auto]="auto" [showCancelButton]="showCancelButton"
-    [showUploadButton]="showUploadButton">
+  <p-fileupload [chooseLabel]="chooseLabel" [uploadLabel]="uploadLabel" [cancelLabel]="cancelLabel" [name]="name"
+    [url]="useService ? undefined : url" [customUpload]="useService" (uploadHandler)="onUploadHandler($event)"
+    (onUpload)="onUpload($event)" [multiple]="multiple" [accept]="accept" [maxFileSize]="maxFileSize" [mode]="mode"
+    [auto]="auto" [showCancelButton]="showCancelButton" [showUploadButton]="showUploadButton">
 
     <ng-template pTemplate="empty">
       <div>{{emptyMessage}}</div>

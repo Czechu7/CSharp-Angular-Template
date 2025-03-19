@@ -1,4 +1,4 @@
-export interface CheckboxProps {
+export interface ICheckboxProps {
   label?: string;
   inputId?: string;
   name?: string;

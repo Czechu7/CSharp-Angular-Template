@@ -1,4 +1,4 @@
-export type Positions =
+export type IPositions =
   | 'top-left'
   | 'top-center'
   | 'top-right'
@@ -7,6 +7,6 @@ export type Positions =
   | 'bottom-right'
   | 'center';
 
-export type Severity = 'success' | 'info' | 'warn' | 'error';
+export type ISeverity = 'success' | 'info' | 'warn' | 'error';
 
-export type Keys = 'tl' | 'tc' | 'tr' | 'bl' | 'bc' | 'br' | 'c';
+export type IKeys = 'tl' | 'tc' | 'tr' | 'bl' | 'bc' | 'br' | 'c';

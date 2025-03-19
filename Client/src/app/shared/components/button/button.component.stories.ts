@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
-import { ButtonProps } from '../../types/button.types';
+import { IButtonProps } from '../../types/button.types';
 
 const meta: Meta<ButtonComponent> = {
   title: 'Components/Button',
@@ -8,7 +8,7 @@ const meta: Meta<ButtonComponent> = {
 };
 export default meta;
 
-const args: ButtonProps = {
+const args: IButtonProps = {
   label: 'Success',
   icon: 'home',
   iconPos: 'left',

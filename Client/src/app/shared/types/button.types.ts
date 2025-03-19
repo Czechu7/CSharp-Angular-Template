@@ -1,6 +1,6 @@
-export type ButtonIconPosition = 'left' | 'right' | 'top' | 'bottom';
+export type IButtonIconPosition = 'left' | 'right' | 'top' | 'bottom';
 
-export type ButtonSeverity =
+export type IButtonSeverity =
   | 'primary'
   | 'secondary'
   | 'success'
@@ -10,25 +10,25 @@ export type ButtonSeverity =
   | 'danger'
   | 'contrast';
 
-export type ButtonVariant = 'text' | 'outlined';
+export type IButtonVariant = 'text' | 'outlined';
 
-export type ButtonSize = 'small' | 'large';
+export type IButtonSize = 'small' | 'large';
 
-export type ButtonBadgeSeverity = 'info' | 'success' | 'warn' | 'danger' | 'contrast';
+export type IButtonBadgeSeverity = 'info' | 'success' | 'warn' | 'danger' | 'contrast';
 
-export interface ButtonProps {
+export interface IButtonProps {
   label?: string;
   icon?: string;
-  iconPos?: ButtonIconPosition;
+  iconPos?: IButtonIconPosition;
   badge?: string;
-  badgeSeverity?: ButtonBadgeSeverity;
-  severity?: ButtonSeverity;
+  badgeSeverity?: IButtonBadgeSeverity;
+  severity?: IButtonSeverity;
   raised?: boolean;
   rounded?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
+  variant?: IButtonVariant;
+  size?: IButtonSize;
   styleClass?: string;
   ariaLabel?: string;
 }

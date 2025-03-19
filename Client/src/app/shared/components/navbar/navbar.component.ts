@@ -3,7 +3,7 @@ import { Component, inject, Input, type OnInit } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
-import type { Langs, MenuItem, NavbarProps } from '../../types/navbar.types';
+import type { ILangs, IMenuItem, INavbarProps } from '../../types/navbar.types';
 import { ButtonComponent } from '../button/button.component';
 import { ToggleSwitchComponent } from '../toggle-switch/toggle-switch.component';
 import { ThemeForm } from '../../models/form.model';
@@ -29,21 +29,21 @@ import { AuthService } from '../../../core/_services/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent implements OnInit, NavbarProps {
+export class NavbarComponent implements OnInit, INavbarProps {
   @Input() title = 'My Application';
   @Input() logo?: string;
-  @Input() menuItems: MenuItem[] = [];
-  @Input() authMenuItems: MenuItem[] = [];
-  @Input() nonAuthMenuItems: MenuItem[] = [];
+  @Input() menuItems: IMenuItem[] = [];
+  @Input() authMenuItems: IMenuItem[] = [];
+  @Input() nonAuthMenuItems: IMenuItem[] = [];
   @Input() isAuthenticated = false;
   @Input() userName = '';
   @Input() userAvatar = '';
   @Input() showSwitchTheme = false;
   @Input() showSwtichLang = false;
-  @Input() commonMenuItems: MenuItem[] = [];
-  @Input() langs: Langs = [];
+  @Input() commonMenuItems: IMenuItem[] = [];
+  @Input() langs: ILangs = [];
 
-  combinedMenuItems: MenuItem[] = [];
+  combinedMenuItems: IMenuItem[] = [];
   mobileMenuOpen = false;
   isDarkTheme = false;
   languages: ILanguage[] = [];
@@ -103,11 +103,11 @@ export class NavbarComponent implements OnInit, NavbarProps {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  toggleDropdown(item: MenuItem) {
+  toggleDropdown(item: IMenuItem) {
     item.expanded = !item.expanded;
   }
 
-  navigateTo(item: MenuItem) {
+  navigateTo(item: IMenuItem) {
     if (item.routerLink) {
       this.router.navigate([item.routerLink]);
     } else if (item.url) {

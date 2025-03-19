@@ -1,0 +1,12 @@
+<div class="card flex justify-content-center">
+  <p-accordion [value]="activeItems" [multiple]="allowMultiple">
+    <ng-container *ngFor="let panel of panels">
+      <p-accordion-panel [value]="panel.value">
+        <p-accordion-header>{{ panel.header }}</p-accordion-header>
+        <p-accordion-content>
+          <ng-container *ngTemplateOutlet="panel.contentTemplate"></ng-container>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </ng-container>
+  </p-accordion>
+</div>

@@ -1,4 +1,4 @@
-export interface ConfirmModalProps {
+export interface IConfirmModalProps {
   header: string;
   visible: boolean;
   message: string;
@@ -8,7 +8,7 @@ export interface ConfirmModalProps {
   onNo: () => void;
 }
 
-export interface InfoModalProps {
+export interface IInfoModalProps {
   header: string;
   visible: boolean;
   message: string;

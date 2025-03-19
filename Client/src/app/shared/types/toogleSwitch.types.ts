@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 
-export interface ToggleSwitchProps {
+export interface IToggleSwitchProps {
   formControl?: FormControl;
   disabled: boolean;
   iconOn?: string;

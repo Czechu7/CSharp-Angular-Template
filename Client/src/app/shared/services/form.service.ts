@@ -14,7 +14,7 @@ import { equivalentValidator } from '../validators/equivalent.validator';
   providedIn: 'root',
 })
 export class FormService {
-  translateService = inject(TranslateService);
+  private translateService = inject(TranslateService);
 
   initPasswordsForm(): FormGroup<PasswordsForm> {
     return new FormGroup(

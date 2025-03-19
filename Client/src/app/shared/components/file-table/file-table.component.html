@@ -1,0 +1,84 @@
+<app-context-menu #fileContextMenu [items]="contextMenuItems" (onItemSelect)="handleContextMenuAction($event)">
+</app-context-menu>
+
+<p-table #dt [value]="files" [paginator]="enablePagination" [rows]="rowsPerPage" [totalRecords]="files.length"
+  [rowsPerPageOptions]="[5, 10, 25, 50]" [paginatorPosition]="paginatorPosition" [globalFilterFields]="['name', 'type']"
+  styleClass="p-datatable-sm" [tableStyle]="{ 'min-width': '50rem' }" [sortField]="defaultSortField"
+  [sortOrder]="defaultSortOrder">
+
+  <ng-template pTemplate="caption">
+    @if (showSearchBar) {
+    <div class="flex justify-content-between">
+      <span>
+        <app-input [formControl]="searchControl" [placeholder]="'FILE_TABLE.SEARCH_PLACEHOLDER' | translate"
+          prefixIcon="search" (ngModelChange)="onGlobalFilter(dt, $event)">
+        </app-input>
+      </span>
+      @if (showActionButtons) {
+      <span>
+        <app-button [label]="'FILE_TABLE.REFRESH' | translate" icon="pi-refresh" (onClick)="onRefresh()">
+        </app-button>
+      </span>
+      }
+    </div>
+    }
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name" style="min-width:14rem">
+        {{ 'FILE_TABLE.NAME' | translate }} <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="type" style="min-width:8rem">
+        {{ 'FILE_TABLE.TYPE' | translate }} <p-sortIcon field="type"></p-sortIcon>
+      </th>
+      <th pSortableColumn="size" style="min-width:8rem">
+        {{ 'FILE_TABLE.SIZE' | translate }} <p-sortIcon field="size"></p-sortIcon>
+      </th>
+      <th pSortableColumn="lastModified" style="min-width:10rem">
+        {{ 'FILE_TABLE.LAST_MODIFIED' | translate }} <p-sortIcon field="lastModified"></p-sortIcon>
+      </th>
+      @if (showActions) {
+      <th style="min-width:8rem">{{ 'FILE_TABLE.ACTIONS' | translate }}</th>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-file>
+    <tr (contextmenu)="onFileContextMenu($event, file)">
+      <td>
+        <div class="flex align-items-center gap-2">
+          <i [class]="getFileIcon(file)" style="font-size: 1.5rem"></i>
+          <span>{{ file.name }}</span>
+        </div>
+      </td>
+      <td>{{ file.type }}</td>
+      <td>{{ formatFileSize(file.size) }}</td>
+      <td>{{ file.lastModified | date: 'medium' }}</td>
+      @if (showActions) {
+      <td>
+        <div class="flex gap-2">
+          <app-button icon="pi pi-download" variant="text" [rounded]="true"
+            ariaLabel="{{ 'FILE_TABLE.DOWNLOAD' | translate }}" (onClick)="onFileAction('download', file)">
+          </app-button>
+          <app-button icon="pi pi-eye" variant="text" [rounded]="true" ariaLabel="{{ 'FILE_TABLE.PREVIEW' | translate }}"
+            (onClick)="onFileAction('preview', file)">
+          </app-button>
+          <app-button icon="pi pi-trash" severity="danger" variant="text" [rounded]="true"
+            ariaLabel="{{ 'FILE_TABLE.DELETE' | translate }}" (onClick)="onFileAction('delete', file)">
+          </app-button>
+        </div>
+      </td>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5" class="text-center p-4">
+        <i class="pi pi-folder-open" style="font-size: 2rem; opacity: 0.5"></i>
+        <p>{{ 'FILE_TABLE.NO_FILES' | translate }}</p>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

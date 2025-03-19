@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  ButtonIconPosition,
-  ButtonBadgeSeverity,
-  ButtonSeverity,
-  ButtonVariant,
-  ButtonSize,
-  ButtonProps,
+  IButtonIconPosition,
+  IButtonBadgeSeverity,
+  IButtonSeverity,
+  IButtonVariant,
+  IButtonSize,
+  IButtonProps,
 } from '../../types/button.types';
 import { ButtonModule } from 'primeng/button';
 
@@ -17,20 +17,20 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent implements ButtonProps {
+export class ButtonComponent implements IButtonProps {
   @Input() label?: string;
   @Input() icon?: string;
-  @Input() iconPos: ButtonIconPosition = 'left';
+  @Input() iconPos: IButtonIconPosition = 'left';
   @Input() badge?: string;
-  @Input() badgeSeverity: ButtonBadgeSeverity = 'info';
-  @Input() severity: ButtonSeverity = 'primary';
+  @Input() badgeSeverity: IButtonBadgeSeverity = 'info';
+  @Input() severity: IButtonSeverity = 'primary';
   @Input() raised = false;
   @Input() rounded = false;
   @Input() loading = false;
   @Input() disabled = false;
-  @Input() variant?: ButtonVariant;
+  @Input() variant?: IButtonVariant;
   @Input() outlined = false;
-  @Input() size?: ButtonSize;
+  @Input() size?: IButtonSize;
   @Input() styleClass?: string;
   @Input() ariaLabel?: string;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';

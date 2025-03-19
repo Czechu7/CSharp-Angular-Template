@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import type { Keys, Severity } from '../types/toast.types';
+import type { IKeys, ISeverity } from '../types/toast.types';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import type { Keys, Severity } from '../types/toast.types';
 export class ToastService {
   messageService = inject(MessageService);
 
-  show(severity: Severity, summary: string, detail: string, key?: Keys, life?: number) {
+  show(severity: ISeverity, summary: string, detail: string, key?: IKeys, life?: number) {
     this.messageService.add({
       severity,
       summary,
@@ -18,19 +18,19 @@ export class ToastService {
     });
   }
 
-  showSuccess(summary: string, detail: string, key?: Keys, life?: number) {
+  showSuccess(summary: string, detail: string, key?: IKeys, life?: number) {
     this.show('success', summary, detail, key, life);
   }
 
-  showInfo(summary: string, detail: string, key?: Keys, life?: number) {
+  showInfo(summary: string, detail: string, key?: IKeys, life?: number) {
     this.show('info', summary, detail, key, life);
   }
 
-  showWarning(summary: string, detail: string, key?: Keys, life?: number) {
+  showWarning(summary: string, detail: string, key?: IKeys, life?: number) {
     this.show('warn', summary, detail, key, life);
   }
 
-  showError(summary: string, detail: string, key?: Keys, life?: number) {
+  showError(summary: string, detail: string, key?: IKeys, life?: number) {
     this.show('error', summary, detail, key, life);
   }
 

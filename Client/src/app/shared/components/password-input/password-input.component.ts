@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
-import { PasswordInputProps, Variant } from '../../types/password-input.types';
+import { IPasswordInputProps, IVariant } from '../../types/password-input.types';
 
 @Component({
   selector: 'app-password-input',
@@ -24,7 +24,7 @@ import { PasswordInputProps, Variant } from '../../types/password-input.types';
     },
   ],
 })
-export class PasswordInputComponent<T> implements ControlValueAccessor, PasswordInputProps {
+export class PasswordInputComponent<T> implements ControlValueAccessor, IPasswordInputProps {
   @Input() label?: string;
   @Input() placeholder?: string = '';
   @Input() disabled = false;
@@ -38,7 +38,7 @@ export class PasswordInputComponent<T> implements ControlValueAccessor, Password
   @Input() mediumLabel?: string;
   @Input() strongLabel?: string;
   // @Input() size?: Size;
-  @Input() variant: Variant = 'outlined';
+  @Input() variant: IVariant = 'outlined';
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;
