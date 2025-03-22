@@ -12,20 +12,30 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      let errorMessage = 'ERRORS.UNKNOWN';
+      let errorMessage: string = '';
 
-      if (err.status === 401) {
-        errorMessage = 'ERRORS.UNAUTHORIZED';
-        if (tokenService.validateRefreshToken(tokenService.getRefreshToken())) {
-          return EMPTY;
-        }
-        errorMessage = 'ERRORS.UNAUTHORIZED';
-      } else if (err.status === 403) {
-        errorMessage = 'ERRORS.FORBIDDEN';
-      } else if (err.status === 404) {
-        errorMessage = 'ERRORS.NOT_FOUND';
-      } else if (err.status === 500) {
-        errorMessage = 'ERRORS.INTERNAL_SERVER_ERROR';
+      switch (err.status) {
+        case 400:
+          errorMessage = 'ERRORS.BAD_REQUEST';
+          break;
+        case 401:
+          errorMessage = 'ERRORS.UNAUTHORIZED';
+          if (tokenService.validateRefreshToken(tokenService.getRefreshToken())) {
+            return EMPTY;
+          }
+          break;
+        case 403:
+          errorMessage = 'ERRORS.FORBIDDEN';
+          break;
+        case 404:
+          errorMessage = 'ERRORS.NOT_FOUND';
+          break;
+        case 500:
+          errorMessage = 'ERRORS.INTERNAL_SERVER_ERROR';
+          break;
+        default:
+          errorMessage = 'ERRORS.UNKNOWN';
+          break;
       }
 
       translateService.get(errorMessage).subscribe(errorMessage => {
