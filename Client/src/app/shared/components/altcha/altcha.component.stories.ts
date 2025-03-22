@@ -1,6 +1,6 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { AltchaComponent } from './altcha.component';
-import { AltchaProps } from '../../types/altcha.types';
+import { IAltchaProps } from '../../types/altcha.types';
 import { HttpClientModule } from '@angular/common/http';
 import { AltchaService } from '../../services/altcha.service';
 import { IAltchaStatus } from '../../models/altcha.model';
@@ -23,7 +23,7 @@ const meta: Meta<AltchaComponent> = {
 };
 export default meta;
 
-const args: AltchaProps = {
+const args: IAltchaProps = {
   challengeurl: '',
   debug: true,
   test: true,

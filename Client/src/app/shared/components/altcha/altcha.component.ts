@@ -19,6 +19,7 @@ import {
 import { AltchaService } from '../../services/altcha.service';
 import { IAltchaStatus } from '../../models/altcha.model';
 import 'altcha';
+import { IAltchaProps } from '../../types/altcha.types';
 
 @Component({
   selector: 'app-altcha',
@@ -40,7 +41,7 @@ import 'altcha';
     },
   ],
 })
-export class AltchaComponent implements ControlValueAccessor, Validator {
+export class AltchaComponent implements ControlValueAccessor, Validator, IAltchaProps {
   @ViewChild('altchaWidget', { static: true }) altchaWidget!: ElementRef;
   @Input() challengeurl = '';
   @Input() debug = false;
