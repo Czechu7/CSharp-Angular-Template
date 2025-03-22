@@ -18,6 +18,7 @@ import {
 } from '@angular/forms';
 import { AltchaService } from '../../services/altcha.service';
 import { IAltchaStatus } from '../../models/altcha.model';
+import 'altcha';
 
 @Component({
   selector: 'app-altcha',
