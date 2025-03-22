@@ -43,11 +43,11 @@ export class RequestFactoryService {
     );
   }
 
-  get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
+  public get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
-  post<T, B>(
+  public post<T, B>(
     endpoint: ApiEndpoints,
     body: B,
     options?: IQueryParams
@@ -55,11 +55,11 @@ export class RequestFactoryService {
     return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  getAll<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
+  public getAll<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
-  getById<T>(
+  public getById<T>(
     endpoint: ApiEndpoints,
     id: string,
     options?: IQueryParams
@@ -67,14 +67,14 @@ export class RequestFactoryService {
     return this.request<T>('GET', `${endpoint}/${id}`, null, options);
   }
 
-  getBlobById(endpoint: ApiEndpoints, id: string): Observable<HttpResponse<Blob>> {
+  public getBlobById(endpoint: ApiEndpoints, id: string): Observable<HttpResponse<Blob>> {
     return this.http.get(`${environment.apiURL}/${endpoint}/${id}`, {
       responseType: 'blob',
       observe: 'response',
     });
   }
 
-  getPaged<T>(
+  public getPaged<T>(
     endpoint: ApiEndpoints,
     queryParams: IPagedQueryParams,
     options?: IQueryParams
@@ -104,7 +104,7 @@ export class RequestFactoryService {
     return this.request<T>('GET', endpoint, null, { params });
   }
 
-  create<T, B>(
+  public create<T, B>(
     endpoint: ApiEndpoints,
     body: B,
     options?: IQueryParams
@@ -112,7 +112,7 @@ export class RequestFactoryService {
     return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  update<T, B>(
+  public update<T, B>(
     endpoint: ApiEndpoints,
     id: string,
     body: B,
@@ -121,7 +121,7 @@ export class RequestFactoryService {
     return this.request<T, B>('PUT', `${endpoint}/${id}`, body, options);
   }
 
-  patch<T, B>(
+  public patch<T, B>(
     endpoint: ApiEndpoints,
     id: string,
     body: B,
@@ -130,7 +130,7 @@ export class RequestFactoryService {
     return this.request<T, B>('PATCH', `${endpoint}/${id}`, body, options);
   }
 
-  delete<T>(
+  public delete<T>(
     endpoint: ApiEndpoints,
     id: string,
     options?: IQueryParams

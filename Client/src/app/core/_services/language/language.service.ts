@@ -28,12 +28,12 @@ export class LanguageService {
     return this.currentLangSubject.value;
   }
 
-  initLanguage(): void {
+  public initLanguage(): void {
     const langToUse = this.determineInitialLanguage();
     this.initializeLanguage(langToUse);
   }
 
-  changeLanguage(lang: string): void {
+  public changeLanguage(lang: string): void {
     if (this.isLanguageSupported(lang)) {
       this.initializeLanguage(lang);
     }

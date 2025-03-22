@@ -23,9 +23,9 @@ export class AuthService {
   private route = inject(Router);
   private toastService = inject(ToastService);
 
-  isLogged = signal<boolean>(this.isAuth());
+  public isLogged = signal<boolean>(this.isAuth());
 
-  signIn(loginData: ILoginDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
+  public signIn(loginData: ILoginDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
       .post<IAuthTokensResponseDto, ILoginDto>(ApiEndpoints.SIGN_IN, loginData)
       .pipe(
@@ -42,7 +42,7 @@ export class AuthService {
       );
   }
 
-  signUp(registerData: IRegisterDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
+  public signUp(registerData: IRegisterDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
       .post<IAuthTokensResponseDto, IRegisterDto>(ApiEndpoints.SIGN_UP, registerData)
       .pipe(
@@ -59,7 +59,7 @@ export class AuthService {
       );
   }
 
-  signOut(): void {
+  public signOut(): void {
     const refreshToken = this.tokenService.getRefreshToken();
     if (!refreshToken) {
       return;
@@ -84,9 +84,9 @@ export class AuthService {
       });
   }
 
-  resetPassword() {}
+  public resetPassword() {}
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  changePassword() {}
+  public changePassword() {}
 
   public isAuth(): boolean {
     const accessToken = this.tokenService.getAccessToken();
