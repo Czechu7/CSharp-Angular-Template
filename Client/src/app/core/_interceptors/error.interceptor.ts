@@ -20,9 +20,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
           break;
         case 401:
           errorMessage = 'ERRORS.UNAUTHORIZED';
-          if (tokenService.validateRefreshToken(tokenService.getRefreshToken())) {
-            return EMPTY;
-          }
           break;
         case 403:
           errorMessage = 'ERRORS.FORBIDDEN';
@@ -36,6 +33,10 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         default:
           errorMessage = 'ERRORS.UNKNOWN';
           break;
+      }
+
+      if (err.status === 401 && tokenService.validateRefreshToken(tokenService.getRefreshToken())) {
+        return EMPTY;
       }
 
       translateService.get(errorMessage).subscribe(errorMessage => {
