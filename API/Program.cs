@@ -6,15 +6,13 @@ using Presentation;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Security;
 using Infrastructure.Middleware;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => 
-{
-    // Register Autofac modules here if needed
-    // containerBuilder.RegisterModule(new AutofacModule());
-});
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -55,29 +53,32 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.DefaultIgnoreCondition = 
-            System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-    });
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
+builder.Services.AddControllers(options => 
+{
+    options.Filters.Add<Infrastructure.Filters.ValidationFilter>();
+})
+.AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.DefaultIgnoreCondition = 
+        System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+});
 builder.Services.AddHttpContextAccessor();
 
 // Register layered architecture
-
-// Application layer (contains MediatR and AutoMapper registration)
-builder.Services.AddApplication();
-
-// Infrastructure layer (contains DbContext, repositories, and services)
-builder.Services.AddInfrastructure(builder.Configuration);
-
-// Presentation layer (contains controllers and API-specific services)
-builder.Services.AddPresentation();
-
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => 
 {
     containerBuilder.RegisterModule(new Infrastructure.DI.AutofacModule());
 });
+Application.DependencyInjection.AddApplication(builder.Services);
+Infrastructure.DependencyInjection.AddInfrastructure(builder.Services, builder.Configuration);
+Presentation.DependencyInjection.AddPresentation(builder.Services);
+
+
 
 builder.Services.AddCors(options =>
 {
@@ -99,10 +100,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseCors("AllowSpecificOrigin");
 app.UseCustomExceptionHandler();
-app.UseSecurityMiddleware();
+app.UseCors("AllowSpecificOrigin");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

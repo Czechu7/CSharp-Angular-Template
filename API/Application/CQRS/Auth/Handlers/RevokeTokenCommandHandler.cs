@@ -7,16 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Auth.Handlers;
 
-public class RevokeTokenCommandHandler : IRequestHandler<RevokeTokenCommand, ResponseBase>
+public class RevokeTokenCommandHandler(IApplicationDbContext dbContext, ILogger<RevokeTokenCommandHandler> logger) : IRequestHandler<RevokeTokenCommand, ResponseBase>
 {
-    private readonly IApplicationDbContext _dbContext;
-    private readonly ILogger<RevokeTokenCommandHandler> _logger;
-
-    public RevokeTokenCommandHandler(IApplicationDbContext dbContext, ILogger<RevokeTokenCommandHandler> logger)
-    {
-        _dbContext = dbContext;
-        _logger = logger;
-    }
+    private readonly IApplicationDbContext _dbContext = dbContext;
+    private readonly ILogger<RevokeTokenCommandHandler> _logger = logger;
 
     public async Task<ResponseBase> Handle(RevokeTokenCommand request, CancellationToken cancellationToken)
     {
