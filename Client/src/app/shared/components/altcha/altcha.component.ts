@@ -3,10 +3,8 @@ import {
   Component,
   ElementRef,
   Input,
-  Output,
   ViewChild,
   forwardRef,
-  inject,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -16,7 +14,6 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { AltchaService } from '../../services/altcha.service';
 import { IAltchaStatus } from '../../models/altcha.model';
 import 'altcha';
 import { IAltchaProps } from '../../types/altcha.types';
@@ -50,11 +47,12 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
   @Input() style?: Record<string, string> = { '--altcha-max-width': '320px' };
   @Input() styleClass?: string;
 
-  altchaService = inject(AltchaService);
-
   onChange = (status: IAltchaStatus): void => {
-    this.altchaService.handleAltcha(status);
+    if (this.debug) {
+      console.log('Altcha status changed!', status);
+    }
   };
+
   onTouched = (): void => {};
 
   ngAfterViewInit(): void {
