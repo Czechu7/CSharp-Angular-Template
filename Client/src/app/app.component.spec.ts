@@ -31,9 +31,31 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Client' title`, () => {
+  it('should set values from MenuConfig', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+
     expect(app.title).toEqual(MenuConfig.title);
+    expect(app.langs).toEqual(MenuConfig.langs);
+    expect(app.authMenuItems).toEqual(MenuConfig.authMenuItems);
+    expect(app.nonAuthMenuItems).toEqual(MenuConfig.nonAuthMenuItems);
+    expect(app.footerTitle).toEqual(MenuConfig.footerTitle);
+  });
+
+  it('should render NavbarComponent and FooterComponent', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('app-navbar')).toBeTruthy();
+    expect(compiled.querySelector('app-footer')).toBeTruthy();
+  });
+
+  it('should contain <router-outlet>', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });
