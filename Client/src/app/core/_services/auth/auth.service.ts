@@ -23,7 +23,7 @@ export class AuthService {
   private route = inject(Router);
   private toastService = inject(ToastService);
 
-  isLogged = signal<boolean>(this.isAuth());
+  public isLogged = signal<boolean>(this.isAuth());
 
   signIn(loginData: ILoginDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
@@ -88,7 +88,7 @@ export class AuthService {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   changePassword() {}
 
-  public isAuth(): boolean {
+  isAuth(): boolean {
     const accessToken = this.tokenService.getAccessToken();
     const refreshToken = this.tokenService.getRefreshToken();
 
@@ -106,7 +106,7 @@ export class AuthService {
     return false;
   }
 
-  public getUserId() {
+  getUserId() {
     const accessToken = this.tokenService.getAccessToken();
     if (accessToken !== null) {
       const decodedToken = this.tokenService.decodeToken(accessToken);
@@ -116,7 +116,7 @@ export class AuthService {
     }
   }
 
-  public getUserName() {
+  getUserName() {
     const accessToken = this.tokenService.getAccessToken();
     if (accessToken !== null) {
       const decodedToken = this.tokenService.decodeToken(accessToken);
@@ -125,7 +125,7 @@ export class AuthService {
       return null;
     }
   }
-  public getUserEmail() {
+  getUserEmail() {
     const accessToken: IAccessToken | null = this.tokenService.getAccessToken();
     if (accessToken !== null) {
       const decodedToken = this.tokenService.decodeToken(accessToken);

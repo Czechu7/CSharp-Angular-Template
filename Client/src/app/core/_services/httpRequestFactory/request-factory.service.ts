@@ -13,36 +13,6 @@ import { IQueryParams } from '../../_models/query-params.model';
 export class RequestFactoryService {
   private http = inject(HttpClient);
 
-  private getDefaultHeaders(): HttpHeaders {
-    return new HttpHeaders({ 'Content-Type': 'application/json' });
-  }
-
-  private getDefaultParams(): HttpParams {
-    return new HttpParams();
-  }
-
-  private request<T, B = undefined>(
-    method: string,
-    endpoint: ApiEndpoints | string,
-    body?: B | null | undefined,
-    options?: IQueryParams
-  ): Observable<IBaseResponse<T>> {
-    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
-    const params = options?.params ? options.params : this.getDefaultParams();
-
-    const configuration = {
-      headers,
-      params,
-      body,
-    };
-
-    return this.http.request<IBaseResponse<T>>(
-      method,
-      `${environment.apiURL}/${endpoint}`,
-      configuration
-    );
-  }
-
   get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
@@ -140,6 +110,36 @@ export class RequestFactoryService {
       `${endpoint}/${id}`,
       { isDeleted: 1 },
       options
+    );
+  }
+
+  private getDefaultHeaders(): HttpHeaders {
+    return new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
+
+  private getDefaultParams(): HttpParams {
+    return new HttpParams();
+  }
+
+  private request<T, B = undefined>(
+    method: string,
+    endpoint: ApiEndpoints | string,
+    body?: B | null | undefined,
+    options?: IQueryParams
+  ): Observable<IBaseResponse<T>> {
+    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
+    const params = options?.params ? options.params : this.getDefaultParams();
+
+    const configuration = {
+      headers,
+      params,
+      body,
+    };
+
+    return this.http.request<IBaseResponse<T>>(
+      method,
+      `${environment.apiURL}/${endpoint}`,
+      configuration
     );
   }
 }
