@@ -18,7 +18,7 @@ import { RequestFactoryService } from '../httpRequestFactory/request-factory.ser
 export class FileService {
   private requestFactory = inject(RequestFactoryService);
 
-  public sendFile(fileData: FormData): Observable<IBaseResponse<IFile>> {
+  sendFile(fileData: FormData): Observable<IBaseResponse<IFile>> {
     const options: IQueryParams = {
       headers: new HttpHeaders(),
     };
@@ -26,7 +26,7 @@ export class FileService {
     return this.requestFactory.create<IFile, FormData>(ApiEndpoints.SEND_FILE, fileData, options);
   }
 
-  public downloadFile(fileId: string): void {
+  downloadFile(fileId: string): void {
     this.requestFactory.getBlobById(ApiEndpoints.DOWNLOAD_FILE, fileId).subscribe({
       next: res => {
         const header = res.headers.get('Content-Disposition');
@@ -48,17 +48,17 @@ export class FileService {
     });
   }
 
-  public getImage(fileId: string): Observable<string> {
+  getImage(fileId: string): Observable<string> {
     return this.requestFactory
       .getBlobById(ApiEndpoints.DOWNLOAD_FILE, fileId)
       .pipe(map(res => URL.createObjectURL(res.body as Blob)));
   }
 
-  public getFile(fileId: string): Observable<IBaseResponse<IFile>> {
+  getFile(fileId: string): Observable<IBaseResponse<IFile>> {
     return this.requestFactory.getById<IFile>(ApiEndpoints.GET_FILE, fileId);
   }
 
-  public getPageableFiles(
+  getPageableFiles(
     pageNumber: number,
     pageSize: number
   ): Observable<IBaseResponse<IFileListResponseDto>> {
@@ -68,7 +68,7 @@ export class FileService {
     });
   }
 
-  public editFile(fileId: string, fileName: string): Observable<IBaseResponseWithoutData> {
+  editFile(fileId: string, fileName: string): Observable<IBaseResponseWithoutData> {
     return this.requestFactory.update<IBaseResponseWithoutData, IFileEditRequestDto>(
       ApiEndpoints.EDIT_FILE,
       fileId,
@@ -76,11 +76,11 @@ export class FileService {
     );
   }
 
-  public deleteFile(fileId: string): Observable<IBaseResponseWithoutData> {
+  deleteFile(fileId: string): Observable<IBaseResponseWithoutData> {
     return this.requestFactory.delete<IBaseResponseWithoutData>(ApiEndpoints.DELETE_FILE, fileId);
   }
 
-  public getStats(): Observable<IBaseResponse<IFileStatsDto>> {
+  getStats(): Observable<IBaseResponse<IFileStatsDto>> {
     return this.requestFactory.get<IFileStatsDto>(ApiEndpoints.GET_FILES_STATS);
   }
 }

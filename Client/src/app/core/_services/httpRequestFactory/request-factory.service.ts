@@ -13,41 +13,11 @@ import { IQueryParams } from '../../_models/query-params.model';
 export class RequestFactoryService {
   private http = inject(HttpClient);
 
-  private getDefaultHeaders(): HttpHeaders {
-    return new HttpHeaders({ 'Content-Type': 'application/json' });
-  }
-
-  private getDefaultParams(): HttpParams {
-    return new HttpParams();
-  }
-
-  private request<T, B = undefined>(
-    method: string,
-    endpoint: ApiEndpoints | string,
-    body?: B | null | undefined,
-    options?: IQueryParams
-  ): Observable<IBaseResponse<T>> {
-    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
-    const params = options?.params ? options.params : this.getDefaultParams();
-
-    const configuration = {
-      headers,
-      params,
-      body,
-    };
-
-    return this.http.request<IBaseResponse<T>>(
-      method,
-      `${environment.apiURL}/${endpoint}`,
-      configuration
-    );
-  }
-
-  public get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
+  get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
-  public post<T, B>(
+  post<T, B>(
     endpoint: ApiEndpoints,
     body: B,
     options?: IQueryParams
@@ -55,11 +25,11 @@ export class RequestFactoryService {
     return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  public getAll<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
+  getAll<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', endpoint, null, options);
   }
 
-  public getById<T>(
+  getById<T>(
     endpoint: ApiEndpoints,
     id: string,
     options?: IQueryParams
@@ -67,14 +37,14 @@ export class RequestFactoryService {
     return this.request<T>('GET', `${endpoint}/${id}`, null, options);
   }
 
-  public getBlobById(endpoint: ApiEndpoints, id: string): Observable<HttpResponse<Blob>> {
+  getBlobById(endpoint: ApiEndpoints, id: string): Observable<HttpResponse<Blob>> {
     return this.http.get(`${environment.apiURL}/${endpoint}/${id}`, {
       responseType: 'blob',
       observe: 'response',
     });
   }
 
-  public getPaged<T>(
+  getPaged<T>(
     endpoint: ApiEndpoints,
     queryParams: IPagedQueryParams,
     options?: IQueryParams
@@ -104,7 +74,7 @@ export class RequestFactoryService {
     return this.request<T>('GET', endpoint, null, { params });
   }
 
-  public create<T, B>(
+  create<T, B>(
     endpoint: ApiEndpoints,
     body: B,
     options?: IQueryParams
@@ -112,7 +82,7 @@ export class RequestFactoryService {
     return this.request<T, B>('POST', endpoint, body, options);
   }
 
-  public update<T, B>(
+  update<T, B>(
     endpoint: ApiEndpoints,
     id: string,
     body: B,
@@ -121,7 +91,7 @@ export class RequestFactoryService {
     return this.request<T, B>('PUT', `${endpoint}/${id}`, body, options);
   }
 
-  public patch<T, B>(
+  patch<T, B>(
     endpoint: ApiEndpoints,
     id: string,
     body: B,
@@ -130,7 +100,7 @@ export class RequestFactoryService {
     return this.request<T, B>('PATCH', `${endpoint}/${id}`, body, options);
   }
 
-  public delete<T>(
+  delete<T>(
     endpoint: ApiEndpoints,
     id: string,
     options?: IQueryParams
@@ -140,6 +110,36 @@ export class RequestFactoryService {
       `${endpoint}/${id}`,
       { isDeleted: 1 },
       options
+    );
+  }
+
+  private getDefaultHeaders(): HttpHeaders {
+    return new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
+
+  private getDefaultParams(): HttpParams {
+    return new HttpParams();
+  }
+
+  private request<T, B = undefined>(
+    method: string,
+    endpoint: ApiEndpoints | string,
+    body?: B | null | undefined,
+    options?: IQueryParams
+  ): Observable<IBaseResponse<T>> {
+    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
+    const params = options?.params ? options.params : this.getDefaultParams();
+
+    const configuration = {
+      headers,
+      params,
+      body,
+    };
+
+    return this.http.request<IBaseResponse<T>>(
+      method,
+      `${environment.apiURL}/${endpoint}`,
+      configuration
     );
   }
 }
