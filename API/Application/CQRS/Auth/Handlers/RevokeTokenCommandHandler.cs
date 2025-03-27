@@ -5,6 +5,7 @@ using Application.CQRS.Auth.DTOs;
 using Application.CQRS.Base;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 
 namespace Application.CQRS.Auth.Handlers;
@@ -24,12 +25,12 @@ public class RevokeTokenCommandHandler : BaseCommandHandler<RevokeTokenCommand, 
             if (refreshToken == null)
             {
                 Logger.LogWarning("Attempt to revoke non-existent token");
-                return (Response<ResponseBase>)ResponseBase.ErrorResponse(400, "Invalid token");
+                return Error(400, "Invalid token");
             }
 
             if (refreshToken.IsRevoked)
             {
-                return (Response<ResponseBase>)ResponseBase.ErrorResponse(400, "Token is already revoked");
+                return Error(400, "Token is already revoked");
             }
 
             refreshToken.IsRevoked = true;
@@ -44,7 +45,7 @@ public class RevokeTokenCommandHandler : BaseCommandHandler<RevokeTokenCommand, 
         catch (Exception ex)
         {
             Logger.LogError(ex, "Error revoking token");
-            return (Response<ResponseBase>)ResponseBase.ErrorResponse(500, "An error occurred while revoking the token");
+            return Error(500, "An error occurred while revoking the token");
         }
     }
 }
