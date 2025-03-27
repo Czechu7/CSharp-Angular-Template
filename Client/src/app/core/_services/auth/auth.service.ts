@@ -1,6 +1,6 @@
 import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
-import { ApiEndpoints } from '../../../config/api-endpoints.enum';
+import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
 import { Observable, tap } from 'rxjs';
 import { IBaseResponse, IBaseResponseWithoutData } from '../../_models/base-response.model';
 import {

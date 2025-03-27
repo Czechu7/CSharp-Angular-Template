@@ -9,4 +9,12 @@ export enum ApiEndpoints {
   // USERS
   GET_USERS = 'api/users',
   GET_USER = 'api/users',
+  // FILES
+  GET_FILE = 'api/files',
+  GET_FILES_LIST = 'api/files',
+  SEND_FILE = 'api/files/upload',
+  DOWNLOAD_FILE = 'api/files/download',
+  EDIT_FILE = 'api/files',
+  DELETE_FILE = 'api/files',
+  GET_FILES_STATS = 'api/files/stats',
 }

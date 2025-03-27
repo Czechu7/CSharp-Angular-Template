@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { map, Observable } from 'rxjs';
-import { ApiEndpoints } from '../../../config/api-endpoints.enum';
+import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IDecodedToken } from '../../_models/decoded-token.model';
 import { IAccessToken, IRefreshToken, ITokens } from '../../_models/tokens.model';

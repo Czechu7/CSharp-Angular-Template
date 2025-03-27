@@ -4,7 +4,7 @@ import { catchError, switchMap, throwError } from 'rxjs';
 import { IAuthTokensResponseDto } from '../_models/DTOs/authDto.model';
 import { IAccessToken, IRefreshToken } from '../_models/tokens.model';
 import { TokenService } from '../_services/token/token.service';
-import { ApiEndpoints } from '../../config/api-endpoints.enum';
+import { ApiEndpoints } from '../../enums/api-endpoints.enum';
 
 let isRefreshing = false;
 
