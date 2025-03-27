@@ -24,9 +24,9 @@ export interface IFileStatsDto {
   totalSizeGB: number;
   maxSizeGB: number;
   minSizeGB: number;
-  usagePrecentages: number;
+  usagePercentages: number;
   totalFiles: number;
   hasAvailableStorage: boolean;
-  avaiableSizeBytes: number;
-  avaiableSizeGB: number;
+  availableSizeBytes: number;
+  availableSizeGB: number;
 }
