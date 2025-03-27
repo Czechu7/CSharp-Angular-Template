@@ -4,11 +4,13 @@ using System.Runtime.CompilerServices;
 using Application.Common.Attributes;
 using Autofac;
 using Castle.DynamicProxy;
+using Microsoft.Extensions.Logging;
 namespace Application.Common.Interceptors;
-public class PropertyInjectionInterceptor(ILifetimeScope lifetimeScope) : IInterceptor
+public class PropertyInjectionInterceptor(ILifetimeScope lifetimeScope, ILogger<PropertyInjectionInterceptor> logger) : IInterceptor
 {
     private readonly ILifetimeScope _lifetimeScope = lifetimeScope;
     private readonly ConcurrentDictionary<Type, PropertyInfo[]> _propertyCache = new();
+    private readonly ILogger<PropertyInjectionInterceptor> _logger = logger;
 
     public void Intercept(IInvocation invocation)
     {
@@ -42,7 +44,7 @@ public class PropertyInjectionInterceptor(ILifetimeScope lifetimeScope) : IInter
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error injecting {property.Name}: {ex.Message}");
+                _logger.LogError(ex, "Error injecting {PropertyName}: {ErrorMessage}", property.Name, ex.Message);
             }
         }
         MarkAsInjected(target);
