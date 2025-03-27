@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { NavbarComponent } from './navbar.component';
-import { NavbarProps } from '../../types/navbar.types';
+import { INavbarProps } from '../../types/navbar.types';
 
 const meta: Meta<NavbarComponent> = {
   title: 'Components/NavbarComponent',
@@ -8,7 +8,7 @@ const meta: Meta<NavbarComponent> = {
 };
 export default meta;
 
-const args: NavbarProps = {
+const args: INavbarProps = {
   title: 'My Application',
   logo: 'assets/logo.png',
   authMenuItems: [

@@ -1,19 +1,19 @@
 import { FormControl } from '@angular/forms';
 
-export interface SelectOption {
+export interface ISelectOption {
   label: string;
   value: string;
 }
 
-export type SelectOptions = SelectOption[];
+export type ISelectOptions = ISelectOption[];
 
-export type Variant = 'filled' | 'outlined';
+export type IVariant = 'filled' | 'outlined';
 
-export type Size = 'small' | 'large';
+export type ISize = 'small' | 'large';
 
-export type LabelVariant = 'over' | 'in' | 'on';
+export type ILabelVariant = 'over' | 'in' | 'on';
 
-export interface SelectProps<T = any> {
+export interface ISelectProps<T = ISelectOption> {
   formControl: FormControl;
   checkmark: boolean;
   showClear: boolean;
@@ -30,10 +30,10 @@ export interface SelectProps<T = any> {
   virtualScroll?: boolean;
   virtualScrollItemSize?: number;
   value?: T;
-  variant?: Variant;
-  size?: Size;
+  variant?: IVariant;
+  size?: ISize;
   label?: string;
-  labelVariant?: LabelVariant;
+  labelVariant?: ILabelVariant;
   inputId?: string;
   inavlid?: boolean;
   errorMessage?: string;

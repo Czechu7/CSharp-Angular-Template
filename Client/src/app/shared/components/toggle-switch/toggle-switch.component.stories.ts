@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ToggleSwitchComponent } from './toggle-switch.component';
-import { ToggleSwitchProps } from '../../types/toogleSwitch.types';
+import { IToggleSwitchProps } from '../../types/toogleSwitch.types';
 
 const meta: Meta<ToggleSwitchComponent> = {
   title: 'Components/ToggleSwitchComponent',
@@ -8,7 +8,7 @@ const meta: Meta<ToggleSwitchComponent> = {
 };
 export default meta;
 
-const args: ToggleSwitchProps = {
+const args: IToggleSwitchProps = {
   disabled: false,
   iconOn: 'pi-check',
   iconOff: 'pi-times',

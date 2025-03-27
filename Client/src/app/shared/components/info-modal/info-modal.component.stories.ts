@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InfoModalProps } from '../../types/modal.types';
+import { IInfoModalProps } from '../../types/modal.types';
 import { InfoModalComponent } from './info-modal.component';
 
 const meta: Meta<InfoModalComponent> = {
@@ -8,14 +8,14 @@ const meta: Meta<InfoModalComponent> = {
 };
 export default meta;
 
-const args: InfoModalProps = {
+const args: IInfoModalProps = {
   header: 'Information',
   visible: true,
   message: 'This is an information message',
 };
 
-type NavbarStory = StoryObj<InfoModalComponent>;
+type InfoModalStory = StoryObj<InfoModalComponent>;
 
-export const Primary: NavbarStory = {
+export const Primary: InfoModalStory = {
   args: args,
 };

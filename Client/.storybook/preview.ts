@@ -1,17 +1,17 @@
 import { APP_INITIALIZER } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { applicationConfig, Preview } from '@storybook/angular';
 import { setCompodocJson } from '@storybook/addon-docs/angular';
+import { applicationConfig, Preview } from '@storybook/angular';
 import docJson from '../documentation.json';
 
+import Aura from '@primeng/themes/aura';
 import { PrimeNG } from 'primeng/config';
-import Nora from '@primeng/themes/nora';
 setCompodocJson(docJson);
 
 function provideTheme(config: PrimeNG) {
   return () => {
     config.theme.set({
-      preset: Nora,
+      preset: Aura,
       options: {
         darkModeSelector: false,
       },

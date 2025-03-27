@@ -1,9 +1,9 @@
-import { MenuItem } from './navbar.types';
+import { IMenuItem } from './navbar.types';
 
-export interface FooterProps {
+export interface IFooterProps {
   logo?: string;
   title?: string;
-  links?: MenuItem[];
-  socialLinks?: MenuItem[];
+  links?: IMenuItem[];
+  socialLinks?: IMenuItem[];
   customClass?: string;
 }

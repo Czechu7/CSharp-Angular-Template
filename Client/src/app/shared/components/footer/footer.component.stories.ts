@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { FooterComponent } from './footer.component';
-import { FooterProps } from '../../types/footer.types';
+import { IFooterProps } from '../../types/footer.types';
 
 const meta: Meta<FooterComponent> = {
   title: 'Components/FooterComponent',
@@ -8,7 +8,7 @@ const meta: Meta<FooterComponent> = {
 };
 export default meta;
 
-const args: FooterProps = {
+const args: IFooterProps = {
   logo: 'assets/logo.png',
   title: 'My Application',
   links: [

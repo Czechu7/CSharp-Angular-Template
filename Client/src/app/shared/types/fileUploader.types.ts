@@ -13,6 +13,9 @@ export interface IFileUploadProps {
   auto?: boolean;
   showCancelButton?: boolean;
   showUploadButton?: boolean;
+  chooseLabel: string;
+  uploadLabel: string;
+  cancelLabel: string;
 }
 
 export interface IUploadEvent {

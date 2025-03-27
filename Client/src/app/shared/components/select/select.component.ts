@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { SelectProps, Size, Variant, LabelVariant } from '../../types/select.types';
+import { ISelectProps, ISize, IVariant, ILabelVariant } from '../../types/select.types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -25,7 +25,7 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class SelectComponent<T = unknown> implements SelectProps<T>, ControlValueAccessor {
+export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlValueAccessor {
   @Input() formControl!: FormControl;
   @Input() options?: T[];
   @Input() optionLabel?: string;
@@ -40,11 +40,11 @@ export class SelectComponent<T = unknown> implements SelectProps<T>, ControlValu
   @Input() showClear = false;
   @Input() virtualScroll?: boolean;
   @Input() virtualScrollItemSize?: number;
-  @Input() variant: Variant = 'filled';
-  @Input() size?: Size;
+  @Input() variant: IVariant = 'filled';
+  @Input() size?: ISize;
   @Input() required?: boolean;
   @Input() label?: string;
-  @Input() labelVariant: LabelVariant = 'over';
+  @Input() labelVariant: ILabelVariant = 'over';
   @Input() inputId?: string;
   @Input() errorMessage?: string;
   @Input() invalid?: boolean;
