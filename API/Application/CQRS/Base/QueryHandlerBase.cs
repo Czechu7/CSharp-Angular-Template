@@ -5,7 +5,7 @@ using Domain.Common;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Application.CQRS;
+namespace Application.CQRS.Base;
 
 public abstract class QueryHandlerBase<TQuery, TResult, TEntity>(
     IGenericRepository<TEntity> repository,

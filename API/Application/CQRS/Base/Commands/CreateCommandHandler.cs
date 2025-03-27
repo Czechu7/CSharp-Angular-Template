@@ -18,6 +18,7 @@ public class CreateCommandHandler<TDto, TEntity> : BaseCommandHandler<CreateComm
     [Inject] protected IMapper Mapper { get; set; } = null!;
 
 
+
     public override async Task<Response<ResponseBase>> Handle(CreateCommand<TDto> request, CancellationToken cancellationToken)
     {
         try
@@ -25,6 +26,8 @@ public class CreateCommandHandler<TDto, TEntity> : BaseCommandHandler<CreateComm
             var entity = Mapper.Map<TEntity>(request.Data);
 
             await ValidateCreateAsync(entity, request.Data, cancellationToken);
+            
+            await HandleCreate(entity, request.Data, cancellationToken);
 
             await Repository.AddAsync(entity);
 
@@ -57,6 +60,10 @@ public class CreateCommandHandler<TDto, TEntity> : BaseCommandHandler<CreateComm
         }
     }
     protected virtual Task ValidateCreateAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+    protected virtual Task HandleCreate(TEntity entity, TDto dto, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }

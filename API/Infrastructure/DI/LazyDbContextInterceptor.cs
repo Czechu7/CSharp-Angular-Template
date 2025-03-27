@@ -14,10 +14,7 @@ public class LazyDbContextInterceptor(ILifetimeScope lifetimeScope) : IIntercept
     public void Intercept(IInvocation invocation)
     {
 
-        if (_realDbContext == null)
-        {
-            _realDbContext = _lifetimeScope.ResolveNamed<IApplicationDbContext>("CSharpAngularTemplateDB");
-        }
+        _realDbContext ??= _lifetimeScope.ResolveNamed<IApplicationDbContext>("CSharpAngularTemplateDB");
 
         invocation.ReturnValue = invocation.Method.Invoke(_realDbContext, invocation.Arguments);
     }
