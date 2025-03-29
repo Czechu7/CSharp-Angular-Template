@@ -1,25 +1,24 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { catchError, map, of } from 'rxjs';
 import { RouterEnum } from '../../enums/router.enum';
 import { AuthService } from '../_services/auth/auth.service';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const unAuthGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  return authService.isAuth().pipe(
-    map(isLoggedIn => {
-      if (isLoggedIn) {
-        router.navigate([RouterEnum.home]);
-        return false;
-      } else {
-        return true;
-      }
-    }),
-    catchError(() => {
-      return of(true);
-    })
-  );
+  if (authService.isAuth()) {
+    return true;
+  }
+
+  const url = state.url;
+  if (url && url !== '/' && url !== `/${RouterEnum.login}`) {
+    router.navigate([RouterEnum.login], {
+      queryParams: { returnUrl: url },
+    });
+  } else {
+    router.navigate([RouterEnum.login]);
+  }
+
+  return false;
 };

@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import { IAutocompletePersonalInfo } from './auto-complete.types';
 
 export type IInputTypes = 'text' | 'number' | 'email' | 'password' | 'tel' | 'url';
 
@@ -24,6 +25,6 @@ export interface IInputProps {
   suffixIcon?: IInputIcons;
   suffixText?: string;
   inavlid?: boolean;
-  autocomplete?: string;
+  autocomplete: IAutocompletePersonalInfo;
   formControl: FormControl;
 }
