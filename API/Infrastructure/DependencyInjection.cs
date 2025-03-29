@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Infrastructure.Middleware;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Infrastructure.Security;
@@ -43,7 +44,8 @@ public static class DependencyInjection
 
         // JWT Authentication configuration
         ConfigureJwtAuthentication(services, configuration);
-        services.AddSecurityServices();
+        SecurityExtensions.AddRateLimitingServices(services);
+
         return services;
     }
 

@@ -11,6 +11,7 @@ import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../enums/router.enum';
 import { IRegisterDto } from '../../../core/_models/DTOs/authDto.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { ErrorService } from '../../../shared/services/error.service';
 
 @Component({
   selector: 'app-register',
@@ -34,9 +35,10 @@ export class RegisterComponent implements OnInit {
 
   private formService = inject(FormService);
   private authService = inject(AuthService);
+  private errorService = inject(ErrorService);
 
   ngOnInit() {
-    this.registerForm = this.formService.initRegisterForm();
+    this.registerForm = this.formService.getRegisterForm();
   }
 
   get controls() {
@@ -44,7 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getErrorMessage(control: FormControl) {
-    return this.formService.getErrorMessage(control);
+    return this.errorService.getErrorMessage(control);
   }
 
   onRegister() {

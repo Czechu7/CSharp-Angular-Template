@@ -7,9 +7,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Users.Commands.CreateUser;
 
-public class CreateUserCommandHandler(
-    IGenericRepository<User> repository,
-    IMapper mapper,
-    ILogger<CreateUserCommandHandler> logger) : CreateCommandHandler<UserDto, User>(repository, mapper, logger)
+public class CreateUserCommandHandler : CreateCommandHandler<UserDto,User>
 {
 }

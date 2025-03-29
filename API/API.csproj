@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.2.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -28,25 +29,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Presentation\Presentation.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\CQRS\Invoices\" />
-    <Folder Include="Application\CQRS\Notifications\" />
-    <Folder Include="Application\CQRS\Orders\" />
-    <Folder Include="Application\CQRS\Products\" />
-    <Folder Include="Application\CQRS\Users\Commands\" />
-    <Folder Include="Application\CQRS\Users\Handlers\" />
-    <Folder Include="Application\CQRS\Users\Queries\" />
-    <Folder Include="Infrastructure\Persistence\Configurations\" />
-    <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="Infrastructure\Services\" />
-    <Folder Include="Presentation\Controllers\" />
-  </ItemGroup>
-
 </Project>

@@ -1,7 +1,17 @@
+using Application.Common.Behaviors;
+using Application.Common.Interceptors;
+using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.CQRS.Auth.Commands;
+using Application.CQRS.Auth.DTOs;
+using Application.CQRS.Auth.Handlers;
 using Application.CQRS.Base.Commands;
 using Application.CQRS.Base.Queries;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
+using Infrastructure.Persistence;
+using Infrastructure.Services;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
@@ -13,111 +23,92 @@ namespace Infrastructure.DI
         protected override void Load(ContainerBuilder builder)
         {
             var applicationAssembly = typeof(Application.DependencyInjection).Assembly;
-            builder.RegisterGeneric(typeof(Logger<>))
-                .As(typeof(ILogger<>))
-                .SingleInstance();
 
-            RegisterMediatrHandlers(builder, applicationAssembly);
-            RegisterInheritedQueryHandlers(builder, applicationAssembly);
-            RegisterClosedGenericHandlers(builder, applicationAssembly);
+            RegisterCoreServices(builder);
+
+            RegisterDbContext(builder);
+
+            RegisterHandlers(builder, applicationAssembly);
+
             RegisterGenericHandlers(builder);
+
+            builder.RegisterType<Mediator>()
+                .As<IMediator>()
+                .InstancePerLifetimeScope();
         }
-        private void RegisterInheritedQueryHandlers(ContainerBuilder builder, Assembly assembly)
+
+        private void RegisterCoreServices(ContainerBuilder builder)
         {
-           
-            var derivedHandlerTypes = assembly.GetTypes()
-                .Where(t => !t.IsAbstract && !t.IsGenericTypeDefinition)
-                .Where(t => t.BaseType != null && t.BaseType.IsGenericType &&
-                            t.BaseType.GetGenericTypeDefinition() == typeof(GetByIdQueryHandler<,>));
-
-            foreach (var handlerType in derivedHandlerTypes)
-            {
-               
-                var baseType = handlerType.BaseType;
-                if (baseType == null)
-                    continue;
-                var genericArguments = baseType.GetGenericArguments();
-                var resultType = genericArguments[0];
-                var entityType = genericArguments[1];
-
-
-                var queryType = assembly.GetTypes()
-                    .FirstOrDefault(t => !t.IsAbstract && !t.IsGenericTypeDefinition &&
-                                        t.BaseType == typeof(GetByIdQuery<>).MakeGenericType(resultType));
-
-                if (queryType != null)
-                {
-
-                    var requestHandlerType = typeof(IRequestHandler<,>).MakeGenericType(queryType, typeof(Response<>).MakeGenericType(resultType));
-
-
-                    builder.RegisterType(handlerType)
-                        .As(requestHandlerType)
-                        .InstancePerLifetimeScope();
-                }
-            }
+            builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
+            builder.RegisterType<LoggerFactory>().As<ILoggerFactory>().SingleInstance();
+            builder.RegisterType<PropertyInjectionInterceptor>().AsSelf().SingleInstance();
+            builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>)).InstancePerLifetimeScope();
+            builder.RegisterType<PasswordService>().As<IPasswordService>().InstancePerLifetimeScope();
+            builder.RegisterType<TokenService>().As<ITokenService>().InstancePerLifetimeScope();
+            builder.RegisterType<LazyDbContextInterceptor>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<CurrentUserService>().As<ICurrentUserService>().InstancePerLifetimeScope(); 
+            builder.RegisterType<Mediator>().As<IMediator>().InstancePerLifetimeScope();
         }
-        private void RegisterMediatrHandlers(ContainerBuilder builder, Assembly assembly)
+
+        private void RegisterDbContext(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(assembly)
-                .AsClosedTypesOf(typeof(IRequestHandler<,>))
-                .AsImplementedInterfaces()
+            builder.RegisterType<ApplicationDbContext>()
+                .Named<IApplicationDbContext>("CSharpAngularTemplateDB")
                 .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(assembly)
+            var proxyGenerator = new ProxyGenerator();
+            builder.Register(c =>
+            {
+                var scope = c.Resolve<ILifetimeScope>();
+                var interceptor = new LazyDbContextInterceptor(scope);
+                return proxyGenerator.CreateInterfaceProxyWithoutTarget<IApplicationDbContext>(interceptor);
+            })
+            .As<IApplicationDbContext>()
+            .InstancePerLifetimeScope();
+        }
+
+        private void RegisterHandlers(ContainerBuilder builder, Assembly applicationAssembly)
+        {
+            builder.RegisterType<RegisterCommandHandler>()
+                .As<IRequestHandler<RegisterCommand, Response<ResponseBase>>>()
+                .EnableClassInterceptors()
+                .InterceptedBy(typeof(PropertyInjectionInterceptor))
+                .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(applicationAssembly)
+                .Where(t => t.GetInterfaces()
+                    .Any(i => i.IsGenericType &&
+                             i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)))
+                .AsImplementedInterfaces()
+                .EnableClassInterceptors()
+                .InterceptedBy(typeof(PropertyInjectionInterceptor))
+                .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(applicationAssembly)
                 .AsClosedTypesOf(typeof(INotificationHandler<>))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
         }
 
-        private void RegisterClosedGenericHandlers(ContainerBuilder builder, Assembly assembly)
-        {
-
-            var queryHandlerTypes = assembly.GetTypes()
-                .Where(t => t.Name.EndsWith("QueryHandler") && !t.IsAbstract && !t.IsGenericTypeDefinition);
-
-            foreach (var handlerType in queryHandlerTypes)
-            {
-                var interfaces = handlerType.GetInterfaces()
-                    .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
-
-                foreach (var handlerInterface in interfaces)
-                {
-                    builder.RegisterType(handlerType)
-                        .As(handlerInterface)
-                        .InstancePerLifetimeScope();
-                }
-            }
-            var commandHandlerTypes = assembly.GetTypes()
-                .Where(t => t.Name.EndsWith("CommandHandler") && !t.IsAbstract && !t.IsGenericTypeDefinition);
-
-            foreach (var handlerType in commandHandlerTypes)
-            {
-                var interfaces = handlerType.GetInterfaces()
-                    .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
-
-                foreach (var handlerInterface in interfaces)
-                {
-                    builder.RegisterType(handlerType)
-                        .As(handlerInterface)
-                        .InstancePerLifetimeScope();
-                }
-            }
-        }
-
         private void RegisterGenericHandlers(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof(GetByIdQueryHandler<,>))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
 
-            builder.RegisterGeneric(typeof(GetAllQueryHandler<,>))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            var otherGenericHandlerTypes = new[] {
+        typeof(CreateCommandHandler<,>),
+        typeof(GetByIdQueryHandler<,>),
+        typeof(GetAllQueryHandler<,>),
+        typeof(GetPagedQueryHandler<,>),
+        typeof(UpdateCommandHandler<,>)
+    };
 
-            builder.RegisterGeneric(typeof(CreateCommandHandler<,>))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            foreach (var handlerType in otherGenericHandlerTypes)
+            {
+                builder.RegisterGeneric(handlerType)
+                    .As(typeof(IRequestHandler<,>))
+                    .EnableInterfaceInterceptors()
+                    .InterceptedBy(typeof(PropertyInjectionInterceptor))
+                    .InstancePerLifetimeScope();
+            }
         }
     }
 }

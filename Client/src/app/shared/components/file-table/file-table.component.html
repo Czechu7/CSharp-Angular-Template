@@ -11,7 +11,7 @@
     <div class="flex justify-content-between">
       <span>
         <app-input [formControl]="searchControl" [placeholder]="'FILE_TABLE.SEARCH_PLACEHOLDER' | translate"
-          prefixIcon="search" (ngModelChange)="onGlobalFilter(dt, $event)">
+          prefixIcon="search" (ngModelChange)="onGlobalFilter(dt, $event)" autocomplete="off">
         </app-input>
       </span>
       @if (showActionButtons) {

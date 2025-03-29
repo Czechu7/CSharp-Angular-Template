@@ -11,6 +11,7 @@ import { AuthService } from '../../../core/_services/auth/auth.service';
 import { RouterEnum } from '../../../enums/router.enum';
 import { ILoginDto } from '../../../core/_models/DTOs/authDto.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { ErrorService } from '../../../shared/services/error.service';
 
 @Component({
   selector: 'app-login',
@@ -33,9 +34,10 @@ export class LoginComponent implements OnInit {
 
   private formService = inject(FormService);
   private authService = inject(AuthService);
+  private errorService = inject(ErrorService);
 
   ngOnInit() {
-    this.loginForm = this.formService.initLoginForm();
+    this.loginForm = this.formService.getLoginForm();
   }
 
   get controls() {
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessage(control: FormControl) {
-    return this.formService.getErrorMessage(control);
+    return this.errorService.getErrorMessage(control);
   }
 
   onLogin() {

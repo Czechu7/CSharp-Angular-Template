@@ -12,21 +12,35 @@ public class MappingProfile : Profile
 
     private void ApplyMappingsFromAssembly(Assembly assembly)
     {
-        var mapFromType = typeof(IMapFrom<>);
-        
-        var mappingMethodName = nameof(IMapFrom<object>.Mapping);
+        var mappingInterfaces = new[]
+        {
+            typeof(IMapFrom<>),
+            typeof(IMapTo<>),
+            typeof(IMapBidirectional<>)
+        };
+
+        const string mappingMethodName = nameof(IMapFrom<object>.Mapping);
 
         var mappingTypes = assembly.GetExportedTypes()
-            .Where(t => t.GetInterfaces().Any(i => 
-                i.IsGenericType && i.GetGenericTypeDefinition() == mapFromType));
+            .Where(t => t.GetInterfaces().Any(i =>
+                i.IsGenericType && mappingInterfaces.Contains(i.GetGenericTypeDefinition())));
 
         foreach (var type in mappingTypes)
         {
             var instance = Activator.CreateInstance(type);
-            
-            var methodInfo = type.GetMethod(mappingMethodName) 
-                ?? type.GetInterface(mapFromType.Name)?.GetMethod(mappingMethodName);
-                
+
+            var methodInfo = type.GetMethod(mappingMethodName);
+
+            if (methodInfo == null)
+            {
+                foreach (var interfaceType in type.GetInterfaces()
+                    .Where(i => i.IsGenericType && mappingInterfaces.Contains(i.GetGenericTypeDefinition())))
+                {
+                    methodInfo = interfaceType.GetMethod(mappingMethodName);
+                    if (methodInfo != null) break;
+                }
+            }
+
             methodInfo?.Invoke(instance, new object[] { this });
         }
     }

@@ -1,78 +1,71 @@
-using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.CQRS.Auth.Commands;
 using Application.CQRS.Auth.DTOs;
+using Application.CQRS.Base;
 using Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Auth.Handlers;
 
-public class LoginCommandHandler(
-    IApplicationDbContext dbContext,
-    IPasswordService passwordService,
-    ITokenService tokenService,
-    ILogger<LoginCommandHandler> logger,
-    ICurrentUserService currentUserService) : IRequestHandler<LoginCommand, Response<AuthResponseDto>>
-{
-    private readonly IApplicationDbContext _dbContext = dbContext;
-    private readonly IPasswordService _passwordService = passwordService;
-    private readonly ITokenService _tokenService = tokenService;
-    private readonly ILogger<LoginCommandHandler> _logger = logger;
-    private readonly ICurrentUserService _currentUserService = currentUserService;
 
-    public async Task<Response<AuthResponseDto>> Handle(LoginCommand request, CancellationToken cancellationToken)
+public class LoginCommandHandler : BaseCommandHandler<LoginCommand, AuthResponseDto>
+{
+    public override async Task<Response<AuthResponseDto>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var user = await _dbContext.Users
+            var user = await DbContext.Users
                 .FirstOrDefaultAsync(u => u.Email.ToLower() == request.LoginData.Email.ToLower() && u.IsActive,
                     cancellationToken);
 
             if (user == null)
             {
-                return Response<AuthResponseDto>.ErrorResponse(401, "Invalid credentials");
+                return Error(401, "Invalid credentials");
             }
 
             if (string.IsNullOrEmpty(user.PasswordHash))
             {
-                _logger.LogWarning("User {UserId} has null or empty password hash", user.Id);
-                return Response<AuthResponseDto>.ErrorResponse(401, "Invalid credentials");
+                Logger.LogWarning("User {UserId} has null or empty password hash", user.Id);
+                return Error(401, "Invalid credentials");
             }
 
-            if (!_passwordService.VerifyPassword(request.LoginData.Password, user.PasswordHash))
+            if (!PasswordService.VerifyPassword(request.LoginData.Password, user.PasswordHash))
             {
-                return Response<AuthResponseDto>.ErrorResponse(401, "Invalid credentials");
+                return Error(401, "Invalid credentials");
             }
-            var accessToken = _tokenService.GenerateAccessToken(user);
-            var refreshToken = _tokenService.GenerateRefreshToken();
+            
+            if (TokenService == null)
+                return Error(500, "Token service is not available");
+
+            var accessToken = TokenService.GenerateAccessToken(user);
+            var refreshToken = TokenService.GenerateRefreshToken();
 
             var refreshTokenEntity = new RefreshToken
             {
                 UserId = user.Id,
-                Token = refreshToken,
-                ExpiryDate = _tokenService.GetRefreshTokenExpiration(),
+                Token = refreshToken!,
+                ExpiryDate = TokenService.GetRefreshTokenExpiration(),
                 IsRevoked = false,
                 IsUsed = false
             };
 
-            await _dbContext.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await DbContext.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
+            await DbContext.SaveChangesAsync(cancellationToken);
 
             var response = new AuthResponseDto
             {
                 AccessToken = accessToken,
                 RefreshToken = refreshToken,
-                ExpiresAt = _tokenService.GetRefreshTokenExpiration(),
+                ExpiresAt = TokenService.GetRefreshTokenExpiration(),
             };
 
-            return Response<AuthResponseDto>.SuccessWithData(response, "Login successful");
+            return SuccessWithData(response, "Login successful");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error during login");
-            return Response<AuthResponseDto>.ErrorResponse(500, "An error occurred during login");
+            Logger?.LogError(ex, "Error during login");
+            return Error(500, "An error occurred during login");
         }
     }
 }
