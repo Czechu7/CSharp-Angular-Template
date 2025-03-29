@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit, INavbarProps {
     this.updateMenu();
     this.checkCurrentTheme();
 
-    this.themeForm = this.formService.initThemeForm();
+    this.themeForm = this.formService.getThemeForm();
     this.controls.theme.setValue(this.isDarkTheme);
 
     this.controls.theme.valueChanges.subscribe(isDark => {
