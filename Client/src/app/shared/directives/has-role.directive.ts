@@ -18,17 +18,17 @@ export class HasRoleDirective {
   private viewContainer = inject(ViewContainerRef);
   private roleService = inject(RoleService);
 
-  private requiredRole: string | undefined;
+  private requiredRoles: string[] | undefined;
 
   @Input()
-  set hasRole(role: string) {
-    this.requiredRole = role;
+  set hasRole(roles: string[]) {
+    this.requiredRoles = roles;
     this.updateView();
   }
 
   constructor() {
     effect(() => {
-      const currentRole = untracked(() => this.requiredRole);
+      const currentRole = untracked(() => this.requiredRoles);
       if (currentRole) {
         this.updateView();
       }
@@ -36,12 +36,12 @@ export class HasRoleDirective {
   }
 
   private updateView(): void {
-    if (!this.requiredRole) {
+    if (!this.requiredRoles) {
       this.viewContainer.clear();
       return;
     }
 
-    const hasAccess = this.roleService.isAuthorized(this.requiredRole);
+    const hasAccess = this.roleService.isAuthorized(this.requiredRoles);
 
     if (hasAccess && this.viewContainer.length === 0) {
       this.viewContainer.createEmbeddedView(this.templateRef);

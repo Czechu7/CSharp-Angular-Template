@@ -1,3 +1,6 @@
 <p>dashboard works!</p>
 <h1>{{ 'APP.TITLE' | translate }}</h1>
 <p>{{ 'APP.WELCOME' | translate }}</p>
+<p *hasRole="[rolesEnum.USER]">ROLE USER</p>
+<p *hasRole="[rolesEnum.MOD]">ROLE MOD</p>
+<p *hasRole="[rolesEnum.ADMIN]">ROLE ADMIN</p>
