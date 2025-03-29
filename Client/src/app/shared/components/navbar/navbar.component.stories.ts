@@ -91,7 +91,7 @@ const meta: Meta<NavbarComponent> = {
     userName: { control: 'text' },
     userAvatar: { control: 'text' },
     showSwitchTheme: { control: 'boolean' },
-    showSwtichLang: { control: 'boolean' },
+    showSwitchLang: { control: 'boolean' },
     commonMenuItems: { control: 'object' },
     langs: { control: 'object' },
   },
@@ -134,7 +134,7 @@ export const Default: Story = {
     userName: '',
     userAvatar: '',
     showSwitchTheme: true,
-    showSwtichLang: true,
+    showSwitchLang: true,
     commonMenuItems: [],
     langs: [
       { label: 'English', value: 'en' },
