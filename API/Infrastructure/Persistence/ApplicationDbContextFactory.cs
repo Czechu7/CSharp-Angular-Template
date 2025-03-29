@@ -2,12 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Infrastructure.Persistence;
 using Application.Common.Interfaces;
+using Domain.Entities;
 
 namespace API.Infrastructure.Persistence
 {
-    /// <summary>
-    /// Fabryka kontekstu bazy danych, używana głównie podczas migracji.
-    /// </summary>
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {
         public ApplicationDbContext CreateDbContext(string[] args)
@@ -32,5 +30,26 @@ namespace API.Infrastructure.Persistence
     {
         public string UserId => "00000000-0000-0000-0000-000000000000";
         public bool IsAuthenticated => false;
+        // Implement the missing methods
+        public Task<User?> GetCurrentUserAsync(CancellationToken cancellationToken = default)
+        {
+
+            return Task.FromResult<User?>(null);
+        }
+        public Task<User?> FindUserByEmailAsync(string email, bool activeOnly = true, CancellationToken cancellationToken = default)
+        {
+            return Task.FromResult<User?>(null);
+        }
+
+        public Task<User?> FindUserByIdAsync(string userId, bool activeOnly = true, CancellationToken cancellationToken = default)
+        {
+            return Task.FromResult<User?>(null);
+
+        }
+        public Task<bool> ExistsUserWithEmailOrUsernameAsync(string email, string username, CancellationToken cancellationToken = default)
+        {
+            return Task.FromResult<bool>(false);
+        }
+
     }
 }

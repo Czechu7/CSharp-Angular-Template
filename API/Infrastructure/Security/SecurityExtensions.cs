@@ -8,7 +8,7 @@ namespace Infrastructure.Security;
 
 public static class SecurityExtensions
 {
-    public static IServiceCollection AddSecurityServices(this IServiceCollection services)
+    public static IServiceCollection AddRateLimitingServices(this IServiceCollection services)
     {
         services.AddRateLimiter(options =>
         {
