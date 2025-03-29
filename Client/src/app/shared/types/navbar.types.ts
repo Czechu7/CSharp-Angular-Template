@@ -34,7 +34,7 @@ export interface INavbarProps {
   sticky?: boolean;
   customClass?: string;
   showSwitchTheme?: boolean;
-  showSwtichLang?: boolean;
+  showSwitchLang?: boolean;
   langs: ILangs;
   isAuthenticated?: boolean;
   user?: IUser;

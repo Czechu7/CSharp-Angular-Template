@@ -17,6 +17,7 @@ const args: IInputProps = {
   required: true,
   errorMessage: 'This field is required',
   formControl: new FormControl(),
+  autocomplete: 'given-name',
 };
 
 type InputStory = StoryObj<InputComponent<IInputProps>>;

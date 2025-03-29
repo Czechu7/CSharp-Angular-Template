@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { IPasswordInputProps, IVariant } from '../../types/password-input.types';
+import { IAutocompletePassword } from '../../types/auto-complete.types';
 
 @Component({
   selector: 'app-password-input',
@@ -39,6 +40,7 @@ export class PasswordInputComponent<T> implements ControlValueAccessor, IPasswor
   @Input() strongLabel?: string;
   // @Input() size?: Size;
   @Input() variant: IVariant = 'outlined';
+  @Input() autocomplete: IAutocompletePassword = 'new-password';
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;

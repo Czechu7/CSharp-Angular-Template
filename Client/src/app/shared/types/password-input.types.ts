@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import { IAutocompletePassword } from './auto-complete.types';
 
 export type ISize = 'small' | 'large' | undefined;
 
@@ -20,4 +21,5 @@ export interface IPasswordInputProps {
   variant: IVariant;
   inavlid?: boolean;
   formControl: FormControl;
+  autocomplete: IAutocompletePassword;
 }

@@ -22,6 +22,7 @@ const args: IPasswordInputProps = {
   variant: 'outlined',
   invalid: false,
   formControl: new FormControl(),
+  autocomplete: 'new-password',
 };
 
 type PasswordInputStory = StoryObj<PasswordInputComponent<IPasswordInputProps>>;

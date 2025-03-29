@@ -12,6 +12,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { IInputProps, IInputTypes, IInputIcons } from '../../types/input.types';
+import { IAutocompletePersonalInfo } from '../../types/auto-complete.types';
 
 @Component({
   selector: 'app-input',
@@ -48,7 +49,7 @@ export class InputComponent<T> implements ControlValueAccessor, IInputProps {
   @Input() suffixIcon?: IInputIcons;
   @Input() suffixText?: string;
   @Input() formControl!: FormControl;
-  @Input() autocomplete?: string;
+  @Input() autocomplete!: IAutocompletePersonalInfo;
 
   id = `input-${Math.random().toString(36).substr(2, 9)}`;
   touched = false;
