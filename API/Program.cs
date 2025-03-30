@@ -1,12 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Application;
-using Infrastructure;
-using Presentation;
 using Microsoft.OpenApi.Models;
-using Infrastructure.Security;
 using Infrastructure.Middleware;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 

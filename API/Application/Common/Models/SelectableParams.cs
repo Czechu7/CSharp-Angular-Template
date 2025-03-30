@@ -1,18 +1,11 @@
-using System.Text.Json.Serialization;
-
 namespace Application.Common.Models;
 
 public class SelectableParams
 {
-    public string? Select { get; set; }
-
-    [JsonIgnore]
-    public List<string> Properties => string.IsNullOrEmpty(Select) 
-        ? new List<string>() 
-        : Select.Split(',').Select(p => p.Trim()).ToList();
-
-    public bool IsPropertySelected(string propertyName)
-    {
-        return Properties.Count == 0 || Properties.Contains(propertyName);
-    }
+ public Guid Id { get; set; }
+    public string Text { get; set; } = string.Empty;
+    public string? Description { get; set; }
+    public string? Group { get; set; }
+    public bool IsDisabled { get; set; }
+    public Dictionary<string, object>? Metadata { get; set; }
 }
