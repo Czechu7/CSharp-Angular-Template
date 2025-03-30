@@ -34,6 +34,10 @@
     "HAS_ACCOUNT_TEXT": "Already have an account?",
     "LOGIN": "Log in"
   },
+  "NOT-FOUND": {
+    "TITLE": "404 - Page Not Found",
+    "DESCRIPTION": "The page you are looking for does not exist."
+  },
   "ERRORS": {
     "REQUIRED": "This field is required.",
     "POSTAL_CODE_FORMAT": "Invalid postal code format.",

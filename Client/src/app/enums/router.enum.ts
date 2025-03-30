@@ -9,4 +9,5 @@ export enum RouterEnum {
   forgetPassword = 'forget-password',
   preferences = 'preferences',
   fileDetails = 'file-details',
+  notFound = 'not-found',
 }
