@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectComponent } from './select.component';
+import { FormControl } from '@angular/forms';
 
 describe('SelectComponent', () => {
   let component: SelectComponent;
@@ -13,6 +14,7 @@ describe('SelectComponent', () => {
 
     fixture = TestBed.createComponent(SelectComponent);
     component = fixture.componentInstance;
+    component.formControl = new FormControl('');
     fixture.detectChanges();
   });
 

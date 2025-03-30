@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToggleSwitchComponent } from './toggle-switch.component';
+import { FormControl } from '@angular/forms';
 
 describe('ToggleSwitchComponent', () => {
   let component: ToggleSwitchComponent;
@@ -13,6 +14,7 @@ describe('ToggleSwitchComponent', () => {
 
     fixture = TestBed.createComponent(ToggleSwitchComponent);
     component = fixture.componentInstance;
+    component.formControl = new FormControl('');
     fixture.detectChanges();
   });
 

@@ -1,15 +1,11 @@
-using Application.Common.Interfaces;
-using AutoMapper;
 using Domain.Common;
-using Microsoft.Extensions.Logging;
+using Autofac.Extras.DynamicProxy;
+using Application.Common.Interceptors;
 
 namespace Application.CQRS.Base.Queries;
 
-public class GetAllQueryHandler<TResult, TEntity>(
-    IGenericRepository<TEntity> repository,
-    IMapper mapper,
-    ILogger<GetAllQueryHandler<TResult, TEntity>> logger)
-    : QueryHandlerBase<GetAllQuery<TResult>, List<TResult>, TEntity>(repository, mapper, logger)
+[Intercept(typeof(PropertyInjectionInterceptor))]
+public class GetAllQueryHandler<TResult, TEntity> : QueryHandlerBase<GetAllQuery<TResult>, List<TResult>, TEntity>
     where TEntity : BaseEntity
 {
     protected override async Task<List<TResult>> HandleQuery(GetAllQuery<TResult> request, CancellationToken cancellationToken)

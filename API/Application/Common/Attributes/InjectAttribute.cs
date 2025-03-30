@@ -1,5 +1,3 @@
-using System;
-
 namespace Application.Common.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]

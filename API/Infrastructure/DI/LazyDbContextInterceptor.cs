@@ -1,7 +1,6 @@
 using Application.Common.Interfaces;
 using Autofac;
 using Castle.DynamicProxy;
-using System;
 
 namespace Infrastructure.DI;
 

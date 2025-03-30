@@ -1,6 +1,5 @@
 using Application.Common.Commands;
 using Application.Common.Models;
-using MediatR;
 
 namespace Application.CQRS.Base.Commands;
 
