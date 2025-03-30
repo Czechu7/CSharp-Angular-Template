@@ -30,10 +30,6 @@ namespace Infrastructure.DI
             RegisterHandlers(builder, applicationAssembly);
 
             RegisterGenericHandlers(builder);
-
-            builder.RegisterType<Mediator>()
-                .As<IMediator>()
-                .InstancePerLifetimeScope();
         }
 
         private void RegisterCoreServices(ContainerBuilder builder)
@@ -97,7 +93,8 @@ namespace Infrastructure.DI
         typeof(GetByIdQueryHandler<,>),
         typeof(GetAllQueryHandler<,>),
         typeof(GetPagedQueryHandler<,>),
-        typeof(UpdateCommandHandler<,>)
+        typeof(UpdateCommandHandler<,>),
+        typeof(DeleteCommandHandler<>)
     };
 
             foreach (var handlerType in otherGenericHandlerTypes)

@@ -18,6 +18,7 @@ public abstract class BaseCommandHandler<TCommand, TResponse> : IRequestHandler<
     [Inject] protected ITokenService TokenService { get; set; } = null!;
     [Inject] protected ILogger<BaseCommandHandler<TCommand, TResponse>> Logger { get; set; } = null!;
     [Inject] protected ICurrentUserService CurrentUserService { get; set; } = null!;
+    
 
     public virtual Task<Response<TResponse>> Handle(TCommand request, CancellationToken cancellationToken)
     {
