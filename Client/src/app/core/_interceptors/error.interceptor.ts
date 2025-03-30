@@ -12,7 +12,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      let errorMessage: string = '';
+      let errorMessage = '';
 
       switch (err.status) {
         case 400:
