@@ -1,5 +1,4 @@
 using Application.Common.Commands;
-using Application.Common.Queries;
 using Application.CQRS.Auth.DTOs;
 
 namespace Application.CQRS.Auth.Commands;

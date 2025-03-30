@@ -3,7 +3,6 @@ using Application.Common.Exceptions;
 using Application.Common.Interceptors;
 using Application.Common.Interfaces;
 using Application.Common.Models;
-using Application.CQRS.Base;
 using Autofac.Extras.DynamicProxy;
 using AutoMapper;
 using Domain.Common;

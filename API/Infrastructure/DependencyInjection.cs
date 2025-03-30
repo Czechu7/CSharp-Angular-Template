@@ -1,5 +1,4 @@
 using Application.Common.Interfaces;
-using Infrastructure.Middleware;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Infrastructure.Security;

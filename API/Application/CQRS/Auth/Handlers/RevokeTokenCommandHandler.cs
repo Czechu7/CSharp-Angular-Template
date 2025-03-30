@@ -1,9 +1,6 @@
-using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.CQRS.Auth.Commands;
-using Application.CQRS.Auth.DTOs;
 using Application.CQRS.Base;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

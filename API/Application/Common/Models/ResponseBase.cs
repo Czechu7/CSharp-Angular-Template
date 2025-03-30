@@ -1,5 +1,5 @@
 namespace Application.Common.Models;
-public class ResponseBase
+public class ResponseBase 
 {
     public int StatusCode { get; set; } = 200;
     public string Message { get; set; } = "OK";

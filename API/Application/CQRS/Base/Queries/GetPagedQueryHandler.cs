@@ -1,39 +1,39 @@
-using Application.Common.Interfaces;
 using Application.Common.Models;
-using AutoMapper;
 using Domain.Common;
-using Microsoft.Extensions.Logging;
+using Autofac.Extras.DynamicProxy;
+using Application.Common.Interceptors;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.CQRS.Base.Queries;
 
-public class GetPagedQueryHandler<TResult, TEntity>(
-    IGenericRepository<TEntity> repository,
-    IMapper mapper,
-    ILogger<GetPagedQueryHandler<TResult, TEntity>> logger)
-    : QueryHandlerBase<GetPagedQuery<TResult, TEntity>, PagedResult<TResult>, TEntity>(repository, mapper, logger)
+[Intercept(typeof(PropertyInjectionInterceptor))]
+public class GetPagedQueryHandler<TResult, TEntity> : QueryHandlerBase<GetPagedQuery<TResult, TEntity>, PagedResult<TResult>, TEntity>
     where TEntity : BaseEntity
 {
     protected override async Task<PagedResult<TResult>> HandleQuery(GetPagedQuery<TResult, TEntity> request, CancellationToken cancellationToken)
     {
-        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? ordering = null;
-        if (!string.IsNullOrEmpty(request.SortBy))
-        {
-        }
-        
-        var pagedList = await Repository.GetPagedAsync(
+        var result = await Repository.GetPagedAsync(
             request.PageNumber,
             request.PageSize,
             request.Filter,
-            ordering,
-            request.IncludeInactive);
-            
+            request.SortBy != null ? BuildSortExpression(request.SortBy, request.SortDescending) : null,
+            !string.IsNullOrEmpty(request.SearchTerm)
+        );
+
         return new PagedResult<TResult>
         {
-            Items = Mapper.Map<List<TResult>>(pagedList.Items),
-            PageNumber = pagedList.PageNumber,
-            PageSize = pagedList.PageSize,
-            TotalCount = pagedList.TotalCount,
-            TotalPages = pagedList.TotalPages
+            Items = Mapper.Map<List<TResult>>(result.Items),
+            PageNumber = result.PageNumber,
+            PageSize = result.PageSize,
+            TotalCount = result.TotalCount,
+            TotalPages = result.TotalPages
         };
+    }
+
+    private Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> BuildSortExpression(string sortBy, bool descending)
+    {
+        return query => descending 
+            ? query.OrderByDescending(e => EF.Property<object>(e, sortBy))
+            : query.OrderBy(e => EF.Property<object>(e, sortBy));
     }
 }

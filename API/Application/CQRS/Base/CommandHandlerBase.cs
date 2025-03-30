@@ -1,10 +1,8 @@
-using Application.Common.Commands;
 using Application.Common.Models;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Autofac.Extras.DynamicProxy;
 using Application.Common.Interfaces;
-using Application.Common.Attributes;
 using InjectAttribute = Application.Common.Attributes.InjectAttribute;
 using Application.Common.Interceptors;
 

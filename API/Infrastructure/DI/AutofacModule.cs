@@ -3,7 +3,6 @@ using Application.Common.Interceptors;
 using Application.Common.Interfaces;
 using Application.Common.Models;
 using Application.CQRS.Auth.Commands;
-using Application.CQRS.Auth.DTOs;
 using Application.CQRS.Auth.Handlers;
 using Application.CQRS.Base.Commands;
 using Application.CQRS.Base.Queries;
