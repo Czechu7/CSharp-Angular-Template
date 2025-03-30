@@ -17,7 +17,6 @@ export interface IInputProps {
   label?: string;
   placeholder?: string;
   type?: IInputTypes;
-  disabled?: boolean;
   required?: boolean;
   errorMessage?: string;
   prefixIcon?: IInputIcons;

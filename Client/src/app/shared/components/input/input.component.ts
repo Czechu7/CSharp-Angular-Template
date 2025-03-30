@@ -40,7 +40,6 @@ export class InputComponent<T> implements ControlValueAccessor, IInputProps {
   @Input() label?: string;
   @Input() placeholder?: string = '';
   @Input() type: IInputTypes = 'text';
-  @Input() disabled = false;
   @Input() required = false;
   @Input() errorMessage?: string;
   @Input() invalid?: boolean;
@@ -71,10 +70,6 @@ export class InputComponent<T> implements ControlValueAccessor, IInputProps {
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 
   onInput(value: T): void {

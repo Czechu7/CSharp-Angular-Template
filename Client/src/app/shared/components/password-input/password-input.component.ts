@@ -28,7 +28,6 @@ import { IAutocompletePassword } from '../../types/auto-complete.types';
 export class PasswordInputComponent<T> implements ControlValueAccessor, IPasswordInputProps {
   @Input() label?: string;
   @Input() placeholder?: string = '';
-  @Input() disabled = false;
   @Input() required = false;
   @Input() invalid = false;
   @Input() errorMessage?: string;
@@ -62,10 +61,6 @@ export class PasswordInputComponent<T> implements ControlValueAccessor, IPasswor
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 
   onInput(value: T): void {

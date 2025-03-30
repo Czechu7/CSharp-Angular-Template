@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { CheckboxComponent } from './checkbox.component';
 import { ICheckboxProps } from '../../types/checkbox.types';
+import { FormControl } from '@angular/forms';
 
 const meta: Meta<CheckboxComponent> = {
   title: 'Components/Checkbox',
@@ -11,10 +12,9 @@ export default meta;
 const args: ICheckboxProps = {
   inputId: 'checkbox',
   name: 'checkbox',
-  disabled: false,
   required: false,
   label: 'Checkbox',
-  formControlName: 'checkbox',
+  formControl: new FormControl(false),
   value: true,
 };
 

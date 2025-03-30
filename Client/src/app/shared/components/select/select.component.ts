@@ -31,7 +31,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
   @Input() optionLabel?: string;
   @Input() optionValue?: string;
   @Input() placeholder?: string;
-  @Input() disabled = false;
   @Input() filter?: boolean;
   @Input() checkmark = false;
   @Input() editable = false;
@@ -96,9 +95,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 
   handleSelect(event: { originalEvent: Event; value: T }): void {

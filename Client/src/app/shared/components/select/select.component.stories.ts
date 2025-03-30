@@ -22,7 +22,6 @@ const args: ISelectProps = {
   showClear: false,
   editable: false,
   loading: false,
-  disabled: false,
 };
 
 type SelectStory = StoryObj<SelectComponent>;

@@ -15,12 +15,12 @@
     </p-inputgroup-addon>
     }
     @if (type === 'number') {
-    <p-inputnumber [id]="id" [placeholder]="placeholder" [disabled]="disabled" [required]="required" [(ngModel)]="value"
+    <p-inputnumber [id]="id" [placeholder]="placeholder" [required]="required" [(ngModel)]="value"
       (ngModelChange)="onInput($event)" (onBlur)="onTouched()" [useGrouping]="false" [formControl]="formControl"
       [class.ng-invalid]="invalid && errorMessage" [autocomplete]="autocomplete" />
     } @else {
-    <input [id]="id" pInputText [type]="type" [placeholder]="placeholder" [disabled]="disabled" [required]="required"
-      [ngModel]="value" (ngModelChange)="onInput($event)" (blur)="onTouched()" [formControl]="formControl"
+    <input [id]="id" pInputText [type]="type" [placeholder]="placeholder" [required]="required" [ngModel]="value"
+      (ngModelChange)="onInput($event)" (blur)="onTouched()" [formControl]="formControl"
       [class.ng-invalid]="invalid && errorMessage" [autocomplete]="autocomplete" />
     }
     @if (suffixIcon || suffixText) {

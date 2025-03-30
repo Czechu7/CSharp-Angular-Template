@@ -9,15 +9,13 @@
   }
 
   @if (iconOff && iconOn) {
-  <p-toggleswitch [formControl]="formControl" [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass"
-    [disabled]="disabled">
+  <p-toggleswitch [formControl]="formControl" [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass">
     <ng-template pTemplate="handle" let-checked="checked">
       <i [ngClass]="['!text-xs', 'pi', checked ? iconOn : iconOff]"></i>
     </ng-template>
   </p-toggleswitch>
   } @else {
-  <p-toggleSwitch [formControl]="formControl" [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass"
-    [disabled]="disabled">
+  <p-toggleSwitch [formControl]="formControl" [class]="invalid ? styleClass + 'ng-dirty ng-invalid' : styleClass">
   </p-toggleSwitch>
   }
 

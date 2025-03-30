@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -26,23 +27,21 @@ import { ICheckboxProps } from '../../types/checkbox.types';
 export class CheckboxComponent implements ICheckboxProps, ControlValueAccessor {
   @Input() inputId?: string;
   @Input() name?: string;
-  @Input() disabled = false;
   @Input() required = false;
   @Input() label?: string;
-  @Input() formControlName?: string;
+  @Input() formControl!: FormControl;
   @Input() value?: boolean;
   @Input() errorMessage?: string;
   @Input() invalid?: boolean;
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onChange: (value: boolean) => void = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onTouchedFn: () => void = () => {};
 
   checked = false;
   touched = false;
-
-  onTouched = () => {
-    this.touched = true;
-  };
-
+  
   writeValue(value: boolean): void {
     this.checked = value;
   }
@@ -52,10 +51,11 @@ export class CheckboxComponent implements ICheckboxProps, ControlValueAccessor {
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    this.onTouchedFn = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+  onTouched(): void {
+    this.touched = true;
+    this.onTouchedFn();
   }
 }
