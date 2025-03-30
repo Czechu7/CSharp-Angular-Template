@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
-import { ApiEndpoints } from '../../../config/api-endpoints.enum';
+import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IPagedQueryParams } from '../../_models/paged-query-params.model';
 import { IQueryParams } from '../../_models/query-params.model';
@@ -13,34 +13,8 @@ import { IQueryParams } from '../../_models/query-params.model';
 export class RequestFactoryService {
   private http = inject(HttpClient);
 
-  private getDefaultHeaders(): HttpHeaders {
-    return new HttpHeaders({ 'Content-Type': 'application/json' });
-  }
-
-  private getDefaultParams(): HttpParams {
-    return new HttpParams();
-  }
-
-  private request<T, B = undefined>(
-    method: string,
-    endpoint: ApiEndpoints | string,
-    body?: B | null | undefined,
-    options?: IQueryParams
-  ): Observable<IBaseResponse<T>> {
-    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
-    const params = options?.params ? options.params : this.getDefaultParams();
-
-    const configuration = {
-      headers,
-      params,
-      body,
-    };
-
-    return this.http.request<IBaseResponse<T>>(
-      method,
-      `${environment.apiURL}/${endpoint}`,
-      configuration
-    );
+  get<T>(endpoint: ApiEndpoints, options?: IQueryParams): Observable<IBaseResponse<T>> {
+    return this.request<T>('GET', endpoint, null, options);
   }
 
   post<T, B>(
@@ -61,6 +35,13 @@ export class RequestFactoryService {
     options?: IQueryParams
   ): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', `${endpoint}/${id}`, null, options);
+  }
+
+  getBlobById(endpoint: ApiEndpoints, id: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(`${environment.apiURL}/${endpoint}/${id}`, {
+      responseType: 'blob',
+      observe: 'response',
+    });
   }
 
   getPaged<T>(
@@ -129,6 +110,36 @@ export class RequestFactoryService {
       `${endpoint}/${id}`,
       { isDeleted: 1 },
       options
+    );
+  }
+
+  private getDefaultHeaders(): HttpHeaders {
+    return new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
+
+  private getDefaultParams(): HttpParams {
+    return new HttpParams();
+  }
+
+  private request<T, B = undefined>(
+    method: string,
+    endpoint: ApiEndpoints | string,
+    body?: B | null | undefined,
+    options?: IQueryParams
+  ): Observable<IBaseResponse<T>> {
+    const headers = options?.headers ? options.headers : this.getDefaultHeaders();
+    const params = options?.params ? options.params : this.getDefaultParams();
+
+    const configuration = {
+      headers,
+      params,
+      body,
+    };
+
+    return this.http.request<IBaseResponse<T>>(
+      method,
+      `${environment.apiURL}/${endpoint}`,
+      configuration
     );
   }
 }

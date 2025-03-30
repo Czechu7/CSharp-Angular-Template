@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { map, Observable } from 'rxjs';
-import { ApiEndpoints } from '../../../config/api-endpoints.enum';
+import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IDecodedToken } from '../../_models/decoded-token.model';
 import { IAccessToken, IRefreshToken, ITokens } from '../../_models/tokens.model';
@@ -17,7 +17,7 @@ import {
 export class TokenService {
   private requestFactory = inject(RequestFactoryService);
 
-  public refreshToken(tokens: ITokens): Observable<IAuthTokensResponseDto> {
+  refreshToken(tokens: ITokens): Observable<IAuthTokensResponseDto> {
     const body: IAuthRefreshTokensRequestDto = {
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken.refreshToken,
@@ -27,7 +27,7 @@ export class TokenService {
       .pipe(map((response: IBaseResponse<IAuthTokensResponseDto>) => response.data));
   }
 
-  public decodeToken(token: IAccessToken): IDecodedToken | null {
+  decodeToken(token: IAccessToken): IDecodedToken | null {
     if (token !== null) {
       return jwtDecode<IDecodedToken>(token);
     } else {
@@ -35,12 +35,12 @@ export class TokenService {
     }
   }
 
-  public getAccessToken(): IAccessToken | null {
+  getAccessToken(): IAccessToken | null {
     const accessToken = localStorage.getItem('accessToken');
     return accessToken;
   }
 
-  public getRefreshToken(): IRefreshToken | null {
+  getRefreshToken(): IRefreshToken | null {
     const refreshToken = localStorage.getItem('refreshToken');
     const refreshTokenExpiresAt = localStorage.getItem('refreshTokenExpiresAt');
 
@@ -56,19 +56,19 @@ export class TokenService {
     return token;
   }
 
-  public setTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
+  setTokens(accessToken: IAccessToken, refreshToken: IRefreshToken): void {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken.refreshToken);
     localStorage.setItem('refreshTokenExpiresAt', refreshToken.expiresAt);
   }
 
-  public removeTokens(): void {
+  removeTokens(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('refreshTokenExpiresAt');
   }
 
-  public validateToken(token: IAccessToken | null): boolean {
+  validateToken(token: IAccessToken | null): boolean {
     if (token === null) {
       return false;
     }
@@ -86,7 +86,7 @@ export class TokenService {
     }
   }
 
-  public validateRefreshToken(refreshToken: IRefreshToken | null): boolean {
+  validateRefreshToken(refreshToken: IRefreshToken | null): boolean {
     if (refreshToken === null) {
       return false;
     }
