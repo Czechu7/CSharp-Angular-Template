@@ -7,6 +7,6 @@ export interface ICheckboxProps {
   required?: boolean;
   formControl: FormControl;
   value?: boolean;
-  inavlid?: boolean;
+  invalid?: boolean;
   errorMessage?: string;
 }
