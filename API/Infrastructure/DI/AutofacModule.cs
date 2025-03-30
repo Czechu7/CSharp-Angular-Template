@@ -6,6 +6,8 @@ using Application.CQRS.Auth.Commands;
 using Application.CQRS.Auth.Handlers;
 using Application.CQRS.Base.Commands;
 using Application.CQRS.Base.Queries;
+using Application.CQRS.Examples.Commands;
+using Application.CQRS.Examples.Handlers;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
@@ -69,6 +71,14 @@ namespace Infrastructure.DI
                 .EnableClassInterceptors()
                 .InterceptedBy(typeof(PropertyInjectionInterceptor))
                 .InstancePerLifetimeScope();
+
+                builder.RegisterType<CreateExamplesCommandHandler>()
+                .As<IRequestHandler<CreateExamplesCommand, Response<ResponseBase>>>()
+                .EnableClassInterceptors()
+                .InterceptedBy(typeof(PropertyInjectionInterceptor))
+                .InstancePerLifetimeScope();
+            
+            
 
             builder.RegisterAssemblyTypes(applicationAssembly)
                 .Where(t => t.GetInterfaces()

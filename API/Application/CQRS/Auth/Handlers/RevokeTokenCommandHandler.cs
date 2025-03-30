@@ -9,8 +9,6 @@ namespace Application.CQRS.Auth.Handlers;
 
 public class RevokeTokenCommandHandler : BaseCommandHandler<RevokeTokenCommand, ResponseBase>
 {
-
-
     public override async Task<Response<ResponseBase>> Handle(RevokeTokenCommand request, CancellationToken cancellationToken)
     {
         try
