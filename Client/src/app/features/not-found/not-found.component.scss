@@ -1,0 +1,18 @@
+@import '../../../styles/utils/variables';
+@import '../../../styles/utils/mixins';
+
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80vh;
+
+  h1 {
+    font-size: $not-found-title-size;
+  }
+
+  p {
+    font-size: $not-found-description-size;
+  }
+}

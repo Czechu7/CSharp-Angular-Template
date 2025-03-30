@@ -101,6 +101,9 @@ $footer-max-width: $global-max-width;
 $footer-container-padding: $global-container-padding;
 $footer-mobile-breakpoint: $global-mobile-breakpoint;
 
+$not-found-title-size: 3rem;
+$not-found-description-size: 1.5rem;
+
 $breakpoints: (
   'sm': 576px,
   'md': $global-mobile-breakpoint,

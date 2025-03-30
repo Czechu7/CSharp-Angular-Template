@@ -3,10 +3,12 @@ import { RouterEnum } from './enums/router.enum';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard/dashboard.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 import { unAuthGuard } from './core/_guards/unauth.guard';
 import { authGuard } from './core/_guards/auth.guard';
 import { roleGuard } from './core/_guards/role.guard';
 import { RolesEnum } from './enums/roles.enum';
+
 
 export const routes: Routes = [
   {
@@ -29,5 +31,13 @@ export const routes: Routes = [
     path: RouterEnum.register,
     component: RegisterComponent,
     canActivate: [unAuthGuard],
+  },
+  {
+    path: RouterEnum.notFound,
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: RouterEnum.notFound,
   },
 ];

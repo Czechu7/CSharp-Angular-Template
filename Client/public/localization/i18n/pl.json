@@ -33,6 +33,10 @@
     "HAS_ACCOUNT_TEXT": "Masz konto?",
     "LOGIN": "Zaloguj się"
   },
+  "NOT-FOUND": {
+    "TITLE": "404 - Nie znaleziono strony",
+    "DESCRIPTION": "Strona, której szukasz, nie istnieje."
+  },
   "ERRORS": {
     "REQUIRED": "To pole jest wymagane.",
     "POSTAL_CODE_FORMAT": "Podano kod pocztowy w niepoprawnym formacie.",
