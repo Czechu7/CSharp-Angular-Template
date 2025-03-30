@@ -1,12 +1,6 @@
-<app-navbar
-  [title]="title"
-  [showSwitchTheme]="true"
-  [showSwtichLang]="true"
-  [langs]="langs"
-  [authMenuItems]="authMenuItems"
-  [nonAuthMenuItems]="nonAuthMenuItems"
-  [isAuthenticated]="this.authService.isLogged()"
-></app-navbar>
+<app-navbar [title]="title" [showSwitchTheme]="true" [showSwitchLang]="true" [langs]="langs"
+  [authMenuItems]="authMenuItems" [nonAuthMenuItems]="nonAuthMenuItems" [isAuthenticated]="this.authService.isLogged()">
+</app-navbar>
 <main class="main-container">
   <p-toast></p-toast>
   <router-outlet></router-outlet>

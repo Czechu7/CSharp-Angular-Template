@@ -1,0 +1,72 @@
+.p-inputtext,
+.p-inputnumber-input,
+.p-dropdown-label,
+.p-multiselect-label,
+.p-listbox-item,
+.p-calendar-input {
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+
+  &:hover:not(.p-disabled) {
+    border-color: var(--primary) !important;
+  }
+
+  &:focus:not(.p-disabled) {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary-light) !important;
+  }
+
+  &.ng-invalid.ng-dirty {
+    border-color: var(--error) !important;
+  }
+}
+
+.p-inputgroup-addon {
+  background-color: var(--secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+label {
+  color: var(--text-primary) !important;
+
+  &.required:after {
+    content: ' *';
+    color: var(--error);
+  }
+}
+
+small.p-error {
+  color: var(--error);
+  margin-top: 4px;
+  display: block;
+}
+
+.p-dropdown,
+.p-multiselect,
+.p-calendar {
+  background-color: var(--background) !important;
+
+  .p-dropdown-panel,
+  .p-multiselect-panel,
+  .p-calendar-panel {
+    background-color: var(--background) !important;
+    border-color: var(--border) !important;
+
+    .p-dropdown-item,
+    .p-multiselect-item,
+    .p-calendar-header {
+      color: var(--text-primary) !important;
+
+      &:hover {
+        background-color: var(--hover) !important;
+      }
+
+      &.p-highlight {
+        background-color: var(--primary) !important;
+        color: white !important;
+      }
+    }
+  }
+}

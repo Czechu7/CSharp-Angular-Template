@@ -3,13 +3,13 @@
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <app-input [formControl]="controls.email" formControlName="email" [placeholder]="'AUTH.EMAIL' | translate"
       type="email" autocomplete="email" [errorMessage]="getErrorMessage(controls.email)"
-      [invalid]="controls.email.invalid && controls.email.touched">
+      [invalid]="controls.email.invalid && controls.email.touched" autocomplete="email">
     </app-input>
 
     <app-password-input [formControl]="controls.password" formControlName="password"
       [placeholder]="'AUTH.PASSWORD' | translate" autocomplete="current-password"
       [errorMessage]="getErrorMessage(controls.password)"
-      [invalid]="controls.password.invalid && controls.password.touched">
+      [invalid]="controls.password.invalid && controls.password.touched" autocomplete="current-password">
     </app-password-input>
 
     <div class="submit-button">

@@ -13,6 +13,7 @@ import { TokenService } from '../token/token.service';
 import { IAccessToken } from '../../_models/tokens.model';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../shared/services/toast.service';
+import { RoleService } from '../role/role.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +23,13 @@ export class AuthService {
   private tokenService = inject(TokenService);
   private route = inject(Router);
   private toastService = inject(ToastService);
+  private roleService = inject(RoleService);
 
   public isLogged = signal<boolean>(this.isAuth());
+
+  constructor() {
+    this.initRoles();
+  }
 
   signIn(loginData: ILoginDto): Observable<IBaseResponse<IAuthTokensResponseDto>> {
     return this.requestFactory
@@ -132,6 +138,18 @@ export class AuthService {
       return decodedToken ? decodedToken.email : null;
     } else {
       return null;
+    }
+  }
+
+  private initRoles(): void {
+    const accessToken = this.tokenService.getAccessToken();
+    if (this.isAuth() && accessToken) {
+      const decodedToken = this.tokenService.decodeToken(accessToken);
+      if (decodedToken && decodedToken.role) {
+        this.roleService.setRole(decodedToken.role);
+      } else {
+        this.roleService.setRole(null);
+      }
     }
   }
 }
