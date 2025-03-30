@@ -1,4 +1,4 @@
-import { inject, Injectable, OnInit, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
 import { Observable, tap } from 'rxjs';
@@ -84,7 +84,9 @@ export class AuthService {
       });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   resetPassword() {}
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   changePassword() {}
 

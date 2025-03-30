@@ -1,5 +1,4 @@
 import { IFile } from '../file.model';
-import { IPagedQueryParams } from '../paged-query-params.model';
 
 export interface IFileListResponseDto {
   content: IFile[];

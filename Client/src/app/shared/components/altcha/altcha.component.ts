@@ -43,7 +43,7 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
   @Input() challengeurl = '';
   @Input() debug = false;
   @Input() test = false;
-  @Input() value: string = '';
+  @Input() value = '';
   @Input() style?: Record<string, string> = { '--altcha-max-width': '320px' };
   @Input() styleClass?: string;
 
@@ -53,6 +53,7 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onTouched = (): void => {};
 
   ngAfterViewInit(): void {
@@ -70,14 +71,15 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
     this.value = value;
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (status: IAltchaStatus) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   validate(control: AbstractControl): ValidationErrors | null {
     if (!this.value) {
       return { required: true };
@@ -85,7 +87,7 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
     return null;
   }
 
-  onStateChange(state: 'unverified' | 'verifying' | 'verified' | 'error', payload: string = '') {
+  onStateChange(state: 'unverified' | 'verifying' | 'verified' | 'error', payload = '') {
     this.value = state === 'verified' ? payload : '';
     const statusObject: IAltchaStatus = { state, payload };
     this.onChange(statusObject);
