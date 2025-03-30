@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit, INavbarProps {
   @Input() userName = '';
   @Input() userAvatar = '';
   @Input() showSwitchTheme = false;
-  @Input() showSwtichLang = false;
+  @Input() showSwitchLang = false;
   @Input() commonMenuItems: IMenuItem[] = [];
   @Input() langs: ILangs = [];
 
