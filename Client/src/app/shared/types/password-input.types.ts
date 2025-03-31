@@ -8,7 +8,6 @@ export type IVariant = 'filled' | 'outlined';
 export interface IPasswordInputProps {
   label?: string;
   placeholder?: string;
-  disabled?: boolean;
   required?: boolean;
   invalid?: boolean;
   errorMessage?: string;

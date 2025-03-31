@@ -9,7 +9,6 @@ const meta: Meta<ToggleSwitchComponent> = {
 export default meta;
 
 const args: IToggleSwitchProps = {
-  disabled: false,
   iconOn: 'pi-check',
   iconOff: 'pi-times',
   invalid: false,

@@ -23,7 +23,6 @@ export interface ISelectProps<T = ISelectOption> {
   optionLabel?: string;
   optionValue?: string;
   placeholder?: string;
-  disabled?: boolean;
   required?: boolean;
   filter?: boolean;
   filterBy?: string;

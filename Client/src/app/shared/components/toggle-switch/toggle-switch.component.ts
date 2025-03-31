@@ -25,7 +25,6 @@ import { IToggleSwitchProps } from '../../types/toogleSwitch.types';
   ],
 })
 export class ToggleSwitchComponent implements ControlValueAccessor, IToggleSwitchProps {
-  @Input() disabled = false;
   @Input() iconOn = 'pi-check';
   @Input() iconOff = 'pi-times';
   @Input() invalid = false;
@@ -71,10 +70,6 @@ export class ToggleSwitchComponent implements ControlValueAccessor, IToggleSwitc
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 
   onInput(event: boolean): void {
