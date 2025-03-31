@@ -79,13 +79,13 @@ $color-schemes: (
 }
 
 $navbar-height: 64px;
-$navbar-top-height: 36px;
 $navbar-bg: var(--navbar-bg);
 $navbar-text: var(--text-primary);
 $navbar-hover: var(--hover);
 $navbar-active: var(--active);
 $navbar-border: var(--border);
 
+$footer-height: 180px;
 $footer-bg: var(--footer-bg);
 $footer-text: var(--footer-text);
 $footer-padding: 20px 0;
@@ -100,6 +100,9 @@ $footer-social-size: 20px;
 $footer-max-width: $global-max-width;
 $footer-container-padding: $global-container-padding;
 $footer-mobile-breakpoint: $global-mobile-breakpoint;
+
+$total-navbar-height: $navbar-height;
+$content-min-height: calc(100vh - #{$total-navbar-height} - #{$footer-height});
 
 $not-found-title-size: 3rem;
 $not-found-description-size: 1.5rem;

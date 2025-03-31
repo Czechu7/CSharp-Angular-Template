@@ -55,6 +55,7 @@
     "GATEWAY_TIMEOUT": "Gateway timeout."
   },
   "FOOTER": {
+    "TITLE": "Karmelki",
     "COPYRIGHT": "All rights reserved."
   }
 }

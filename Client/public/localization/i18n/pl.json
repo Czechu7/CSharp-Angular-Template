@@ -54,6 +54,7 @@
     "GATEWAY_TIMEOUT": "Przekroczono limit czasu."
   },
   "FOOTER": {
+    "TITLE": "Karmelki",
     "COPYRIGHT": "Wszelkie prawa zastrzeżone."
   }
 }

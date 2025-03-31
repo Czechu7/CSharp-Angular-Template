@@ -9,6 +9,8 @@
   transition:
     background-color $global-transition-speed,
     color $global-transition-speed;
+  height: $footer-height;
+  box-sizing: border-box;
 
   .container {
     max-width: $footer-max-width;
@@ -21,12 +23,14 @@
 
   .branding {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: $footer-branding-gap;
     margin-bottom: map-get($spacers, 3);
 
     .logo-img {
       height: $footer-logo-height;
+      margin-bottom: map-get($spacers, 2);
     }
 
     .title {
@@ -74,10 +78,6 @@
   }
 
   @include respond-below(md) {
-    .branding {
-      flex-direction: column;
-    }
-
     .links,
     .social-links {
       a {
