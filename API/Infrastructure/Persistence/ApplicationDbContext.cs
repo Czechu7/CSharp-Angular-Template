@@ -19,7 +19,6 @@ public class ApplicationDbContext(
 
     public DbSet<User> Users => Set<User>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
-    public DbSet<Example> Examples => Set<Example>();
     
     
     public bool HasActiveTransaction => _currentTransaction != null;

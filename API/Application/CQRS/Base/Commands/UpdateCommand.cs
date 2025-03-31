@@ -1,10 +1,9 @@
 using Application.Common.Commands;
-using Application.Common.Models;
 
 namespace Application.CQRS.Base.Commands;
 
-public class UpdateCommand<TDto>(Guid id, TDto data) : ICommand<ResponseBase>
+public class UpdateCommand<TInput, TOutput>(Guid id, TInput data) : ICommand<TOutput>
 {
     public Guid Id { get; set; } = id;
-    public TDto Data { get; set; } = data;
+    public TInput Data { get; set; } = data;
 }

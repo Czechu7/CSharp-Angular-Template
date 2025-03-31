@@ -22,50 +22,6 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Entities.Example", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsChanged")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Examples", (string)null);
-                });
-
             modelBuilder.Entity("Domain.Entities.RefreshToken", b =>
                 {
                     b.Property<Guid>("Id")

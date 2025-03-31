@@ -1,10 +1,8 @@
 using Application.Common.Commands;
-using Application.Common.Models;
 
 namespace Application.CQRS.Base.Commands;
 
-public class CreateCommand<TDto>(TDto data) : ICommand<ResponseBase>
+public class CreateCommand<TInput, TOutput>(TInput data) : ICommand<TOutput>
 {
-    public TDto Data { get; set; } = data;
-    
+    public TInput Data { get; set; } = data;
 }

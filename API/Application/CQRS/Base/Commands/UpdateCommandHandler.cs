@@ -6,32 +6,44 @@ using Application.Common.Models;
 using Autofac.Extras.DynamicProxy;
 using AutoMapper;
 using Domain.Common;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace Application.CQRS.Base.Commands;
 
 [Intercept(typeof(PropertyInjectionInterceptor))]
-public class UpdateCommandHandler<TDto, TEntity> : BaseCommandHandler<UpdateCommand<TDto>, ResponseBase>
+public class UpdateCommandHandler<TCommand, TResponse, TDto, TEntity> : IRequestHandler<TCommand, Response<TResponse>>
+    where TCommand : IRequest<Response<TResponse>>
     where TEntity : BaseEntity
 {
     [Inject] protected IGenericRepository<TEntity> Repository { get; set; } = null!;
     [Inject] protected IMapper Mapper { get; set; } = null!;
+    [Inject] protected IApplicationDbContext DbContext { get; set; } = null!;
+    [Inject] protected ILogger<UpdateCommandHandler<TCommand, TResponse, TDto, TEntity>> Logger { get; set; } = null!;
+    [Inject] protected ICurrentUserService CurrentUserService { get; set; } = null!;
 
-    public override async Task<Response<ResponseBase>> Handle(UpdateCommand<TDto> request, CancellationToken cancellationToken)
+    public virtual async Task<Response<TResponse>> Handle(TCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var entity = await Repository.GetByIdAsync(request.Id) ?? throw new NotFoundException(typeof(TEntity).Name, request.Id);
-            await ValidateUpdateAsync(entity, request.Data, cancellationToken);
+            var id = ((dynamic)request).Id;
+            var dto = ((dynamic)request).Data;
+
+            var entity = await Repository.GetByIdAsync(id) ?? 
+                throw new NotFoundException(typeof(TEntity).Name, id);
             
-            Mapper.Map(request.Data, entity);
+            await ValidateUpdateAsync(entity, dto, cancellationToken);
+            
+            Mapper.Map(dto, entity);
+            
+            await HandleUpdateAsync(entity, dto, cancellationToken);
             
             await Repository.UpdateAsync(entity);
             
-            Logger.LogInformation("Updated {EntityType} with ID {EntityId}", typeof(TEntity).Name, entity.Id);
+            var response = await CreateResponseFromEntityAsync(entity, dto, cancellationToken);
             
-            return Success($"{typeof(TEntity).Name} updated successfully");
+            return SuccessWithData(response, $"{typeof(TEntity).Name} updated successfully");
         }
         catch (NotFoundException ex)
         {
@@ -58,14 +70,66 @@ public class UpdateCommandHandler<TDto, TEntity> : BaseCommandHandler<UpdateComm
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Error updating {EntityType} with ID {EntityId}", typeof(TEntity).Name, request.Id);
+            var id = GetIdFromRequest(request);
+            Logger.LogError(ex, "Error updating {EntityType} with ID {EntityId}", typeof(TEntity).Name, id);
             return Error(500, $"Error updating {typeof(TEntity).Name}: {ex.Message}");
         }
     }
 
+    private Guid GetIdFromRequest(TCommand request)
+    {
+        try
+        {
+            return ((dynamic)request).Id;
+        }
+        catch
+        {
+            return Guid.Empty;
+        }
+    }
 
     protected virtual Task ValidateUpdateAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
+
+    protected virtual Task HandleUpdateAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    protected virtual async Task<TResponse> CreateResponseFromEntityAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
+    {
+        try 
+        {
+            var response = Activator.CreateInstance<TResponse>();
+            
+            await Task.Yield();
+            
+            Mapper.Map(entity, response);
+            
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error creating response from entity");
+            throw new InvalidOperationException(
+                $"Could not create response of type {typeof(TResponse).Name} from entity {typeof(TEntity).Name}. " +
+                $"Override CreateResponseFromEntityAsync in your handler to provide custom response creation logic.", ex);
+        }
+    }
+
+    protected Response<TResponse> SuccessWithData(TResponse data, string message = "Operation successful")
+        => Response<TResponse>.SuccessWithData(data, message);
+
+    protected Response<ResponseBase> Success(string message = "Operation successful")
+        => new Response<ResponseBase>
+        {
+            StatusCode = 200,
+            Message = message,
+            Success = true
+        };
+
+    protected Response<TResponse> Error(int statusCode, string message)
+        => Response<TResponse>.ErrorResponse(statusCode, message);
 }
