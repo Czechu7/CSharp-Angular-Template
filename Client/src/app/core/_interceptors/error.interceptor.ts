@@ -16,10 +16,18 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
       switch (err.status) {
         case 400:
-          errorMessage = 'ERRORS.BAD_REQUEST';
+          if (err.error.message.includes('User is already registered')) {
+            errorMessage = 'ERRORS.EMAIL_OR_USER_ALREADY_EXISTS';
+          } else {
+            errorMessage = 'ERRORS.BAD_REQUEST';
+          }
           break;
         case 401:
-          errorMessage = 'ERRORS.UNAUTHORIZED';
+          if (err.error.message.includes('Invalid credentials')) {
+            errorMessage = 'ERRORS.INVALID_CREDENTIALS';
+          } else {
+            errorMessage = 'ERRORS.UNAUTHORIZED';
+          }
           break;
         case 403:
           errorMessage = 'ERRORS.FORBIDDEN';
@@ -39,9 +47,11 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         return EMPTY;
       }
 
-      translateService.get(errorMessage).subscribe(errorMessage => {
-        toastService.showError(errorMessage, err.message);
-        console.error(errorMessage);
+      translateService.get(['ERRORS.TITLE', errorMessage]).subscribe(translations => {
+        const translatedTitle = translations['ERRORS.TITLE'];
+        const translatedMessage = translations[errorMessage];
+        toastService.showError(translatedTitle, translatedMessage);
+        console.error(err.message);
       });
 
       return throwError(() => err);
