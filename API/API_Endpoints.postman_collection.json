@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "4503254e-9dba-4734-a047-03e0a801ed75",
+		"name": "API_Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32764935"
+	},
+	"item": [
+		{
+			"name": "auth_register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"var accessToken = res.data.accessToken;\r",
+							"var refreshToken = res.data.refreshToken;\r",
+							"\r",
+							"pm.collectionVariables.set('accessToken', accessToken);\r",
+							"pm.collectionVariables.set('refreshToken', refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"tester1\",\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\",\r\n  \"confirmPassword\": \"password\",\r\n  \"firstName\": \"Jan\",\r\n  \"lastName\": \"Kowalski\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5238/api/Auth/register",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5238",
+					"path": ["api", "Auth", "register"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth_login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"var accessToken = res.data.accessToken;\r",
+							"var refreshToken = res.data.refreshToken;\r",
+							"\r",
+							"pm.collectionVariables.set('accessToken', accessToken);\r",
+							"pm.collectionVariables.set('refreshToken', refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5238/api/Auth/login",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5238",
+					"path": ["api", "Auth", "login"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth_refreshToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"var accessToken = res.data.accessToken;\r",
+							"var refreshToken = res.data.refreshToken;\r",
+							"\r",
+							"pm.collectionVariables.set('accessToken', accessToken);\r",
+							"pm.collectionVariables.set('refreshToken', refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"accessToken\": \"{{accessToken}}\",\r\n\"refreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5238/api/Auth/refresh-token",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5238",
+					"path": ["api", "Auth", "refresh-token"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth_revoke-token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5238/api/Auth/revoke-token",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5238",
+					"path": ["api", "Auth", "revoke-token"]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "refreshToken",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
