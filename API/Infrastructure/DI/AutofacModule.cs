@@ -124,7 +124,6 @@ namespace Infrastructure.DI
         }
         private void RegisterGenericHandlers(ContainerBuilder builder)
         {
-            // Base generic handlers with their correct type parameter counts
             var genericHandlerTypes = new[] {
         typeof(CreateCommandHandler<,,,>),     // 4 type parameters: TCommand, TResponse, TDto, TEntity
         typeof(UpdateCommandHandler<,,,>),     // 4 type parameters: TCommand, TResponse, TDto, TEntity
