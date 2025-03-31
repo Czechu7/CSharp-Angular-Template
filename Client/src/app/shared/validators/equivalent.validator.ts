@@ -8,10 +8,7 @@ export const equivalentValidator = (
     const passwdControl = control.get(passwdControlName);
     const secondPasswdControl = control.get(secondPasswdControlName);
 
-    if (
-      secondPasswdControl?.value &&
-      secondPasswdControl?.value !== passwdControl?.value
-    ) {
+    if (secondPasswdControl?.value && secondPasswdControl?.value !== passwdControl?.value) {
       secondPasswdControl.setErrors({
         passwordsNotEqual: true,
       });

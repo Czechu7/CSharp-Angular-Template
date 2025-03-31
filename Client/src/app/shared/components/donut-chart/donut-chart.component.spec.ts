@@ -8,9 +8,8 @@ describe('DonutChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DonutChartComponent]
-    })
-    .compileComponents();
+      imports: [DonutChartComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DonutChartComponent);
     component = fixture.componentInstance;

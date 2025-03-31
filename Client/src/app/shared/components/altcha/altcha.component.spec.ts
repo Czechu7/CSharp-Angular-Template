@@ -8,9 +8,8 @@ describe('AltchaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AltchaComponent]
-    })
-    .compileComponents();
+      imports: [AltchaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AltchaComponent);
     component = fixture.componentInstance;

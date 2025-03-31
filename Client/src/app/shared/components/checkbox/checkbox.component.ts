@@ -41,7 +41,7 @@ export class CheckboxComponent implements ICheckboxProps, ControlValueAccessor {
 
   checked = false;
   touched = false;
-  
+
   writeValue(value: boolean): void {
     this.checked = value;
   }

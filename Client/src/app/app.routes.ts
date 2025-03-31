@@ -9,7 +9,6 @@ import { authGuard } from './core/_guards/auth.guard';
 import { roleGuard } from './core/_guards/role.guard';
 import { RolesEnum } from './enums/roles.enum';
 
-
 export const routes: Routes = [
   {
     path: RouterEnum.home,

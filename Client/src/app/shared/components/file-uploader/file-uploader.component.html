@@ -1,20 +1,32 @@
 <div class="card">
-  <p-fileupload [chooseLabel]="chooseLabel" [uploadLabel]="uploadLabel" [cancelLabel]="cancelLabel" [name]="name"
-    [url]="useService ? undefined : url" [customUpload]="useService" (uploadHandler)="onUploadHandler($event)"
-    (onUpload)="onUpload($event)" [multiple]="multiple" [accept]="accept" [maxFileSize]="maxFileSize" [mode]="mode"
-    [auto]="auto" [showCancelButton]="showCancelButton" [showUploadButton]="showUploadButton">
-
+  <p-fileupload
+    [chooseLabel]="chooseLabel"
+    [uploadLabel]="uploadLabel"
+    [cancelLabel]="cancelLabel"
+    [name]="name"
+    [url]="useService ? undefined : url"
+    [customUpload]="useService"
+    (uploadHandler)="onUploadHandler($event)"
+    (onUpload)="onUpload($event)"
+    [multiple]="multiple"
+    [accept]="accept"
+    [maxFileSize]="maxFileSize"
+    [mode]="mode"
+    [auto]="auto"
+    [showCancelButton]="showCancelButton"
+    [showUploadButton]="showUploadButton"
+  >
     <ng-template pTemplate="empty">
-      <div>{{emptyMessage}}</div>
+      <div>{{ emptyMessage }}</div>
     </ng-template>
 
     <ng-template pTemplate="content">
       @if (uploadedFiles.length) {
-      <ul>
-        @for (file of uploadedFiles; track file) {
-        <li>{{ file.name }} - {{ file.size }} bytes</li>
-        }
-      </ul>
+        <ul>
+          @for (file of uploadedFiles; track file) {
+            <li>{{ file.name }} - {{ file.size }} bytes</li>
+          }
+        </ul>
       }
     </ng-template>
   </p-fileupload>
