@@ -1,9 +1,11 @@
+@import '../../../../styles/utils/variables';
+
 .login-page {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: $content-min-height;
   gap: 15px;
 
   .submit-button {
