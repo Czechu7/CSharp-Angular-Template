@@ -11,10 +11,7 @@
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Queries\" />
-    <Folder Include="CQRS\Invoices\" />
-    <Folder Include="CQRS\Notifications\" />
-    <Folder Include="CQRS\Orders\" />
-    <Folder Include="CQRS\Products\" />
+    <Folder Include="CQRS\Examples\Queries\" />
     <Folder Include="CQRS\Users\Commands\" />
     <Folder Include="CQRS\Users\Handlers\" />
     <Folder Include="CQRS\Users\Queries\" />

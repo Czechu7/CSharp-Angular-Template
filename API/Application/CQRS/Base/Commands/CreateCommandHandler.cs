@@ -6,34 +6,50 @@ using Application.Common.Models;
 using Autofac.Extras.DynamicProxy;
 using AutoMapper;
 using Domain.Common;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace Application.CQRS.Base.Commands;
 [Intercept(typeof(PropertyInjectionInterceptor))]
-public class CreateCommandHandler<TDto, TEntity> : BaseCommandHandler<CreateCommand<TDto>, ResponseBase>
-    where TEntity : BaseEntity, new()
+public class CreateCommandHandler<TCommand, TResponse, TDto, TEntity> : IRequestHandler<TCommand, Response<TResponse>>
+    where TCommand : IRequest<Response<TResponse>>
+    where TEntity : BaseEntity
+
 {
     [Inject] protected IGenericRepository<TEntity> Repository { get; set; } = null!;
     [Inject] protected IMapper Mapper { get; set; } = null!;
+    [Inject] protected IApplicationDbContext DbContext { get; set; } = null!;
+    [Inject] protected ILogger<CreateCommandHandler<TCommand, TResponse, TDto, TEntity>> Logger { get; set; } = null!;
+    [Inject] protected ICurrentUserService CurrentUserService { get; set; } = null!;
+    [Inject] protected IPasswordService PasswordService { get; set; } = null!;
+    [Inject] protected ITokenService TokenService { get; set; } = null!;
 
-
-
-    public override async Task<Response<ResponseBase>> Handle(CreateCommand<TDto> request, CancellationToken cancellationToken)
+    public virtual async Task<Response<TResponse>> Handle(TCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var entity = Mapper.Map<TEntity>(request.Data);
+            var dto = ((dynamic)request).Data;
 
-            await ValidateCreateAsync(entity, request.Data, cancellationToken);
-            
-            await HandleCreate(entity, request.Data, cancellationToken);
+            var entity = Mapper.Map<TEntity>(dto);
+
+            await ValidateCreateAsync(entity, dto, cancellationToken);
+
+            await HandleCreate(entity, dto, cancellationToken);
 
             await Repository.AddAsync(entity);
+            await DbContext.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("Created {EntityType} with ID {EntityId}", typeof(TEntity).Name, entity.Id);
+            if (typeof(TResponse) == typeof(ResponseBase))
+            {
+                return Success($"{typeof(TEntity).Name} created successfully");
+            }
 
-            return Success($"{typeof(TEntity).Name} created successfully");
+
+            var response = await CreateResponseFromEntityAsync(entity, dto, cancellationToken);
+            Mapper.Map(entity, response);
+
+            return SuccessWithData(response, $"{typeof(TEntity).Name} created successfully");
         }
         catch (ValidationException ex)
         {
@@ -59,12 +75,53 @@ public class CreateCommandHandler<TDto, TEntity> : BaseCommandHandler<CreateComm
             return Error(500, $"Error creating {typeof(TEntity).Name}: {ex.Message}");
         }
     }
+
+
+    protected virtual async Task<TResponse> CreateResponseFromEntityAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
+    {
+        try
+        {
+
+            if (typeof(TResponse) == typeof(ResponseBase))
+            {
+                return (TResponse)(object)new ResponseBase();
+            }
+
+            var response = Activator.CreateInstance<TResponse>();
+            await Task.Yield();
+
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error creating response from entity");
+            throw new InvalidOperationException(
+                $"Could not create response of type {typeof(TResponse).Name} from entity {typeof(TEntity).Name}. " +
+                $"Override CreateResponseFromEntityAsync in your handler to provide custom response creation logic.", ex);
+        }
+    }
     protected virtual Task ValidateCreateAsync(TEntity entity, TDto dto, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
+
     protected virtual Task HandleCreate(TEntity entity, TDto dto, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
     }
+
+
+    protected Response<TResponse> SuccessWithData(TResponse data, string message = "Operations successful")
+        => Response<TResponse>.SuccessWithData(data, message);
+
+    protected Response<TResponse> Success(string message = "Operation successful")
+        => new Response<TResponse>
+        {
+            StatusCode = 200,
+            Message = message,
+            Success = true
+        };
+
+    protected Response<TResponse> Error(int statusCode, string message)
+        => Response<TResponse>.ErrorResponse(statusCode, message);
 }
