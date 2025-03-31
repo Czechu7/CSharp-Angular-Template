@@ -89,6 +89,30 @@ public class KarmelkiController : ApiControllerBase
         return Ok(response);
     }
 
+    [HttpDelete("{id}")]
+    [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ResponseBase>> Delete(Guid id)
+    {
+        var deleteDto = new DeleteKarmelkiDto { Id = id };
+        var command = new DeleteKarmelkiCommand(deleteDto);
+        var response = await Mediator.Send(command);
+
+        if (!response.Success)
+        {
+            if (response.StatusCode == 404)
+                return NotFound(response);
+            else if (response.StatusCode == 403)
+                return StatusCode(StatusCodes.Status403Forbidden, response);
+            else
+                return BadRequest(response);
+        }
+
+        return Ok(response);
+    }
+
     [HttpPut("{id}")]
     [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

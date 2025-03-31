@@ -5,7 +5,7 @@ using Domain.Entities;
 
 namespace Application.CQRS.Karmelki.Queries;
 
-public class GetPagedKarmelkiQuery : GetPagedQuery<KarmelkiDto, Domain.Entities.Karmelki>
+public class GetPagedKarmelkiQuery : GetPagedQuery<KarmelkiResponseDto, Domain.Entities.Karmelki>
 {
     public GetPagedKarmelkiQuery(
         int pageNumber, 
