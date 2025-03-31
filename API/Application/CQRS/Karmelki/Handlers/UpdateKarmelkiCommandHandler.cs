@@ -21,7 +21,7 @@ public class UpdateKarmelkiCommandHandler : UpdateCommandHandler<UpdateKarmelkiC
         {
             if (entity.UserId != userId)
             {
-                Logger.LogWarning("User {UserId} attempted to update Karmelki {KarmelkiId} belonging to another user", 
+                Logger.LogWarning("User {UserId} attempted to update Karmelki {KarmelkiId} belonging to another user",
                     userId, entity.Id);
                 throw new Common.Exceptions.ApplicationException("You do not have permission to update this Karmelki record");
             }
@@ -29,7 +29,7 @@ public class UpdateKarmelkiCommandHandler : UpdateCommandHandler<UpdateKarmelkiC
         else
         {
 
-           // throw new UnauthorizedException("User authentication required to update Karmelki records");
+            // throw new UnauthorizedException("User authentication required to update Karmelki records");
         }
 
         if (dto.Count < 0)
@@ -53,10 +53,20 @@ public class UpdateKarmelkiCommandHandler : UpdateCommandHandler<UpdateKarmelkiC
     protected override Task HandleUpdateAsync(Domain.Entities.Karmelki entity, KarmelkiDto dto, CancellationToken cancellationToken)
     {
 
-        entity.UserId = entity.UserId; 
-        
+        entity.UserId = entity.UserId;
+
         Logger.LogInformation("Updating Karmelki {Id} with name {Name}", entity.Id, dto.Name);
-        
+
         return base.HandleUpdateAsync(entity, dto, cancellationToken);
+    }
+
+        protected override Task<ResponseBase> CreateResponseFromEntityAsync(Domain.Entities.Karmelki entity, KarmelkiDto dto, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(new ResponseBase 
+        { 
+            StatusCode = 200, 
+            Message = $"Karmelki with ID {entity.Id} updated successfully",
+            Success = true
+        });
     }
 }
