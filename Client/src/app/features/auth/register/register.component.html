@@ -73,7 +73,7 @@
     <div class="submit-button">
       <app-button
         type="submit"
-        [disabled]="registerForm.invalid"
+        [disabled]="registerForm.invalid || isLoading"
         severity="primary"
         [label]="'AUTH.REGISTER_BUTTON' | translate"
       >

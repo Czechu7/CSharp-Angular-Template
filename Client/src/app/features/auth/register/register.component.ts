@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { PasswordInputComponent } from '../../../shared/components/password-input/password-input.component';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { InputComponent } from '../../../shared/components/input/input.component';
 import { RegisterForm } from '../../../shared/models/form.model';
 import { FormService } from '../../../shared/services/form.service';
@@ -32,10 +32,13 @@ import { ErrorService } from '../../../shared/services/error.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup<RegisterForm>;
   RouterEnum = RouterEnum;
+  
+  protected isLoading = false;
 
   private formService = inject(FormService);
   private authService = inject(AuthService);
   private errorService = inject(ErrorService);
+  private router = inject(Router);
 
   ngOnInit() {
     this.registerForm = this.formService.getRegisterForm();
@@ -50,14 +53,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
+    this.isLoading = true;
     this.authService.signUp(this.registerForm.getRawValue() as IRegisterDto).subscribe({
       next: res => {
-        console.log('Register successful');
-        console.log(res);
+        if (res.success) {
+          this.router.navigate([RouterEnum.home]);
+          this.registerForm.reset();
+          this.isLoading = false;
+        }
       },
-      error: error => {
-        console.error('Register failed');
-        console.error(error);
+      error: _ => {
+        this.isLoading = false;
       },
     });
   }

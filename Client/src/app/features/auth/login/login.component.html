@@ -27,7 +27,7 @@
     <div class="submit-button">
       <app-button
         type="submit"
-        [disabled]="loginForm.invalid"
+        [disabled]="loginForm.invalid || isLoading"
         severity="primary"
         [label]="'AUTH.LOGIN_BUTTON' | translate"
       >

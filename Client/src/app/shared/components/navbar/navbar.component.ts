@@ -122,7 +122,6 @@ export class NavbarComponent implements OnInit, INavbarProps {
   logout() {
     this.authService.signOut();
     this.updateMenu();
-    this.router.navigate([RouterEnum.home]);
   }
 
   toggleTheme() {
