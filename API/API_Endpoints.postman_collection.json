@@ -7,161 +7,365 @@
 	},
 	"item": [
 		{
-			"name": "auth_register",
-			"event": [
+			"name": "karmelki",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var res = pm.response.json();\r",
-							"var accessToken = res.data.accessToken;\r",
-							"var refreshToken = res.data.refreshToken;\r",
-							"\r",
-							"pm.collectionVariables.set('accessToken', accessToken);\r",
-							"pm.collectionVariables.set('refreshToken', refreshToken);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"tester1\",\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\",\r\n  \"confirmPassword\": \"password\",\r\n  \"firstName\": \"Jan\",\r\n  \"lastName\": \"Kowalski\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "getById_karmelki",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki", "1"]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5238/api/Auth/register",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5238",
-					"path": ["api", "Auth", "register"]
+				{
+					"name": "getAll_karmelki",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPageable_karmelki",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki/pageable?pageNumber=1&pageSize=10",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki", "pageable"],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_karmelki",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Karmelek 1\",\r\n    \"count\": 10,\r\n    \"price\": 2.99,\r\n    \"isZiemniak\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_karmelki",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Karmelek 1\",\r\n    \"count\": 10,\r\n    \"price\": 2.99,\r\n    \"isZiemniak\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById_karmelki",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Karmelek 1\",\r\n    \"count\": 10,\r\n    \"price\": 2.99,\r\n    \"isZiemniak\": false,\r\n    \"ArrivalDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/karmelki/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "karmelki", "1"]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "auth_login",
-			"event": [
+			"name": "auth",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var res = pm.response.json();\r",
-							"var accessToken = res.data.accessToken;\r",
-							"var refreshToken = res.data.refreshToken;\r",
-							"\r",
-							"pm.collectionVariables.set('accessToken', accessToken);\r",
-							"pm.collectionVariables.set('refreshToken', refreshToken);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5238/api/Auth/login",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5238",
-					"path": ["api", "Auth", "login"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "auth_refreshToken",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var res = pm.response.json();\r",
-							"var accessToken = res.data.accessToken;\r",
-							"var refreshToken = res.data.refreshToken;\r",
-							"\r",
-							"pm.collectionVariables.set('accessToken', accessToken);\r",
-							"pm.collectionVariables.set('refreshToken', refreshToken);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"accessToken\": \"{{accessToken}}\",\r\n\"refreshToken\": \"{{refreshToken}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5238/api/Auth/refresh-token",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5238",
-					"path": ["api", "Auth", "refresh-token"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "auth_revoke-token",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+					"name": "auth_register",
+					"event": [
 						{
-							"key": "token",
-							"value": "{{accessToken}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();\r",
+									"var accessToken = res.data.accessToken;\r",
+									"var refreshToken = res.data.refreshToken;\r",
+									"\r",
+									"pm.collectionVariables.set('accessToken', accessToken);\r",
+									"pm.collectionVariables.set('refreshToken', refreshToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"tester1\",\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\",\r\n  \"confirmPassword\": \"password\",\r\n  \"firstName\": \"Jan\",\r\n  \"lastName\": \"Kowalski\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/Auth/register",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "Auth", "register"]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5238/api/Auth/revoke-token",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5238",
-					"path": ["api", "Auth", "revoke-token"]
+				{
+					"name": "auth_login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();\r",
+									"var accessToken = res.data.accessToken;\r",
+									"var refreshToken = res.data.refreshToken;\r",
+									"\r",
+									"pm.collectionVariables.set('accessToken', accessToken);\r",
+									"pm.collectionVariables.set('refreshToken', refreshToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"tester1@mail.com\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/Auth/login",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "Auth", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth_refreshToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();\r",
+									"var accessToken = res.data.accessToken;\r",
+									"var refreshToken = res.data.refreshToken;\r",
+									"\r",
+									"pm.collectionVariables.set('accessToken', accessToken);\r",
+									"pm.collectionVariables.set('refreshToken', refreshToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"accessToken\": \"{{accessToken}}\",\r\n\"refreshToken\": \"{{refreshToken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/Auth/refresh-token",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "Auth", "refresh-token"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth_revoke-token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5238/api/Auth/revoke-token",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "5238",
+							"path": ["api", "Auth", "revoke-token"]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"variable": [
