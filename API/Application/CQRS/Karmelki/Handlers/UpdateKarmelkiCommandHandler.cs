@@ -34,17 +34,17 @@ public class UpdateKarmelkiCommandHandler : UpdateCommandHandler<UpdateKarmelkiC
 
         if (dto.Count < 0)
         {
-            throw new ValidationException("Count must be greater than or equal to 0");
+            throw new Common.Exceptions.ApplicationException("Count must be greater than or equal to 0");
         }
 
         if (dto.Price < 0)
         {
-            throw new ValidationException("Price must be greater than or equal to 0");
+            throw new Common.Exceptions.ApplicationException("Price must be greater than or equal to 0");
         }
 
         if (string.IsNullOrWhiteSpace(dto.Name))
         {
-            throw new ValidationException("Name is required");
+            throw new Common.Exceptions.ApplicationException("Name is required");
         }
 
         await base.ValidateUpdateAsync(entity, dto, cancellationToken);
