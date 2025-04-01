@@ -11,7 +11,10 @@ export interface IBaseResponse<T> extends IBaseResponseWithoutData {
 }
 
 interface IPagination {
-  pageSize: number;
   pageNumber: number;
+  pageSize: number;
   totalCount: number;
+  totalPages: number;
+  hasPrevious: boolean;
+  hasNext: boolean;
 }
