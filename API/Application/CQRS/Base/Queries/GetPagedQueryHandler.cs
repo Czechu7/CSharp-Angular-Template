@@ -55,17 +55,22 @@ public class GetPagedQueryHandler<TCommand, TResult, TEntity> : IRequestHandler<
                 !string.IsNullOrEmpty(searchTerm)
             );
 
+          // ...existing code...
             var pagedResult = new PagedResult<TResult>
             {
                 Items = Mapper.Map<List<TResult>>(result.Items),
-                PageNumber = result.PageNumber,
-                PageSize = result.PageSize,
-                TotalCount = result.TotalCount,
-                TotalPages = result.TotalPages
+                Pagination = new PagedResult<TResult>.PaginationList
+                {
+                    PageNumber = result.PageNumber,
+                    PageSize = result.PageSize,
+                    TotalCount = result.TotalCount,
+                    TotalPages = result.TotalPages
+                }
             };
             
             return SuccessWithData(pagedResult, 
-                $"Retrieved page {pagedResult.PageNumber} of {pagedResult.TotalPages} ({pagedResult.Items.Count} of {pagedResult.TotalCount} {typeof(TEntity).Name} entities)");
+                $"Retrieved page {pagedResult.Pagination.PageNumber} of {pagedResult.Pagination.TotalPages} ({pagedResult.Items.Count} of {pagedResult.Pagination.TotalCount} {typeof(TEntity).Name} entities)");
+// ...existing code...
         }
         catch (Common.Exceptions.ApplicationException ex)
         {
