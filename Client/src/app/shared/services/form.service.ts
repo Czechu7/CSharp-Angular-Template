@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
+  ExampleCrudForm,
   LoginForm,
   PasswdRecoveryForm,
   PasswordsForm,
@@ -12,6 +13,7 @@ import { initPasswdRecoveryForm } from './forms/initPasswdRecoveryForm';
 import { initPasswordsForm } from './forms/initPasswordsForm';
 import { initRegisterForm } from './forms/initRegisterForm';
 import { initThemeForm } from './forms/initThemeForm';
+import { initExampleCrudForm } from './forms/initExampleCrudForm';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +37,9 @@ export class FormService {
 
   public getPasswdRecoveryForm(): FormGroup<PasswdRecoveryForm> {
     return initPasswdRecoveryForm();
+  }
+
+  public getExampleCrudForm(): FormGroup<ExampleCrudForm> {
+    return initExampleCrudForm();
   }
 }

@@ -3,6 +3,7 @@ export type AutocompleteBasic = 'on' | 'off';
 export type IAutocompletePassword = 'new-password' | 'current-password' | 'one-time-code';
 
 export type IAutocompletePersonalInfo =
+  | AutocompleteBasic
   | 'name'
   | 'honorific-prefix'
   | 'given-name'

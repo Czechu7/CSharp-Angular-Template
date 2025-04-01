@@ -1,0 +1,180 @@
+<div class="card p-4">
+  <div class="flex justify-between items-center mb-6">
+    <h2>{{ 'EXAMPLE-CRUD.TITLE' | translate }}</h2>
+    <app-button
+      label="{{ 'EXAMPLE-CRUD.ADD_NEW' | translate }}"
+      icon="pi pi-plus"
+      (onClick)="showDialog()"
+    ></app-button>
+  </div>
+  <!-- TODO: zrobić reużywalną tabelkę -->
+  <p-table
+    [value]="karmelki"
+    [paginator]="true"
+    [rows]="10"
+    [responsive]="true"
+    styleClass="p-datatable-gridlines p-datatable-sm"
+    [totalRecords]="totalRecords"
+    [loading]="loading"
+    [lazy]="true"
+    (onPage)="loadKarmelki($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'EXAMPLE-CRUD.NAME' | translate }}</th>
+        <th>{{ 'EXAMPLE-CRUD.COUNT' | translate }}</th>
+        <th>{{ 'EXAMPLE-CRUD.PRICE' | translate }}</th>
+        <th>{{ 'EXAMPLE-CRUD.ZIEMNIAK' | translate }}</th>
+        <th>{{ 'EXAMPLE-CRUD.ARRIVAL_DATE' | translate }}</th>
+        <th>{{ 'EXAMPLE-CRUD.ACTIONS' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-karmelek>
+      <tr>
+        <td>{{ karmelek.name }}</td>
+        <td>{{ karmelek.count }}</td>
+        <td>{{ karmelek.price | currency: 'PLN' : 'symbol' : '1.2-2' }}</td>
+        <td>
+          <p-tag
+            [severity]="karmelek.isZiemniak ? 'success' : 'danger'"
+            [value]="(karmelek.isZiemniak ? 'UTILS.YES' : 'UTILS.NO') | translate"
+          >
+          </p-tag>
+        </td>
+        <td>{{ karmelek.arrivalDate | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <div class="flex gap-2">
+            <app-button
+              icon="pi pi-pencil"
+              severity="info"
+              (onClick)="editKarmelek(karmelek)"
+            ></app-button>
+            <app-button
+              icon="pi pi-trash"
+              severity="danger"
+              (onClick)="confirmDelete(karmelek)"
+            ></app-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" class="text-center p-4">
+          {{ 'EXAMPLE-CRUD.NO_DATA_TO_DISPLAY' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<!-- TODO: poprawić wygląd i działanie modala -->
+<app-reusable-modal
+  [visible]="dialogVisible"
+  [header]="(editMode ? 'EXAMPLE-CRUD.EDIT' : 'EXAMPLE-CRUD.ADD_NEW') | translate"
+  [style]="{ width: '500px' }"
+  [draggable]="false"
+>
+  <form [formGroup]="exampleForm" (ngSubmit)="saveKarmelek()">
+    <div class="grid gap-4">
+      <div class="col-12">
+        <app-input
+          [formControl]="controls.name"
+          [label]="'EXAMPLE-CRUD.NAME' | translate"
+          [errorMessage]="getErrorMessage(controls.name)"
+          [invalid]="controls.name.invalid && (controls.name.dirty || controls.name.touched)"
+          [placeholder]="'EXAMPLE-CRUD.INPUT_NAME' | translate"
+          autocomplete="name"
+        >
+        </app-input>
+      </div>
+
+      <div class="col-6">
+        <app-input
+          [formControl]="controls.count"
+          [label]="'EXAMPLE-CRUD.COUNT' | translate"
+          type="number"
+          [errorMessage]="getErrorMessage(controls.count)"
+          [invalid]="controls.count.invalid && (controls.count.dirty || controls.count.touched)"
+          [placeholder]="'EXAMPLE-CRUD.INPUT_COUNT' | translate"
+          autocomplete="off"
+        >
+        </app-input>
+      </div>
+
+      <div class="col-6">
+        <app-input
+          [formControl]="controls.price"
+          [label]="'EXAMPLE-CRUD.PRICE' | translate"
+          type="number"
+          [errorMessage]="getErrorMessage(controls.price)"
+          [invalid]="controls.price.invalid && (controls.price.dirty || controls.price.touched)"
+          [placeholder]="'EXAMPLE-CRUD.INPUT_PRICE' | translate"
+          suffixText="PLN"
+          autocomplete="off"
+        >
+        </app-input>
+      </div>
+
+      <div class="col-12 mb-3">
+        <app-checkbox
+          [formControl]="controls.isZiemniak"
+          binary="true"
+          [label]="'EXAMPLE-CRUD.IS_ZIEMNIAK' | translate"
+          [errorMessage]="getErrorMessage(controls.isZiemniak)"
+          [invalid]="
+            controls.isZiemniak.invalid &&
+            (controls.isZiemniak.dirty || controls.isZiemniak.touched)
+          "
+        >
+        </app-checkbox>
+      </div>
+    </div>
+    <!-- TODO: zrobić reużywalny komponent kalendarza -->
+    <div class="col-12 mb-3">
+      <div class="p-field w-full">
+        <label for="arrivalDate" class="block mb-1">{{
+          'EXAMPLE-CRUD.ARRIVAL_DATE' | translate
+        }}</label>
+        <p-calendar
+          [formControl]="controls.arrivalDate"
+          dateFormat="dd/mm/yy"
+          [showIcon]="true"
+          inputId="arrivalDate"
+          [style]="{ width: '50%' }"
+        ></p-calendar>
+        <small
+          *ngIf="
+            controls.arrivalDate.invalid &&
+            (controls.arrivalDate.dirty || controls.arrivalDate.touched)
+          "
+          class="p-error"
+          >{{ getErrorMessage(controls.arrivalDate) }}</small
+        >
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6">
+      <app-button
+        [label]="'UTILS.CANCEL' | translate"
+        severity="secondary"
+        (onClick)="hideDialog()"
+      ></app-button>
+      <app-button
+        [label]="'UTILS.SAVE' | translate"
+        type="submit"
+        [disabled]="exampleForm.invalid"
+      ></app-button>
+    </div>
+  </form>
+</app-reusable-modal>
+
+<app-confirm-modal
+  [visible]="confirmDialogVisible"
+  [header]="'EXAMPLE-CRUD.CONFIRM_DELETE_TITLE' | translate"
+  [message]="'EXAMPLE-CRUD.CONFIRM_DELETE_MESSAGE' | translate"
+  [yesLabel]="'UTILS.YES' | translate"
+  [noLabel]="'UTILS.NO' | translate"
+  (yes)="deleteKarmelek()"
+  (no)="confirmDialogVisible = false"
+>
+</app-confirm-modal>

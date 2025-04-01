@@ -34,6 +34,33 @@
     "HAS_ACCOUNT_TEXT": "Already have an account?",
     "LOGIN": "Log in"
   },
+  "EXAMPLE-CRUD": {
+    "TITLE": "Karmelek List",
+    "NAME": "Name",
+    "COUNT": "Quantity",
+    "PRICE": "Price",
+    "ZIEMNIAK": "Ziemniak",
+    "SAVE": "Save",
+    "ARRIVAL_DATE": "Arrival Date",
+    "IS_ZIEMNIAK": "Is it a Ziemniak?",
+    "ACTIONS": "Actions",
+    "ADD_NEW": "Add new",
+    "NO_DATA_TO_DISPLAY": "No Karmelki to display",
+    "EDIT": "Edit",
+    "INPUT_NAME": "Enter Karmelek name",
+    "INPUT_COUNT": "Enter Karmelek quantity",
+    "INPUT_PRICE": "Enter Karmelek price",
+    "INPUT_ZIEMNIAK": "Is it a Ziemniak?",
+    "CONFIRM_DELETE_TITLE": "Delete confirmation",
+    "CONFIRM_DELETE_MESSAGE": "Are you sure you want to delete this Karmelek?"
+  },
+  "UTILS": {
+    "YES": "Yes",
+    "NO": "No",
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm",
+    "SAVE": "Save"
+  },
   "NOT-FOUND": {
     "TITLE": "404 - Page Not Found",
     "DESCRIPTION": "The page you are looking for does not exist."

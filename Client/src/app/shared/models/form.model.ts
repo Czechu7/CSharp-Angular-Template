@@ -24,3 +24,12 @@ export interface RegisterForm extends LoginForm {
 export interface ThemeForm {
   theme: FormControl<boolean>;
 }
+
+export interface ExampleCrudForm {
+  id: FormControl<string>;
+  name: FormControl<string>;
+  count: FormControl<number>;
+  price: FormControl<number>;
+  isZiemniak: FormControl<boolean>;
+  arrivalDate: FormControl<Date>;
+}

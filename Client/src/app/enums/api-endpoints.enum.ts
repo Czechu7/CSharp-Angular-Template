@@ -17,4 +17,5 @@ export enum ApiEndpoints {
   EDIT_FILE = 'api/files',
   DELETE_FILE = 'api/files',
   GET_FILES_STATS = 'api/files/stats',
+  KARMELKI = 'api/karmelki',
 }
