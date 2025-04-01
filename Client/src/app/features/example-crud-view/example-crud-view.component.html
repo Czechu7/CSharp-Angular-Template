@@ -1,5 +1,5 @@
-<div class="card">
-  <div class="flex justify-content-between align-items-center mb-4">
+<div class="card p-4">
+  <div class="flex justify-between items-center mb-6">
     <h2>{{ 'EXAMPLE-CRUD.TITLE' | translate }}</h2>
     <app-button
       label="{{ 'EXAMPLE-CRUD.ADD_NEW' | translate }}"
@@ -71,12 +71,12 @@
 <app-reusable-modal
   [visible]="dialogVisible"
   [header]="(editMode ? 'EXAMPLE-CRUD.EDIT' : 'EXAMPLE-CRUD.ADD_NEW') | translate"
-  [style]="{ width: '450px' }"
+  [style]="{ width: '500px' }"
   [draggable]="false"
 >
   <form [formGroup]="exampleForm" (ngSubmit)="saveKarmelek()">
-    <div class="grid">
-      <div class="col-12 mb-3">
+    <div class="grid gap-4">
+      <div class="col-12">
         <app-input
           [formControl]="controls.name"
           [label]="'EXAMPLE-CRUD.NAME' | translate"
@@ -88,7 +88,7 @@
         </app-input>
       </div>
 
-      <div class="col-6 mb-3">
+      <div class="col-6">
         <app-input
           [formControl]="controls.count"
           [label]="'EXAMPLE-CRUD.COUNT' | translate"
@@ -101,7 +101,7 @@
         </app-input>
       </div>
 
-      <div class="col-6 mb-3">
+      <div class="col-6">
         <app-input
           [formControl]="controls.price"
           [label]="'EXAMPLE-CRUD.PRICE' | translate"
@@ -116,31 +116,32 @@
       </div>
 
       <div class="col-12 mb-3">
-        <div class="field-checkbox">
-          <app-checkbox
-            [formControl]="controls.isZiemniak"
-            binary="true"
-            [label]="'EXAMPLE-CRUD.IS_ZIEMNIAK' | translate"
-            [errorMessage]="getErrorMessage(controls.isZiemniak)"
-            [invalid]="
-              controls.isZiemniak.invalid &&
-              (controls.isZiemniak.dirty || controls.isZiemniak.touched)
-            "
-          >
-          </app-checkbox>
-        </div>
+        <app-checkbox
+          [formControl]="controls.isZiemniak"
+          binary="true"
+          [label]="'EXAMPLE-CRUD.IS_ZIEMNIAK' | translate"
+          [errorMessage]="getErrorMessage(controls.isZiemniak)"
+          [invalid]="
+            controls.isZiemniak.invalid &&
+            (controls.isZiemniak.dirty || controls.isZiemniak.touched)
+          "
+        >
+        </app-checkbox>
       </div>
-      <!-- TODO: zrobić reużywalny komponent kalendarza -->
-      <div class="col-12 mb-3">
-        <span class="p-float-label">
-          <p-calendar
-            [formControl]="controls.arrivalDate"
-            dateFormat="dd/mm/yy"
-            [showIcon]="true"
-            inputId="arrivalDate"
-          ></p-calendar>
-          <label for="arrivalDate">{{ 'EXAMPLE-CRUD.ARRIVAL_DATE' | translate }}</label>
-        </span>
+    </div>
+    <!-- TODO: zrobić reużywalny komponent kalendarza -->
+    <div class="col-12 mb-3">
+      <div class="p-field w-full">
+        <label for="arrivalDate" class="block mb-1">{{
+          'EXAMPLE-CRUD.ARRIVAL_DATE' | translate
+        }}</label>
+        <p-calendar
+          [formControl]="controls.arrivalDate"
+          dateFormat="dd/mm/yy"
+          [showIcon]="true"
+          inputId="arrivalDate"
+          [style]="{ width: '50%' }"
+        ></p-calendar>
         <small
           *ngIf="
             controls.arrivalDate.invalid &&
@@ -152,7 +153,7 @@
       </div>
     </div>
 
-    <div class="flex justify-content-end gap-2 mt-4">
+    <div class="flex justify-end gap-3 mt-6">
       <app-button
         [label]="'UTILS.CANCEL' | translate"
         severity="secondary"
