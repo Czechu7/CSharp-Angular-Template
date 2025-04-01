@@ -13,4 +13,5 @@ public class User : BaseEntity
     public bool EmailConfirmed { get; set; } = false;
     public string Roles { get; set; } = "USER";
     public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+    public ICollection<Karmelki> Karmelki { get; set; } = new List<Karmelki>();
 }

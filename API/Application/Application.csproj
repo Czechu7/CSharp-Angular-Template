@@ -11,6 +11,7 @@
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Queries\" />
+    <Folder Include="CQRS/Karmelki/Queries/" />
     <Folder Include="CQRS\Examples\Queries\" />
     <Folder Include="CQRS\Users\Commands\" />
     <Folder Include="CQRS\Users\Handlers\" />

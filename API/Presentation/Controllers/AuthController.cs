@@ -39,7 +39,7 @@ public class AuthController : ApiControllerBase
         {
             if (response.StatusCode == 401)
                 return Unauthorized(response);
-                
+
             return BadRequest(response);
         }
 
@@ -58,7 +58,7 @@ public class AuthController : ApiControllerBase
         {
             if (response.StatusCode == 401)
                 return Unauthorized(response);
-                
+
             return BadRequest(response);
         }
 
@@ -82,4 +82,5 @@ public class AuthController : ApiControllerBase
 
         return Ok(response);
     }
+
 }
