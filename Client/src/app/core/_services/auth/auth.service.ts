@@ -14,6 +14,7 @@ import { IAccessToken } from '../../_models/tokens.model';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../shared/services/toast.service';
 import { RoleService } from '../role/role.service';
+import { RouterEnum } from '../../../enums/router.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ import { RoleService } from '../role/role.service';
 export class AuthService {
   private requestFactory = inject(RequestFactoryService);
   private tokenService = inject(TokenService);
-  private route = inject(Router);
+  private router = inject(Router);
   private toastService = inject(ToastService);
   private roleService = inject(RoleService);
 
@@ -42,7 +43,7 @@ export class AuthService {
               expiresAt: res.data.expiresAt,
             });
             this.isLogged.set(true);
-            this.route.navigate(['/']);
+            this.router.navigate(['/']);
           }
         })
       );
@@ -59,7 +60,7 @@ export class AuthService {
               expiresAt: res.data.expiresAt,
             });
             this.isLogged.set(true);
-            this.route.navigate(['/']);
+            this.router.navigate(['/']);
           }
         })
       );
@@ -82,6 +83,7 @@ export class AuthService {
             this.tokenService.removeTokens();
             this.isLogged.set(false);
             this.toastService.showSuccess('Account', 'You have been logged out!');
+            this.router.navigate([RouterEnum.login]);
           }
         },
         error: error => {

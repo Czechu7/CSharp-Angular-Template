@@ -40,15 +40,20 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               });
               isRefreshing = false;
               return next(clonedReq);
+            }),
+            catchError(refreshError => {
+              isRefreshing = false;
+              tokenService.removeTokens();
+              return throwError(() => refreshError);
             })
           );
         } else {
           isRefreshing = false;
           tokenService.removeTokens();
-          return throwError(() => new Error(error.message));
+          return throwError(() => error);
         }
       } else {
-        return throwError(() => new Error(error.message));
+        return throwError(() => error);
       }
     })
   );
