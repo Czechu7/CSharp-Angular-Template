@@ -33,6 +33,33 @@
     "HAS_ACCOUNT_TEXT": "Masz konto?",
     "LOGIN": "Zaloguj się"
   },
+  "EXAMPLE-CRUD": {
+    "TITLE": "Lista Karmelków",
+    "NAME": "Nazwa",
+    "COUNT": "Ilość",
+    "PRICE": "Cena",
+    "ZIEMNIAK": "Ziemniak",
+    "SAVE": "Zapisz",
+    "ARRIVAL_DATE": "Data przybycia",
+    "IS_ZIEMNIAK": "Czy to ziemniak?",
+    "ACTIONS": "Akcje",
+    "ADD_NEW": "Dodaj nowy",
+    "NO_DATA_TO_DISPLAY": "Brak karmelków do wyświetlenia",
+    "EDIT": "Edytuj",
+    "INPUT_NAME": "Wprowadź nazwę karmelka",
+    "INPUT_COUNT": "Wprowadź ilość karmelka",
+    "INPUT_PRICE": "Wprowadź cenę karmelka",
+    "INPUT_ZIEMNIAK": "Czy to ziemniak?",
+    "CONFIRM_DELETE_TITLE": "Potwierdzenie usunięcia",
+    "CONFIRM_DELETE_MESSAGE": "Czy na pewno chcesz usunąć ten karmelek?"
+  },
+  "UTILS": {
+    "YES": "Tak",
+    "NO": "Nie",
+    "CANCEL": "Anuluj",
+    "CONFIRM": "Potwierdź",
+    "SAVE": "Zapisz"
+  },
   "NOT-FOUND": {
     "TITLE": "404 - Nie znaleziono strony",
     "DESCRIPTION": "Strona, której szukasz, nie istnieje."

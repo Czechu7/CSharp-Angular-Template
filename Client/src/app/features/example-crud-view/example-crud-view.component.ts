@@ -16,6 +16,7 @@ import { ExampleCrudService } from '../../core/_services/example-crud.service';
 import { IBaseResponse } from '../../core/_models/base-response.model';
 import { ReusableModalComponent } from '../../shared/components/reusable-modal/reusable-modal.component';
 import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-example-crud-view',
@@ -31,6 +32,7 @@ import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.com
     CheckboxComponent,
     ConfirmModalComponent,
     ReusableModalComponent,
+    TranslateModule,
   ],
   templateUrl: './example-crud-view.component.html',
   styleUrl: './example-crud-view.component.scss',
