@@ -12,7 +12,7 @@ namespace API.Infrastructure.Persistence
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CSharpAngularTemplateDB;Integrated Security=True");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=bankapp;Username=admin;Password=admin");
 
             return new ApplicationDbContext(
                 optionsBuilder.Options,
