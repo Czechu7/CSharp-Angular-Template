@@ -1,13 +1,3 @@
-export enum State {
-  Opened,
-  Closed,
-}
-
-export enum StatusState {
-  Good,
-  Normal,
-  Bad,
-}
 export enum Icon {
   Add,
   Edit,

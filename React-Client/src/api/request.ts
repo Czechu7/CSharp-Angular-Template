@@ -36,7 +36,7 @@ export const request = async <T extends z.ZodSchema>({
     const baseUrl = '';
     const token = '';
 
-    const getApiInstance = () => {
+    const getApiInstance = (): AxiosInstance => {
         if (!axiosInstance) {
             return apiClient;
         }
