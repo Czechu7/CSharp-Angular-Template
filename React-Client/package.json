@@ -83,7 +83,6 @@
     "@storybook/react-vite": "^8.6.12",
     "@storybook/test": "^8.6.12",
     "@tanstack/react-query-devtools": "5.61.3",
-    "@tanstack/router-devtools": "1.82.8",
     "@types/luxon": "3.4.2",
     "@types/node": "22.7.9",
     "@types/prismjs": "^1.26.5",
