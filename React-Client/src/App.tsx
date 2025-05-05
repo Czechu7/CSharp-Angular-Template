@@ -1,24 +1,32 @@
-import { useState } from 'react'
-import './App.css'
-import { Button } from './components/Button/Button'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import UserLayout from './layout/UserLayout'
+import AuthLayout from './layout/AuthLayout'
+
+import Login from './features/auth/Login'
+import Register from './features/auth/Register'
+import Dashboard from './features/dashboard/Dashboard'
+import Home from './features/home/Home'
+import Admin from './features/admin/Admin'
 
 function App() {
-	const [count, setCount] = useState(0)
-
 	return (
-		<>
-			<UserLayout>
-				<Button
-					label='Eluwina'
-					onClick={() => {}}
-					size='actionButton'
-					type='confirm'
-					variant='filled'
-					key='asds'
-					disabled={false}></Button>
-			</UserLayout>
-		</>
+		<Router>
+			<Routes>
+				<Route element={<AuthLayout />}>
+					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
+				</Route>
+
+				<Route element={<UserLayout />}>
+					<Route path='/' element={<Home />} />
+					<Route path='/dashboard' element={<Dashboard />} />
+					<Route path='/admin' element={<Admin />} />
+				</Route>
+
+				<Route path='*' element={<div>404 Not Found</div>} />
+			</Routes>
+		</Router>
 	)
 }
 

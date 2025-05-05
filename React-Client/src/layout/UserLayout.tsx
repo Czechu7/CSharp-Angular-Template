@@ -1,13 +1,9 @@
-import Sidebar from './Sidebar'
 import Header from './Header'
 import Footer from './Footer'
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
-interface UserLayoutProps {
-	children: ReactNode
-}
-
-const UserLayout = ({ children }: UserLayoutProps) => {
+const UserLayout = () => {
 	const [isSidebarOpen, setSidebarOpen] = useState(false)
 
 	const toggleSidebar = () => {
@@ -16,10 +12,11 @@ const UserLayout = ({ children }: UserLayoutProps) => {
 
 	return (
 		<div className='flex h-screen bg-gray-100'>
-			<Sidebar isOpen={isSidebarOpen} />
-			<div className='flex flex-col flex-1 overflow-hidden'>
-				<Header toggleSidebar={toggleSidebar} />
-				<main className='flex-1 overflow-y-auto p-4'>{children}</main>
+			<div className='flex flex-1 flex-col overflow-hidden'>
+				<Header />
+				<main className='flex-1 overflow-y-auto p-4'>
+					<Outlet />
+				</main>
 				<Footer />
 			</div>
 		</div>
