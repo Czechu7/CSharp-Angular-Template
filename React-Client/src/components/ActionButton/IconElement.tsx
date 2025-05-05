@@ -1,4 +1,4 @@
-import { LuCirclePlus, LuTrash2 } from "react-icons/lu";
+import { LuPlus, LuTrash2 } from "react-icons/lu";
 import { CiEdit } from "react-icons/ci";
 import { FiFilter } from "react-icons/fi";
 import {
@@ -12,7 +12,7 @@ import { FaAlignLeft, FaAlignRight } from "react-icons/fa";
 export const IconElement = ({ icon }: { icon: Icon }) => {
   switch (icon) {
     case Icon.Add:
-      return <LuCirclePlus />;
+      return <LuPlus />;
     case Icon.Edit:
       return <CiEdit />;
     case Icon.Delete:
