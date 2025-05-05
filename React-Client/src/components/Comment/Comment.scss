@@ -1,0 +1,24 @@
+.comment-nested::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+    left: 1.4rem;
+    width: 2.8rem;
+    height: 50%;
+    border-bottom-left-radius: 0.43rem;
+    border-left: 1px solid #605f764d;
+    border-bottom: 1px solid #605f764d;
+}
+
+.comment-nested::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 0.2rem / 2);
+    left: calc(2.8rem + 1.4rem + 0.3rem);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #246bfa;
+}
