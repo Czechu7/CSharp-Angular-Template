@@ -1,4 +1,4 @@
-import { LuCircleX, LuCirclePlus, LuCircleCheck } from "react-icons/lu";
+import { LuX, LuPlus, LuCheck } from "react-icons/lu";
 import { Button as ShadCnButton } from "@/components/ui/button.tsx";
 import clsx from "clsx";
 
@@ -12,9 +12,9 @@ type Props = {
 };
 
 const icons = {
-  save: <LuCirclePlus />,
-  cancel: <LuCircleX />,
-  confirm: <LuCircleCheck />,
+  save: <LuPlus />,
+  cancel: <LuX />,
+  confirm: <LuCheck />,
 };
 
 export const Button = ({
