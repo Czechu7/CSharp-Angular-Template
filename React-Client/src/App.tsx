@@ -8,6 +8,7 @@ import Register from './features/auth/Register'
 import Dashboard from './features/dashboard/Dashboard'
 import Home from './features/home/Home'
 import Admin from './features/admin/Admin'
+import ForgotPassword from './features/auth/ForgotPassword'
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Route element={<AuthLayout />}>
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
+					<Route path='/forgot-password' element={<ForgotPassword />} />
 				</Route>
 
 				<Route element={<UserLayout />}>
