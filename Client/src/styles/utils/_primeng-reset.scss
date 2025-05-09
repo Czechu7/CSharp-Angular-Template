@@ -2,7 +2,6 @@
 .p-inputnumber-input,
 .p-dropdown-label,
 .p-multiselect-label,
-.p-listbox-item,
 .p-calendar-input {
   background-color: var(--background) !important;
   color: var(--text-primary) !important;
@@ -67,6 +66,174 @@ small.p-error {
         background-color: var(--primary) !important;
         color: white !important;
       }
+    }
+  }
+}
+
+.p-datatable {
+  .p-datatable-header {
+    background-color: var(--background) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+    font-weight: bold;
+    padding: 1rem;
+  }
+
+  .p-datatable-thead > tr > th {
+    background-color: var(--secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+
+    &:focus {
+      box-shadow: inset 0 0 0 0.15rem var(--primary-light) !important;
+      outline: none !important;
+    }
+
+    .p-column-title {
+      font-weight: 600;
+    }
+
+    .p-column-filter {
+      margin-top: 0.2rem;
+
+      .p-column-filter-menu-button,
+      .p-column-filter-clear-button {
+        color: var(--text-primary) !important;
+
+        &:hover {
+          background-color: var(--hover) !important;
+        }
+      }
+    }
+
+    &.p-sortable-column {
+      &:hover {
+        background-color: var(--hover) !important;
+      }
+
+      &.p-highlight {
+        background-color: var(--secondary) !important;
+        color: var(--primary) !important;
+
+        .p-sortable-column-icon {
+          color: var(--primary) !important;
+        }
+      }
+
+      .p-sortable-column-icon {
+        color: var(--text-primary) !important;
+      }
+    }
+  }
+
+  .p-datatable-thead > tr > th {
+    background-color: var(--secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+    padding: 0.75rem 1rem;
+  }
+
+  .p-datatable-tbody > tr {
+    background-color: var(--background) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+
+    &:hover {
+      background-color: var(--hover) !important;
+    }
+
+    &.p-highlight {
+      background-color: var(--primary-light) !important;
+      color: var(--text-primary) !important;
+    }
+
+    > td {
+      border-color: var(--border) !important;
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  .p-paginator {
+    background-color: var(--background) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+
+    .p-paginator-element {
+      color: var (--text-primary) !important;
+
+      &.p-highlight {
+        background-color: var(--primary) !important;
+        color: white !important;
+      }
+
+      &:not(.p-highlight):hover {
+        background-color: var(--hover) !important;
+      }
+    }
+  }
+
+  &.p-datatable-striped {
+    .p-datatable-tbody > tr:nth-child(even) {
+      background-color: var(--hover) !important;
+    }
+  }
+}
+
+.p-select {
+  background-color: var(--background) !important;
+
+  .p-select-label {
+    background-color: var(--background) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+
+    &:hover:not(.p-disabled) {
+      border-color: var(--primary) !important;
+    }
+
+    &:focus:not(.p-disabled) {
+      border-color: var (--primary) !important;
+      box-shadow: 0 0 0 1px var(--primary-light) !important;
+    }
+  }
+
+  .p-select-dropdown {
+    background-color: var(--background) !important;
+    border-color: var(--border) !important;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .p-select-list {
+    background-color: var(--background) !important;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .p-select-option {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--hover) !important;
+    }
+
+    &.p-highlight {
+      background-color: var(--primary) !important;
+      color: white !important;
+      border-color: var(--primary) !important;
     }
   }
 }
