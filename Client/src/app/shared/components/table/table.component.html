@@ -7,10 +7,15 @@
   [resizableColumns]="enableResizableColumns" [rows]="rowsPerPage" [loading]="loading" [totalRecords]="totalRecords"
   [paginatorPosition]="paginatorPosition"
   (onPage)="onPageChange.emit({ page: $event.first / $event.rows, rows: $event.rows })">
-  <ng-template pTemplate="caption" *ngIf="headerTitle">
+
+  @if (headerTitle || showSearchBar || showActionButtons) {
+  <ng-template pTemplate="caption">
+    @if (headerTitle) {
     <div class="flex items-center justify-between">
       <span class="text-xl font-bold">{{headerTitle}}</span>
     </div>
+    }
+
     @if (showSearchBar) {
     <div class="flex justify-content-between">
       <span>
@@ -27,37 +32,46 @@
     </div>
     }
   </ng-template>
+  }
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns">
+      @for (col of columns; track col) {
+      <th>
         {{ col.header }}
       </th>
+      }
       @if (showActions) {
-      <th>{{ 'EXAMPLE-CRUD.ACTIONS' | translate }}</th>
+      <th>{{ 'TABLE.ACTIONS' | translate }}</th>
       }
     </tr>
   </ng-template>
+
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr (contextmenu)="showContextMenu($event, rowData)">
-      <td *ngFor="let col of columns">
+      @for (col of columns; track col) {
+      <td>
         {{ rowData[col.field] }}
       </td>
+      }
       @if (showActions) {
       <td>
         <div class="flex gap-2">
-          <ng-container *ngFor="let button of actionButtons">
-            <app-button [icon]="button.icon" [severity]="'primary'" variant="text" [rounded]="true"
-              [ariaLabel]="button.ariaLabel | translate" (onClick)="onAction(button.action, rowData)">
-            </app-button>
-          </ng-container>
+          @for (button of actionButtons; track button) {
+          <app-button [icon]="button.icon" [severity]="'primary'" variant="text" [rounded]="true"
+            [ariaLabel]="button.ariaLabel | translate" (onClick)="onAction(button.action, rowData)">
+          </app-button>
+          }
         </div>
       </td>
       }
     </tr>
   </ng-template>
-  <ng-template pTemplate="footer" *ngIf="footerTitle">
-    {{footerTitle}}
+
+  @if (footerTitle) {
+  <ng-template pTemplate="footer">
+    <div>{{footerTitle}}</div>
   </ng-template>
+  }
 
   <ng-template pTemplate="emptymessage">
     <tr>
