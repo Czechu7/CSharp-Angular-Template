@@ -178,8 +178,9 @@ public class CassandraLogService : ICassandraLogService, IDisposable
             await _session.ExecuteAsync(boundStatement);
             
             var sanitizedAction = action.Replace("\r", "").Replace("\n", "");
+                        var sanitizedIpAddress = (ipAddress ?? "unknown").Replace("\r", "").Replace("\n", "");
             _logger.LogDebug("Security event logged to Cassandra: {Action} for {Resource} from IP {IpAddress}", 
-                sanitizedAction, resource, ipAddress ?? "unknown");
+                                sanitizedAction, resource, sanitizedIpAddress);
         }
         catch (Exception ex)
         {
