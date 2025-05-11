@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Middleware;
 using Microsoft.AspNetCore.Mvc;
+using Prometheus;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -12,7 +13,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => 
+builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
@@ -20,7 +21,7 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Description = "API"
     });
-    
+
     // Improved JWT configuration for Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -31,7 +32,7 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT"
     });
-    
+
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -53,19 +54,19 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
-builder.Services.AddControllers(options => 
+builder.Services.AddControllers(options =>
 {
     options.Filters.Add<Infrastructure.Filters.ValidationFilter>();
 })
 .AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.DefaultIgnoreCondition = 
+    options.JsonSerializerOptions.DefaultIgnoreCondition =
         System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
 });
 builder.Services.AddHttpContextAccessor();
 
 // Register layered architecture
-builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => 
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
     containerBuilder.RegisterModule(new Infrastructure.DI.AutofacModule());
 });
@@ -79,7 +80,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder
-            .WithOrigins("http://localhost:4200")  
+            .WithOrigins("http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
@@ -93,7 +94,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
     app.UseDeveloperExceptionPage();
 }
-
+app.UseHttpMetrics();
 app.UseHttpsRedirection();
 app.UseCustomExceptionHandler();
 app.UseCors("AllowSpecificOrigin");
@@ -101,5 +102,5 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
+app.MapMetrics();
 app.Run();
