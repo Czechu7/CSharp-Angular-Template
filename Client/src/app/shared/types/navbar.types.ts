@@ -1,9 +1,12 @@
+import { RolesEnum } from '../../enums/roles.enum';
+
 export interface IMenuItem {
   label: string;
   icon?: string;
   routerLink?: string;
   url?: string;
   target?: string;
+  roles?: RolesEnum[];
   command?: () => void;
   queryParams?: Record<string, string>;
   items?: IMenuItem[];
