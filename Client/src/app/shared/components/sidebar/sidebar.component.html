@@ -1,0 +1,58 @@
+<div class="sidebar-wrapper" [ngClass]="{ collapsed: collapsed }">
+  <p-sidebar
+    [(visible)]="visible"
+    [position]="position"
+    (onHide)="visibleChange.emit(false)"
+    [styleClass]="collapsed ? 'collapsed-sidebar' : ''"
+    [showCloseIcon]="false"
+    [dismissible]="false"
+  >
+    <button class="sidebar-close-button" (click)="toggleSidebar()" pRipple>
+      <i class="pi pi-times"></i>
+    </button>
+
+    <ng-template pTemplate="header">
+      <div class="sidebar-header">
+        <div class="brand-section">
+          @if (logo) {
+            <img
+              [src]="logo"
+              alt="Logo"
+              class="sidebar-logo"
+              [pTooltip]="collapsed ? title : ''"
+              tooltipPosition="right"
+            />
+          }
+          @if (!collapsed) {
+            <h1 class="sidebar-title">{{ title | translate }}</h1>
+          }
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="sidebar-content">
+      <p-panelMenu
+        [model]="primeMenuItems"
+        [multiple]="true"
+        [styleClass]="collapsed ? 'collapsed-menu' : ''"
+      ></p-panelMenu>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <div class="sidebar-footer">
+        <div class="tools-section"></div>
+
+        <p-divider></p-divider>
+      </div>
+    </ng-template>
+  </p-sidebar>
+
+  @if (!visible && !collapsed) {
+    <button
+      pButton
+      icon="pi pi-bars"
+      class="p-button-rounded p-button-text sidebar-toggle fixed-toggle"
+      (click)="toggleSidebar()"
+    ></button>
+  }
+</div>
