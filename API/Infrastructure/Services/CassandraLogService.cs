@@ -92,11 +92,12 @@ public class CassandraLogService : ICassandraLogService, IDisposable
     {
         try
         {
-       
+            
             var createSecurityTableQuery = $@"
                 CREATE TABLE IF NOT EXISTS {SECURITY_EVENTS_TABLE} (
-                    id uuid PRIMARY KEY,
+                    day_bucket text,
                     timestamp timestamp,
+                    id uuid,
                     user_id text,
                     ip_address text,
                     action text,
@@ -105,22 +106,25 @@ public class CassandraLogService : ICassandraLogService, IDisposable
                     result text,
                     status_code int,
                     message text,
-                    additional_data text
-                )";
+                    additional_data text,
+                    PRIMARY KEY ((day_bucket), timestamp, id)
+                ) WITH CLUSTERING ORDER BY (timestamp DESC)";
             
             _session.Execute(createSecurityTableQuery);
             
             
             var createErrorsTableQuery = $@"
                 CREATE TABLE IF NOT EXISTS {APPLICATION_ERRORS_TABLE} (
-                    id uuid PRIMARY KEY,
+                    day_bucket text,
                     timestamp timestamp,
+                    id uuid,
                     user_id text,
                     context text,
                     exception_type text,
                     exception_message text,
-                    stack_trace text
-                )";
+                    stack_trace text,
+                    PRIMARY KEY ((day_bucket), timestamp, id)
+                ) WITH CLUSTERING ORDER BY (timestamp DESC)";
             
             _session.Execute(createErrorsTableQuery);
             
@@ -146,14 +150,20 @@ public class CassandraLogService : ICassandraLogService, IDisposable
     {
         try
         {
+            var now = DateTimeOffset.UtcNow;
+            var dayBucket = now.ToString("yyyy-MM-dd");
+            var id = Guid.NewGuid();
+            
             var query = $@"
                 INSERT INTO {_keyspace}.{SECURITY_EVENTS_TABLE} 
-                (id, timestamp, user_id, ip_address, action, resource, resource_id, result, status_code, message, additional_data) 
-                VALUES (uuid(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (day_bucket, timestamp, id, user_id, ip_address, action, resource, resource_id, result, status_code, message, additional_data) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
             var statement = _session.Prepare(query);
             var boundStatement = statement.Bind(
-                DateTimeOffset.UtcNow,
+                dayBucket,
+                now,
+                id,
                 userId,
                 ipAddress ?? "unknown",
                 action,
@@ -167,8 +177,9 @@ public class CassandraLogService : ICassandraLogService, IDisposable
             
             await _session.ExecuteAsync(boundStatement);
             
+            var sanitizedAction = action.Replace("\r", "").Replace("\n", "");
             _logger.LogDebug("Security event logged to Cassandra: {Action} for {Resource} from IP {IpAddress}", 
-                action, resource, ipAddress ?? "unknown");
+                sanitizedAction, resource, ipAddress ?? "unknown");
         }
         catch (Exception ex)
         {
@@ -183,14 +194,20 @@ public class CassandraLogService : ICassandraLogService, IDisposable
     {
         try
         {
+            var now = DateTimeOffset.UtcNow;
+            var dayBucket = now.ToString("yyyy-MM-dd");
+            var id = Guid.NewGuid();
+            
             var query = $@"
                 INSERT INTO {_keyspace}.{APPLICATION_ERRORS_TABLE} 
-                (id, timestamp, user_id, context, exception_type, exception_message, stack_trace) 
-                VALUES (uuid(), ?, ?, ?, ?, ?, ?)";
+                (day_bucket, timestamp, id, user_id, context, exception_type, exception_message, stack_trace) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 
             var statement = _session.Prepare(query);
             var boundStatement = statement.Bind(
-                DateTimeOffset.UtcNow,
+                dayBucket,
+                now,
+                id,
                 userId ?? "anonymous",
                 context,
                 exception.GetType().Name,
@@ -218,66 +235,90 @@ public class CassandraLogService : ICassandraLogService, IDisposable
     {
         try
         {
-            var query = new StringBuilder($"SELECT * FROM {_keyspace}.{SECURITY_EVENTS_TABLE}");
-            var parameters = new List<object>();
-            var conditions = new List<string>();
+            var allResults = new List<SecurityEventLog>();
             
             
-            if (!string.IsNullOrEmpty(userId))
+            if (!fromDate.HasValue) fromDate = DateTime.UtcNow.Date;
+            if (!toDate.HasValue) toDate = fromDate.Value.AddDays(1).AddMilliseconds(-1);
+            
+            
+            var currentDate = fromDate.Value.Date;
+            var endDate = toDate.Value.Date;
+            var dayBuckets = new List<string>();
+            
+            while (currentDate <= endDate)
             {
-                conditions.Add("user_id = ?");
-                parameters.Add(userId);
-            }
-            
-            if (fromDate.HasValue)
-            {
-                conditions.Add("timestamp >= ?");
-                parameters.Add(fromDate.Value);
-            }
-            
-            if (toDate.HasValue)
-            {
-                conditions.Add("timestamp <= ?");
-                parameters.Add(toDate.Value);
-            }
-            
-            if (statusCode.HasValue)
-            {
-                conditions.Add("status_code = ?");
-                parameters.Add(statusCode.Value);
-            }
-            
-            if (conditions.Any())
-            {
-                query.Append(" WHERE " + string.Join(" AND ", conditions));
-                query.Append(" ALLOW FILTERING");
+                dayBuckets.Add(currentDate.ToString("yyyy-MM-dd"));
+                currentDate = currentDate.AddDays(1);
             }
             
             
-            query.Append(" LIMIT ?");
-            parameters.Add(limit);
-            
-            var statement = _session.Prepare(query.ToString());
-            var boundStatement = statement.Bind(parameters.ToArray());
-            
-            var resultSet = await _session.ExecuteAsync(boundStatement);
-            
-            
-            return resultSet
-                .Select(row => new SecurityEventLog
+            foreach (var dayBucket in dayBuckets)
+            {
+                var query = new StringBuilder($"SELECT * FROM {_keyspace}.{SECURITY_EVENTS_TABLE} WHERE day_bucket = ?");
+                var parameters = new List<object> { dayBucket };
+                
+                
+                if (fromDate.HasValue && dayBucket == fromDate.Value.ToString("yyyy-MM-dd"))
                 {
-                    Id = row.GetValue<Guid>("id"),
-                    Timestamp = row.GetValue<DateTimeOffset>("timestamp"),
-                    UserId = row.GetValue<string>("user_id"),
-                    IpAddress = row.GetValue<string>("ip_address"),  
-                    Action = row.GetValue<string>("action"),
-                    Resource = row.GetValue<string>("resource"),
-                    ResourceId = row.GetValue<string>("resource_id"),
-                    Result = row.GetValue<string>("result"),
-                    StatusCode = row.GetValue<int>("status_code"),
-                    Message = row.GetValue<string>("message"),
-                    AdditionalData = row.GetValue<string>("additional_data")
-                })
+                    query.Append(" AND timestamp >= ?");
+                    parameters.Add(fromDate.Value);
+                }
+                
+                if (toDate.HasValue && dayBucket == toDate.Value.ToString("yyyy-MM-dd"))
+                {
+                    query.Append(" AND timestamp <= ?");
+                    parameters.Add(toDate.Value);
+                }
+                
+                
+                query.Append(" LIMIT ?");
+                parameters.Add(limit);
+                
+                var statement = _session.Prepare(query.ToString());
+                var boundStatement = statement.Bind(parameters.ToArray());
+                
+                var resultSet = await _session.ExecuteAsync(boundStatement);
+                
+                
+                var dayResults = resultSet
+                    .Select(row => new SecurityEventLog
+                    {
+                        Id = row.GetValue<Guid>("id"),
+                        Timestamp = row.GetValue<DateTimeOffset>("timestamp"),
+                        UserId = row.GetValue<string>("user_id"),
+                        IpAddress = row.GetValue<string>("ip_address"),  
+                        Action = row.GetValue<string>("action"),
+                        Resource = row.GetValue<string>("resource"),
+                        ResourceId = row.GetValue<string>("resource_id"),
+                        Result = row.GetValue<string>("result"),
+                        StatusCode = row.GetValue<int>("status_code"),
+                        Message = row.GetValue<string>("message"),
+                        AdditionalData = row.GetValue<string>("additional_data")
+                    });
+                    
+                
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    dayResults = dayResults.Where(log => log.UserId == userId);
+                }
+                
+                if (statusCode.HasValue)
+                {
+                    dayResults = dayResults.Where(log => log.StatusCode == statusCode.Value);
+                }
+                
+                allResults.AddRange(dayResults);
+                
+                
+                if (allResults.Count >= limit)
+                {
+                    break;
+                }
+            }
+            
+            
+            return allResults
                 .OrderByDescending(log => log.Timestamp)
                 .Take(limit);
         }

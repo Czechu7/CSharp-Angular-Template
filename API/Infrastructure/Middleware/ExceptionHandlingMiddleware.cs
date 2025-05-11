@@ -24,15 +24,13 @@ public class ExceptionHandlingMiddleware(
         {
             await _next(context);
             
+            var userId = currentUserService.UserId ?? "anonymous";
+            var path = context.Request.Path.Value?.Replace("\r", "").Replace("\n", "") ?? "";
+            var method = context.Request.Method.Replace("\r", "").Replace("\n", "");
+            var ipAddress = context.Connection.RemoteIpAddress?.ToString().Replace("\r", "").Replace("\n", "") ?? "unknown";
             
             if (context.Response.StatusCode == 401 || context.Response.StatusCode == 403)
             {
-                var userId = currentUserService.UserId ?? "anonymous";
-                var path = context.Request.Path.Value ?? "";
-                var method = context.Request.Method;
-                var ipAddress = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
-                
-                
                 var endpoint = context.GetEndpoint();
                 var controllerActionDescriptor = endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>();
                 var controller = controllerActionDescriptor?.ControllerName ?? "unknown";

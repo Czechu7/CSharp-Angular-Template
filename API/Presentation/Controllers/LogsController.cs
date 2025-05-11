@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers;
 
-[ApiController]
 //[Authorize(Policy = "RequireAdminRole")] uncomment if you want to restrict access to this controller
-public class LogsController : ControllerBase
+public class LogsController : ApiControllerBase
 {
     private readonly ICassandraLogService _cassandraLogService;
 
