@@ -1,26 +1,82 @@
 using System.Net;
 using System.Text.Json;
+using Application.Common.Interfaces;
 using Application.Common.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
 
 namespace Infrastructure.Middleware;
 
-public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+public class ExceptionHandlingMiddleware(
+    RequestDelegate next, 
+    ILogger<ExceptionHandlingMiddleware> logger,
+    ICassandraLogService cassandraLogger)
 {
     private readonly RequestDelegate _next = next;
     private readonly ILogger<ExceptionHandlingMiddleware> _logger = logger;
+    private readonly ICassandraLogService _cassandraLogger = cassandraLogger;
 
-    public async Task InvokeAsync(HttpContext context)
+    public async Task InvokeAsync(HttpContext context, ICurrentUserService currentUserService)
     {
         try
         {
             await _next(context);
+            
+            
+            if (context.Response.StatusCode == 401 || context.Response.StatusCode == 403)
+            {
+                var userId = currentUserService.UserId ?? "anonymous";
+                var path = context.Request.Path.Value ?? "";
+                var method = context.Request.Method;
+                var ipAddress = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                
+                
+                var endpoint = context.GetEndpoint();
+                var controllerActionDescriptor = endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>();
+                var controller = controllerActionDescriptor?.ControllerName ?? "unknown";
+                var action = controllerActionDescriptor?.ActionName ?? "unknown";
+                
+                
+                string resourceId = "unknown";
+                if (context.Request.RouteValues.TryGetValue("id", out var id))
+                {
+                    resourceId = id?.ToString() ?? "unknown";
+                }
+                
+                await _cassandraLogger.LogSecurityEventAsync(
+                    userId: userId,
+                    action: $"{method} {path}",
+                    resource: $"{controller}/{action}",
+                    resourceId: resourceId,
+                    result: "Denied",
+                    statusCode: context.Response.StatusCode,
+                    ipAddress: ipAddress,  
+                    message: context.Response.StatusCode == 401 ? "Unauthorized" : "Forbidden"
+                );
+                
+                _logger.LogWarning(
+                    "Security event: {StatusCode} {Method} {Path} by user {UserId} from IP {IpAddress}", 
+                    context.Response.StatusCode,
+                    method,
+                    path, 
+                    userId,
+                    ipAddress);
+            }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unhandled exception: {Message}", ex.Message);
+            
+            
+            var userId = currentUserService?.UserId;
+            var path = context.Request.Path.Value ?? "";
+            await _cassandraLogger.LogApplicationErrorAsync(
+                ex,
+                $"Unhandled exception in {context.Request.Method} {path}",
+                userId);
+                
             await HandleExceptionAsync(context, ex);
         }
     }
@@ -45,7 +101,10 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
                 CreateProblemDetails(HttpStatusCode.BadRequest, appEx.Message),
 
             UnauthorizedAccessException =>
-                CreateProblemDetails(HttpStatusCode.Unauthorized, "No permission to access this resource."),
+                CreateProblemDetails(HttpStatusCode.Forbidden, "No permission to access this resource."),
+
+            System.Security.Authentication.AuthenticationException authEx =>
+                CreateProblemDetails(HttpStatusCode.Unauthorized, authEx.Message),
 
             _ => CreateProblemDetails(HttpStatusCode.InternalServerError, "An error occurred while processing your request.")
         };

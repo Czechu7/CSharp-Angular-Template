@@ -15,6 +15,7 @@ namespace Presentation.Controllers;
 [Authorize]
 public class KarmelkiController : ApiControllerBase
 {
+    [Authorize(Policy = "RequireAdminRole")]
     [HttpPost]
     [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -41,6 +41,9 @@ public static class DependencyInjection
         services.AddScoped<IPasswordService, PasswordService>();
         services.AddScoped<ITokenService, TokenService>();
 
+        // Cassandra API integration
+        services.AddSingleton<ICassandraLogService, CassandraLogService>();
+
         // JWT Authentication configuration
         ConfigureJwtAuthentication(services, configuration);
         SecurityExtensions.AddRateLimitingServices(services);
