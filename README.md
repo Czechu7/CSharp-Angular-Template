@@ -12,7 +12,7 @@ A modern, production-ready template for building full-stack applications with .N
 - **🌐 Internationalization**: Ready for multi-language support with ngx-translate
 - **📝 Storybook Integration**: Component documentation and visual testing
 - **🧪 Testing**: Setup for unit and integration tests
-
+- **💾 Cassandra Logging**: Integration with Cassandra for advanced log management.
 ## Tech Stack
 
 ### Backend
@@ -21,7 +21,7 @@ A modern, production-ready template for building full-stack applications with .N
 - MediatR for CQRS pattern
 - Autofac for dependency injection
 - JWT authentication with refresh tokens
-- Logging and error handling
+- Logging and error handling (CassandraDB)
 - File support
 - Implemented security
 
@@ -42,6 +42,7 @@ A modern, production-ready template for building full-stack applications with .N
 - [Node.js](https://nodejs.org/) (version 18+)
 - [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [Docker](https://www.docker.com/products/docker-desktop/)
 
 ### Installation
 
@@ -55,6 +56,7 @@ cd CSharp-Angular-Template
 2. Set up the backend
 
 ```bash
+docker compose up -d
 cd API/Infrastructure
 dotnet restore
 dotnet ef database update
@@ -114,6 +116,7 @@ Edit the `appsettings.json` file in the API project to configure:
 - JWT settings
 - Logging options
 - CORS policies
+- Cassandra connection
 
 ### Frontend
 
