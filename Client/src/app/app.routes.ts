@@ -3,6 +3,8 @@ import { RouterEnum } from './enums/router.enum';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard/dashboard.component';
+import { AdminPanelComponent } from './features/admin/admin-panel/admin-panel.component';
+import { AdminUsersComponent } from './features/admin/admin-users/admin-users.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { unAuthGuard } from './core/_guards/unauth.guard';
 import { authGuard } from './core/_guards/auth.guard';
@@ -17,10 +19,19 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: RouterEnum.admin,
+    path: RouterEnum.dashboard,
     component: DashboardComponent,
     canActivate: [authGuard, roleGuard],
     data: { roles: [RolesEnum.ADMIN] },
+  },
+  {
+    path: RouterEnum.admin,
+    canActivate: [authGuard],
+    data: { roles: [RolesEnum.ADMIN] },
+    children: [
+      { path: '', component: AdminPanelComponent },
+      { path: RouterEnum.users, component: AdminUsersComponent },
+    ],
   },
   {
     path: RouterEnum.login,

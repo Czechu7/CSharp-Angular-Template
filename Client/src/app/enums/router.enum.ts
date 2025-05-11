@@ -1,15 +1,21 @@
 export enum RouterEnum {
   home = '',
+  dashboard = 'dashboard',
+  notFound = 'not-found',
+
   login = 'login',
   register = 'register',
   logout = 'logout',
+  forgetPassword = 'forget-password',
+
   settings = 'settings',
-  admin = 'admin',
   changePassword = 'change-password',
   deleteAccount = 'deleteAccount',
-  forgetPassword = 'forget-password',
   preferences = 'preferences',
+
+  admin = 'admin',
+  users = 'users',
+
   fileDetails = 'file-details',
-  notFound = 'not-found',
   karmelki = 'karmelki',
 }
