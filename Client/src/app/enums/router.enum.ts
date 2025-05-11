@@ -15,6 +15,7 @@ export enum RouterEnum {
 
   admin = 'admin',
   users = 'users',
+  logs = 'logs',
 
   fileDetails = 'file-details',
   karmelki = 'karmelki',

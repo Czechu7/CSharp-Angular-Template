@@ -5,6 +5,7 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard/dashboard.component';
 import { AdminPanelComponent } from './features/admin/admin-panel/admin-panel.component';
 import { AdminUsersComponent } from './features/admin/admin-users/admin-users.component';
+import { AdminLogsComponent } from './features/admin/admin-logs/admin-logs.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { unAuthGuard } from './core/_guards/unauth.guard';
 import { authGuard } from './core/_guards/auth.guard';
@@ -31,6 +32,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: AdminPanelComponent },
       { path: RouterEnum.users, component: AdminUsersComponent },
+      { path: RouterEnum.logs, component: AdminLogsComponent },
     ],
   },
   {
