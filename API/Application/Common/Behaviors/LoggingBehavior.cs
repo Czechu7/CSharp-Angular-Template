@@ -82,9 +82,9 @@ public class LoggingBehavior<TRequest, TResponse>(
                 return !string.IsNullOrEmpty(value) ? value : "unknown";
             }
         }
-        catch
+        catch(Exception ex)
         {
-            
+            _logger.LogDebug(ex, "Failed to retrieve resource ID for request of type {RequestType}", request.GetType().Name);
         }
         
         return "unknown";

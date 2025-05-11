@@ -217,8 +217,9 @@ public class CassandraLogService : ICassandraLogService, IDisposable
             
             await _session.ExecuteAsync(boundStatement);
             
+            var sanitizedContext = context.Replace("\r", "").Replace("\n", "");
             _logger.LogDebug("Application error logged to Cassandra: {ExceptionType} in {Context}", 
-                exception.GetType().Name, context);
+                exception.GetType().Name, sanitizedContext);
         }
         catch (Exception ex)
         {
