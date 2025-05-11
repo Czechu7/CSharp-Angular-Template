@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
+using Infrastructure.Security;
 
 namespace Infrastructure.Middleware;
 
@@ -27,7 +28,7 @@ public class ExceptionHandlingMiddleware(
             var userId = currentUserService.UserId ?? "anonymous";
             var path = context.Request.Path.Value?.Replace("\r", "").Replace("\n", "") ?? "";
             var method = context.Request.Method.Replace("\r", "").Replace("\n", "");
-            var ipAddress = context.Connection.RemoteIpAddress?.ToString().Replace("\r", "").Replace("\n", "") ?? "unknown";
+            var ipAddress = context.GetClientIpAddress()?.ToString().Replace("\r", "").Replace("\n", "") ?? "unknown";
             
             if (context.Response.StatusCode == 401 || context.Response.StatusCode == 403)
             {
@@ -68,13 +69,26 @@ public class ExceptionHandlingMiddleware(
             _logger.LogError(ex, "Unhandled exception: {Message}", ex.Message);
             
             
-            var userId = currentUserService?.UserId;
+            var userId = currentUserService?.UserId ?? "anonymous";
+            var ipAddress = context.GetClientIpAddress()?.ToString() ?? "unknown";
             var path = context.Request.Path.Value ?? "";
             await _cassandraLogger.LogApplicationErrorAsync(
                 ex,
                 $"Unhandled exception in {context.Request.Method} {path}",
                 userId);
                 
+            await _cassandraLogger.LogSecurityEventAsync(
+                userId,
+                "ACTION_NAME",
+                "RESOURCE_PATH",
+                "RESOURCE_ID",
+                "RESULT",
+                context.Response.StatusCode,
+                ipAddress,
+                "MESSAGE",
+                "ADDITIONAL_DATA"
+            );
+
             await HandleExceptionAsync(context, ex);
         }
     }

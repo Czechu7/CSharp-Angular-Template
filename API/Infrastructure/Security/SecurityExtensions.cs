@@ -16,7 +16,7 @@ public static class SecurityExtensions
 
             options.AddPolicy("standard", context =>
             {
-                var clientIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                var clientIp = context.GetClientIpAddress();
                 return RateLimitPartition.GetFixedWindowLimiter(clientIp, _ => new()
                 {
                     PermitLimit = 100,
@@ -26,7 +26,7 @@ public static class SecurityExtensions
 
             options.AddPolicy("auth", context =>
             {
-                var clientIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                var clientIp = context.GetClientIpAddress();
                 return RateLimitPartition.GetFixedWindowLimiter(clientIp, _ => new()
                 {
                     PermitLimit = 10,
@@ -44,6 +44,15 @@ public static class SecurityExtensions
         });
 
         services.AddAntiforgery();
+        
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | 
+                                      Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+            options.KnownNetworks.Clear();
+            options.KnownProxies.Clear();
+        });
+
         return services;
     }
 
@@ -63,4 +72,17 @@ public static class SecurityExtensions
         return app;
     }
 
+    public static string GetClientIpAddress(this HttpContext context)
+    {
+        string? ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',').FirstOrDefault() ??
+                    context.Request.Headers["X-Real-IP"].FirstOrDefault() ??
+                    context.Connection.RemoteIpAddress?.ToString();
+                    
+        if (string.IsNullOrEmpty(ip) || ip == "::1")
+        {
+            ip = context.Connection.RemoteIpAddress?.MapToIPv4().ToString();
+        }
+        
+        return !string.IsNullOrEmpty(ip) ? ip : "unknown";
+    }
 }
