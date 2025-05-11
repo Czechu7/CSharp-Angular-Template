@@ -27,10 +27,10 @@ export const routes: Routes = [
   },
   {
     path: RouterEnum.admin,
+    component: AdminPanelComponent,
     canActivate: [authGuard],
     data: { roles: [RolesEnum.ADMIN] },
     children: [
-      { path: '', component: AdminPanelComponent },
       { path: RouterEnum.users, component: AdminUsersComponent },
       { path: RouterEnum.logs, component: AdminLogsComponent },
     ],
