@@ -60,7 +60,7 @@ export class FileService {
 
   getPageableFiles(
     pageNumber: number,
-    pageSize: number
+    pageSize: number,
   ): Observable<IBaseResponse<IFileListResponseDto>> {
     return this.requestFactory.getPaged<IFileListResponseDto>(ApiEndpoints.GET_FILES_LIST, {
       pageNumber,
@@ -72,7 +72,7 @@ export class FileService {
     return this.requestFactory.update<IBaseResponseWithoutData, IFileEditRequestDto>(
       ApiEndpoints.EDIT_FILE,
       fileId,
-      { fileName }
+      { fileName },
     );
   }
 

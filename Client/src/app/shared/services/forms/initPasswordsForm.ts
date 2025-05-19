@@ -23,6 +23,6 @@ export const initPasswordsForm = (): FormGroup<PasswordsForm> => {
         nonNullable: true,
       }),
     },
-    { validators: [equivalentValidator('password', 'repeatedPassword')] }
+    { validators: [equivalentValidator('password', 'repeatedPassword')] },
   );
 };

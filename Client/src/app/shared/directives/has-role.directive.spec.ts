@@ -58,7 +58,7 @@ describe('HasRoleDirective', () => {
     const adminContent = fixture.debugElement.queryAll(By.css('[data-testid="admin-content"]'));
     const userContent = fixture.debugElement.queryAll(By.css('[data-testid="user-content"]'));
     const multiRoleContent = fixture.debugElement.queryAll(
-      By.css('[data-testid="multi-role-content"]')
+      By.css('[data-testid="multi-role-content"]'),
     );
 
     expect(adminContent.length).toBe(0);
