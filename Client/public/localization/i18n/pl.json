@@ -34,6 +34,20 @@
     "HAS_ACCOUNT_TEXT": "Masz konto?",
     "LOGIN": "Zaloguj się"
   },
+  "ADMIN": {
+    "USERS": {
+      "FIRST_NAME": "Imię",
+      "TITLE": "Użytkownicy",
+      "LAST_NAME": "Nazwisko",
+      "EMAIL": "Email",
+      "ROLE": "Rola",
+      "CREATED_AT": "Utworzono",
+      "STATUS": "Status",
+      "ACTIONS": "Akcje",
+      "DELETE_CONFIRMATION": "Potwierdzenie usunięcia",
+      "DELETE_CONFIRMATION_MESSAGE": "Czy na pewno chcesz usunąć tego użytkownika?"
+    }
+  },
   "EXAMPLE-CRUD": {
     "TITLE": "Lista Karmelków",
     "NAME": "Nazwa",

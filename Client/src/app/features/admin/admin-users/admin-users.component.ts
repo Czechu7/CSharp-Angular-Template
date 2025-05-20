@@ -1,10 +1,134 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { TableComponent } from '../../../shared/components/table/table.component';
+import { ITableActionButton, ITableColumn } from '../../../shared/types/table.types';
+import { MenuItem } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
+import { AdminService } from '../../../core/_services/admin/admin.service';
+import { DatePipe } from '@angular/common';
+import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
+import { IUserAdmin } from '../../../core/_models/user-admin.model';
 
 @Component({
   selector: 'app-admin-users',
   standalone: true,
-  imports: [],
+  imports: [TableComponent, ConfirmModalComponent, TranslateModule],
+  providers: [DatePipe],
   templateUrl: './admin-users.component.html',
   styleUrl: './admin-users.component.scss',
 })
-export class AdminUsersComponent {}
+export class AdminUsersComponent implements OnInit {
+  private adminService = inject(AdminService);
+  private datePipe = inject(DatePipe);
+
+  users: IUserAdmin[] = [];
+  loading: boolean = false;
+  totalRecords: number = 0;
+
+  // TABLE
+  columns: ITableColumn[] = [
+    { field: 'id', header: 'ID' },
+    { field: 'firstName', header: 'ADMIN.USERS.FIRST_NAME' },
+    { field: 'lastName', header: 'ADMIN.USERS.LAST_NAME' },
+    { field: 'email', header: 'ADMIN.USERS.EMAIL' },
+    { field: 'role', header: 'ADMIN.USERS.ROLE' },
+    { field: 'createdAt', header: 'ADMIN.USERS.CREATED_AT' },
+    { field: 'isActive', header: 'ADMIN.USERS.STATUS' },
+  ];
+
+  actionButtons: ITableActionButton[] = [
+    { icon: 'pi pi-pencil', ariaLabel: 'ADMIN.USERS.EDIT', action: 'edit' },
+    { icon: 'pi pi-eye', ariaLabel: 'ADMIN.USERS.VIEW', action: 'view' },
+    { icon: 'pi pi-trash', severity: 'danger', ariaLabel: 'ADMIN.USERS.DELETE', action: 'delete' },
+  ];
+
+  contextMenuItems: MenuItem[] = [
+    { label: 'ADMIN.USERS.EDIT', icon: 'pi pi-pencil', id: 'edit' },
+    { label: 'ADMIN.USERS.VIEW', icon: 'pi pi-eye', id: 'view' },
+    { label: 'ADMIN.USERS.DELETE', icon: 'pi pi-trash', id: 'delete' },
+  ];
+
+  // MODAL
+  showConfirmModal: boolean = false;
+  userToDelete: IUserAdmin | null = null;
+  confirmModalHeader: string = 'ADMIN.USERS.DELETE_CONFIRMATION';
+  confirmModalMessage: string = 'ADMIN.USERS.DELETE_CONFIRMATION_MESSAGE';
+  confirmModalMessageName: string = '';
+  confirmModalYesLabel: string = 'UTILS.YES';
+  confirmModalNoLabel: string = 'UTILS.NO';
+
+  ngOnInit(): void {
+    this.loadUsers({ page: 0, rows: 5 });
+  }
+
+  loadUsers(event: { page: number; rows: number }): void {
+    this.loading = true;
+
+    this.adminService.getUsers(event.page, event.rows).subscribe({
+      next: response => {
+        this.users = response.data.map(apiUser => ({
+          ...apiUser,
+          createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
+        }));
+      },
+      error: error => {
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
+  }
+
+  refreshUsers(): void {
+    this.loadUsers({ page: 0, rows: 5 });
+  }
+
+  handleAction(event: { action: string; item: IUserAdmin }): void {
+    switch (event.action) {
+      case 'edit':
+        console.log('Edit:', event.item);
+        break;
+      case 'view':
+        console.log('View:', event.item);
+        break;
+      case 'delete':
+        console.log('Delete:', event.item);
+        this.userToDelete = event.item;
+        this.confirmModalMessageName = `${event.item.firstName} ${event.item.lastName} - `;
+        this.showConfirmModal = true;
+        break;
+    }
+  }
+
+  handleContextMenuAction(event: { action: Event; item: IUserAdmin }): void {
+    const target = event.action.target as HTMLElement;
+    const action = target.closest('[id]')?.getAttribute('id');
+
+    if (action) {
+      this.handleAction({ action, item: event.item });
+    }
+  }
+
+  onConfirmDelete(): void {
+    if (this.userToDelete) {
+      console.log('Delete:', this.userToDelete);
+      this.adminService.deleteUser(this.userToDelete.id).subscribe({
+        next: () => {
+          this.users = this.users.filter(user => user.id !== this.userToDelete?.id);
+        },
+        error: error => {
+          console.error('Error deleting user:', error);
+        },
+        complete: () => {
+          this.showConfirmModal = false;
+          this.userToDelete = null;
+        },
+      });
+    }
+  }
+
+  onCancelDelete(): void {
+    this.showConfirmModal = false;
+    this.userToDelete = null;
+  }
+}
