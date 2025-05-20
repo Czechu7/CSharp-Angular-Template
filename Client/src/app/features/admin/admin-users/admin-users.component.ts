@@ -7,6 +7,7 @@ import { AdminService } from '../../../core/_services/admin/admin.service';
 import { DatePipe } from '@angular/common';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { IUserAdmin } from '../../../core/_models/user-admin.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-users',
@@ -19,6 +20,7 @@ import { IUserAdmin } from '../../../core/_models/user-admin.model';
 export class AdminUsersComponent implements OnInit {
   private adminService = inject(AdminService);
   private datePipe = inject(DatePipe);
+  private router = inject(Router);
 
   users: IUserAdmin[] = [];
   loading: boolean = false;
@@ -87,6 +89,7 @@ export class AdminUsersComponent implements OnInit {
     switch (event.action) {
       case 'edit':
         console.log('Edit:', event.item);
+        this.router.navigate(['admin', 'users', event.item.id]);
         break;
       case 'view':
         console.log('View:', event.item);

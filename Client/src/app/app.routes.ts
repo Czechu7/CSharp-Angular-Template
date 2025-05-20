@@ -12,6 +12,7 @@ import { authGuard } from './core/_guards/auth.guard';
 import { roleGuard } from './core/_guards/role.guard';
 import { RolesEnum } from './enums/roles.enum';
 import { ExampleCrudViewComponent } from './features/example-crud-view/example-crud-view.component';
+import { AdminUsersEditComponent } from './features/admin/admin-users-edit/admin-users-edit.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,7 @@ export const routes: Routes = [
     data: { roles: [RolesEnum.ADMIN] },
     children: [
       { path: RouterEnum.users, component: AdminUsersComponent },
+      { path: `${RouterEnum.users}/:id`, component: AdminUsersEditComponent },
       { path: RouterEnum.logs, component: AdminLogsComponent },
     ],
   },
