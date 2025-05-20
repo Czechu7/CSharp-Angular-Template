@@ -54,6 +54,35 @@
     "CONFIRM_DELETE_TITLE": "Potwierdzenie usunięcia",
     "CONFIRM_DELETE_MESSAGE": "Czy na pewno chcesz usunąć ten karmelek?"
   },
+  "FILE_TABLE": {
+    "SEARCH_PLACEHOLDER": "Szukaj...",
+    "REFRESH": "Odśwież",
+    "DOWNLOAD": "Pobierz",
+    "PREVIEW": "Podgląd",
+    "DELETE": "Usuń",
+    "NO_FILES": "Brak plików do wyświetlenia",
+    "CONTEXT_MENU": {
+      "DOWNLOAD": "Pobierz",
+      "PREVIEW": "Podgląd",
+      "DELETE": "Usuń",
+      "PROPERTIES": "Właściwości"
+    }
+  },
+  "TABLE": {
+    "SEARCH_PLACEHOLDER": "Szukaj...",
+    "REFRESH": "Odśwież",
+    "DOWNLOAD": "Pobierz",
+    "PREVIEW": "Podgląd",
+    "DELETE": "Usuń",
+    "NO_ITEMS": "Brak elementów do wyświetlenia",
+    "ACTIONS": "Akcje",
+    "CONTEXT_MENU": {
+      "DOWNLOAD": "Pobierz",
+      "PREVIEW": "Podgląd",
+      "DELETE": "Usuń",
+      "PROPERTIES": "Właściwości"
+    }
+  },
   "UTILS": {
     "YES": "Tak",
     "NO": "Nie",

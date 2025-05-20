@@ -55,6 +55,35 @@
     "CONFIRM_DELETE_TITLE": "Delete confirmation",
     "CONFIRM_DELETE_MESSAGE": "Are you sure you want to delete this Karmelek?"
   },
+  "FILE_TABLE": {
+    "SEARCH_PLACEHOLDER": "Search...",
+    "REFRESH": "Refresh",
+    "DOWNLOAD": "Download",
+    "PREVIEW": "Preview",
+    "DELETE": "Delete",
+    "NO_FILES": "No files to display",
+    "CONTEXT_MENU": {
+      "DOWNLOAD": "Download",
+      "PREVIEW": "Preview",
+      "DELETE": "Delete",
+      "PROPERTIES": "Properties"
+    }
+  },
+  "TABLE": {
+    "SEARCH_PLACEHOLDER": "Search...",
+    "REFRESH": "Refresh",
+    "DOWNLOAD": "Download",
+    "PREVIEW": "Preview",
+    "DELETE": "Delete",
+    "NO_ITEMS": "No items to display",
+    "ACTIONS": "Actions",
+    "CONTEXT_MENU": {
+      "DOWNLOAD": "Download",
+      "PREVIEW": "Preview",
+      "DELETE": "Delete",
+      "PROPERTIES": "Properties"
+    }
+  },
   "UTILS": {
     "YES": "Yes",
     "NO": "No",
