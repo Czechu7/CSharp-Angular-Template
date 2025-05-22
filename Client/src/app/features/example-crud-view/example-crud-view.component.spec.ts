@@ -8,9 +8,8 @@ describe('ExampleCrudViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExampleCrudViewComponent]
-    })
-    .compileComponents();
+      imports: [ExampleCrudViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExampleCrudViewComponent);
     component = fixture.componentInstance;

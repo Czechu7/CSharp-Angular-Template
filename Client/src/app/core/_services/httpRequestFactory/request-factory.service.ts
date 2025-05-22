@@ -20,7 +20,7 @@ export class RequestFactoryService {
   post<T, B>(
     endpoint: ApiEndpoints,
     body: B,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T, B>('POST', endpoint, body, options);
   }
@@ -32,7 +32,7 @@ export class RequestFactoryService {
   getById<T>(
     endpoint: ApiEndpoints,
     id: string,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T>('GET', `${endpoint}/${id}`, null, options);
   }
@@ -47,7 +47,7 @@ export class RequestFactoryService {
   getPaged<T>(
     endpoint: ApiEndpoints,
     queryParams: IPagedQueryParams,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     const pageNumber = queryParams.pageNumber > 0 ? queryParams.pageNumber : 1;
     const pageSize = queryParams.pageSize > 0 ? queryParams.pageSize : 10;
@@ -77,7 +77,7 @@ export class RequestFactoryService {
   create<T, B>(
     endpoint: ApiEndpoints,
     body: B,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T, B>('POST', endpoint, body, options);
   }
@@ -86,7 +86,7 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     id: string,
     body: B,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T, B>('PUT', `${endpoint}/${id}`, body, options);
   }
@@ -95,7 +95,7 @@ export class RequestFactoryService {
     endpoint: ApiEndpoints,
     id: string,
     body: B,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T, B>('PATCH', `${endpoint}/${id}`, body, options);
   }
@@ -103,13 +103,13 @@ export class RequestFactoryService {
   delete<T>(
     endpoint: ApiEndpoints,
     id: string,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     return this.request<T, { isDeleted: number }>(
       'PATCH',
       `${endpoint}/${id}`,
       { isDeleted: 1 },
-      options
+      options,
     );
   }
 
@@ -125,7 +125,7 @@ export class RequestFactoryService {
     method: string,
     endpoint: ApiEndpoints | string,
     body?: B | null | undefined,
-    options?: IQueryParams
+    options?: IQueryParams,
   ): Observable<IBaseResponse<T>> {
     const headers = options?.headers ? options.headers : this.getDefaultHeaders();
     const params = options?.params ? options.params : this.getDefaultParams();
@@ -139,7 +139,7 @@ export class RequestFactoryService {
     return this.http.request<IBaseResponse<T>>(
       method,
       `${environment.apiURL}/${endpoint}`,
-      configuration
+      configuration,
     );
   }
 }

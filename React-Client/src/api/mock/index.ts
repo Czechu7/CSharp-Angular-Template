@@ -1,3 +1,2 @@
-export * from "./mock";
-export * from "./mockUser";
-
+export * from './mock';
+export * from './mockUser';

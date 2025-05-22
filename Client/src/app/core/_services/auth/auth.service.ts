@@ -46,7 +46,7 @@ export class AuthService {
             this.initRoles();
             this.router.navigate(['/']);
           }
-        })
+        }),
       );
   }
 
@@ -64,7 +64,7 @@ export class AuthService {
             this.initRoles();
             this.router.navigate(['/']);
           }
-        })
+        }),
       );
   }
 

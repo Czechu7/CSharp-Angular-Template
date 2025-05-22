@@ -45,7 +45,7 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               isRefreshing = false;
               tokenService.removeTokens();
               return throwError(() => refreshError);
-            })
+            }),
           );
         } else {
           isRefreshing = false;
@@ -55,6 +55,6 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
       } else {
         return throwError(() => error);
       }
-    })
+    }),
   );
 };
