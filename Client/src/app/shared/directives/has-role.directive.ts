@@ -8,6 +8,7 @@ import {
   untracked,
 } from '@angular/core';
 import { RoleService } from '../../core/_services/role/role.service';
+import { RolesEnum } from '../../enums/roles.enum';
 
 @Directive({
   selector: '[hasRole]',
@@ -21,8 +22,15 @@ export class HasRoleDirective {
   private requiredRoles: string[] | undefined;
 
   @Input()
-  set hasRole(roles: string[]) {
+  set hasRole(roles: RolesEnum[] | string[] | undefined) {
     this.requiredRoles = roles;
+
+    if (roles === undefined || roles.length === 0) {
+      this.requiredRoles = undefined;
+    } else {
+      this.requiredRoles = roles.map(role => String(role));
+    }
+
     this.updateView();
   }
 

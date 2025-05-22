@@ -43,6 +43,7 @@
                 class="nav-link"
                 [class.disabled]="item.disabled"
                 (click)="!item.disabled && navigateTo(item)"
+                *hasRole="item.roles"
               >
                 @if (item.icon) {
                   <i class="nav-icon {{ item.icon }}"></i>

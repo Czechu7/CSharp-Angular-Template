@@ -1,0 +1,18 @@
+@import '../../../../styles/utils/variables';
+
+.admin-profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: $content-min-height;
+  gap: 15px;
+
+  .submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+}

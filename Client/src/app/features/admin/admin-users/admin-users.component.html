@@ -1,0 +1,27 @@
+<div class="card w-3/4 max-w-7xl mx-auto">
+  <app-table
+    [cols]="columns"
+    [data]="users"
+    [headerTitle]="'ADMIN.USERS.TITLE' | translate"
+    [loading]="loading"
+    [totalRecords]="totalRecords"
+    [showSearchBar]="true"
+    [showActions]="true"
+    [actionButtons]="actionButtons"
+    [contextMenuItems]="contextMenuItems"
+    (onPageChange)="loadUsers($event)"
+    (onActionEvent)="handleAction($event)"
+    (onRefreshEvent)="refreshUsers()"
+    (onContextMenuActionEvent)="handleContextMenuAction($event)"
+  />
+</div>
+
+<app-confirm-modal
+  [visible]="showConfirmModal"
+  [header]="confirmModalHeader | translate"
+  [message]="confirmModalMessageName + (confirmModalMessage | translate)"
+  [yesLabel]="confirmModalYesLabel | translate"
+  [noLabel]="confirmModalNoLabel | translate"
+  (yes)="onConfirmDelete()"
+  (no)="onCancelDelete()"
+/>

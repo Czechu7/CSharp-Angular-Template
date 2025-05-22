@@ -59,7 +59,7 @@
     <tr>
       @for (col of columns; track col) {
         <th>
-          {{ col.header }}
+          {{ col.header | translate }}
         </th>
       }
       @if (showActions) {

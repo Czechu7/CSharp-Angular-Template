@@ -1,0 +1,13 @@
+<div class="app-container">
+  <app-sidebar
+    [(visible)]="sidebarVisible"
+    [(collapsed)]="sidebarCollapsed"
+    [position]="'left'"
+    [title]="'Angular Template'"
+    [menuItems]="menuItems"
+  />
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

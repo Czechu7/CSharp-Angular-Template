@@ -7,6 +7,7 @@
     "TITLE": "Angular Template",
     "FOOTER_TITLE": "Karmelki",
     "PROFILE": "Profil",
+    "ADMIN_PANEL": "Panel administracyjny",
     "LOGOUT": "Wyloguj się",
     "LOGIN": "Zaloguj się",
     "REGISTER": "Zarejestruj się"
@@ -32,6 +33,32 @@
     "REGISTER_BUTTON": "Zarejestruj się",
     "HAS_ACCOUNT_TEXT": "Masz konto?",
     "LOGIN": "Zaloguj się"
+  },
+  "ADMIN": {
+    "USERS": {
+      "FIRST_NAME": "Imię",
+      "TITLE": "Użytkownicy",
+      "LAST_NAME": "Nazwisko",
+      "EMAIL": "Email",
+      "ROLE": "Rola",
+      "CREATED_AT": "Utworzono",
+      "STATUS": "Status",
+      "ACTIONS": "Akcje",
+      "DELETE_CONFIRMATION": "Potwierdzenie usunięcia",
+      "DELETE_CONFIRMATION_MESSAGE": "Czy na pewno chcesz usunąć tego użytkownika?"
+    },
+    "PROFILE_EDIT": {
+      "TITLE": "Edytuj profil",
+      "FIRST_NAME": "Imię",
+      "LAST_NAME": "Nazwisko",
+      "EMAIL": "Email",
+      "PASSWORD": "Hasło",
+      "ROLE": "Rola",
+      "STATUS": "Status",
+      "SAVE_BUTTON": "Zapisz zmiany",
+      "CANCEL_BUTTON": "Anuluj",
+      "RESET_PASSWORD": "Zresetuj hasło"
+    }
   },
   "EXAMPLE-CRUD": {
     "TITLE": "Lista Karmelków",
@@ -87,7 +114,9 @@
     "NO": "Nie",
     "CANCEL": "Anuluj",
     "CONFIRM": "Potwierdź",
-    "SAVE": "Zapisz"
+    "SAVE": "Zapisz",
+    "EDIT": "Edytuj",
+    "BACK": "Wstecz"
   },
   "NOT-FOUND": {
     "TITLE": "404 - Nie znaleziono strony",
