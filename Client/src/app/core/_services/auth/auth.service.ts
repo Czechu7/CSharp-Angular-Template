@@ -148,7 +148,6 @@ export class AuthService {
   }
 
   private initRoles(): void {
-    console.log('initRoles');
     const accessToken = this.tokenService.getAccessToken();
     if (this.isAuth() && accessToken) {
       const decodedToken = this.tokenService.decodeToken(accessToken);
