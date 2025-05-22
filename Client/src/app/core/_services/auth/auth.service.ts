@@ -45,7 +45,7 @@ export class AuthService {
             this.isLogged.set(true);
             this.router.navigate(['/']);
           }
-        })
+        }),
       );
   }
 
@@ -62,7 +62,7 @@ export class AuthService {
             this.isLogged.set(true);
             this.router.navigate(['/']);
           }
-        })
+        }),
       );
   }
 

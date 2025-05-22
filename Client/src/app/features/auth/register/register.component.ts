@@ -32,7 +32,7 @@ import { ErrorService } from '../../../shared/services/error.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup<RegisterForm>;
   RouterEnum = RouterEnum;
-  
+
   protected isLoading = false;
 
   private formService = inject(FormService);

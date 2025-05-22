@@ -1,10 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileTableComponent } from './file-table.component';
-import { TranslateModule, TranslateLoader, MissingTranslationHandler } from '@ngx-translate/core';
+import {
+  TranslateModule,
+  TranslateLoader,
+  MissingTranslationHandler,
+  MissingTranslationHandlerParams,
+} from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 class MockMissingTranslationHandler implements MissingTranslationHandler {
-  handle(params: any): string {
+  handle(params: MissingTranslationHandlerParams): string {
     return `Missing translation for: ${params.key}`;
   }
 }

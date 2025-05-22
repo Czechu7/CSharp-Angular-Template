@@ -67,7 +67,7 @@ export class AltchaComponent implements ControlValueAccessor, Validator, IAltcha
     });
   }
 
-  writeValue(value: any): void {
+  writeValue(value: string): void {
     this.value = value;
   }
 
