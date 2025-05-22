@@ -43,6 +43,7 @@ export class AuthService {
               expiresAt: res.data.expiresAt,
             });
             this.isLogged.set(true);
+            this.initRoles();
             this.router.navigate(['/']);
           }
         })
@@ -60,6 +61,7 @@ export class AuthService {
               expiresAt: res.data.expiresAt,
             });
             this.isLogged.set(true);
+            this.initRoles();
             this.router.navigate(['/']);
           }
         })
@@ -146,6 +148,7 @@ export class AuthService {
   }
 
   private initRoles(): void {
+    console.log('initRoles');
     const accessToken = this.tokenService.getAccessToken();
     if (this.isAuth() && accessToken) {
       const decodedToken = this.tokenService.decodeToken(accessToken);
