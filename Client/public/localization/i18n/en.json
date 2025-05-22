@@ -47,6 +47,18 @@
       "ACTIONS": "Actions",
       "DELETE_CONFIRMATION": "Delete Confirmation",
       "DELETE_CONFIRMATION_MESSAGE": "Are you sure you want to delete this user?"
+    },
+    "PROFILE_EDIT": {
+      "TITLE": "Edit user profile",
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "ROLE": "Role",
+      "STATUS": "Status",
+      "SAVE_BUTTON": "Save",
+      "CANCEL_BUTTON": "Cancel",
+      "RESET_PASSWORD": "Reset password"
     }
   },
   "EXAMPLE-CRUD": {

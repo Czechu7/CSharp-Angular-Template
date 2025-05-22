@@ -85,8 +85,8 @@
         <app-button
           [icon]="editState.password ? 'pi pi-save' : 'pi pi-pencil'"
           [severity]="editState.password ? 'success' : 'secondary'"
-          [label]="(editState.password ? 'UTILS.SAVE' : 'UTILS.EDIT') | translate"
-          (click)="toggleEditField('password')"
+          [label]="'ADMIN.PROFILE_EDIT.RESET_PASSWORD' | translate"
+          (click)="sendPasswordResetEmail()"
           [disabled]="isLoading"
         />
       </div>

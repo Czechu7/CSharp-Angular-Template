@@ -56,7 +56,8 @@
       "ROLE": "Rola",
       "STATUS": "Status",
       "SAVE_BUTTON": "Zapisz zmiany",
-      "CANCEL_BUTTON": "Anuluj"
+      "CANCEL_BUTTON": "Anuluj",
+      "RESET_PASSWORD": "Zresetuj hasło"
     }
   },
   "EXAMPLE-CRUD": {

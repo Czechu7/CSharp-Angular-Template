@@ -62,5 +62,30 @@ export class AdminService {
     return of(true).pipe(delay(500));
   }
 
+  sendPasswordResetEmail() {
+    return of(true).pipe(delay(500));
+  }
+
+  getUserDetails(id: string): Observable<IBaseResponse<IUserAdmin>> {
+    const mockUser: IUserAdmin = {
+      id: '1',
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'mail@mail.com',
+      role: 'Admin',
+      createdAt: new Date(2022, 5, 15),
+      isActive: true,
+    };
+
+    const response: IBaseResponse<IUserAdmin> = {
+      data: mockUser,
+      success: true,
+      statusCode: 200,
+      message: 'Mock users fetched successfully',
+    };
+
+    return of(response).pipe(delay(500));
+  }
+
   constructor() {}
 }

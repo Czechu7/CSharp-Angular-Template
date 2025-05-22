@@ -10,7 +10,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ErrorService } from '../../../shared/services/error.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { RouterEnum } from '../../../enums/router.enum';
-import { SelectComponent } from '../../../shared/components/select/select.component';
+import { AdminService } from '../../../core/_services/admin/admin.service';
+import { IUserAdmin } from '../../../core/_models/user-admin.model';
+import { RolesEnum } from '../../../enums/roles.enum';
 
 @Component({
   selector: 'app-admin-users-edit',
@@ -32,20 +34,11 @@ export class AdminUsersEditComponent implements OnInit {
 
   protected isLoading = false;
 
-  public roles = [
-    { id: 1, name: 'Admin' },
-    { id: 2, name: 'User' },
-    { id: 3, name: 'Guest' },
-  ];
+  rolesEnum = RolesEnum;
 
-  public user = {
-    id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'mail@mail.com',
-    role: 'Admin',
-  };
+  userData: IUserAdmin | undefined = undefined;
 
+  private adminService = inject(AdminService);
   private route = inject(ActivatedRoute);
   private formService = inject(FormService);
   private errorService = inject(ErrorService);
@@ -68,13 +61,15 @@ export class AdminUsersEditComponent implements OnInit {
       console.log('User ID:', this.userId);
     });
 
-    this.fillForm();
+    this.getUserDetails();
   }
 
   fillForm() {
-    this.controls.firstName.setValue(this.user.firstName);
-    this.controls.lastName.setValue(this.user.lastName);
-    this.controls.email.setValue(this.user.email);
+    if (!this.userData) return;
+
+    this.controls.firstName.setValue(this.userData.firstName);
+    this.controls.lastName.setValue(this.userData.lastName);
+    this.controls.email.setValue(this.userData.email);
     this.controls.password.setValue('password');
     this.controls.firstName.disable();
     this.controls.lastName.disable();
@@ -111,7 +106,42 @@ export class AdminUsersEditComponent implements OnInit {
     this.controls[fieldName as keyof AdminProfileForm].disable();
     this.editState[fieldName] = false;
     this.isLoading = false;
-    
+
     const updateData = { [fieldName]: fieldValue };
+  }
+
+  getUserDetails() {
+    this.isLoading = true;
+    if (!this.userId) return;
+
+    this.adminService.getUserDetails(this.userId).subscribe({
+      next: response => {
+        console.log('User details:', response);
+        this.userData = response.data;
+        this.fillForm();
+      },
+      error: error => {
+        console.error('Error fetching user details:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+        this.fillForm();
+      },
+    });
+  }
+
+  sendPasswordResetEmail() {
+    this.isLoading = true;
+    this.adminService.sendPasswordResetEmail().subscribe({
+      next: response => {
+        console.log('Password reset email sent:', response);
+      },
+      error: error => {
+        console.error('Error sending password reset email:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
   }
 }
