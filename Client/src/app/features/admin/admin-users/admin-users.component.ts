@@ -64,12 +64,14 @@ export class AdminUsersComponent implements OnInit {
 
   loadUsers(event?: { page: number; rows: number }): void {
     this.loading = true;
-    const pageNumber = event ? event.page / event.rows + 1 : 1;
+    const pageNumber = event ? event.page  + 1 : 1;
     const pageSize = event ? event.rows : 10;
 
     this.adminService.getPagedUsers({ pageNumber, pageSize }).subscribe({
       next: response => {
         console.log('Users:', response.data.items);
+              this.users = response.data.items;
+        this.totalRecords = response.data.pagination!.totalCount;
         // this.users = response.data.map(apiUser => ({
         //   ...apiUser,
         //   createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
