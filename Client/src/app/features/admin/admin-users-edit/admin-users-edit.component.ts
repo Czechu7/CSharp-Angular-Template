@@ -52,6 +52,14 @@ export class AdminUsersEditComponent implements OnInit {
 
   userId: string | null = null;
 
+  editState = {
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
+    role: false,
+  };
+
   ngOnInit(): void {
     this.adminProfileForm = this.formService.getAdminProfileForm();
 
@@ -68,6 +76,9 @@ export class AdminUsersEditComponent implements OnInit {
     this.controls.lastName.setValue(this.user.lastName);
     this.controls.email.setValue(this.user.email);
     this.controls.password.setValue('password');
+    this.controls.firstName.disable();
+    this.controls.lastName.disable();
+    this.controls.email.disable();
     this.controls.password.disable();
   }
 
@@ -81,5 +92,26 @@ export class AdminUsersEditComponent implements OnInit {
 
   onSubmit() {
     console.log('Form submitted:', this.adminProfileForm);
+  }
+
+  toggleEditField(fieldName: keyof typeof this.editState): void {
+    if (this.editState[fieldName]) {
+      this.saveField(fieldName);
+    } else {
+      this.editState[fieldName] = true;
+      this.controls[fieldName as keyof AdminProfileForm].enable();
+    }
+  }
+
+  saveField(fieldName: keyof typeof this.editState): void {
+    if (!this.userId) return;
+
+    const fieldValue = this.controls[fieldName as keyof AdminProfileForm].value;
+
+    this.controls[fieldName as keyof AdminProfileForm].disable();
+    this.editState[fieldName] = false;
+    this.isLoading = false;
+    
+    const updateData = { [fieldName]: fieldValue };
   }
 }

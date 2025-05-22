@@ -103,7 +103,9 @@
     "NO": "No",
     "CANCEL": "Cancel",
     "CONFIRM": "Confirm",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "EDIT": "Edit",
+    "BACK": "Back"
   },
   "NOT-FOUND": {
     "TITLE": "404 - Page Not Found",

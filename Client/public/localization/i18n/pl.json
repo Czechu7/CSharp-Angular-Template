@@ -113,7 +113,9 @@
     "NO": "Nie",
     "CANCEL": "Anuluj",
     "CONFIRM": "Potwierdź",
-    "SAVE": "Zapisz"
+    "SAVE": "Zapisz",
+    "EDIT": "Edytuj",
+    "BACK": "Wstecz"
   },
   "NOT-FOUND": {
     "TITLE": "404 - Nie znaleziono strony",
