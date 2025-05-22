@@ -7,6 +7,7 @@ import {
   PasswordsForm,
   RegisterForm,
   ThemeForm,
+  UserForm
 } from '../models/form.model';
 import { initLoginForm } from './forms/initLoginForm';
 import { initPasswdRecoveryForm } from './forms/initPasswdRecoveryForm';
@@ -14,6 +15,7 @@ import { initPasswordsForm } from './forms/initPasswordsForm';
 import { initRegisterForm } from './forms/initRegisterForm';
 import { initThemeForm } from './forms/initThemeForm';
 import { initExampleCrudForm } from './forms/initExampleCrudForm';
+import { initUserForm } from './forms/initUserForm';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +43,8 @@ export class FormService {
 
   public getExampleCrudForm(): FormGroup<ExampleCrudForm> {
     return initExampleCrudForm();
+  }
+  public getUserForm(): FormGroup<UserForm> { 
+    return initUserForm();
   }
 }

@@ -12,4 +12,5 @@ export enum RouterEnum {
   fileDetails = 'file-details',
   notFound = 'not-found',
   karmelki = 'karmelki',
+  userPanel = 'user-panel'
 }

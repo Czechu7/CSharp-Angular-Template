@@ -18,4 +18,6 @@ export enum ApiEndpoints {
   DELETE_FILE = 'api/files',
   GET_FILES_STATS = 'api/files/stats',
   KARMELKI = 'api/karmelki',
+  GET_CURRENT_USER = 'auth/current-user',
+  UPDATE_USER = 'auth/update-user',
 }

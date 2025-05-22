@@ -21,6 +21,15 @@ export interface RegisterForm extends LoginForm {
   confirmPassword: FormControl<string>;
 }
 
+export interface UserForm {
+  username: FormControl<string>;
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  email: FormControl<string>;
+  currentPassword: FormControl<string>;
+  newPassword: FormControl<string>;
+}
+
 export interface ThemeForm {
   theme: FormControl<boolean>;
 }
