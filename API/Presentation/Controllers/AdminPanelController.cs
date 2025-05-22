@@ -27,7 +27,7 @@ public class AdminPanelController : ApiControllerBase
         {
             if (response.StatusCode == 404)
                 return NotFound(response);
-            
+
             return BadRequest(response);
         }
 
@@ -52,6 +52,26 @@ public class AdminPanelController : ApiControllerBase
 
         if (!response.Success)
         {
+            return BadRequest(response);
+        }
+
+        return Ok(response);
+    }
+    [HttpGet("users/{id}")]
+    [ProducesResponseType(typeof(Response<UserProfileDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult<Response<UserProfileDto>>> GetUserById(Guid id)
+    {
+        var query = new GetUserByIdQuery(id);
+        var response = await Mediator.Send(query);
+
+        if (!response.Success)
+        {
+            if (response.StatusCode == 404)
+                return NotFound(response);
+
             return BadRequest(response);
         }
 
