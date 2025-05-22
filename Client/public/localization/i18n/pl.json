@@ -46,6 +46,17 @@
       "ACTIONS": "Akcje",
       "DELETE_CONFIRMATION": "Potwierdzenie usunięcia",
       "DELETE_CONFIRMATION_MESSAGE": "Czy na pewno chcesz usunąć tego użytkownika?"
+    },
+    "PROFILE_EDIT": {
+      "TITLE": "Edytuj profil",
+      "FIRST_NAME": "Imię",
+      "LAST_NAME": "Nazwisko",
+      "EMAIL": "Email",
+      "PASSWORD": "Hasło",
+      "ROLE": "Rola",
+      "STATUS": "Status",
+      "SAVE_BUTTON": "Zapisz zmiany",
+      "CANCEL_BUTTON": "Anuluj"
     }
   },
   "EXAMPLE-CRUD": {

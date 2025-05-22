@@ -1,2 +1,65 @@
 <p>admin-users-edit works!</p>
 <p>Edycja użytkownika o ID: {{ userId }}</p>
+
+<div class="admin-profile-page">
+  <h1>{{ 'ADMIN.PROFILE_EDIT.TITLE' | translate }}</h1>
+  <form [formGroup]="adminProfileForm" (ngSubmit)="onSubmit()">
+    <app-input
+      [formControl]="controls.firstName"
+      formControlName="firstName"
+      [placeholder]="'ADMIN.PROFILE_EDIT.FIRST_NAME' | translate"
+      type="text"
+      [errorMessage]="getErrorMessage(controls.firstName)"
+      [invalid]="controls.firstName.invalid && controls.firstName.touched"
+    />
+
+    <app-input
+      [formControl]="controls.lastName"
+      formControlName="lastName"
+      [placeholder]="'ADMIN.PROFILE_EDIT.LAST_NAME' | translate"
+      type="text"
+      [errorMessage]="getErrorMessage(controls.lastName)"
+      [invalid]="controls.lastName.invalid && controls.lastName.touched"
+    />
+
+    <app-input
+      [formControl]="controls.email"
+      formControlName="email"
+      [placeholder]="'ADMIN.PROFILE_EDIT.EMAIL' | translate"
+      type="email"
+      autocomplete="email"
+      [errorMessage]="getErrorMessage(controls.email)"
+      [invalid]="controls.email.invalid && controls.email.touched"
+      autocomplete="email"
+    />
+
+    <app-password-input
+      [formControl]="controls.password"
+      formControlName="password"
+      [placeholder]="'ADMIN.PROFILE_EDIT.PASSWORD' | translate"
+      autocomplete="current-password"
+      [errorMessage]="getErrorMessage(controls.password)"
+      [invalid]="controls.password.invalid && controls.password.touched"
+    />
+
+    <!-- <app-select
+      [formControl]="controls.role"
+      formControlName="role"
+      [placeholder]="'ADMIN.PROFILE_EDIT.ROLE' | translate"
+      [options]="roles"
+      [optionLabel]="'name'"
+      [optionValue]="'id'"
+      [errorMessage]="getErrorMessage(controls.role)"
+      [invalid]="controls.role.invalid && controls.role.touched"
+    /> -->
+
+    <div class="submit-button">
+      <app-button
+        type="submit"
+        [disabled]="adminProfileForm.invalid || isLoading"
+        severity="primary"
+        [label]="'ADMIN.PROFILE_EDIT.SAVE_BUTTON' | translate"
+      />
+    </div>
+  </form>
+</div>
