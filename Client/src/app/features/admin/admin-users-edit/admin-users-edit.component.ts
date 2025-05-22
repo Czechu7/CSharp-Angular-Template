@@ -114,6 +114,8 @@ export class AdminUsersEditComponent implements OnInit {
     this.isLoading = false;
 
     const updateData = { [fieldName]: fieldValue };
+
+    this.adminService.updateUserProfile(updateData, this.userId).subscribe({});
   }
 
   getUserDetails() {
@@ -122,7 +124,6 @@ export class AdminUsersEditComponent implements OnInit {
 
     this.adminService.getUserDetails(this.userId).subscribe({
       next: response => {
-        console.log('User details:', response);
         this.userData = response.data;
         this.fillForm();
       },
