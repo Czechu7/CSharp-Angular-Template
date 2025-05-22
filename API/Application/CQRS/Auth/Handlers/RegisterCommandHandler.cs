@@ -3,6 +3,7 @@ using Application.CQRS.Auth.Commands;
 using Application.CQRS.Auth.DTOs;
 using Application.CQRS.Base.Commands;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Application.CQRS.Auth.Handlers;
@@ -29,6 +30,20 @@ public class RegisterCommandHandler : CreateCommandHandler<RegisterCommand, Auth
 
             entity.PasswordHash = PasswordService.HashPassword(dto.Password);
             entity.SecurityStamp = PasswordService.GenerateSecurityStamp();
+            
+
+            bool isFirstUser = !await DbContext.Users.AnyAsync(cancellationToken);
+            
+
+            if (isFirstUser)
+            {
+                entity.Roles = "ADMIN";
+                Logger.LogInformation("First user in the system registered. Setting ADMIN role for {Username}", entity.Username);
+            }
+            else 
+            {
+                entity.Roles = "USER"; 
+            }
 
             await Repository.AddAsync(entity);
             await DbContext.SaveChangesAsync(cancellationToken);

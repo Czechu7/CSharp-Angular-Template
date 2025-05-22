@@ -55,6 +55,6 @@ export const initRegisterForm = (): FormGroup<RegisterForm> => {
         nonNullable: true,
       }),
     },
-    { validators: [equivalentValidator('password', 'confirmPassword')] }
+    { validators: [equivalentValidator('password', 'confirmPassword')] },
   );
 };

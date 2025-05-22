@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
 export enum ApiEndpoints {
   // AUTH
   SIGN_IN = 'api/auth/login',
@@ -20,4 +21,7 @@ export enum ApiEndpoints {
   KARMELKI = 'api/karmelki',
   GET_CURRENT_USER = 'auth/current-user',
   UPDATE_USER = 'auth/update-user',
+  // ADMIN
+  PUT_ADMIN_USER = 'api/adminpanel',
+  GET_ADMIN_USERS = 'api/adminpanel/users',
 }

@@ -13,6 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ILanguage } from '../../../core/_models/language.model';
 import { RouterEnum } from '../../../enums/router.enum';
 import { AuthService } from '../../../core/_services/auth/auth.service';
+import { HasRoleDirective } from '../../directives/has-role.directive';
 
 @Component({
   selector: 'app-navbar',
@@ -25,6 +26,7 @@ import { AuthService } from '../../../core/_services/auth/auth.service';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    HasRoleDirective,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

@@ -1,47 +1,69 @@
-<app-context-menu #contextMenu [items]="contextMenuItems" (onItemSelect)="handleContextMenuAction($event)">
+<app-context-menu
+  #contextMenu
+  [items]="contextMenuItems"
+  (onItemSelect)="handleContextMenuAction($event)"
+>
 </app-context-menu>
 
-
-<p-table #dt [columns]="cols" [value]="data" [tableStyle]="{ 'min-width': minWidth }" [showGridlines]="showGridlines"
-  [stripedRows]="stripedRows" [rowsPerPageOptions]="rowsPerPageOptions" [paginator]="enablePaginator"
-  [resizableColumns]="enableResizableColumns" [rows]="rowsPerPage" [loading]="loading" [totalRecords]="totalRecords"
+<p-table
+  #dt
+  [columns]="cols"
+  [value]="data"
+  [tableStyle]="{ 'min-width': minWidth }"
+  [showGridlines]="showGridlines"
+  [stripedRows]="stripedRows"
+  [rowsPerPageOptions]="rowsPerPageOptions"
+  [paginator]="enablePaginator"
+  [resizableColumns]="enableResizableColumns"
+  [rows]="rowsPerPage"
+  [loading]="loading"
+  [totalRecords]="totalRecords"
   [paginatorPosition]="paginatorPosition"
-  (onPage)="onPageChange.emit({ page: $event.first / $event.rows, rows: $event.rows })">
-
+  (onPage)="onPageChange.emit({ page: $event.first / $event.rows, rows: $event.rows })"
+>
   @if (headerTitle || showSearchBar || showActionButtons) {
-  <ng-template pTemplate="caption">
-    @if (headerTitle) {
-    <div class="flex items-center justify-between">
-      <span class="text-xl font-bold">{{headerTitle}}</span>
-    </div>
-    }
-
-    @if (showSearchBar) {
-    <div class="flex justify-content-between">
-      <span>
-        <app-input [formControl]="searchControl" [placeholder]="'TABLE.SEARCH_PLACEHOLDER' | translate"
-          prefixIcon="search" (ngModelChange)="onGlobalFilter(dt, $event)" autocomplete="off">
-        </app-input>
-      </span>
-      @if (showActionButtons) {
-      <span>
-        <app-button [label]="'TABLE.REFRESH' | translate" icon="pi-refresh" (onClick)="onRefresh()">
-        </app-button>
-      </span>
+    <ng-template pTemplate="caption">
+      @if (headerTitle) {
+        <div class="flex items-center justify-between">
+          <span class="text-xl font-bold">{{ headerTitle }}</span>
+        </div>
       }
-    </div>
-    }
-  </ng-template>
+
+      @if (showSearchBar) {
+        <div class="flex justify-content-between">
+          <span>
+            <app-input
+              [formControl]="searchControl"
+              [placeholder]="'TABLE.SEARCH_PLACEHOLDER' | translate"
+              prefixIcon="search"
+              (ngModelChange)="onGlobalFilter(dt, $event)"
+              autocomplete="off"
+            >
+            </app-input>
+          </span>
+          @if (showActionButtons) {
+            <span>
+              <app-button
+                [label]="'TABLE.REFRESH' | translate"
+                icon="pi-refresh"
+                (onClick)="onRefresh()"
+              >
+              </app-button>
+            </span>
+          }
+        </div>
+      }
+    </ng-template>
   }
   <ng-template pTemplate="header" let-columns>
     <tr>
       @for (col of columns; track col) {
-      <th>
-        {{ col.header }}
-      </th>
+        <th>
+          {{ col.header | translate }}
+        </th>
       }
       @if (showActions) {
-      <th>{{ 'TABLE.ACTIONS' | translate }}</th>
+        <th>{{ 'TABLE.ACTIONS' | translate }}</th>
       }
     </tr>
   </ng-template>
@@ -49,28 +71,34 @@
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr (contextmenu)="showContextMenu($event, rowData)">
       @for (col of columns; track col) {
-      <td>
-        {{ rowData[col.field] }}
-      </td>
+        <td>
+          {{ rowData[col.field] }}
+        </td>
       }
       @if (showActions) {
-      <td>
-        <div class="flex gap-2">
-          @for (button of actionButtons; track button) {
-          <app-button [icon]="button.icon" [severity]="'primary'" variant="text" [rounded]="true"
-            [ariaLabel]="button.ariaLabel | translate" (onClick)="onAction(button.action, rowData)">
-          </app-button>
-          }
-        </div>
-      </td>
+        <td>
+          <div class="flex gap-2">
+            @for (button of actionButtons; track button) {
+              <app-button
+                [icon]="button.icon"
+                [severity]="'primary'"
+                variant="text"
+                [rounded]="true"
+                [ariaLabel]="button.ariaLabel | translate"
+                (onClick)="onAction(button.action, rowData)"
+              >
+              </app-button>
+            }
+          </div>
+        </td>
       }
     </tr>
   </ng-template>
 
   @if (footerTitle) {
-  <ng-template pTemplate="footer">
-    <div>{{footerTitle}}</div>
-  </ng-template>
+    <ng-template pTemplate="footer">
+      <div>{{ footerTitle }}</div>
+    </ng-template>
   }
 
   <ng-template pTemplate="emptymessage">

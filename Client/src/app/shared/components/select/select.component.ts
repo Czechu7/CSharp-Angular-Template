@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { ISelectProps, ISize, IVariant, ILabelVariant } from '../../types/select.types';
+import { ISelectProps, IVariant, ILabelVariant } from '../../types/select.types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -40,7 +40,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
   @Input() virtualScroll?: boolean;
   @Input() virtualScrollItemSize?: number;
   @Input() variant: IVariant = 'filled';
-  @Input() size?: ISize;
   @Input() required?: boolean;
   @Input() label?: string;
   @Input() labelVariant: ILabelVariant = 'over';
@@ -57,7 +56,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
   }
 
   @Output() valueChange = new EventEmitter<T>();
-  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();
   @Output() onChangeEvent = new EventEmitter<{
     originalEvent: Event;
     value: T;
@@ -95,10 +93,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  handleSelect(event: { originalEvent: Event; value: T }): void {
-    this.onSelect.emit(event);
   }
 
   handleChange(event: { originalEvent: Event; value: T }): void {

@@ -7,6 +7,7 @@
     "TITLE": "Angular Template",
     "FOOTER_TITLE": "Karmelki",
     "PROFILE": "Profile",
+    "ADMIN_PANEL": "Admin panel",
     "LOGOUT": "Logout",
     "LOGIN": "Login",
     "REGISTER": "Register"
@@ -33,6 +34,32 @@
     "REGISTER_BUTTON": "Register",
     "HAS_ACCOUNT_TEXT": "Already have an account?",
     "LOGIN": "Log in"
+  },
+  "ADMIN": {
+    "USERS": {
+      "FIRST_NAME": "First Name",
+      "TITLE": "Users",
+      "LAST_NAME": "Last Name",
+      "EMAIL": "Email",
+      "ROLE": "Role",
+      "CREATED_AT": "Created At",
+      "STATUS": "Status",
+      "ACTIONS": "Actions",
+      "DELETE_CONFIRMATION": "Delete Confirmation",
+      "DELETE_CONFIRMATION_MESSAGE": "Are you sure you want to delete this user?"
+    },
+    "PROFILE_EDIT": {
+      "TITLE": "Edit user profile",
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "ROLE": "Role",
+      "STATUS": "Status",
+      "SAVE_BUTTON": "Save",
+      "CANCEL_BUTTON": "Cancel",
+      "RESET_PASSWORD": "Reset password"
+    }
   },
   "EXAMPLE-CRUD": {
     "TITLE": "Karmelek List",
@@ -88,7 +115,9 @@
     "NO": "No",
     "CANCEL": "Cancel",
     "CONFIRM": "Confirm",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "EDIT": "Edit",
+    "BACK": "Back"
   },
   "NOT-FOUND": {
     "TITLE": "404 - Page Not Found",

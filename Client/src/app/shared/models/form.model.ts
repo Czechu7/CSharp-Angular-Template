@@ -29,6 +29,14 @@ export interface UserForm {
   currentPassword: FormControl<string>;
   newPassword: FormControl<string>;
 }
+export interface AdminProfileForm {
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  email: FormControl<string>;
+  password: FormControl<string>;
+  role: FormControl<boolean>;
+  isActive: FormControl<boolean>;
+}
 
 export interface ThemeForm {
   theme: FormControl<boolean>;
