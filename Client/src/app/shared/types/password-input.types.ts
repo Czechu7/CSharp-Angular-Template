@@ -1,8 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { IAutocompletePassword } from './auto-complete.types';
 
-export type ISize = 'small' | 'large' | undefined;
-
 export type IVariant = 'filled' | 'outlined';
 
 export interface IPasswordInputProps {
@@ -16,7 +14,6 @@ export interface IPasswordInputProps {
   weakLabel?: string;
   mediumLabel?: string;
   strongLabel?: string;
-  // size?: Size;
   variant: IVariant;
   inavlid?: boolean;
   formControl: FormControl;

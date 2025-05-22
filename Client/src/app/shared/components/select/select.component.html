@@ -1,58 +1,26 @@
 <div class="field">
   @if (!label) {
-    <p-select
-      [formControl]="formControl"
-      [checkmark]="checkmark"
-      [showClear]="showClear"
-      [editable]="editable"
-      [filter]="filter"
-      [filterBy]="filterBy"
-      [loading]="loading"
-      [virtualScroll]="virtualScroll"
-      [virtualScrollItemSize]="virtualScrollItemSize"
-      [options]="options"
-      [(ngModel)]="value"
-      [optionLabel]="optionLabel"
-      [optionValue]="optionValue"
-      [placeholder]="placeholder"
-      [variant]="variant"
-      [size]="size"
-      class="w-full md:w-56"
-      (onChange)="handleChange($event)"
-      (onSelect)="handleSelect($event)"
-    >
-    </p-select>
+  <p-select [formControl]="formControl" [checkmark]="checkmark" [showClear]="showClear" [editable]="editable"
+    [filter]="filter" [filterBy]="filterBy" [loading]="loading" [virtualScroll]="virtualScroll"
+    [virtualScrollItemSize]="virtualScrollItemSize" [options]="options" [(ngModel)]="value" [optionLabel]="optionLabel"
+    [optionValue]="optionValue" [placeholder]="placeholder" [variant]="variant" class="w-full md:w-56"
+    (onChange)="handleChange($event)" (onSelect)="handleSelect($event)">
+  </p-select>
   } @else {
-    <p-floatlabel class="w-full md:w-56" [variant]="labelVariant">
-      <p-select
-        [formControl]="formControl"
-        [inputId]="inputId"
-        [checkmark]="checkmark"
-        [showClear]="showClear"
-        [editable]="editable"
-        [filter]="filter"
-        [filterBy]="filterBy"
-        [loading]="loading"
-        [virtualScroll]="virtualScroll"
-        [virtualScrollItemSize]="virtualScrollItemSize"
-        [options]="options"
-        [(ngModel)]="value"
-        [optionLabel]="optionLabel"
-        [optionValue]="optionValue"
-        [variant]="variant"
-        [size]="size"
-        styleClass="w-full"
-        (onChange)="handleChange($event)"
-        (onSelect)="handleSelect($event)"
-      >
-      </p-select>
-      <label [for]="inputId" [class.required-label]="required">
-        {{ label }}
-      </label>
-    </p-floatlabel>
+  <p-floatlabel class="w-full md:w-56" [variant]="labelVariant">
+    <p-select [formControl]="formControl" [inputId]="inputId" [checkmark]="checkmark" [showClear]="showClear"
+      [editable]="editable" [filter]="filter" [filterBy]="filterBy" [loading]="loading" [virtualScroll]="virtualScroll"
+      [virtualScrollItemSize]="virtualScrollItemSize" [options]="options" [(ngModel)]="value"
+      [optionLabel]="optionLabel" [optionValue]="optionValue" [variant]="variant" styleClass="w-full"
+      (onChange)="handleChange($event)" (onSelect)="handleSelect($event)">
+    </p-select>
+    <label [for]="inputId" [class.required-label]="required">
+      {{ label }}
+    </label>
+  </p-floatlabel>
   }
 
   @if (invalid && errorMessage && touched) {
-    <small class="p-error">{{ errorMessage }}</small>
+  <small class="p-error">{{ errorMessage }}</small>
   }
 </div>
