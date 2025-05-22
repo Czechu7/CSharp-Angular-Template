@@ -11,7 +11,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { AvatarModule } from 'primeng/avatar';
 import { DividerModule } from 'primeng/divider';
 
-import { ISiebarItem } from '../../types/sidebar.types';
+import { ISidebarItem } from '../../types/sidebar.types';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,9 +37,9 @@ export class SidebarComponent implements OnChanges {
   @Input() position: 'left' | 'right' = 'left';
   @Input() title = '';
   @Input() logo?: string;
-  @Input() menuItems: ISiebarItem[] = [];
+  @Input() menuItems: ISidebarItem[] = [];
 
-  @Input() commonMenuItems: ISiebarItem[] = [];
+  @Input() commonMenuItems: ISidebarItem[] = [];
   @Input() collapsed = false;
 
   @Output() visibleChange = new EventEmitter<boolean>();
@@ -57,7 +57,7 @@ export class SidebarComponent implements OnChanges {
     this.primeMenuItems = this.mapToPrimeMenuItems(this.menuItems);
   }
 
-  mapToPrimeMenuItems(items: ISiebarItem[]): MenuItem[] {
+  mapToPrimeMenuItems(items: ISidebarItem[]): MenuItem[] {
     return items.map(item => {
       const menuItem: MenuItem = {
         label: item.label,
