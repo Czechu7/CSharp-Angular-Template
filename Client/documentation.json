@@ -3020,12 +3020,12 @@
         },
         {
             "name": "IPasswordInputProps",
-            "id": "interface-IPasswordInputProps-73085934b67b259d3cd9ca45b74948f2e22f5ad1623f6851fc359567a28f06673bb47e657bacab086fde1028f467748faeef4393294d90f46eec6a317720648a",
+            "id": "interface-IPasswordInputProps-4d5da46d12001a8ac3375492967c602cf219d8f7291e2435d0e64d2f66a6642f91e60c458e0e849fcd7bd9bb9b6b419248b5c1451a19182a4acba7a865280018",
             "file": "src/app/shared/types/password-input.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { FormControl } from '@angular/forms';\nimport { IAutocompletePassword } from './auto-complete.types';\n\nexport type ISize = 'small' | 'large' | undefined;\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport interface IPasswordInputProps {\n  label?: string;\n  placeholder?: string;\n  required?: boolean;\n  invalid?: boolean;\n  errorMessage?: string;\n  feedback?: boolean;\n  promptLabel?: string;\n  weakLabel?: string;\n  mediumLabel?: string;\n  strongLabel?: string;\n  // size?: Size;\n  variant: IVariant;\n  inavlid?: boolean;\n  formControl: FormControl;\n  autocomplete: IAutocompletePassword;\n}\n",
+            "sourceCode": "import { FormControl } from '@angular/forms';\nimport { IAutocompletePassword } from './auto-complete.types';\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport interface IPasswordInputProps {\n  label?: string;\n  placeholder?: string;\n  required?: boolean;\n  invalid?: boolean;\n  errorMessage?: string;\n  feedback?: boolean;\n  promptLabel?: string;\n  weakLabel?: string;\n  mediumLabel?: string;\n  strongLabel?: string;\n  variant: IVariant;\n  inavlid?: boolean;\n  formControl: FormControl;\n  autocomplete: IAutocompletePassword;\n}\n",
             "properties": [
                 {
                     "name": "autocomplete",
@@ -3035,7 +3035,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 20
                 },
                 {
                     "name": "errorMessage",
@@ -3045,7 +3045,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 11
                 },
                 {
                     "name": "feedback",
@@ -3055,7 +3055,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 12
                 },
                 {
                     "name": "formControl",
@@ -3065,7 +3065,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 19
                 },
                 {
                     "name": "inavlid",
@@ -3075,7 +3075,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 21
+                    "line": 18
                 },
                 {
                     "name": "invalid",
@@ -3085,7 +3085,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 10
                 },
                 {
                     "name": "label",
@@ -3095,7 +3095,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 9
+                    "line": 7
                 },
                 {
                     "name": "mediumLabel",
@@ -3105,7 +3105,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 17
+                    "line": 15
                 },
                 {
                     "name": "placeholder",
@@ -3115,7 +3115,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 8
                 },
                 {
                     "name": "promptLabel",
@@ -3125,7 +3125,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 15
+                    "line": 13
                 },
                 {
                     "name": "required",
@@ -3135,7 +3135,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11
+                    "line": 9
                 },
                 {
                     "name": "strongLabel",
@@ -3145,7 +3145,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 18
+                    "line": 16
                 },
                 {
                     "name": "variant",
@@ -3155,7 +3155,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 17
                 },
                 {
                     "name": "weakLabel",
@@ -3165,7 +3165,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 16
+                    "line": 14
                 }
             ],
             "indexSignatures": [],
@@ -3372,12 +3372,12 @@
         },
         {
             "name": "ISelectOption",
-            "id": "interface-ISelectOption-5b59c6bfbe68bb9914a46c4afbd96dc0447351b5205e405b986b1755ce2f876549788c5bec479366d407e09cc54916e0cc24fc02d3865f10e640d962f209d167",
+            "id": "interface-ISelectOption-15c972ef2ae5d33acca3119e75dee6a2598b967d6f427c54915dcbd24cd055bbe9843348ba90a2eb486066fb238eb0e81231c3edcbde06413ad53a1b31d8e09e",
             "file": "src/app/shared/types/select.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { FormControl } from '@angular/forms';\n\nexport interface ISelectOption {\n  label: string;\n  value: string;\n}\n\nexport type ISelectOptions = ISelectOption[];\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport type ISize = 'small' | 'large';\n\nexport type ILabelVariant = 'over' | 'in' | 'on';\n\nexport interface ISelectProps<T = ISelectOption> {\n  formControl: FormControl;\n  checkmark: boolean;\n  showClear: boolean;\n  editable: boolean;\n  loading: boolean;\n  options?: T[];\n  optionLabel?: string;\n  optionValue?: string;\n  placeholder?: string;\n  required?: boolean;\n  filter?: boolean;\n  filterBy?: string;\n  virtualScroll?: boolean;\n  virtualScrollItemSize?: number;\n  value?: T;\n  variant?: IVariant;\n  size?: ISize;\n  label?: string;\n  labelVariant?: ILabelVariant;\n  inputId?: string;\n  inavlid?: boolean;\n  errorMessage?: string;\n}\n",
+            "sourceCode": "import { FormControl } from '@angular/forms';\n\nexport interface ISelectOption {\n  label: string;\n  value: string;\n}\n\nexport type ISelectOptions = ISelectOption[];\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport type ILabelVariant = 'over' | 'in' | 'on';\n\nexport interface ISelectProps<T = ISelectOption> {\n  formControl: FormControl;\n  checkmark: boolean;\n  showClear: boolean;\n  editable: boolean;\n  loading: boolean;\n  options?: T[];\n  optionLabel?: string;\n  optionValue?: string;\n  placeholder?: string;\n  required?: boolean;\n  filter?: boolean;\n  filterBy?: string;\n  virtualScroll?: boolean;\n  virtualScrollItemSize?: number;\n  value?: T;\n  variant?: IVariant;\n  label?: string;\n  labelVariant?: ILabelVariant;\n  inputId?: string;\n  inavlid?: boolean;\n  errorMessage?: string;\n}\n",
             "properties": [
                 {
                     "name": "label",
@@ -3407,12 +3407,12 @@
         },
         {
             "name": "ISelectProps",
-            "id": "interface-ISelectProps-5b59c6bfbe68bb9914a46c4afbd96dc0447351b5205e405b986b1755ce2f876549788c5bec479366d407e09cc54916e0cc24fc02d3865f10e640d962f209d167",
+            "id": "interface-ISelectProps-15c972ef2ae5d33acca3119e75dee6a2598b967d6f427c54915dcbd24cd055bbe9843348ba90a2eb486066fb238eb0e81231c3edcbde06413ad53a1b31d8e09e",
             "file": "src/app/shared/types/select.types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { FormControl } from '@angular/forms';\n\nexport interface ISelectOption {\n  label: string;\n  value: string;\n}\n\nexport type ISelectOptions = ISelectOption[];\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport type ISize = 'small' | 'large';\n\nexport type ILabelVariant = 'over' | 'in' | 'on';\n\nexport interface ISelectProps<T = ISelectOption> {\n  formControl: FormControl;\n  checkmark: boolean;\n  showClear: boolean;\n  editable: boolean;\n  loading: boolean;\n  options?: T[];\n  optionLabel?: string;\n  optionValue?: string;\n  placeholder?: string;\n  required?: boolean;\n  filter?: boolean;\n  filterBy?: string;\n  virtualScroll?: boolean;\n  virtualScrollItemSize?: number;\n  value?: T;\n  variant?: IVariant;\n  size?: ISize;\n  label?: string;\n  labelVariant?: ILabelVariant;\n  inputId?: string;\n  inavlid?: boolean;\n  errorMessage?: string;\n}\n",
+            "sourceCode": "import { FormControl } from '@angular/forms';\n\nexport interface ISelectOption {\n  label: string;\n  value: string;\n}\n\nexport type ISelectOptions = ISelectOption[];\n\nexport type IVariant = 'filled' | 'outlined';\n\nexport type ILabelVariant = 'over' | 'in' | 'on';\n\nexport interface ISelectProps<T = ISelectOption> {\n  formControl: FormControl;\n  checkmark: boolean;\n  showClear: boolean;\n  editable: boolean;\n  loading: boolean;\n  options?: T[];\n  optionLabel?: string;\n  optionValue?: string;\n  placeholder?: string;\n  required?: boolean;\n  filter?: boolean;\n  filterBy?: string;\n  virtualScroll?: boolean;\n  virtualScrollItemSize?: number;\n  value?: T;\n  variant?: IVariant;\n  label?: string;\n  labelVariant?: ILabelVariant;\n  inputId?: string;\n  inavlid?: boolean;\n  errorMessage?: string;\n}\n",
             "properties": [
                 {
                     "name": "checkmark",
@@ -3422,7 +3422,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 16
                 },
                 {
                     "name": "editable",
@@ -3432,7 +3432,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 18
                 },
                 {
                     "name": "errorMessage",
@@ -3442,7 +3442,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 38
+                    "line": 35
                 },
                 {
                     "name": "filter",
@@ -3452,7 +3452,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 27
+                    "line": 25
                 },
                 {
                     "name": "filterBy",
@@ -3462,7 +3462,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 28
+                    "line": 26
                 },
                 {
                     "name": "formControl",
@@ -3472,7 +3472,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 15
                 },
                 {
                     "name": "inavlid",
@@ -3482,7 +3482,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 37
+                    "line": 34
                 },
                 {
                     "name": "inputId",
@@ -3492,7 +3492,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 36
+                    "line": 33
                 },
                 {
                     "name": "label",
@@ -3502,7 +3502,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 34
+                    "line": 31
                 },
                 {
                     "name": "labelVariant",
@@ -3512,7 +3512,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 35
+                    "line": 32
                 },
                 {
                     "name": "loading",
@@ -3522,7 +3522,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 19
                 },
                 {
                     "name": "optionLabel",
@@ -3532,7 +3532,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 23
+                    "line": 21
                 },
                 {
                     "name": "options",
@@ -3542,7 +3542,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 22
+                    "line": 20
                 },
                 {
                     "name": "optionValue",
@@ -3552,7 +3552,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 24
+                    "line": 22
                 },
                 {
                     "name": "placeholder",
@@ -3562,7 +3562,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 25
+                    "line": 23
                 },
                 {
                     "name": "required",
@@ -3572,7 +3572,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 26
+                    "line": 24
                 },
                 {
                     "name": "showClear",
@@ -3582,17 +3582,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
-                },
-                {
-                    "name": "size",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ISize",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 33
+                    "line": 17
                 },
                 {
                     "name": "value",
@@ -3602,7 +3592,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 31
+                    "line": 29
                 },
                 {
                     "name": "variant",
@@ -3612,7 +3602,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 32
+                    "line": 30
                 },
                 {
                     "name": "virtualScroll",
@@ -3622,7 +3612,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 29
+                    "line": 27
                 },
                 {
                     "name": "virtualScrollItemSize",
@@ -3632,7 +3622,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 30
+                    "line": 28
                 }
             ],
             "indexSignatures": [],
@@ -13082,7 +13072,7 @@
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-54458c450d17df83c22768f6256832c02ba264c31dd3a3e10eebc499b951dab763a8ec88cbb35114233136fa5d4125ade4a047039a8c0c78c04ce31348d10a5a",
+            "id": "component-SelectComponent-f66dbd32640a533dddc9ce478fe85946f5ae61a036df8a8af82874f7bbc98f2aaa7e6e0df5acb00383b116ec0285c85c1b912b5657feef0c045ed4cb624c53ec",
             "file": "src/app/shared/components/select/select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -13125,7 +13115,7 @@
                     "name": "errorMessage",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -13157,7 +13147,7 @@
                     "name": "inputId",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -13165,7 +13155,7 @@
                     "name": "invalid",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49,
+                    "line": 48,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -13173,7 +13163,7 @@
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45,
+                    "line": 44,
                     "type": "string",
                     "decorators": []
                 },
@@ -13182,7 +13172,7 @@
                     "defaultValue": "'over'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 46,
+                    "line": 45,
                     "type": "ILabelVariant",
                     "decorators": []
                 },
@@ -13231,7 +13221,7 @@
                     "name": "required",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 43,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -13245,18 +13235,10 @@
                     "decorators": []
                 },
                 {
-                    "name": "size",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 43,
-                    "type": "ISize",
-                    "decorators": []
-                },
-                {
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 50,
+                    "line": 49,
                     "type": "T | null",
                     "decorators": []
                 },
@@ -13292,7 +13274,7 @@
                     "defaultValue": "new EventEmitter<{\n    originalEvent: Event;\n    value: T;\n  }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61,
+                    "line": 60,
                     "type": "EventEmitter"
                 },
                 {
@@ -13300,7 +13282,7 @@
                     "defaultValue": "new EventEmitter<{ originalEvent: Event; value: T }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 60,
+                    "line": 59,
                     "type": "EventEmitter"
                 },
                 {
@@ -13308,7 +13290,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 59,
+                    "line": 58,
                     "type": "EventEmitter"
                 }
             ],
@@ -13322,7 +13304,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68
+                    "line": 67
                 },
                 {
                     "name": "id",
@@ -13333,7 +13315,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 66
+                    "line": 65
                 },
                 {
                     "name": "onChangeCallback",
@@ -13344,7 +13326,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 82,
+                    "line": 81,
                     "modifierKind": [
                         123
                     ]
@@ -13358,7 +13340,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 84,
+                    "line": 83,
                     "modifierKind": [
                         123
                     ]
@@ -13372,7 +13354,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 77
+                    "line": 76
                 },
                 {
                     "name": "touched",
@@ -13383,40 +13365,12 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 75
+                    "line": 74
                 }
             ],
             "methodsClass": [
                 {
                     "name": "handleChange",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "literal type",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 104,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "literal type",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "handleSelect",
                     "args": [
                         {
                             "name": "event",
@@ -13464,7 +13418,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 92,
+                    "line": 91,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13501,7 +13455,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 96,
+                    "line": 95,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13530,7 +13484,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -13576,7 +13530,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  ControlValueAccessor,\n  FormControl,\n  FormsModule,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\nimport { FloatLabelModule } from 'primeng/floatlabel';\nimport { ISelectProps, ISize, IVariant, ILabelVariant } from '../../types/select.types';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, ReactiveFormsModule, FormsModule, FloatLabelModule, CommonModule],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.scss',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SelectComponent<T = unknown> implements ISelectProps<T>, ControlValueAccessor {\n  @Input() formControl!: FormControl;\n  @Input() options?: T[];\n  @Input() optionLabel?: string;\n  @Input() optionValue?: string;\n  @Input() placeholder?: string;\n  @Input() filter?: boolean;\n  @Input() checkmark = false;\n  @Input() editable = false;\n  @Input() filterBy?: string;\n  @Input() loading = false;\n  @Input() showClear = false;\n  @Input() virtualScroll?: boolean;\n  @Input() virtualScrollItemSize?: number;\n  @Input() variant: IVariant = 'filled';\n  @Input() size?: ISize;\n  @Input() required?: boolean;\n  @Input() label?: string;\n  @Input() labelVariant: ILabelVariant = 'over';\n  @Input() inputId?: string;\n  @Input() errorMessage?: string;\n  @Input() invalid?: boolean;\n  @Input() set value(val: T | null) {\n    if (val !== this._value) {\n      this._value = val === null ? undefined : val;\n      this.onChangeCallback(val);\n      this.onTouchCallback();\n      this.valueChange.emit(val === null ? undefined : val);\n    }\n  }\n\n  @Output() valueChange = new EventEmitter<T>();\n  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();\n  @Output() onChangeEvent = new EventEmitter<{\n    originalEvent: Event;\n    value: T;\n  }>();\n\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\n\n  _value: T | undefined = undefined;\n\n  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures\n  get value(): T | undefined {\n    return this._value;\n  }\n\n  touched = false;\n\n  onTouched = () => {\n    this.touched = true;\n  };\n\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  private onChangeCallback: (value: T | null) => void = () => {};\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  private onTouchCallback: () => void = () => {};\n\n  writeValue(value: T): void {\n    if (value !== this._value) {\n      this._value = value;\n    }\n  }\n\n  registerOnChange(fn: (value: T | null) => void): void {\n    this.onChangeCallback = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  handleSelect(event: { originalEvent: Event; value: T }): void {\n    this.onSelect.emit(event);\n  }\n\n  handleChange(event: { originalEvent: Event; value: T }): void {\n    this.onChangeCallback(event.value);\n    this.onTouchCallback();\n    this.valueChange.emit(event.value);\n    this.onChangeEvent.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  ControlValueAccessor,\n  FormControl,\n  FormsModule,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms';\nimport { SelectModule } from 'primeng/select';\nimport { FloatLabelModule } from 'primeng/floatlabel';\nimport { ISelectProps, IVariant, ILabelVariant } from '../../types/select.types';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-select',\n  standalone: true,\n  imports: [SelectModule, ReactiveFormsModule, FormsModule, FloatLabelModule, CommonModule],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.scss',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SelectComponent<T = unknown> implements ISelectProps<T>, ControlValueAccessor {\n  @Input() formControl!: FormControl;\n  @Input() options?: T[];\n  @Input() optionLabel?: string;\n  @Input() optionValue?: string;\n  @Input() placeholder?: string;\n  @Input() filter?: boolean;\n  @Input() checkmark = false;\n  @Input() editable = false;\n  @Input() filterBy?: string;\n  @Input() loading = false;\n  @Input() showClear = false;\n  @Input() virtualScroll?: boolean;\n  @Input() virtualScrollItemSize?: number;\n  @Input() variant: IVariant = 'filled';\n  @Input() required?: boolean;\n  @Input() label?: string;\n  @Input() labelVariant: ILabelVariant = 'over';\n  @Input() inputId?: string;\n  @Input() errorMessage?: string;\n  @Input() invalid?: boolean;\n  @Input() set value(val: T | null) {\n    if (val !== this._value) {\n      this._value = val === null ? undefined : val;\n      this.onChangeCallback(val);\n      this.onTouchCallback();\n      this.valueChange.emit(val === null ? undefined : val);\n    }\n  }\n\n  @Output() valueChange = new EventEmitter<T>();\n  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();\n  @Output() onChangeEvent = new EventEmitter<{\n    originalEvent: Event;\n    value: T;\n  }>();\n\n  id = `input-${Math.random().toString(36).substr(2, 9)}`;\n\n  _value: T | undefined = undefined;\n\n  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures\n  get value(): T | undefined {\n    return this._value;\n  }\n\n  touched = false;\n\n  onTouched = () => {\n    this.touched = true;\n  };\n\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  private onChangeCallback: (value: T | null) => void = () => {};\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  private onTouchCallback: () => void = () => {};\n\n  writeValue(value: T): void {\n    if (value !== this._value) {\n      this._value = value;\n    }\n  }\n\n  registerOnChange(fn: (value: T | null) => void): void {\n    this.onChangeCallback = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n\n  handleChange(event: { originalEvent: Event; value: T }): void {\n    this.onChangeCallback(event.value);\n    this.onTouchCallback();\n    this.valueChange.emit(event.value);\n    this.onChangeEvent.emit(event);\n  }\n}\n",
             "styleUrl": "./select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -13603,7 +13557,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 50,
+                        "line": 49,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -13620,11 +13574,11 @@
                         "name": "value",
                         "type": "",
                         "returnType": "T | undefined",
-                        "line": 71
+                        "line": 70
                     }
                 }
             },
-            "templateData": "<div class=\"field\">\n  @if (!label) {\n    <p-select\n      [formControl]=\"formControl\"\n      [checkmark]=\"checkmark\"\n      [showClear]=\"showClear\"\n      [editable]=\"editable\"\n      [filter]=\"filter\"\n      [filterBy]=\"filterBy\"\n      [loading]=\"loading\"\n      [virtualScroll]=\"virtualScroll\"\n      [virtualScrollItemSize]=\"virtualScrollItemSize\"\n      [options]=\"options\"\n      [(ngModel)]=\"value\"\n      [optionLabel]=\"optionLabel\"\n      [optionValue]=\"optionValue\"\n      [placeholder]=\"placeholder\"\n      [variant]=\"variant\"\n      [size]=\"size\"\n      class=\"w-full md:w-56\"\n      (onChange)=\"handleChange($event)\"\n      (onSelect)=\"handleSelect($event)\"\n    >\n    </p-select>\n  } @else {\n    <p-floatlabel class=\"w-full md:w-56\" [variant]=\"labelVariant\">\n      <p-select\n        [formControl]=\"formControl\"\n        [inputId]=\"inputId\"\n        [checkmark]=\"checkmark\"\n        [showClear]=\"showClear\"\n        [editable]=\"editable\"\n        [filter]=\"filter\"\n        [filterBy]=\"filterBy\"\n        [loading]=\"loading\"\n        [virtualScroll]=\"virtualScroll\"\n        [virtualScrollItemSize]=\"virtualScrollItemSize\"\n        [options]=\"options\"\n        [(ngModel)]=\"value\"\n        [optionLabel]=\"optionLabel\"\n        [optionValue]=\"optionValue\"\n        [variant]=\"variant\"\n        [size]=\"size\"\n        styleClass=\"w-full\"\n        (onChange)=\"handleChange($event)\"\n        (onSelect)=\"handleSelect($event)\"\n      >\n      </p-select>\n      <label [for]=\"inputId\" [class.required-label]=\"required\">\n        {{ label }}\n      </label>\n    </p-floatlabel>\n  }\n\n  @if (invalid && errorMessage && touched) {\n    <small class=\"p-error\">{{ errorMessage }}</small>\n  }\n</div>\n"
+            "templateData": "<div class=\"field\">\n  @if (!label) {\n  <p-select [formControl]=\"formControl\" [checkmark]=\"checkmark\" [showClear]=\"showClear\" [editable]=\"editable\"\n    [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\" [virtualScroll]=\"virtualScroll\"\n    [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\" [(ngModel)]=\"value\" [optionLabel]=\"optionLabel\"\n    [optionValue]=\"optionValue\" [placeholder]=\"placeholder\" [variant]=\"variant\" class=\"w-full md:w-56\"\n    (onChange)=\"handleChange($event)\">\n  </p-select>\n  } @else {\n  <p-floatlabel class=\"w-full md:w-56\" [variant]=\"labelVariant\">\n    <p-select [formControl]=\"formControl\" [inputId]=\"inputId\" [checkmark]=\"checkmark\" [showClear]=\"showClear\"\n      [editable]=\"editable\" [filter]=\"filter\" [filterBy]=\"filterBy\" [loading]=\"loading\" [virtualScroll]=\"virtualScroll\"\n      [virtualScrollItemSize]=\"virtualScrollItemSize\" [options]=\"options\" [(ngModel)]=\"value\"\n      [optionLabel]=\"optionLabel\" [optionValue]=\"optionValue\" [variant]=\"variant\" styleClass=\"w-full\"\n      (onChange)=\"handleChange($event)\">\n    </p-select>\n    <label [for]=\"inputId\" [class.required-label]=\"required\">\n      {{ label }}\n    </label>\n  </p-floatlabel>\n  }\n\n  @if (invalid && errorMessage && touched) {\n  <small class=\"p-error\">{{ errorMessage }}</small>\n  }\n</div>\n"
         },
         {
             "name": "TableComponent",
@@ -15066,28 +15020,6 @@
                 "kind": 192
             },
             {
-                "name": "ISize",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"small\" | \"large\" | undefined",
-                "file": "src/app/shared/types/password-input.types.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 192
-            },
-            {
-                "name": "ISize",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"small\" | \"large\"",
-                "file": "src/app/shared/types/select.types.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 192
-            },
-            {
                 "name": "IVariant",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -16158,17 +16090,6 @@
                     "kind": 188
                 },
                 {
-                    "name": "ISize",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"small\" | \"large\"",
-                    "file": "src/app/shared/types/select.types.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 192
-                },
-                {
                     "name": "IVariant",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -16194,17 +16115,6 @@
                 }
             ],
             "src/app/shared/types/password-input.types.ts": [
-                {
-                    "name": "ISize",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"small\" | \"large\" | undefined",
-                    "file": "src/app/shared/types/password-input.types.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 192
-                },
                 {
                     "name": "IVariant",
                     "ctype": "miscellaneous",
@@ -16844,7 +16754,7 @@
                 "linktype": "component",
                 "name": "SelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/37",
+                "coverageCount": "0/35",
                 "status": "low"
             },
             {
@@ -17499,16 +17409,6 @@
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
-                "name": "ISize",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/types/password-input.types.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
                 "name": "IVariant",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -17538,7 +17438,7 @@
                 "linktype": "interface",
                 "name": "ISelectProps",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -17557,16 +17457,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "ISelectOptions",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/types/select.types.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "ISize",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

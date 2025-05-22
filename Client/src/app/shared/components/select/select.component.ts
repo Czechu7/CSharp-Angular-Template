@@ -56,7 +56,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
   }
 
   @Output() valueChange = new EventEmitter<T>();
-  @Output() onSelect = new EventEmitter<{ originalEvent: Event; value: T }>();
   @Output() onChangeEvent = new EventEmitter<{
     originalEvent: Event;
     value: T;
@@ -94,10 +93,6 @@ export class SelectComponent<T = unknown> implements ISelectProps<T>, ControlVal
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  handleSelect(event: { originalEvent: Event; value: T }): void {
-    this.onSelect.emit(event);
   }
 
   handleChange(event: { originalEvent: Event; value: T }): void {

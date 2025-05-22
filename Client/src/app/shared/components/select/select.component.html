@@ -4,7 +4,7 @@
     [filter]="filter" [filterBy]="filterBy" [loading]="loading" [virtualScroll]="virtualScroll"
     [virtualScrollItemSize]="virtualScrollItemSize" [options]="options" [(ngModel)]="value" [optionLabel]="optionLabel"
     [optionValue]="optionValue" [placeholder]="placeholder" [variant]="variant" class="w-full md:w-56"
-    (onChange)="handleChange($event)" (onSelect)="handleSelect($event)">
+    (onChange)="handleChange($event)">
   </p-select>
   } @else {
   <p-floatlabel class="w-full md:w-56" [variant]="labelVariant">
@@ -12,7 +12,7 @@
       [editable]="editable" [filter]="filter" [filterBy]="filterBy" [loading]="loading" [virtualScroll]="virtualScroll"
       [virtualScrollItemSize]="virtualScrollItemSize" [options]="options" [(ngModel)]="value"
       [optionLabel]="optionLabel" [optionValue]="optionValue" [variant]="variant" styleClass="w-full"
-      (onChange)="handleChange($event)" (onSelect)="handleSelect($event)">
+      (onChange)="handleChange($event)">
     </p-select>
     <label [for]="inputId" [class.required-label]="required">
       {{ label }}
