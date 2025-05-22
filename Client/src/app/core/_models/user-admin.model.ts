@@ -1,3 +1,5 @@
+import { IPagination } from './base-response.model';
+
 export interface IUserAdmin {
   id: string;
   email?: string;
@@ -7,11 +9,11 @@ export interface IUserAdmin {
   roles?: string;
   createdAt?: Date | string | null;
   isActive?: boolean;
+  modifiedAt?: string;
+  modifiedBy?: string;
 }
 
 export interface IUserAdminResponse {
   items: IUserAdmin[];
-  totalCount: number;
-  pageNumber: number;
-  pageSize: number;
+  pagination?: IPagination;
 }
