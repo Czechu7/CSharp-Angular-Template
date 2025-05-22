@@ -65,7 +65,13 @@ export class AdminUsersEditComponent implements OnInit {
   }
 
   fillForm() {
-    if (!this.userData) return;
+    if (
+      !this.userData ||
+      !this.userData.firstName ||
+      !this.userData.lastName ||
+      !this.userData.email
+    )
+      return;
 
     this.controls.firstName.setValue(this.userData.firstName);
     this.controls.lastName.setValue(this.userData.lastName);

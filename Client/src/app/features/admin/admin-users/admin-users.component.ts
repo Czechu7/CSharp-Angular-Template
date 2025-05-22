@@ -62,15 +62,20 @@ export class AdminUsersComponent implements OnInit {
     this.loadUsers({ page: 0, rows: 5 });
   }
 
-  loadUsers(event: { page: number; rows: number }): void {
+  loadUsers(event?: { page: number; rows: number }): void {
     this.loading = true;
+    const pageNumber = event ? event.page / event.rows + 1 : 1;
+    const pageSize = event ? event.rows : 10;
 
-    this.adminService.getUsers(event.page, event.rows).subscribe({
+    this.adminService.getPagedUsers({ pageNumber, pageSize }).subscribe({
       next: response => {
-        this.users = response.data.map(apiUser => ({
-          ...apiUser,
-          createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
-        }));
+        console.log('Users:', response.data.items);
+        // this.users = response.data.map(apiUser => ({
+        //   ...apiUser,
+        //   createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
+        // }));
+
+        this.users = response.data.items;
       },
       error: error => {
         this.loading = false;
