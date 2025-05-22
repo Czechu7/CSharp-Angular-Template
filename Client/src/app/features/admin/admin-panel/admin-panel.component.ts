@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.component';
-import { ISiebarItem } from '../../../shared/types/sidebar.types';
+import { ISidebarItem } from '../../../shared/types/sidebar.types';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class AdminPanelComponent {
   sidebarVisible = false;
   sidebarCollapsed = false;
 
-  menuItems: ISiebarItem[] = [
+  menuItems: ISidebarItem[] = [
     {
       label: 'User Management',
       icon: 'pi pi-users',
