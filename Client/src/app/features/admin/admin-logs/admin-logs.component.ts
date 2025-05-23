@@ -1,5 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { AdminLogsListComponent } from '../admin-logs-list/admin-logs-list/admin-logs-list.component';
 
 @Component({
@@ -9,12 +9,8 @@ import { AdminLogsListComponent } from '../admin-logs-list/admin-logs-list/admin
   templateUrl: './admin-logs.component.html',
   styleUrl: './admin-logs.component.scss',
 })
-export class AdminLogsComponent implements OnInit {
+export class AdminLogsComponent {
   currentTab: 'logs' | 'errors' = 'logs';
-
-  constructor() {}
-
-  ngOnInit() {}
 
   switchTab(tab: 'logs' | 'errors') {
     this.currentTab = tab;
