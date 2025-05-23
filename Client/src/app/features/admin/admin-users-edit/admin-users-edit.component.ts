@@ -6,7 +6,8 @@ import { InputComponent } from '../../../shared/components/input/input.component
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '../../../shared/services/form.service';
 import { AdminProfileForm } from '../../../shared/models/form.model';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ToastService } from '../../../shared/services/toast.service';
 import { ErrorService } from '../../../shared/services/error.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { RouterEnum } from '../../../enums/router.enum';
@@ -57,6 +58,8 @@ export class AdminUsersEditComponent implements OnInit {
   private location = inject(Location);
   private formService = inject(FormService);
   private errorService = inject(ErrorService);
+  private toastService = inject(ToastService);
+  private translateService = inject(TranslateService);
 
   ngOnInit(): void {
     this.adminProfileForm = this.formService.getAdminProfileForm();
@@ -89,8 +92,8 @@ export class AdminUsersEditComponent implements OnInit {
         this.userData = response.data;
         this.fillForm();
       },
-      error: error => {
-        console.error('Error fetching user details:', error);
+      error: _ => {
+        this.isLoading = false;
       },
       complete: () => {
         this.isLoading = false;
@@ -111,14 +114,18 @@ export class AdminUsersEditComponent implements OnInit {
   sendPasswordResetEmail() {
     this.isLoading = true;
     this.adminService.sendPasswordResetEmail().subscribe({
-      next: response => {
-        console.log('Password reset email sent:', response);
+      next: _ => {
+        console.log('Password reset email has been sent!');
       },
-      error: error => {
-        console.error('Error sending password reset email:', error);
+      error: _ => {
+        this.isLoading = false;
       },
       complete: () => {
         this.isLoading = false;
+        this.toastService.showSuccess(
+          this.translateService.instant('ADMIN.PROFILE_EDIT.TITLE'),
+          this.translateService.instant('ADMIN.PROFILE_EDIT.SUCCESS_RESET_PASSWORD_MESSAGE'),
+        );
       },
     });
   }
@@ -163,6 +170,17 @@ export class AdminUsersEditComponent implements OnInit {
 
     const updateData = { [fieldName]: fieldValue };
 
-    this.adminService.updateUserProfile(updateData, this.userId).subscribe({});
+    this.adminService.updateUserProfile(updateData, this.userId).subscribe({
+      next: _ => {},
+      error: _ => {},
+      complete: () => {
+        this.isLoading = false;
+
+        this.toastService.showSuccess(
+          this.translateService.instant('ADMIN.PROFILE_EDIT.TITLE'),
+          this.translateService.instant('ADMIN.PROFILE_EDIT.SUCCESS_MESSAGE'),
+        );
+      },
+    });
   }
 }

@@ -2,25 +2,25 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TableComponent } from '../../../shared/components/table/table.component';
 import { ITableActionButton, ITableColumn } from '../../../shared/types/table.types';
 import { MenuItem } from 'primeng/api';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AdminService } from '../../../core/_services/admin/admin.service';
-import { DatePipe } from '@angular/common';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { IUserAdmin } from '../../../core/_models/user-admin.model';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-admin-users',
   standalone: true,
   imports: [TableComponent, ConfirmModalComponent, TranslateModule],
-  providers: [DatePipe],
   templateUrl: './admin-users.component.html',
   styleUrl: './admin-users.component.scss',
 })
 export class AdminUsersComponent implements OnInit {
   private adminService = inject(AdminService);
-  private datePipe = inject(DatePipe);
   private router = inject(Router);
+  private translateService = inject(TranslateService);
+  private toastService = inject(ToastService);
 
   users: IUserAdmin[] = [];
   loading: boolean = false;
@@ -124,6 +124,10 @@ export class AdminUsersComponent implements OnInit {
         complete: () => {
           this.showConfirmModal = false;
           this.userToDelete = null;
+          this.toastService.showSuccess(
+            this.translateService.instant('ADMIN.USERS.TITLE'),
+            this.translateService.instant('ADMIN.USERS.SUCCESS_DELETE_ACCOUNT_MESSAGE'),
+          );
         },
       });
     }
