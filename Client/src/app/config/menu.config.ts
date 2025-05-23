@@ -7,7 +7,10 @@ export const MenuConfig = {
   footerTitle: 'MENU.FOOTER_TITLE',
   authMenuItems: [
     { label: 'MENU.ADMIN_PANEL', routerLink: `/${RouterEnum.admin}`, roles: [RolesEnum.ADMIN] },
-    { label: 'MENU.PROFILE', routerLink: `/${RouterEnum.settings}`, roles: [RolesEnum.USER] },
+    {
+      label: 'MENU.PROFILE',
+      routerLink: `/${RouterEnum.settings}`,
+    },
   ],
   nonAuthMenuItems: [
     { label: 'MENU.LOGIN', routerLink: `/${RouterEnum.login}` },

@@ -27,6 +27,9 @@ export class HasRoleDirective {
 
     if (roles === undefined || roles.length === 0) {
       this.requiredRoles = undefined;
+      this.viewContainer.clear();
+      this.viewContainer.createEmbeddedView(this.templateRef);
+      return;
     } else {
       this.requiredRoles = roles.map(role => String(role));
     }
