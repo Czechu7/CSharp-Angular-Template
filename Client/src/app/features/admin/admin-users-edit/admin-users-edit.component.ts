@@ -85,6 +85,7 @@ export class AdminUsersEditComponent implements OnInit {
     this.controls.email.setValue(this.userData.email);
     this.controls.roles.setValue(this.userData.roles);
     this.controls.password.setValue('password');
+    this.controls.userName.disable();
     this.controls.firstName.disable();
     this.controls.lastName.disable();
     this.controls.email.disable();
