@@ -15,6 +15,7 @@ import { IUserAdmin } from '../../../core/_models/user-admin.model';
 import { RolesEnum } from '../../../enums/roles.enum';
 import { Location } from '@angular/common';
 import { SelectComponent } from '../../../shared/components/select/select.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-admin-users-edit',
@@ -27,26 +28,19 @@ import { SelectComponent } from '../../../shared/components/select/select.compon
     ReactiveFormsModule,
     TranslateModule,
     SelectComponent,
+    TooltipModule,
   ],
   templateUrl: './admin-users-edit.component.html',
   styleUrl: './admin-users-edit.component.scss',
 })
 export class AdminUsersEditComponent implements OnInit {
+  readonly RouterEnum = RouterEnum;
+  readonly rolesEnum = RolesEnum;
+
   adminProfileForm!: FormGroup<AdminProfileForm>;
-  RouterEnum = RouterEnum;
-  rolesEnum = RolesEnum;
-
-  protected isLoading = false;
-
   userData: IUserAdmin | undefined = undefined;
-
-  private adminService = inject(AdminService);
-  private route = inject(ActivatedRoute);
-  private location = inject(Location);
-  private formService = inject(FormService);
-  private errorService = inject(ErrorService);
-
   userId: string | null = null;
+  protected isLoading = false;
 
   editState = {
     firstName: false,
@@ -58,6 +52,12 @@ export class AdminUsersEditComponent implements OnInit {
     userName: false,
   };
 
+  private adminService = inject(AdminService);
+  private route = inject(ActivatedRoute);
+  private location = inject(Location);
+  private formService = inject(FormService);
+  private errorService = inject(ErrorService);
+
   ngOnInit(): void {
     this.adminProfileForm = this.formService.getAdminProfileForm();
 
@@ -68,7 +68,66 @@ export class AdminUsersEditComponent implements OnInit {
     this.getUserDetails();
   }
 
-  fillForm() {
+  get controls() {
+    return this.adminProfileForm.controls;
+  }
+
+  get rolesList(): string[] {
+    return Object.values(this.rolesEnum);
+  }
+
+  getErrorMessage(control: FormControl) {
+    return this.errorService.getErrorMessage(control);
+  }
+
+  getUserDetails() {
+    this.isLoading = true;
+    if (!this.userId) return;
+
+    this.adminService.getUserDetails(this.userId).subscribe({
+      next: response => {
+        this.userData = response.data;
+        this.fillForm();
+      },
+      error: error => {
+        console.error('Error fetching user details:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+        this.fillForm();
+      },
+    });
+  }
+
+  toggleEditField(fieldName: keyof typeof this.editState): void {
+    if (this.editState[fieldName]) {
+      this.saveField(fieldName);
+    } else {
+      this.editState[fieldName] = true;
+      this.controls[fieldName as keyof AdminProfileForm].enable();
+    }
+  }
+
+  sendPasswordResetEmail() {
+    this.isLoading = true;
+    this.adminService.sendPasswordResetEmail().subscribe({
+      next: response => {
+        console.log('Password reset email sent:', response);
+      },
+      error: error => {
+        console.error('Error sending password reset email:', error);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
+
+  onBack() {
+    this.location.back();
+  }
+
+  private fillForm() {
     if (
       !this.userData ||
       !this.userData.userName ||
@@ -93,32 +152,7 @@ export class AdminUsersEditComponent implements OnInit {
     this.controls.roles.disable();
   }
 
-  get controls() {
-    return this.adminProfileForm.controls;
-  }
-
-  get rolesList(): string[] {
-    return Object.values(this.rolesEnum);
-  }
-
-  getErrorMessage(control: FormControl) {
-    return this.errorService.getErrorMessage(control);
-  }
-
-  onBack() {
-    this.location.back();
-  }
-
-  toggleEditField(fieldName: keyof typeof this.editState): void {
-    if (this.editState[fieldName]) {
-      this.saveField(fieldName);
-    } else {
-      this.editState[fieldName] = true;
-      this.controls[fieldName as keyof AdminProfileForm].enable();
-    }
-  }
-
-  saveField(fieldName: keyof typeof this.editState): void {
+  private saveField(fieldName: keyof typeof this.editState): void {
     if (!this.userId) return;
 
     const fieldValue = this.controls[fieldName as keyof AdminProfileForm].value;
@@ -130,39 +164,5 @@ export class AdminUsersEditComponent implements OnInit {
     const updateData = { [fieldName]: fieldValue };
 
     this.adminService.updateUserProfile(updateData, this.userId).subscribe({});
-  }
-
-  getUserDetails() {
-    this.isLoading = true;
-    if (!this.userId) return;
-
-    this.adminService.getUserDetails(this.userId).subscribe({
-      next: response => {
-        this.userData = response.data;
-        this.fillForm();
-      },
-      error: error => {
-        console.error('Error fetching user details:', error);
-      },
-      complete: () => {
-        this.isLoading = false;
-        this.fillForm();
-      },
-    });
-  }
-
-  sendPasswordResetEmail() {
-    this.isLoading = true;
-    this.adminService.sendPasswordResetEmail().subscribe({
-      next: response => {
-        console.log('Password reset email sent:', response);
-      },
-      error: error => {
-        console.error('Error sending password reset email:', error);
-      },
-      complete: () => {
-        this.isLoading = false;
-      },
-    });
   }
 }

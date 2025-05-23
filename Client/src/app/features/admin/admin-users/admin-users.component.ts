@@ -28,12 +28,11 @@ export class AdminUsersComponent implements OnInit {
 
   // TABLE
   columns: ITableColumn[] = [
-    { field: 'id', header: 'ID' },
+    { field: 'userName', header: 'ADMIN.USERS.USERNAME' },
     { field: 'firstName', header: 'ADMIN.USERS.FIRST_NAME' },
     { field: 'lastName', header: 'ADMIN.USERS.LAST_NAME' },
     { field: 'email', header: 'ADMIN.USERS.EMAIL' },
-    { field: 'role', header: 'ADMIN.USERS.ROLE' },
-    { field: 'createdAt', header: 'ADMIN.USERS.CREATED_AT' },
+    { field: 'roles', header: 'ADMIN.USERS.ROLE' },
     { field: 'isActive', header: 'ADMIN.USERS.STATUS' },
   ];
 

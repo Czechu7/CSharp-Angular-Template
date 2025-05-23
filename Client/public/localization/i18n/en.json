@@ -37,8 +37,9 @@
   },
   "ADMIN": {
     "USERS": {
-      "FIRST_NAME": "First Name",
       "TITLE": "Users",
+      "USERNAME": "Username",
+      "FIRST_NAME": "First Name",
       "LAST_NAME": "Last Name",
       "EMAIL": "Email",
       "ROLE": "Role",
@@ -50,6 +51,7 @@
     },
     "PROFILE_EDIT": {
       "TITLE": "Edit user profile",
+      "USERNAME": "Username",
       "FIRST_NAME": "First name",
       "LAST_NAME": "Last name",
       "EMAIL": "Email",

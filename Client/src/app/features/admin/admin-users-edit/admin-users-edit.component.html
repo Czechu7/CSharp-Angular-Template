@@ -7,10 +7,12 @@
         <app-input
           [formControl]="controls.userName"
           formControlName="userName"
-          [placeholder]="'ADMIN.PROFILE_EDIT.FIRST_NAME' | translate"
+          [placeholder]="'ADMIN.PROFILE_EDIT.USERNAME' | translate"
           type="text"
           [errorMessage]="getErrorMessage(controls.userName)"
           [invalid]="controls.userName.invalid && controls.userName.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.USERNAME' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">
@@ -33,6 +35,8 @@
           type="text"
           [errorMessage]="getErrorMessage(controls.firstName)"
           [invalid]="controls.firstName.invalid && controls.firstName.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.FIRST_NAME' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">
@@ -55,6 +59,8 @@
           type="text"
           [errorMessage]="getErrorMessage(controls.lastName)"
           [invalid]="controls.lastName.invalid && controls.lastName.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.LAST_NAME' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">
@@ -77,6 +83,8 @@
           type="email"
           [errorMessage]="getErrorMessage(controls.email)"
           [invalid]="controls.email.invalid && controls.email.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.EMAIL' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">
@@ -98,6 +106,8 @@
           [placeholder]="'ADMIN.PROFILE_EDIT.PASSWORD' | translate"
           [errorMessage]="getErrorMessage(controls.password)"
           [invalid]="controls.password.invalid && controls.password.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.PASSWORD' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">
@@ -120,6 +130,8 @@
           [options]="rolesList"
           [errorMessage]="getErrorMessage(controls.roles)"
           [invalid]="controls.roles.invalid && controls.roles.touched"
+          pTooltip="{{ 'ADMIN.PROFILE_EDIT.ROLE' | translate }}"
+          tooltipPosition="top"
         />
       </div>
       <div class="ml-2">

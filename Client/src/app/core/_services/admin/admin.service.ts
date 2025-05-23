@@ -12,6 +12,10 @@ import { IPagedQueryParams } from '../../_models/paged-query-params.model';
 export class AdminService {
   private requestFactory = inject(RequestFactoryService);
 
+  getUserDetails(id: string): Observable<IBaseResponse<IUserAdmin>> {
+    return this.requestFactory.getById<IUserAdmin>(ApiEndpoints.GET_ADMIN_USERS, id);
+  }
+
   getPagedUsers(queryParams: IPagedQueryParams): Observable<IBaseResponse<IUserAdminResponse>> {
     return this.requestFactory.getPaged<IUserAdminResponse>(
       ApiEndpoints.GET_ADMIN_USERS,
@@ -19,19 +23,12 @@ export class AdminService {
     );
   }
 
-  setUserRole() {}
-  setUserStatus() {}
-
   deleteUser(id: string): Observable<boolean> {
     return of(true).pipe(delay(500));
   }
 
   sendPasswordResetEmail() {
     return of(true).pipe(delay(500));
-  }
-
-  getUserDetails(id: string): Observable<IBaseResponse<IUserAdmin>> {
-    return this.requestFactory.getById<IUserAdmin>(ApiEndpoints.GET_ADMIN_USERS, id);
   }
 
   updateUserProfile(user: any, id: string): Observable<IBaseResponseWithoutData> {
