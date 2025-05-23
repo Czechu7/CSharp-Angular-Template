@@ -2,11 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AdminLogsListComponent } from '../admin-logs-list/admin-logs-list/admin-logs-list.component';
 import { TranslateModule } from '@ngx-translate/core';
-
-export enum LogType {
-  Regular = 'logs',
-  Error = 'errors',
-}
+import { LogEnum } from '../../../enums/log-type.enum';
 
 @Component({
   selector: 'app-admin-logs',
@@ -16,10 +12,10 @@ export enum LogType {
   styleUrl: './admin-logs.component.scss',
 })
 export class AdminLogsComponent {
-  LogType = LogType; // Export to template
-  currentTab: LogType = LogType.Regular;
+  LogType = LogEnum;
+  currentTab: LogEnum = LogEnum.Regular;
 
-  switchTab(tab: LogType): void {
+  switchTab(tab: LogEnum): void {
     this.currentTab = tab;
   }
 }

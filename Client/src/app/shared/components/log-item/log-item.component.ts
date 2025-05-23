@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { isErrorLog, LogType } from '../../../../app/core/_models/log.model';
-import { RouterEnum } from '../../../enums/router.enum';
 import { TranslateModule } from '@ngx-translate/core';
+import { LogType, isErrorLog } from '../../../../app/core/_models/log.model';
+import { RouterEnum } from '../../../enums/router.enum';
 
 @Component({
   selector: 'app-log-item',
@@ -12,37 +12,15 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './log-item.component.html',
   styleUrl: './log-item.component.scss',
 })
-export class LogItemComponent implements OnInit {
+export class LogItemComponent {
   @Input() log!: LogType;
   @Input() isError = false;
 
-  title = '';
-  content = '';
-  dateTime = '';
-  ipAddress = '';
-  logId = '';
-
   RouterEnum = RouterEnum;
-
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.logId = this.log.id;
-    this.dateTime = new Date(this.log.timestamp).toLocaleString();
-
-    if (isErrorLog(this.log)) {
-      this.title = this.log.exceptionType;
-      this.content = this.log.exceptionMessage;
-      this.ipAddress = this.log.userId;
-      this.isError = true;
-    } else {
-      this.title = this.log.action;
-      this.content = this.log.message;
-      this.ipAddress = this.log.ipAddress;
-    }
-  }
+  isErrorLog = isErrorLog; 
+  private router = inject(Router);
 
   showDetails() {
-    this.router.navigate([RouterEnum.logs, this.logId]);
+    this.router.navigate([RouterEnum.logs, this.log.id]);
   }
 }

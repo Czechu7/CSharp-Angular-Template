@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { LogItemComponent } from '../../../../shared/components/log-item/log-item.component';
@@ -10,7 +10,7 @@ import {
 } from '../../../../core/_services/pagination/pagination.service';
 import { InfiniteScrollDirective } from '../../../../shared/directives/infinite-scroll/infinite-scroll.directive';
 import { TranslateModule } from '@ngx-translate/core';
-import { LogType } from '../../admin-logs/admin-logs.component';
+import { LogEnum } from '../../../../enums/log-type.enum';
 
 @Component({
   selector: 'app-admin-logs-list',
@@ -20,17 +20,15 @@ import { LogType } from '../../admin-logs/admin-logs.component';
   styleUrl: './admin-logs-list.component.scss',
 })
 export class AdminLogsListComponent implements OnInit, OnDestroy {
-  @Input() logType: LogType = LogType.Regular;
+  @Input() logType: LogEnum = LogEnum.Regular;
 
-  LogType = LogType;
+  LogType = LogEnum;
   logs: LogData[] = [];
   paginationState: PaginationState | null = null;
   private paginationSubscription!: Subscription;
 
-  constructor(
-    private logsService: AdminLogsService,
-    private paginationService: PaginationService,
-  ) {}
+  private logsService = inject(AdminLogsService);
+  private paginationService = inject(PaginationService);
 
   ngOnInit() {
     this.paginationService.resetPagination();
@@ -55,7 +53,7 @@ export class AdminLogsListComponent implements OnInit, OnDestroy {
 
     const { limit, offset } = this.paginationState;
 
-    if (this.logType === LogType.Regular) {
+    if (this.logType === LogEnum.Regular) {
       this.logsService.getLogs(limit, offset).subscribe({
         next: response => {
           if (!response || !response.data) {
