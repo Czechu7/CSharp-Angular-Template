@@ -70,8 +70,6 @@ export class AdminUsersComponent implements OnInit {
       next: response => {
         this.users = response.data.items;
         this.totalRecords = response.data.pagination!.totalCount;
-
-        this.users = response.data.items;
       },
       error: error => {
         this.loading = false;
