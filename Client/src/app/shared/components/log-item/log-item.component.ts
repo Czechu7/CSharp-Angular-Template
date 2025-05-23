@@ -3,11 +3,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { isErrorLog, LogType } from '../../../../app/core/_models/log.model';
 import { RouterEnum } from '../../../enums/router.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-log-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './log-item.component.html',
   styleUrl: './log-item.component.scss',
 })

@@ -1,12 +1,16 @@
 <div class="logs-container">
   <div class="logs-tabs">
-    <button [class.active]="currentTab === 'logs'" (click)="switchTab('logs')">Regular Logs</button>
-    <button [class.active]="currentTab === 'errors'" (click)="switchTab('errors')">Error Logs</button>
+    <button [class.active]="currentTab === LogType.Regular"
+      (click)="switchTab(LogType.Regular)">{{'ADMIN.LOGS.REGULAR_LOGS' | translate}}</button>
+    <button [class.active]="currentTab === LogType.Error"
+      (click)="switchTab(LogType.Error)">{{'ADMIN.LOGS.ERROR_LOGS' | translate}}</button>
   </div>
 
-  <app-admin-logs-list *ngIf="currentTab === 'logs'" logType="logs">
-  </app-admin-logs-list>
+  @if (currentTab === LogType.Regular) {
+  <app-admin-logs-list [logType]="LogType.Regular"></app-admin-logs-list>
+  }
 
-  <app-admin-logs-list *ngIf="currentTab === 'errors'" logType="errors">
-  </app-admin-logs-list>
+  @if (currentTab === LogType.Error) {
+  <app-admin-logs-list [logType]="LogType.Error"></app-admin-logs-list>
+  }
 </div>

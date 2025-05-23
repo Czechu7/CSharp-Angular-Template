@@ -59,6 +59,14 @@
       "SAVE_BUTTON": "Save",
       "CANCEL_BUTTON": "Cancel",
       "RESET_PASSWORD": "Reset password"
+    },
+    "LOGS": {
+      "SHOW_MORE": "Show more",
+      "NO_LOGS": "No logs available",
+      "REGULAR_LOGS": "Logs",
+      "ERROR_LOGS": "Error logs",
+      "NO_FOUND_LOGS": "No logs found",
+      "LOADING_LOGS": "Loading logs..."
     }
   },
   "EXAMPLE-CRUD": {

@@ -58,6 +58,14 @@
       "SAVE_BUTTON": "Zapisz zmiany",
       "CANCEL_BUTTON": "Anuluj",
       "RESET_PASSWORD": "Zresetuj hasło"
+    },
+    "LOGS": {
+      "SHOW_MORE": "Pokaż więcej",
+      "NO_LOGS": "Brak logów do wyświetlenia",
+      "REGULAR_LOGS": "Logi",
+      "ERROR_LOGS": "Logi błędów",
+      "NO_FOUND_LOGS": "Nie znaleziono logów",
+      "LOADING_LOGS": "Ładowanie logów..."
     }
   },
   "EXAMPLE-CRUD": {
