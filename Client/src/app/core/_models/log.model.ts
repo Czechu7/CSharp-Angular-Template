@@ -25,5 +25,11 @@ export interface IErrorLog {
 export type LogType = ILog | IErrorLog;
 
 export function isErrorLog(log: LogType): log is IErrorLog {
-  return 'exceptionType' in log && 'stackTrace' in log;
+  return (
+    log &&
+    'exceptionType' in log &&
+    'stackTrace' in log &&
+    !('action' in log) &&
+    !('resource' in log)
+  );
 }

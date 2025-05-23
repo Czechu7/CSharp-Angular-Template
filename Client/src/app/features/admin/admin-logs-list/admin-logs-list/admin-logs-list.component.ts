@@ -38,7 +38,6 @@ export class AdminLogsListComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Initial load after component is ready
     setTimeout(() => this.paginationService.nextPage(), 0);
   }
 
@@ -56,8 +55,6 @@ export class AdminLogsListComponent implements OnInit, OnDestroy {
     if (this.logType === 'logs') {
       this.logsService.getLogs(limit, offset).subscribe({
         next: response => {
-          console.log('Response:', response); // Debugging line
-          // Fix: Ensure response and data exist before checking length
           if (!response || !response.data) {
             this.paginationService.setLoading(false);
             return;
@@ -77,7 +74,6 @@ export class AdminLogsListComponent implements OnInit, OnDestroy {
     } else {
       this.logsService.getErrorLogs(limit, offset).subscribe({
         next: response => {
-          // Fix: Ensure response and data exist before checking length
           if (!response || !response.data) {
             this.paginationService.setLoading(false);
             return;
