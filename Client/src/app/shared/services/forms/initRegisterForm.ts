@@ -33,6 +33,7 @@ export const initRegisterForm = (): FormGroup<RegisterForm> => {
       email: new FormControl('', {
         validators: [
           Validators.required,
+          Validators.email,
           Validators.minLength(VALIDATION_LENGTHS.MIN_EMAIL),
           Validators.maxLength(VALIDATION_LENGTHS.MAX_EMAIL),
         ],

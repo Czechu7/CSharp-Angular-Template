@@ -36,8 +36,9 @@
   },
   "ADMIN": {
     "USERS": {
-      "FIRST_NAME": "Imię",
       "TITLE": "Użytkownicy",
+      "USERNAME": "Nazwa użytkownika",
+      "FIRST_NAME": "Imię",
       "LAST_NAME": "Nazwisko",
       "EMAIL": "Email",
       "ROLE": "Rola",
@@ -45,10 +46,12 @@
       "STATUS": "Status",
       "ACTIONS": "Akcje",
       "DELETE_CONFIRMATION": "Potwierdzenie usunięcia",
-      "DELETE_CONFIRMATION_MESSAGE": "Czy na pewno chcesz usunąć tego użytkownika?"
+      "DELETE_CONFIRMATION_MESSAGE": "Czy na pewno chcesz usunąć tego użytkownika?",
+      "SUCCESS_DELETE_ACCOUNT_MESSAGE": "Konto zostało pomyślnie usunięte."
     },
     "PROFILE_EDIT": {
       "TITLE": "Edytuj profil",
+      "USERNAME": "Nazwa użytkownika",
       "FIRST_NAME": "Imię",
       "LAST_NAME": "Nazwisko",
       "EMAIL": "Email",
@@ -57,7 +60,9 @@
       "STATUS": "Status",
       "SAVE_BUTTON": "Zapisz zmiany",
       "CANCEL_BUTTON": "Anuluj",
-      "RESET_PASSWORD": "Zresetuj hasło"
+      "RESET_PASSWORD": "Zresetuj hasło",
+      "SUCCESS_MESSAGE": "Profil został pomyślnie zaktualizowany.",
+      "SUCCESS_RESET_PASSWORD_MESSAGE": "Email z instrukcjami resetowania hasła został wysłany na podany adres."
     }
   },
   "EXAMPLE-CRUD": {

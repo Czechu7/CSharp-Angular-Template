@@ -2,25 +2,25 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TableComponent } from '../../../shared/components/table/table.component';
 import { ITableActionButton, ITableColumn } from '../../../shared/types/table.types';
 import { MenuItem } from 'primeng/api';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AdminService } from '../../../core/_services/admin/admin.service';
-import { DatePipe } from '@angular/common';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { IUserAdmin } from '../../../core/_models/user-admin.model';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-admin-users',
   standalone: true,
   imports: [TableComponent, ConfirmModalComponent, TranslateModule],
-  providers: [DatePipe],
   templateUrl: './admin-users.component.html',
   styleUrl: './admin-users.component.scss',
 })
 export class AdminUsersComponent implements OnInit {
   private adminService = inject(AdminService);
-  private datePipe = inject(DatePipe);
   private router = inject(Router);
+  private translateService = inject(TranslateService);
+  private toastService = inject(ToastService);
 
   users: IUserAdmin[] = [];
   loading: boolean = false;
@@ -28,12 +28,11 @@ export class AdminUsersComponent implements OnInit {
 
   // TABLE
   columns: ITableColumn[] = [
-    { field: 'id', header: 'ID' },
+    { field: 'userName', header: 'ADMIN.USERS.USERNAME' },
     { field: 'firstName', header: 'ADMIN.USERS.FIRST_NAME' },
     { field: 'lastName', header: 'ADMIN.USERS.LAST_NAME' },
     { field: 'email', header: 'ADMIN.USERS.EMAIL' },
-    { field: 'role', header: 'ADMIN.USERS.ROLE' },
-    { field: 'createdAt', header: 'ADMIN.USERS.CREATED_AT' },
+    { field: 'roles', header: 'ADMIN.USERS.ROLE' },
     { field: 'isActive', header: 'ADMIN.USERS.STATUS' },
   ];
 
@@ -64,18 +63,13 @@ export class AdminUsersComponent implements OnInit {
 
   loadUsers(event?: { page: number; rows: number }): void {
     this.loading = true;
-    const pageNumber = event ? event.page / event.rows + 1 : 1;
+    const pageNumber = event ? event.page + 1 : 1;
     const pageSize = event ? event.rows : 10;
 
     this.adminService.getPagedUsers({ pageNumber, pageSize }).subscribe({
       next: response => {
-        console.log('Users:', response.data.items);
-        // this.users = response.data.map(apiUser => ({
-        //   ...apiUser,
-        //   createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
-        // }));
-
         this.users = response.data.items;
+        this.totalRecords = response.data.pagination!.totalCount;
       },
       error: error => {
         this.loading = false;
@@ -93,14 +87,12 @@ export class AdminUsersComponent implements OnInit {
   handleAction(event: { action: string; item: IUserAdmin }): void {
     switch (event.action) {
       case 'edit':
-        console.log('Edit:', event.item);
         this.router.navigate(['admin', 'users', event.item.id]);
         break;
       case 'view':
         console.log('View:', event.item);
         break;
       case 'delete':
-        console.log('Delete:', event.item);
         this.userToDelete = event.item;
         this.confirmModalMessageName = `${event.item.firstName} ${event.item.lastName} - `;
         this.showConfirmModal = true;
@@ -130,6 +122,10 @@ export class AdminUsersComponent implements OnInit {
         complete: () => {
           this.showConfirmModal = false;
           this.userToDelete = null;
+          this.toastService.showSuccess(
+            this.translateService.instant('ADMIN.USERS.TITLE'),
+            this.translateService.instant('ADMIN.USERS.SUCCESS_DELETE_ACCOUNT_MESSAGE'),
+          );
         },
       });
     }
