@@ -19,8 +19,8 @@ export enum ApiEndpoints {
   DELETE_FILE = 'api/files',
   GET_FILES_STATS = 'api/files/stats',
   KARMELKI = 'api/karmelki',
-  GET_CURRENT_USER = 'auth/current-user',
-  UPDATE_USER = 'auth/update-user',
+  GET_CURRENT_USER = 'api/UserPanel',
+  UPDATE_USER = 'api/UserPanel',
   // ADMIN
   PUT_ADMIN_USER = 'api/adminpanel',
   GET_ADMIN_USERS = 'api/adminpanel/users',

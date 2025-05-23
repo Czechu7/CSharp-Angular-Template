@@ -3,12 +3,12 @@
 
   <form [formGroup]="userForm" (ngSubmit)="onUpdate()">
     <app-input
-      [formControl]="controls.username"
+      [formControl]="controls.userName"
       [placeholder]="'AUTH.USERNAME' | translate"
       type="text"
       autocomplete="username"
-      [errorMessage]="getErrorMessage(controls.username)"
-      [invalid]="controls.username.invalid && controls.username.touched"
+      [errorMessage]="getErrorMessage(controls.userName)"
+      [invalid]="controls.userName.invalid && controls.userName.touched"
     ></app-input>
 
     <app-input
@@ -39,23 +39,6 @@
     ></app-input>
 
     <h2>{{ 'Zmiana hasła:' | translate }}</h2>
-
-    <app-password-input
-      [formControl]="controls.currentPassword"
-      [placeholder]="'USER_PANEL.CURRENT_PASSWORD' | translate"
-      autocomplete="current-password"
-      [errorMessage]="getErrorMessage(controls.currentPassword)"
-      [invalid]="controls.currentPassword.invalid && controls.currentPassword.touched"
-    ></app-password-input>
-
-    <app-password-input
-      [formControl]="controls.newPassword"
-      [placeholder]="'USER_PANEL.NEW_PASSWORD' | translate"
-      autocomplete="new-password"
-      [errorMessage]="getErrorMessage(controls.newPassword)"
-      [invalid]="controls.newPassword.invalid && controls.newPassword.touched"
-      [feedback]="true"
-    ></app-password-input>
 
     <div class="submit-button">
       <app-button

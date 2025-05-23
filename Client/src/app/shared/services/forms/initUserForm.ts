@@ -5,7 +5,7 @@ import { VALIDATION_LENGTHS } from '../../../config/validations.config';
 export const initUserForm = (): FormGroup<UserForm> => {
   return new FormGroup(
     {
-      username: new FormControl('', {
+      userName: new FormControl('', {
         validators: [
           Validators.required,
           Validators.minLength(VALIDATION_LENGTHS.MIN_USERNAME),
@@ -35,20 +35,6 @@ export const initUserForm = (): FormGroup<UserForm> => {
           Validators.minLength(VALIDATION_LENGTHS.MIN_EMAIL),
           Validators.maxLength(VALIDATION_LENGTHS.MAX_EMAIL),
           Validators.email,
-        ],
-        nonNullable: true,
-      }),
-      currentPassword: new FormControl('', {
-        validators: [
-          Validators.minLength(VALIDATION_LENGTHS.MIN_PASSWORD),
-          Validators.maxLength(VALIDATION_LENGTHS.MAX_PASSWORD),
-        ],
-        nonNullable: true,
-      }),
-      newPassword: new FormControl('', {
-        validators: [
-          Validators.minLength(VALIDATION_LENGTHS.MIN_PASSWORD),
-          Validators.maxLength(VALIDATION_LENGTHS.MAX_PASSWORD),
         ],
         nonNullable: true,
       }),

@@ -11,7 +11,7 @@ import { ErrorService } from '../../../shared/services/error.service';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { RouterEnum } from '../../../enums/router.enum';
 import { AdminService } from '../../../core/_services/admin/admin.service';
-import { IUserAdmin } from '../../../core/_models/user-admin.model';
+import { IUserAdmin } from '../../../core/_models/user.model';
 import { RolesEnum } from '../../../enums/roles.enum';
 
 @Component({

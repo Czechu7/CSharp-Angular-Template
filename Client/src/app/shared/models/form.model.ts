@@ -22,12 +22,10 @@ export interface RegisterForm extends LoginForm {
 }
 
 export interface UserForm {
-  username: FormControl<string>;
+  userName: FormControl<string>;
   firstName: FormControl<string>;
   lastName: FormControl<string>;
   email: FormControl<string>;
-  currentPassword: FormControl<string>;
-  newPassword: FormControl<string>;
 }
 export interface AdminProfileForm {
   firstName: FormControl<string>;

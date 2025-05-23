@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { RequestFactoryService } from '../httpRequestFactory/request-factory.service';
 import { ApiEndpoints } from '../../../enums/api-endpoints.enum';
-import { IUserAdmin, IUserAdminResponse } from '../../_models/user-admin.model';
+import { IUserAdmin, IUserAdminResponse } from '../../_models/user.model';
 import { delay, Observable, of } from 'rxjs';
 import { IBaseResponse } from '../../_models/base-response.model';
 import { IPagedQueryParams } from '../../_models/paged-query-params.model';
@@ -36,7 +36,7 @@ export class AdminService {
       firstName: 'John',
       lastName: 'Doe',
       email: 'mail@mail.com',
-      roles: 'Admin',
+      role: 'Admin',
       createdAt: new Date(2022, 5, 15),
       isActive: true,
     };

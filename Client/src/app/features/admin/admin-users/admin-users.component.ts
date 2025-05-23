@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AdminService } from '../../../core/_services/admin/admin.service';
 import { DatePipe } from '@angular/common';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
-import { IUserAdmin } from '../../../core/_models/user-admin.model';
+import { IUserAdmin } from '../../../core/_models/user.model';
 import { Router } from '@angular/router';
 
 @Component({
