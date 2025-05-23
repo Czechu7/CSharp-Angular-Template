@@ -1,0 +1,11 @@
+<div class="log-container" [class.error]="isError">
+  <div class="log-header">
+    <div class="log-title">{{ title }}</div>
+    <div class="log-date">{{ dateTime }}</div>
+  </div>
+  <div class="log-content">{{ content }}</div>
+  <div class="log-footer">
+    <button class="show-more-button" (click)="showDetails()">Show More</button>
+    <div class="log-ip">{{ ipAddress }}</div>
+  </div>
+</div>

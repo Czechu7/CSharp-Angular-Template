@@ -1,0 +1,40 @@
+@import '../../../../../styles//utils/variables';
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-logs-message {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.load-more {
+  text-align: center;
+  margin: 20px 0;
+
+  button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: $global-border-radius;
+    cursor: pointer;
+    transition: background-color $global-transition-speed;
+
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+  }
+}
+
+.loading-indicator {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}

@@ -1,0 +1,12 @@
+<div class="logs-list" appInfiniteScroll [disabled]="paginationState?.isLoading || paginationState?.reachedEnd || false"
+  (scrolled)="onScroll()">
+  <app-log-item *ngFor="let log of logs" [log]="log" [isError]="logType === 'errors'"></app-log-item>
+
+  <div class="no-logs-message" *ngIf="logs.length === 0 && !paginationState?.isLoading">
+    No logs found
+  </div>
+
+  <div class="loading-indicator" *ngIf="paginationState?.isLoading">
+    Loading more logs...
+  </div>
+</div>

@@ -1,0 +1,65 @@
+@import '../../../../styles/utils/variables';
+
+.log-container {
+  background-color: var(--primary-light);
+  border-radius: $global-border-radius;
+  padding: 15px;
+  margin-bottom: 15px;
+  color: white;
+  box-shadow: $global-box-shadow;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 120px;
+
+  &.error {
+    background-color: var(--error);
+  }
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.log-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.log-date {
+  font-size: 14px;
+}
+
+.log-content {
+  flex: 1;
+  margin-bottom: 15px;
+  word-break: break-word;
+}
+
+.log-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-more-button {
+  background-color: white;
+  color: var(--text-primary);
+  border: none;
+  border-radius: $global-border-radius;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color $global-transition-speed;
+
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
+.log-ip {
+  font-size: 12px;
+  opacity: 0.9;
+}

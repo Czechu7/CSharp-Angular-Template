@@ -1,0 +1,37 @@
+@import '../../../../styles/utils/variables';
+
+.logs-container {
+  padding: 20px;
+}
+
+.logs-tabs {
+  display: flex;
+  margin-bottom: 20px;
+
+  button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    background-color: var(--secondary);
+    cursor: pointer;
+    border-radius: $global-border-radius;
+
+    &.active {
+      background-color: var(--primary);
+      color: white;
+    }
+  }
+}
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loading-indicator {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
