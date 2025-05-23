@@ -1,0 +1,18 @@
+<div class="logs-list" appInfiniteScroll [disabled]="paginationState?.isLoading || paginationState?.reachedEnd || false"
+  (scrolled)="onScroll()">
+  @for (log of logs; track log) {
+  <app-log-item [log]="log" [isError]="logType === LogType.Error"></app-log-item>
+  }
+
+  @if (logs.length === 0 && !paginationState?.isLoading) {
+  <div class="no-logs-message">
+    {{'ADMIN.LOGS.NO_FOUND_LOGS' | translate}}
+  </div>
+  }
+
+  @if (paginationState?.isLoading) {
+  <div class="loading-indicator">
+    {{'ADMIN.LOGS.LOADING_LOGS' | translate}}
+  </div>
+  }
+</div>

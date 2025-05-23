@@ -1,0 +1,74 @@
+@import '../../../../styles/utils/variables';
+
+.logs-container {
+  padding: 16px;
+  max-width: $global-max-width;
+  margin: 0 auto;
+
+  @media (max-width: $global-mobile-breakpoint) {
+    padding: 8px;
+  }
+}
+
+.logs-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--text-primary);
+    position: relative;
+    transition: color 0.3s;
+
+    @media (max-width: 576px) {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.active {
+      color: var(--primary);
+      font-weight: bold;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary);
+
+        @media (max-width: 576px) {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loading-indicator {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-style: italic;
+}

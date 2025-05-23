@@ -1,0 +1,23 @@
+<div class="log-container" [class.error]="isError">
+  @if (isErrorLog(log)) {
+  <div class="log-header">
+    <div class="log-title">{{ log.exceptionType }}</div>
+    <div class="log-date">{{ log.timestamp | date:'medium' }}</div>
+  </div>
+  <div class="log-content">{{ log.exceptionMessage }}</div>
+  <div class="log-footer">
+    <button class="show-more-button" (click)="showDetails()">{{'ADMIN.LOGS.SHOW_MORE' | translate}}</button>
+    <div class="log-ip">{{ log.userId }}</div>
+  </div>
+  } @else {
+  <div class="log-header">
+    <div class="log-title">{{ log.action }}</div>
+    <div class="log-date">{{ log.timestamp | date:'medium' }}</div>
+  </div>
+  <div class="log-content">{{ log.message }}</div>
+  <div class="log-footer">
+    <button class="show-more-button" (click)="showDetails()">{{'ADMIN.LOGS.SHOW_MORE' | translate}}</button>
+    <div class="log-ip">{{ log.ipAddress }}</div>
+  </div>
+  }
+</div>

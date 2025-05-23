@@ -23,4 +23,7 @@ export enum ApiEndpoints {
   PUT_ADMIN_USER = 'api/adminpanel',
   GET_ADMIN_USERS = 'api/adminpanel/users',
   GET_ADMIN_USER = 'api/adminpanel',
+  // LOGS
+  LOGS = 'api/Logs/security',
+  LOGS_ERRORS = 'api/Logs/errors',
 }
