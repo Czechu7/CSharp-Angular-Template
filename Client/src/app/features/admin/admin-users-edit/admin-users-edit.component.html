@@ -1,10 +1,29 @@
-<p>admin-users-edit works!</p>
-<p>Edycja użytkownika o ID: {{ userId }}</p>
-
-<div class="card w-1/4 max-w-7xl mx-auto p-4">
+<div class="card w-1/4 max-w-7xl mx-auto p-4 m-8">
   <h1 class="text-2xl mb-4">{{ 'ADMIN.PROFILE_EDIT.TITLE' | translate }}</h1>
 
-  <form [formGroup]="adminProfileForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="adminProfileForm">
+    <div class="mb-3 flex">
+      <div class="flex">
+        <app-input
+          [formControl]="controls.userName"
+          formControlName="userName"
+          [placeholder]="'ADMIN.PROFILE_EDIT.FIRST_NAME' | translate"
+          type="text"
+          [errorMessage]="getErrorMessage(controls.userName)"
+          [invalid]="controls.userName.invalid && controls.userName.touched"
+        />
+      </div>
+      <div class="ml-2">
+        <app-button
+          [icon]="editState.userName ? 'pi pi-save' : 'pi pi-pencil'"
+          [severity]="editState.userName ? 'success' : 'secondary'"
+          [label]="(editState.userName ? 'UTILS.SAVE' : 'UTILS.EDIT') | translate"
+          (click)="toggleEditField('userName')"
+          [disabled]="isLoading"
+        />
+      </div>
+    </div>
+
     <div class="mb-3 flex">
       <div class="flex">
         <app-input
@@ -92,10 +111,33 @@
       </div>
     </div>
 
+    <div class="mb-3 flex">
+      <div class="flex">
+        <app-select
+          [formControl]="controls.roles"
+          formControlName="roles"
+          [placeholder]="'ADMIN.PROFILE_EDIT.ROLE' | translate"
+          [options]="rolesList"
+          [errorMessage]="getErrorMessage(controls.roles)"
+          [invalid]="controls.roles.invalid && controls.roles.touched"
+        />
+      </div>
+      <div class="ml-2">
+        <app-button
+          [icon]="editState.roles ? 'pi pi-save' : 'pi pi-pencil'"
+          [severity]="editState.roles ? 'success' : 'secondary'"
+          [label]="(editState.roles ? 'UTILS.SAVE' : 'UTILS.EDIT') | translate"
+          (click)="toggleEditField('roles')"
+          [disabled]="isLoading"
+        />
+      </div>
+    </div>
+
     <div class="mt-5 flex justify-start">
       <app-button
+        (onClick)="onBack()"
         type="button"
-        [label]="'UTILS.SAVE' | translate"
+        [label]="'UTILS.BACK' | translate"
         [icon]="'pi pi-arrow-left'"
         class="mr-2"
       />

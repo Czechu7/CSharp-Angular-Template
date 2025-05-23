@@ -13,6 +13,8 @@ import { RouterEnum } from '../../../enums/router.enum';
 import { AdminService } from '../../../core/_services/admin/admin.service';
 import { IUserAdmin } from '../../../core/_models/user-admin.model';
 import { RolesEnum } from '../../../enums/roles.enum';
+import { Location } from '@angular/common';
+import { SelectComponent } from '../../../shared/components/select/select.component';
 
 @Component({
   selector: 'app-admin-users-edit',
@@ -24,6 +26,7 @@ import { RolesEnum } from '../../../enums/roles.enum';
     ButtonComponent,
     ReactiveFormsModule,
     TranslateModule,
+    SelectComponent,
   ],
   templateUrl: './admin-users-edit.component.html',
   styleUrl: './admin-users-edit.component.scss',
@@ -31,15 +34,15 @@ import { RolesEnum } from '../../../enums/roles.enum';
 export class AdminUsersEditComponent implements OnInit {
   adminProfileForm!: FormGroup<AdminProfileForm>;
   RouterEnum = RouterEnum;
+  rolesEnum = RolesEnum;
 
   protected isLoading = false;
-
-  rolesEnum = RolesEnum;
 
   userData: IUserAdmin | undefined = undefined;
 
   private adminService = inject(AdminService);
   private route = inject(ActivatedRoute);
+  private location = inject(Location);
   private formService = inject(FormService);
   private errorService = inject(ErrorService);
 
@@ -50,7 +53,9 @@ export class AdminUsersEditComponent implements OnInit {
     lastName: false,
     email: false,
     password: false,
-    role: false,
+    roles: false,
+    isActive: false,
+    userName: false,
   };
 
   ngOnInit(): void {
@@ -58,7 +63,6 @@ export class AdminUsersEditComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.userId = params.get('id');
-      console.log('User ID:', this.userId);
     });
 
     this.getUserDetails();
@@ -67,32 +71,41 @@ export class AdminUsersEditComponent implements OnInit {
   fillForm() {
     if (
       !this.userData ||
+      !this.userData.userName ||
       !this.userData.firstName ||
       !this.userData.lastName ||
-      !this.userData.email
+      !this.userData.email ||
+      !this.userData.roles
     )
       return;
 
+    this.controls.userName.setValue(this.userData.userName);
     this.controls.firstName.setValue(this.userData.firstName);
     this.controls.lastName.setValue(this.userData.lastName);
     this.controls.email.setValue(this.userData.email);
+    this.controls.roles.setValue(this.userData.roles);
     this.controls.password.setValue('password');
     this.controls.firstName.disable();
     this.controls.lastName.disable();
     this.controls.email.disable();
     this.controls.password.disable();
+    this.controls.roles.disable();
   }
 
   get controls() {
     return this.adminProfileForm.controls;
   }
 
+  get rolesList(): string[] {
+    return Object.values(this.rolesEnum);
+  }
+
   getErrorMessage(control: FormControl) {
     return this.errorService.getErrorMessage(control);
   }
 
-  onSubmit() {
-    console.log('Form submitted:', this.adminProfileForm);
+  onBack() {
+    this.location.back();
   }
 
   toggleEditField(fieldName: keyof typeof this.editState): void {

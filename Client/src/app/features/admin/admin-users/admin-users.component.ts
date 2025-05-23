@@ -64,18 +64,13 @@ export class AdminUsersComponent implements OnInit {
 
   loadUsers(event?: { page: number; rows: number }): void {
     this.loading = true;
-    const pageNumber = event ? event.page  + 1 : 1;
+    const pageNumber = event ? event.page + 1 : 1;
     const pageSize = event ? event.rows : 10;
 
     this.adminService.getPagedUsers({ pageNumber, pageSize }).subscribe({
       next: response => {
-        console.log('Users:', response.data.items);
-              this.users = response.data.items;
+        this.users = response.data.items;
         this.totalRecords = response.data.pagination!.totalCount;
-        // this.users = response.data.map(apiUser => ({
-        //   ...apiUser,
-        //   createdAt: this.datePipe.transform(apiUser.createdAt, 'dd.MM.yyyy'),
-        // }));
 
         this.users = response.data.items;
       },
@@ -95,14 +90,12 @@ export class AdminUsersComponent implements OnInit {
   handleAction(event: { action: string; item: IUserAdmin }): void {
     switch (event.action) {
       case 'edit':
-        console.log('Edit:', event.item);
         this.router.navigate(['admin', 'users', event.item.id]);
         break;
       case 'view':
         console.log('View:', event.item);
         break;
       case 'delete':
-        console.log('Delete:', event.item);
         this.userToDelete = event.item;
         this.confirmModalMessageName = `${event.item.firstName} ${event.item.lastName} - `;
         this.showConfirmModal = true;
