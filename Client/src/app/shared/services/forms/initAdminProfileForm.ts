@@ -4,6 +4,10 @@ import { VALIDATION_LENGTHS } from '../../../config/validations.config';
 
 export const initAdminProfileForm = (): FormGroup<AdminProfileForm> => {
   return new FormGroup({
+    userName: new FormControl('', {
+      validators: [],
+      nonNullable: true,
+    }),
     firstName: new FormControl('', {
       validators: [],
       nonNullable: true,
@@ -29,7 +33,7 @@ export const initAdminProfileForm = (): FormGroup<AdminProfileForm> => {
       ],
       nonNullable: true,
     }),
-    role: new FormControl(false, {
+    roles: new FormControl('', {
       validators: [Validators.required],
       nonNullable: true,
     }),

@@ -37,8 +37,9 @@
   },
   "ADMIN": {
     "USERS": {
-      "FIRST_NAME": "First Name",
       "TITLE": "Users",
+      "USERNAME": "Username",
+      "FIRST_NAME": "First Name",
       "LAST_NAME": "Last Name",
       "EMAIL": "Email",
       "ROLE": "Role",
@@ -46,10 +47,12 @@
       "STATUS": "Status",
       "ACTIONS": "Actions",
       "DELETE_CONFIRMATION": "Delete Confirmation",
-      "DELETE_CONFIRMATION_MESSAGE": "Are you sure you want to delete this user?"
+      "DELETE_CONFIRMATION_MESSAGE": "Are you sure you want to delete this user?",
+      "SUCCESS_DELETE_ACCOUNT_MESSAGE": "Account has been successfully deleted."
     },
     "PROFILE_EDIT": {
       "TITLE": "Edit user profile",
+      "USERNAME": "Username",
       "FIRST_NAME": "First name",
       "LAST_NAME": "Last name",
       "EMAIL": "Email",
@@ -66,7 +69,10 @@
       "REGULAR_LOGS": "Logs",
       "ERROR_LOGS": "Error logs",
       "NO_FOUND_LOGS": "No logs found",
-      "LOADING_LOGS": "Loading logs..."
+      "LOADING_LOGS": "Loading logs...",
+      "RESET_PASSWORD": "Reset password",
+      "SUCCESS_MESSAGE": "Profile has been successfully updated.",
+      "SUCCESS_RESET_PASSWORD_MESSAGE": "Email with password reset link has been sent."
     }
   },
   "EXAMPLE-CRUD": {
