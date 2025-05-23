@@ -65,11 +65,11 @@ public class UpdateUserProfileCommandHandler : UpdateCommandHandler<UpdateUserPr
     {
         var validationFailures = new List<ValidationFailure>();
 
-        if (!string.IsNullOrEmpty(dto.Role))
+        if (!string.IsNullOrEmpty(dto.Roles))
         {
             var validRoles = new[] { "ADMIN", "USER", "MODERATOR" }; 
             
-            var rolesToAssign = dto.Role.Split(',')
+            var rolesToAssign = dto.Roles.Split(',')
                 .Select(r => r.Trim().ToUpper())
                 .Where(r => !string.IsNullOrEmpty(r))
                 .ToList();
@@ -127,9 +127,9 @@ public class UpdateUserProfileCommandHandler : UpdateCommandHandler<UpdateUserPr
         if (!string.IsNullOrEmpty(dto.LastName))
             entity.LastName = dto.LastName;
             
-        if (!string.IsNullOrEmpty(dto.Role))
+        if (!string.IsNullOrEmpty(dto.Roles))
         {
-            var rolesToAssign = dto.Role
+            var rolesToAssign = dto.Roles
                 .Split(',')
                 .Select(r => r.Trim().ToUpper())
                 .Where(r => !string.IsNullOrEmpty(r))
