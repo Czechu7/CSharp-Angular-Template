@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using System.Security.Claims;
 
 namespace Presentation.Controllers;
 
@@ -37,13 +38,24 @@ public class UserPanelController : ApiControllerBase
         return Ok(response);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet]
     [ProducesResponseType(typeof(Response<UserCredentialsDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult<Response<UserCredentialsDto>>> GetById(Guid id)
+    public async Task<ActionResult<Response<UserCredentialsDto>>> GetCurrentUser()
     {
-        var query = new GetByIdUserCredentialsQuery(id);
+
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? 
+                          User.FindFirst("sub")?.Value ?? 
+                          User.FindFirst("nameid")?.Value ?? 
+                          User.Identity?.Name;
+
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid currentUserId))
+        {
+            return Unauthorized(Response<UserCredentialsDto>.ErrorResponse(401, "User not authenticated"));
+        }
+
+        var query = new GetByIdUserCredentialsQuery(currentUserId);
         var response = await Mediator.Send(query);
 
         if (!response.Success)

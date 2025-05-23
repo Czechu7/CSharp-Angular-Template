@@ -19,7 +19,6 @@ public class GetByIdUserCredentialsQueryHandler : GetByIdQueryHandler<GetByIdUse
         {
             Logger.LogInformation("Getting Users entity with ID: {Id}", request.Id);
 
-
             var entity = await DbContext.Users
                 .FirstOrDefaultAsync(k => k.Id == request.Id, cancellationToken);
 
@@ -29,13 +28,20 @@ public class GetByIdUserCredentialsQueryHandler : GetByIdQueryHandler<GetByIdUse
                 return Error(404, $"Users with ID {request.Id} not found");
             }
 
-
+            
             if (!string.IsNullOrEmpty(CurrentUserService.UserId) && 
                 Guid.TryParse(CurrentUserService.UserId, out Guid userId))
-
             {
-                Logger.LogWarning("User {UserId} attempted to access Users {UsersId} belonging to another user", 
-                    userId, entity.Id);
+                if (userId != entity.Id)
+                {
+                    Logger.LogWarning("User {UserId} attempted to access Users {UsersId} belonging to another user", 
+                        userId, entity.Id);
+                    return Error(403, "You do not have permission to access this resource");
+                }
+            }
+            else
+            {
+                Logger.LogWarning("Invalid or missing user ID in current user service");
                 return Error(403, "You do not have permission to access this resource");
             }
 
